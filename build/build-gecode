@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+tar xfz gecode-3.7.0.tar.gz
+cd gecode-3.7.0
+nice ./configure --prefix=$HOME/local
+nice make
+nice make install
+cd -
+rm -rf gecode-3.7.0
