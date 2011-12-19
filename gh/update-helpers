@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+git fetch helper
+git merge heler/master
+git status -s
