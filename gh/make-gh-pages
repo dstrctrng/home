@@ -4,9 +4,8 @@ url=$(git config --get remote.origin.url)
 
 git clone $url pub
 cd pub
-git symbolic-ref HEAD refs/heads/gh-pages
-rm -rf .git/index 
-git clean -fdx
+git checkout --orphan gh-pages
+rm -rf .
 
 touch README.mkd
 git add README.mkd
