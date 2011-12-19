@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+url=$(git config --get remote.origin.url)
+
+git clone $url pub
+cd pub
+git symbolic-ref HEAD refs/heads/gh-pages
+rm -rf .git/index 
+git clean -fdx
+
+touch README.mkd
+git add README.mkd
+git commit -m 'initial GitHub Pages' || true
+
+git push -u -f origin gh-pages gh-pages
+
