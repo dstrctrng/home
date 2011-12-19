@@ -12,5 +12,5 @@ touch README.mkd
 git add README.mkd
 git commit -m 'initial GitHub Pages' || true
 
-git push -u -f origin gh-pages gh-pages
+git push -u -f origin gh-pages
 
