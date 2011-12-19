@@ -1,5 +1,5 @@
 #!/bin/bash -e
 
 git fetch helper
-git merge heler/master
+git merge helper/master
 git status -s
