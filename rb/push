@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+tvd_name="$(basename $(pwd))"
+tvd_version="$(grep s.version $tvd_name.gemspec | head -1 | cut -d'"' -f2)"
+gem push "$tvd_name-$tvd_version.gem"
+

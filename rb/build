@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+gem build $(basename $(pwd)).gemspec
+$(dirname $0)/push
