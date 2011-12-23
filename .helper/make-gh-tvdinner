@@ -13,6 +13,6 @@ git push -u origin master
 
 git remote add tvdinner https://github.com/HeSYINUvSBZfxqA/tvdinner
 git fetch tvdinner
-git merge tvdiner/master
+git merge tvdinner/master
 
 bash
