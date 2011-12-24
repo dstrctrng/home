@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+
+# if Gemfile has been modified
+modified="$(git status --porcelain Gemfile | egrep -v '^[:blank:]' | cut -b1-2 | grep "^M")"
+if [[ -n $modified ]]; then
+  error=1
+
+  if echo "$modified" | egrep -q "^M[ ]"; then
+    git stash -u --keep-index
+
+    if [[ -n "$(egrep '^[ 	]*gem[ 	]' Gemfile | sed 's/#.*//' | egrep ':(git|path)')" ]]; then
+      echo "There are :git or :path specifiers in Gemfile.  Only gem specifiers that are bundle cacheable are permitted."
+    else
+      error=0
+    fi
+
+    git reset --hard
+    git stash pop -q
+
+  else
+    echo "Gemfile added to index with local changes.  Either reset the Gemfile or add your local changes."
+  fi
+
+  exit $error
+fi
+
