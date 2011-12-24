@@ -11,7 +11,7 @@ if [[ -n $modified ]]; then
   error=1
 
   if echo "$modified" | egrep -q "^M[ ]"; then
-    git stash -u --keep-index
+    git stash -q -u --keep-index 2>&1 | egrep -v '^Not removing'
 
     if [[ -n "$(egrep '^[ 	]*gem[ 	]' Gemfile | sed 's/#.*//' | egrep ':(git|path)')" ]]; then
       echo "There are :git or :path specifiers in Gemfile.  Only gem specifiers that are bundle cacheable are permitted."
@@ -20,7 +20,7 @@ if [[ -n $modified ]]; then
     fi
 
     git reset --hard
-    git stash pop -q
+    git stash pop -q --index
 
   else
     echo "Gemfile added to index with local changes.  Either reset the Gemfile or add your local changes."
