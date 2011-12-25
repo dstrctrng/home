@@ -1,0 +1,33 @@
+Operations Engineer
+===================
+
+Mixpanel currently processes over 2 billion API transactions every single month
+from gaming, mobile, social sharing, and e-commerce companies world-wide. Our
+customers pay us to do data analysis that is real-time, to-the-second and we
+specialize in doing analysis that is far more complex than the alternatives.
+Our mission is to help the world learn from their data.
+
+Our engineers
+-------------
+
+  * Demonstrate world-class programming ability.
+  * Collaborate and discuss engineering architecture.
+  * Care about system reliability and code quality.
+  * Will dig through source code other people wrote to fix problems no matter what.
+  * Currently are 80% vim and 20% emacs.
+
+Operations engineers are critical in making sure our systems stay up, are up to
+date, and are capable of working together with the infrastructure team to keep
+up with the demands of data volume we get month to month. Automating
+infrastructure, spotting bottlenecks, and building tools to monitor and
+maintain system stability are also important.
+
+Expectations
+------------
+
+  * You have mastered one programming language beyond traditional shell scripting.
+  * You have a core understanding of fundamental computer science concepts.
+  * You understand performance tradeoffs.
+  * You are careful and detailed oriented.
+  * You love automation and making once manual tasks be done automatically
+

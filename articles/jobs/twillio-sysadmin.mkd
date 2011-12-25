@@ -1,0 +1,73 @@
+Systems Administrator
+=====================
+
+About the Job
+-------------
+
+Identify and surface architectural and performance issues, helping the
+engineering team to promote system stability, scalability, and flexibility.  At
+Twilio, software engineers own the production operation of thier products.
+Your job is to provide the infrastructure, monitoring, and alerting tools they
+need to be successful.
+
+Own nagios monitoring and alerting infrastructure.  False positives are your
+nemesis.  You are passionate about keeping nagios quiet and ensuring only
+critical alerts are sent to the poor sod who is on call (which is often you).
+
+Maintain our production persistence infrastructure, specifically database
+pivots.  Continually seek to automate manual tasks.  Own our Amazon EC2 AMI
+build process and tool chain, taking personal responsibility for the quality of
+new AMI releases.
+
+Pioneer and design/build/operate a multi-cloud automation infrastructure.
+Twilio is one of the first companies to actually need it.
+
+Learn Twilio's infrastructure provisioning and automation system - which we
+call "boxconfig" - an overview is available here.  We are measured based on the
+uptime, performance, and security of our APIs - your at job is critical to
+Twilio's success.
+
+In addition to tried and true MySQL, PHP, and Java, we use async python, redis,
+EC2, SQS, zeromq, and other leading edge technologies.
+
+Requirements
+------------
+
+Software Engineers you've worked with before respect you, and routinely seek
+out your advice on production issues before they start writing code.
+
+You've done custom automation work before -- writing custom scripts, not just
+running them.  Your scripting kung fu is good and you're adept at bash, python,
+and/or awk
+
+You are facilitator not a blocker.  You understand the trade-offs between
+reliability and development speed.
+
+Troubleshooting is a core part of your mental make up.  You have the
+communication skills and technical ability to get to the root of issues
+efficiently - and you've kind of always been this way. You are a quick study
+and a problem solver.
+
+You've been a member of an on-call team and are comfortable making quick,
+aggressive decisions to return systems to stability.
+
+You have experience with monitoring tools like Nagios, Cacti, collectd or
+Zenoss.
+
+Nice to Have
+------------
+
+You've worked with a team that has scaled a product in production (e.g. >
+10,000 users, lots of transactions per sec) and have configured web servers,
+load balancers, VPNs, and any kind of software that would sit on a U machine in
+a co-lo.
+
+You've owned SQL databases in production environments, preferably open-source
+ones (Postgres, MySQL).
+
+You've operated infrastructure in the cloud on EC2 or other virtualized
+platforms.
+
+You understand the basics of improving system and hardware performance, and why
+one might stripe disks with software raid etc.
+

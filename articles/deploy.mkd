@@ -1,0 +1,5 @@
+deploy
+------
+
+Normally just `bin/clone hosts...` but when going from OS X to Ubuntu,
+try 'REMOTE_HOME="/home/defn" GATEWAY=50.56.85.238 bin/clone hosts...`

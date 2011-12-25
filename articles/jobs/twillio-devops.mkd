@@ -1,0 +1,102 @@
+DevOps Engineer
+===============
+
+About the Job
+-------------
+
+Twilio runs 100% in the cloud. Technically we run in "the clouds"- using
+servers in multiple clouds based on the price, availability, failover &
+bandwidth of different offerings.
+
+We already bring machines up and down and auto-configure them with the push of
+a button using a first-generation tool we built called boxconfig. (we know -
+soooooo original & creative)
+
+We are looking for someone to take our mission-critical cloud infrastructure
+management system to the next level. This system will manage our
+telecommunications infrastructure cluster – it will orchestrate the
+provisioning, load balancing, dynamic configuration/re-configuration,
+monitoring and spend optimization of 10,000+ servers across providers, data
+centers, availability zones and myriad other variables we haven't even thought
+of yet.
+
+You've been itching for the opportunity "do server management infrastructure
+right" for a while and are fired up to absolutely go to town on this - building
+scaling and healing automation that factors in security, failover, and
+quality/analytic tools to track stuff like packet loss, performance, latency,
+and more. You know, the stuff you'd build if world class infrastructure was the
+priority - and your boss wasn’t breathing down your neck about that i18n
+feature and the other whizbang things the marketing and sales VPs need
+yesterday.
+
+Responsibilities
+----------------
+
+Take personal responsibility for the availability and reliability of our
+service.
+
+Save the company a lot of money on infrastructure costs
+
+Author tools that reliably manage infrastructure. We're looking for someone to
+write clean, re-usable code. Elegant OO code that’s simple. This *is not* a
+scripting/sysadmin job.
+
+Write maintainable code with extensive test coverage, working in a professional
+software engineering environment (with source control, dev/stage/prod release
+cycle, continuous deployment) - cowboy coders need not apply.
+
+We’ll need you to do most of your work in python, but you’re free to select
+other platforms, languages (scala or erlang anyone?) open source components for
+different pieces of the project.
+
+Support our existing production cluster management system while you improve it.
+Our current system is hacked together in PHP/bash and leverages Google App
+Engine, Twisted, Redis, pubsub and a bunch other stuff.
+
+Own our server image configurations, collaborating with core server engineers
+to optimize for task performance, reliability, failover and scale.
+
+Requirements
+------------
+
+You know exactly how awesome it would be to create what's described above.
+You've been dreaming about the opportunity to work on something like this
+without the distraction of other stuff for years. This job description made you
+drool a little.
+
+A distributed systems foundation and a service-oriented mindset. You’re always
+thinking
+
+“What happens if this fails?” when you build things.
+
+You've "carried the pager" before (ideally at both a startup and a large
+infrastructure provider) & have first-hand experience with what happens when
+infrastructure // tools fail.
+
+A minimum of 5 years of coding experience (school counts). Much more experience
+would be great. What matters is that you’ve shipped and maintained
+mission-critical tools and infrastructure that many other people depend on.
+
+You are a prolific coder who works well independently.
+
+Bonus Points
+------------
+
+You’ve written software tools to manage 1000+ servers.
+
+You are conversant in the pros and cons of different clouds: EC2, slicehost,
+rackspace, etc.
+
+You've poked around with other projects trying to do similar things
+(rightscale, cloudcake, opscode).
+
+You’ve made a substantial contribution to a widely used open source project.
+Huge bonus points if you started or lead a project.
+
+You read up on and experiment with new technologies because it’s in your
+nature, not because it’s a job requirement.
+
+You don’t just learn how things work, you learn why.
+
+Formal training in computer science (bachelors, masters, whatever)
+
