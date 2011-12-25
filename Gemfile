@@ -25,4 +25,7 @@ gem "tvd-git"
 gem "tvd-rubygems"
 gem "tvd-ssh"
 
+# deploy
+gem "alpha_omega"
+
 # vim: set ft=ruby:

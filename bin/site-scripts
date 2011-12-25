@@ -1,0 +1,13 @@
+#!/bin/bash -e
+
+case "$(uname -s)" in
+  Linux)
+    ln -nfs ../.site.d/rvm ../.site.d/ubuntu .site/
+    ;;
+  Darwin)
+    ln -nfs ../.site.d/ssh ../.site.d/mac_os_x .site/
+    ;;
+esac
+
+rm -f .bundle/config
+
