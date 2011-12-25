@@ -1,0 +1,16 @@
+#!/bin/bash
+
+function gdiff {
+  git diff --no-ext-diff -w -b "$@" | vim -R -
+}
+
+function vdiff {
+  diff -r -b -w "$@" | vim -R -
+}
+
+alias gs="\git submodule summary; \git status -s" # TODO add -b back with autodetect
+alias gl="\git lg"
+
+if [[ -x $(which hub 2>&-) ]]; then
+  alias git="hub"
+fi
