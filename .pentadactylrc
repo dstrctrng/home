@@ -1,0 +1,5 @@
+set nofs
+set guioptions=
+set stal=never
+set editor="xterm -e vim -f"
+set defsearch="duckduckgo-ssl"
