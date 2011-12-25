@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+cd
+bundle check || { bundle install --local --path vendor/bundle && bundle check; }
+
+cd ~/.microwave
+exec bundle exec chef-solo -c config/solo.rb -N localhost

@@ -18,4 +18,11 @@ gem "HeSYINUvSBZfxqA-foreman"
 gem "fpm"
 gem "builder"
 
+# configuration
+gem "tvd-microwave"
+gem "tvd-bundler"
+gem "tvd-git"
+gem "tvd-rubygems"
+gem "tvd-ssh"
+
 # vim: set ft=ruby:
