@@ -8,3 +8,6 @@ require 'awesome_print'
 
 Wirble.init
 Wirble.colorize
+
+require 'boson'
+Boson.start
