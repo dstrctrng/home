@@ -4,3 +4,6 @@
 [submodule ".rvm"]
   path = .rvm
   url = https://raw.github.com/HeSYINUvSBZfxqA/rvm
+[submodule ".junas"]
+  path = .vim
+  url = https://raw.github.com/HeSYINUvSBZfxqA/junas
