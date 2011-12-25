@@ -10,4 +10,12 @@ gem "awesome_print"
 gem "grit"
 gem "hub"
 
+# orchestration
+gem "fog"
+gem "HeSYINUvSBZfxqA-foreman"
+
+# packaging
+gem "fpm"
+gem "builder"
+
 # vim: set ft=ruby:
