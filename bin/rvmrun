@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source $HOME/.bash/bin/_rvm
+
+if [[ -f /usr/local/rvm/scripts/rvm ]]; then
+  rvm_do="exec"
+else
+  rvm_do="do"
+fi
+
+ruby=$1; shift
+rvm $ruby $rvm_do "$@"
