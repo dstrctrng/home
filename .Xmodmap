@@ -1,0 +1,4 @@
+pointer = 1 3 2
+clear Mod1
+keycode 66 = Meta_L
+add Mod1 = Meta_L

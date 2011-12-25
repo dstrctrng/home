@@ -1,0 +1,11 @@
+#!/bin/bash -fe
+
+[[ -z $1 ]] && set "http://google.com"
+tmp_browser=$(mktemp -t XXXXXX)
+for u in "$@"; do
+  prefix=""
+  [[ -z $2 ]] && prefix="exec"
+  echo $prefix browser_helper '"'"$u"'"'
+done > $tmp_browser
+
+exec bash $tmp_browser
