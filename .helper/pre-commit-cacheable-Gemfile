@@ -22,6 +22,8 @@ if [[ -n $modified ]]; then
         error=0
       fi
 
+      git reset --hard
+      git stash pop -q --index
     else
       # status M?
       echo "Gemfile/Gemfile.lock added to index with local changes.  Either reset the file or add your local changes."
@@ -34,13 +36,16 @@ if [[ -n $modified ]]; then
     echo "Gemfile/Gemfile.lock in a weird state.  Make sure it is not deleted or in conflict."
   fi
 
-  git reset --hard
-  git stash pop -q --index
-
   # check if status Gemfile.lock changes after bundle install
+  git stash -q -u --keep-index 2>&1 | egrep -v '^Not removing'
+
   glock_pre="$(git status --porcelain Gemfile.lock | cut -b1-2)"
   bundle install --local > /dev/null
   glock_post="$(git status --porcelain Gemfile.lock | cut -b1-2)"
+
+  git reset --hard
+  git stash pop -q --index
+
   if [[ $glock_pre != $glock_post ]]; then
     echo "Gemfile.lock changed after bundle install --local.  Verify these changes and add them to the index."
 
