@@ -7,3 +7,6 @@
 [submodule ".junas"]
   path = .vim
   url = https://raw.github.com/HeSYINUvSBZfxqA/junas
+[submodule ".pancake"]
+  path = .pancake
+  url = https://raw.github.com/HeSYINUvSBZfxqA/pancake
