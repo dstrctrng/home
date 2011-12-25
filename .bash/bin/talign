@@ -1,0 +1,43 @@
+#!/usr/bin/perl
+
+use strict;
+use Data::Dumper;
+
+sub max {
+    my ($a, $b) = @_;
+    return $a >= $b ? $a : $b;
+}
+
+my @lines;
+my %lengths;
+
+my $max_cols = 99;
+if (@ARGV) {
+    $max_cols = int($ARGV[0]);
+}
+
+while (<STDIN>) {
+    my $line = $_;
+    chomp $line;
+    push @lines, $line;
+    my @a = split m{\s+}, $line;
+    my $idx = 0;
+    while (@a) {
+        $lengths{$idx} = max($lengths{$idx}, length($a[0]));
+        shift @a;
+        $idx += 1;
+        last if $idx >= $max_cols;
+    }
+}
+
+for my $line (@lines) {
+    my @a = split m{\s+}, $line;
+    my $idx = 0;
+    while (@a) {
+        printf("%-" . $lengths{$idx} . "s ", $a[0]);
+        shift @a;
+        $idx += 1;
+    }
+    print "\n";
+}
+

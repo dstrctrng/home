@@ -1,0 +1,5 @@
+#!/bin/bash
+
+function reload {
+  source "$HOME/.bash_profile"
+}
