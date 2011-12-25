@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'pp'
+
+pp YAML.load(File.read('passwords.yml'))
