@@ -1,0 +1,18 @@
+RubyGems helper mixin
+=====================
+
+Add this project as a remote and fetch/merge as necessary.
+
+    git remote add helper https://github.com/HeSYINUvSBZfxqA/rb-helper
+    git fetch helper
+    git merge helper/master
+
+.helper/build
+-------------
+
+Builds a RubyGem from gemspec and pushes to rubygems.org
+
+.helper/push
+------------
+
+Pushes to rubygems.org

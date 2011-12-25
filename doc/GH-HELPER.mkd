@@ -1,0 +1,23 @@
+GitHub helper mixin
+===================
+
+Add this project as a remote and fetch/merge as necessary.
+
+    git remote add helper https://github.com/HeSYINUvSBZfxqA/gh-helper
+    git fetch helper
+    git merge helper/master
+    # resolve conflicts
+    git commit -m 'merge GitHub helpers'
+
+make-gh-pages
+-------------
+
+`gh/make-gh-pages` clones your project into `pub/` and creates/pushes
+the `gh-pages` branch.  `pub/` is a destination for static-site
+generators or manual edits.
+
+update-helpers
+--------------
+
+Assuming the `helper` remote points to `gh-helper`, will fetch, merge,
+and show the status of the merge. 
