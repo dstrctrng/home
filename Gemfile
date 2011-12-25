@@ -3,7 +3,7 @@ source :rubygems
 # irb
 gem "wirble"
 gem "interactive_editor"
-gem "boson"
+gem "bosonson"
 gem "awesome_print"
 
 # git
@@ -27,5 +27,9 @@ gem "tvd-ssh"
 
 # deploy
 gem "alpha_omega"
+
+# documentation
+gem "thin"
+gem "RTFMd"
 
 # vim: set ft=ruby:
