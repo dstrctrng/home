@@ -99,6 +99,9 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.5.0)
     posix-spawn (0.3.6)
+    private_event (0.0.1)
+      fog
+      sinatra
     pygments.rb (0.2.4)
       rubypython (~> 0.5.3)
     rack (1.3.5)
@@ -162,6 +165,7 @@ DEPENDENCIES
   grit
   hub
   interactive_editor
+  private_event
   thin
   tvd-bundler
   tvd-git
