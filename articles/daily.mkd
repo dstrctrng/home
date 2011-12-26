@@ -1,3 +1,9 @@
+## Mon Dec 26 05:16:25 GMT 2011
+
+Ripping out the rubygems.org Rails app, keeping the Hostess gem server
+and gem processors.  Need a name for something that moves raw gems out
+of the mines.
+
 ## Mon Dec 26 04:39:43 GMT 2011
 
 Reading rubygems.org source to extract a gem indexing and serving
