@@ -17,6 +17,7 @@ gem "HeSYINUvSBZfxqA-foreman"
 # packaging
 gem "fpm"
 gem "builder"
+gem "private_event"
 
 # configuration
 gem "tvd-microwave"
