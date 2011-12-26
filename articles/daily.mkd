@@ -1,3 +1,7 @@
+## Mon Dec 26 04:39:43 GMT 2011
+
+Reading rubygems.org source to extract a gem indexing and serving
+service.  Looking at `app/jobs/indexer` and the `Hostess` app.
 
 ## Sun Dec 25 10:03:49 GMT 2011
 
