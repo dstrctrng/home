@@ -1,3 +1,25 @@
+
+## Tue Dec 27 15:25:57 PST 2011
+
+hostess and rtfmd are sinatra apps that can run standalone, so need a
+standard for configuration apps and anchoring them to your own sinatra
+app.
+
+Need bosonson command libraries to compile rtfmd pages for static
+hosting; to write gems and update repository indexes.
+
+Something like:
+
+    bss hostess.write_gems *.gem
+    bss hostess.update_index
+    bss hostess.run
+
+    bss rtfmd.write_pages *.ronn *.mkd
+    bss rtmfd.run
+
+`bss` would be a script exported from bosonson with bundler/gem
+integration.
+
 ## Mon Dec 26 05:16:25 GMT 2011
 
 Ripping out the rubygems.org Rails app, keeping the Hostess gem server
@@ -11,7 +33,7 @@ service.  Looking at `app/jobs/indexer` and the `Hostess` app.
 
 ## Sun Dec 25 10:03:49 GMT 2011
 
-Remove bash scripts, replace them with boson command libraries.
+Remove bash scripts, replace them with bosonson command libraries.
 
 ## Sun Dec 25 08:27:09 GMT 2011
 
