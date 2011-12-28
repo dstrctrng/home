@@ -20,7 +20,7 @@ set :last_home, nil
 task :reconfigure do
   set :deploy_to, home
 
-  set :ruby_loader, "#{home}/.bash/bin/rvmrun default"
+  set :ruby_loader, "rvmrun default"
   set :bundler_options, "--path vendor/bundle"
 
   if %x(uname -s).strip == "Darwin" && home == ENV['HOME']
