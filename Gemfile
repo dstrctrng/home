@@ -25,6 +25,6 @@ gem "tvd-ssh"
 gem "alpha_omega"
 
 # documentation
-gem "RTFMd"
+gem "rtfmd"
 
 # vim: set ft=ruby:
