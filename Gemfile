@@ -6,12 +6,7 @@ gem "interactive_editor"
 gem "bosonson"
 gem "awesome_print"
 
-# git
-gem "grit"
-
 # orchestration
-gem "fog"
-gem "marathon"
 gem "surface"
 
 # packaging
