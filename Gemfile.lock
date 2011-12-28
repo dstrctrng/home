@@ -1,6 +1,9 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    80ae2fe5c929b7d0a00bdee2d710fa9e (0.0.1)
+      bosonson
+      sinatra
     HeSYINUvSBZfxqA-capistrano (2.5.21)
       highline
       net-scp (>= 1.0.0)
@@ -13,18 +16,6 @@ GEM
     HeSYINUvSBZfxqA-foreman (0.20.0.4)
       term-ansicolor (~> 1.0.5)
       thor (>= 0.13.6)
-    RTFMd (0.10301.17)
-      github-markup (>= 0.7.0, < 1.0.0)
-      grit (~> 2.4.1)
-      mustache (>= 0.11.2, < 1.0.0)
-      nokogiri (~> 1.4)
-      posix-spawn (~> 0.3.0)
-      pygments.rb (~> 0.2.0)
-      rdiscount
-      redcarpet
-      ronn
-      sanitize (~> 2.0.0)
-      sinatra (~> 1.0)
     alias (0.2.2)
     alpha_omega (0.0.49)
       HeSYINUvSBZfxqA-capistrano
@@ -67,10 +58,11 @@ GEM
     hike (1.2.1)
     hirb (0.6.0)
     hpricot (0.8.5)
-    hub (1.7.0)
     interactive_editor (0.0.10)
       spoon (>= 0.0.1)
     json (1.5.2)
+    marathon (0.0.2)
+      HeSYINUvSBZfxqA-foreman
     microwave (0.1006.1)
       dep_selector
       erubis
@@ -99,8 +91,9 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.5.0)
     posix-spawn (0.3.6)
-    private_event (0.0.2)
+    private_event (0.0.3)
       fog
+      fpm
       sinatra
     pygments.rb (0.2.4)
       rubypython (~> 0.5.3)
@@ -115,6 +108,18 @@ GEM
       hpricot (>= 0.8.2)
       mustache (>= 0.7.0)
       rdiscount (>= 1.5.8)
+    rtfmd (0.10301.18)
+      github-markup (>= 0.7.0, < 1.0.0)
+      grit (~> 2.4.1)
+      mustache (>= 0.11.2, < 1.0.0)
+      nokogiri (~> 1.4)
+      posix-spawn (~> 0.3.0)
+      pygments.rb (~> 0.2.0)
+      rdiscount
+      redcarpet
+      ronn
+      sanitize (~> 2.0.0)
+      sinatra (~> 1.0)
     ruby-hmac (0.4.0)
     rubypython (0.5.3)
       blankslate (>= 2.1.2.3)
@@ -128,7 +133,16 @@ GEM
       rack (~> 1.3, >= 1.3.4)
       rack-protection (~> 1.1, >= 1.1.2)
       tilt (~> 1.3, >= 1.3.3)
+    sous (0.0.2)
+      bosonson
+      fog
+      sinatra
     spoon (0.0.1)
+    surface (0.0.3)
+      bosonson
+      marathon
+      sinatra
+      thin
     term-ansicolor (1.0.7)
     thin (1.3.1)
       daemons (>= 1.0.9)
@@ -154,19 +168,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  HeSYINUvSBZfxqA-foreman
-  RTFMd
+  80ae2fe5c929b7d0a00bdee2d710fa9e
   alpha_omega
   awesome_print
   bosonson
-  builder
-  fog
-  fpm
-  grit
-  hub
   interactive_editor
   private_event
-  thin
+  rtfmd
+  sous
+  surface
   tvd-bundler
   tvd-git
   tvd-microwave
