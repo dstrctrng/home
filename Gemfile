@@ -8,16 +8,16 @@ gem "awesome_print"
 
 # git
 gem "grit"
-gem "hub"
 
 # orchestration
 gem "fog"
-gem "HeSYINUvSBZfxqA-foreman"
+gem "marathon"
+gem "surface"
 
 # packaging
-gem "fpm"
-gem "builder"
+gem "80ae2fe5c929b7d0a00bdee2d710fa9e"
 gem "private_event"
+gem "sous"
 
 # configuration
 gem "tvd-microwave"
@@ -30,7 +30,6 @@ gem "tvd-ssh"
 gem "alpha_omega"
 
 # documentation
-gem "thin"
 gem "RTFMd"
 
 # vim: set ft=ruby:
