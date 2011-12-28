@@ -1,5 +1,0 @@
-#!/bin/bash -e
-
-git pull
-bundle check || { bundle --local --path vendor/bundle && bundle check; }
-git submodule update --init
