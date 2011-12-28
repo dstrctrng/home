@@ -54,12 +54,23 @@ hosts =
     end
   end
 
+groups =
+  AlphaOmega.what_groups hosts do |nm_group, group|
+    task nm_group.to_sym do
+    end
+
+    group.keys.sort.each do |nm_node|
+      before nm_group, nm_node
+    end
+  end
+
 # localhost
 task :localhost do
   role :app, Socket.gethostname
   reconfigure if last_home != home
 end
 
+# admin hosts
 %w(admin01 admin02).each do |server|
   task server.to_sym do
     ssh_options[:port] = ENV['GATEWAY_PORT']
@@ -78,15 +89,10 @@ end
   end
 end
 
-groups =
-  AlphaOmega.what_groups hosts do |nm_group, group|
-    task nm_group.to_sym do
-    end
-
-    group.keys.sort.each do |nm_node|
-      before nm_group, nm_node
-    end
-  end
+# catch all hosts
+(ENV['_HOSTS'] || "").split(/[,\s]+/).each do |h|
+  before "junk", h
+end
 
 # the junk
 task :junk do
@@ -106,11 +112,6 @@ task :dailo do
 
 end
 
-# catch all hosts
-(ENV['_HOSTS'] || "").split(/[,\s]+/).each do |h|
-  before "junk", h
-end
-
 task :git_remote do
   # workaround git clone and non-empty directories
   run "[[ -d .git ]] || { git init && git remote add origin #{repository}; }"
@@ -120,7 +121,12 @@ task :vim_build do
   run "vim -E -c ':source .vimrc' -c :quit meh"
 end
 
+task :site_remove do
+  run "rm -rf .site"
+end
+
 after "deploy:bootstrap_code", "git_remote"
 
 after "deploy:update_code", "vim_build"
+after "deploy:update_code", "site_remove"
 
