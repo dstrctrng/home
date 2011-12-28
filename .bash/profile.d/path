@@ -1,3 +1,3 @@
 #!/bin/bash
 
-PATH="$HOME/.bash/bin:$HOME/.bash/bin/ssl:$PATH:$HOME/work/git-utils/bin"
+PATH="$HOME/.bash/bin:$PATH:$HOME/bin
