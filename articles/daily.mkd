@@ -1,3 +1,7 @@
+## Tue Dec 27 16:02:09 PST 2011
+
+So the standard for cominbing bosonson, sinatra, etc. from individual
+gems is encapsulated in a gem called `surface`.  
 
 ## Tue Dec 27 15:25:57 PST 2011
 
