@@ -27,4 +27,8 @@ gem "alpha_omega"
 # documentation
 gem "rtfmd"
 
+# servers
+gem "sinatra"
+gem "thin"
+
 # vim: set ft=ruby:
