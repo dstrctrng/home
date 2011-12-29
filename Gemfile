@@ -1,3 +1,4 @@
+#source :rubygems
 source "http://localhost:3000"
 
 # irb
