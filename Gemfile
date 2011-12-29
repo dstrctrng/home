@@ -6,15 +6,13 @@ gem "interactive_editor"
 gem "bosonson"
 gem "awesome_print"
 
-# orchestration
-gem "surface"
-
 # packaging
 gem "80ae2fe5c929b7d0a00bdee2d710fa9e"
 gem "private_event"
 gem "sous"
 
 # configuration
+gem "microwave"
 gem "tvd-microwave"
 gem "tvd-bundler"
 gem "tvd-git"
