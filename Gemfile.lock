@@ -180,7 +180,9 @@ DEPENDENCIES
   microwave
   private_event
   rtfmd
+  sinatra
   sous
+  thin
   tvd-bundler
   tvd-git
   tvd-microwave
