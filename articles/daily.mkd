@@ -1,3 +1,10 @@
+## Wed Dec 28 23:25:50 PST 2011
+
+Reading why [rubygems are slow][slow-rubygems].  Too hard for me to
+solve, but I can hack away at it.
+
+[slow-rubygems]: http://robots.thoughtbot.com/post/2729333530/fetching-source-index-for-http-rubygems-org
+
 ## Tue Dec 27 17:34:19 PST 2011
 
 Separated my work and personal GitHub accounts since I don't participate
