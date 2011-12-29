@@ -1,3 +1,12 @@
 #!/bin/bash -e
 
-time for a in specs.4.8.gz latest_specs.4.8.gz prerelease_specs.4.8.gz; do echo $a; (cd $(bundle show private_event)/server && curl -s -O http://production.s3.rubygems.org/$a) & done | cat
+if [[ -n $1 ]]; then
+  pth_server=$1; shift
+else
+  pth_server="$(bundle show private_event)/server/repo"
+fi
+
+time { for a in latest_specs.4.8.gz prerelease_specs.4.8.gz; do echo $a; (cd $pth_server && curl -s -O http://production.s3.rubygems.org/$a) & done | cat
+       cp $pth_server/latest_specs.4.8.gz $pth_server/specs.4.8.gz
+     }
+
