@@ -24,7 +24,7 @@ GEM
       grit
       marathon
       surface
-    awesome_print (1.0.1)
+    awesome_print (1.0.2)
     blankslate (2.1.2.4)
     bosonson (0.304.3)
       alias (>= 0.2.2)
