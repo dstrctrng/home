@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+time for a in specs.4.8.gz latest_specs.4.8.gz prerelease_specs.4.8.gz; do echo $a; (cd server && curl -s -O http://production.s3.rubygems.org/$a) & done | cat
