@@ -1,6 +1,6 @@
-#source :rubygems
+source :rubygems
 #source "http://localhost:3000/complete"
-source "http://localhost:3000"
+#source "http://localhost:3000"
 
 # irb
 gem "wirble"

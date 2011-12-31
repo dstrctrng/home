@@ -1,5 +1,5 @@
 GEM
-  remote: http://localhost:3000/
+  remote: http://rubygems.org/
   specs:
     80ae2fe5c929b7d0a00bdee2d710fa9e (0.0.1)
       bosonson
@@ -160,7 +160,7 @@ GEM
       microwave
     tvd-rubygems (0.0.3)
       microwave
-    tvd-ssh (0.0.6)
+    tvd-ssh (0.0.8)
       bosonson
       microwave
     uuidtools (2.1.2)
