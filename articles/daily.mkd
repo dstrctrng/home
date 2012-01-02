@@ -1,3 +1,20 @@
+## Mon Jan  2 02:41:06 PST 2012
+
+A year ago on December 31, 2009, I opened my current GitHub account wit
+the new year's resolution to open source as much of my work, and to
+commit at least once every day.  I made my home directory into a
+project with a ticker of how many commits in the last month.
+
+Eventually the awkward commits became second-nature as I commited every
+change.  git commands become muscle memory.  By the end of the year, I'd
+gotten a good feel for how small my projects should be though I still
+have way too many incomplete projects.
+
+This year I'll build on my success by writing man pages, project
+documentation, my reasoning, and more thoughtful emails.  I expect at
+first to write anything down to fulfil my quota until I'm comfortable
+with grammar, diction, pacing.
+
 ## Wed Dec 28 23:25:50 PST 2011
 
 Reading why [rubygems are slow][slow-rubygems].  Too hard for me to
