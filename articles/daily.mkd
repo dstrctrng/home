@@ -1,3 +1,19 @@
+## Tue Jan  3 04:20:12 PST 2012
+
+The day before the boss comes into the office expecting something, I
+find the 100 machines I've built are defective in various ways.  Errors
+during the bootstrap were ignored (because I don't check every error on
+each line) and at scale, error messages aren't seen.
+
+Correcting multiple errors shifted problems elsewhere.  Fix one thing,
+discover another error masked or compounded.  Without fine grained tests
+validating each step of a machine build, I still don't know if my
+machines are good, only that they pass the rudimentary tests that were
+wildly failing a few hours ago.
+
+At some point all these tests is just automated continuous QA.  Need to
+make some tools for it soon.
+
 ## Mon Jan  2 02:41:06 PST 2012
 
 A year ago on December 31, 2009, I opened my current GitHub account wit
