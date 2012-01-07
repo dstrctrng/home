@@ -1,10 +1,9 @@
 #!/usr/bin/env ruby
 
 require 'json'
+require 'yaml'
 require 'socket'
 require 'alpha_omega/deploy'
-
-ssh_options[:forward_agent] = true
 
 set :user, "defn"
 set :group, "defn"
@@ -41,28 +40,6 @@ end
 
 # branch
 set :branch, AlphaOmega.what_branch
-
-# host groups
-hosts =
-  AlphaOmega.what_hosts 'work/nodes/*.json' do |node|
-    if node[:node_name] && node["public_ip"]
-      node_task = node[:node_name].to_sym
-      task node_task do
-        role :app, node[:node_name]
-        reconfigure
-      end
-    end
-  end
-
-groups =
-  AlphaOmega.what_groups hosts do |nm_group, group|
-    task nm_group.to_sym do
-    end
-
-    group.keys.sort.each do |nm_node|
-      before nm_group, nm_node
-    end
-  end
 
 # localhost
 task :localhost do

@@ -1,4 +1,5 @@
 #!/bin/bash -e
 
 bundle check || { bundle install --local --path vendor/bundle && bundle check; }
-_HOSTS="$(echo $* | sed 's#  *#,#g')" bundle exec deploy deploy junk
+_HOSTS="$(echo $* | sed 's#  *#,#g')"
+bundle exec deploy deploy junk

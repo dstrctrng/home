@@ -1,4 +1,5 @@
 #!/bin/bash -e
 
 bundle check 2>&1 >/dev/null || { bundle install --local --path vendor/bundle || bundle check; }
-exec bundle exec alpha_omega $(basename $0) "$@"
+export _HOSTS="$(echo $* | sed 's#  *#,#g')
+exec bundle exec alpha_omega $(basename $0) junk
