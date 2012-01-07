@@ -1,0 +1,6 @@
+#!/bin/bash -r
+
+git init
+touch README.mkd
+git add README.mkd
+git commit -m 'new project'
