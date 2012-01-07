@@ -50,14 +50,9 @@ task :vim_build do
   run "vim -E -c ':source .vimrc' -c :quit meh"
 end
 
-task :site_remove do
-  run "rm -rf .site"
-end
-
 after "deploy:bootstrap_code", "git_remote"
 
 after "deploy:update_code", "vim_build"
-after "deploy:update_code", "site_remove"
 
 AlphaOmega.setup_pods self, "/data/zendesk_chef"
 
