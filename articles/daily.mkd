@@ -1,3 +1,13 @@
+
+## Sun Jan  8 00:19:33 PST 2012
+
+I can't muster any enthusiasm for Javascript or CoffeeScript.  Thought
+hubot could give me an excuse but I keep thinking I'd rather write my
+own IRC gem than learn enough CoffeeScript to bridge hubot adapters.
+Plus most of my work is in Ruby and it seems pointless to not use my
+Sinatra, boson code.  Still trying to get into Javascript but not via
+IRC.
+
 ## Tue Jan  3 04:20:12 PST 2012
 
 The day before the boss comes into the office expecting something, I
