@@ -1,4 +1,14 @@
 
+## Mon Jan  9 17:33:40 GMT 2012
+
+Turned on push/fetch for personal email accounts, manual pulls for work.
+Checking email only on mobile.  If I want more specific processing,
+write an smtp/imap application server.
+
+Also turned off instant messenger and social networks  except for IRC
+and Path.  As a last resort, there's my Google Voice number for voice
+and SMS messages.
+
 ## Sun Jan  8 00:19:33 PST 2012
 
 I can't muster any enthusiasm for Javascript or CoffeeScript.  Thought
