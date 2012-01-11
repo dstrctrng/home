@@ -1,3 +1,16 @@
+## Wed Jan 11 05:01:37 PST 2012
+
+I've been late on a major project for a month, making the mistakes of no
+documentation, no distribution of work and research, and polishing too
+much before releasing something people can see.
+
+Today, frustrated with myself, I voiced complaints about coworkers not
+delivering finished scripts.  In one case the search was extensive,
+saving myself hours of work, but the way I received the gift was
+inconsiderate.  
+
+Writing finish scripts is a reward in its own.  Users will notice,
+especially in a culture that does not build tools.  
 
 ## Mon Jan  9 17:33:40 GMT 2012
 
