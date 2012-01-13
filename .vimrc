@@ -2,10 +2,10 @@
 source ~/.vim/junas
 
 " install whatever bundles over the net
-silent call Bundle(["The_NERD_tree", "The_NERD_Commenter"])
+silent call Bundle(["The_NERD_tree", "The_NERD_Commenter", "powerline"])
 silent call Bundle(["surround", "repeat", "Rainbow_Parenthesis", "matchit.zip", "eregex"])
 silent call Bundle(["fugitive", "git.zip", "Gist",  "cucumber.zip", "rake"])
-silent call Bundle(["haml.zip", "markdown", "Better_Javascript_Indentation", "Textile_for_VIM", "vim-coffee-script", "vim-ruby"])
+silent call Bundle(["haml.zip", "Markdown", "Better_Javascript_Indentation", "Textile_for_VIM", "vim-coffee-script", "vim-ruby"])
 
 " map whatever key to leader
 let mapleader = ","
