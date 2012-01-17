@@ -80,7 +80,7 @@ main = do
         dir <- currentTopicDir myTopicConfig
         spawn $ "browser " ++ url
 
-      myKeys conf =
+      myKeys conf@(XConfig {XMonad.modMask = modm}) =
         [ ("M-u"  , sendMessage MirrorShrink)
         , ("M-m"  , sendMessage MirrorExpand)
         , ("M-b"  , sendMessage ToggleStruts)
@@ -100,5 +100,13 @@ main = do
         ++
         [ ("M-"++m++[k], windows $ f i)
         | (i, k) <- zip myTopics "123456789" 
+        , (f, m) <- [(W.shift, "S-")]]
+        ++
+        [ ("M-"++m++[k], screenWorkspace sc >>= flip whenJust (windows . f))
+        | (k, sc) <- zip "wre" [0..]
+        , (f, m) <- [(W.view, "")]]
+        ++
+        [ ("M-"++m++[k], screenWorkspace sc >>= flip whenJust (windows . f))
+        | (k, sc) <- zip "wre" [0..]
         , (f, m) <- [(W.shift, "S-")]]
 
