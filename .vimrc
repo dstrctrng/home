@@ -6,6 +6,7 @@ silent call Bundle(["The_NERD_tree", "The_NERD_Commenter", "powerline"])
 silent call Bundle(["surround", "repeat", "Rainbow_Parenthesis", "matchit.zip", "eregex"])
 silent call Bundle(["fugitive", "git.zip", "Gist",  "cucumber.zip", "rake"])
 silent call Bundle(["haml.zip", "Better_Javascript_Indentation", "Textile_for_VIM", "vim-coffee-script", "vim-ruby"])
+silent call Bundle(["vim-pasta"])
 
 " map whatever key to leader
 let mapleader = ","
