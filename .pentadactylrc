@@ -3,3 +3,7 @@ set guioptions=
 set stal=never
 set editor="xterm -e vim -f"
 set defsearch="duckduckgo-ssl"
+
+map K :tn<CR>  # next tab
+map J :tp<CR>  # previous tab
+
