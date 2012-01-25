@@ -50,10 +50,10 @@ task :git_remote do
   # workaround git clone and non-empty directories
   run "[[ -d .git ]] || { git init && git remote add origin #{repository}; }"
 end
+after "deploy:bootstrap_code", "git_remote"
 
 task :vim_build do
   run "vim -E -c ':source .vimrc' -c :quit meh"
 end
-
-after "deploy:bootstrap_code", "git_remote"
 after "deploy:update_code", "vim_build"
+
