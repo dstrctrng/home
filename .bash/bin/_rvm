@@ -11,5 +11,3 @@ elif [[ -f /etc/profile.d/rvm.sh ]]; then
 else
   source $HOME/.rvm/scripts/rvm
 fi
-
-rvm default
