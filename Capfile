@@ -2,18 +2,30 @@
 
 require 'yaml'
 require 'json'
-require 'socket'
 require 'alpha_omega/deploy'
 
 set :home, (ENV['REMOTE_HOME'] || ENV['HOME'])
 
-set :application, "badonkadonk"
 set :repository, "git@github.com:HeSYINUvSBZfxqA/badonkadonk.git"
+set :application, "badonkadonk"
+set :releases, [ ]
 set :deploy_to, home
 
-set :ruby_loader, "rvmrun default"
+set :user, "defn"
+set :group, "defn"
+
+set :root_user, "defn"
+set :root_group, "defn"
+
+# misc
+set :use_sudo, false
+set :dir_perms, "0750"
+
+# ruby
+set :ruby_loader, "rvmrun ree"
 set :bundler_options, "--path vendor/bundle"
 
+# os x
 if %x(uname -s).strip == "Darwin" && home == ENV['HOME']
   task :bundler_gecode_options do
     run "#{ruby_loader} bundle config build.dep_selector --with-opt-dir=#{home}/local"
@@ -27,20 +39,13 @@ if %x(uname -s).strip == "Darwin" && home == ENV['HOME']
   after "deploy:update_code", "gecode_build"
 end
 
-set :releases, [ ]
-set :dir_perms, "0750"
-
-set :user, "defn"
-set :group, "defn"
-
-set :root_user, "defn"
-set :root_group, "defn"
-
-set :use_sudo, false
-
 # branch
 set :branch, AlphaOmega.what_branch
 
+# pods
+AlphaOmega.setup_pods self, "/data/zendesk_chef"
+
+# build
 task :git_remote do
   # workaround git clone and non-empty directories
   run "[[ -d .git ]] || { git init && git remote add origin #{repository}; }"
@@ -51,9 +56,4 @@ task :vim_build do
 end
 
 after "deploy:bootstrap_code", "git_remote"
-
 after "deploy:update_code", "vim_build"
-
-AlphaOmega.setup_pods self, "/data/zendesk_chef"
-
-
