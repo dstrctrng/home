@@ -74,3 +74,8 @@ let ruby_no_comment_fold=1
 " fold by default in ruby
 autocmd FileType ruby normal zM
 
+" toggle reference file
+nnoremap <F1> :call ToggleVimReference()<CR>
+
+let g:vim_reference_file = "~/Dropbox/reference.txt"
+let g:vim_reference_width = 45
