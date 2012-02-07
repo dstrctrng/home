@@ -8,7 +8,7 @@ function vdiff {
   diff -r -b -w "$@" | vim -R -
 }
 
-alias gs="\git submodule summary; \git status -s" # TODO add -b back with autodetect
+alias gs="pushd ~ > /dev/null; \git submodule summary; popd > /dev/null; \git status -s" # TODO add -b back with autodetect
 alias gl="\git lg"
 
 if [[ -x $(which hub 2>&-) ]]; then
