@@ -10,4 +10,5 @@ if [[ -n $1 ]]; then
   default_pod=$(cat /etc/podname 2>&- || true)
   set $(for a in "$@"; do if [[ $default_pod = $a ]]; then echo "default"; else echo $a; fi; done)
 fi
-exec bundle exec alpha_omega $(basename $0) "$@"
+echo "---"
+bundle exec alpha_omega $(basename $0) "$@" | egrep -v '^--- *$'
