@@ -8,7 +8,7 @@ function vdiff {
   diff -r -b -w "$@" | vim -R -
 }
 
-alias gs="pushd ./$(\git rev-parse --show-cdup) > /dev/null; \git submodule summary; popd > /dev/null; \git status -s" # TODO add -b back with autodetect
+alias gs="pushd ./$(\git rev-parse --show-cdup) > /dev/null; \git submodule summary; popd > /dev/null; \git status -s --ignore-submodules=dirty" # TODO add -b back with autodetect
 alias gl="\git lg"
 
 if [[ -x $(which hub 2>&-) ]]; then
@@ -18,7 +18,7 @@ fi
 # http://jeetworks.org/node/52
 function cdd {
   if [[ $(which git 2> /dev/null) ]]; then
-    STATUS=$(git status 2>/dev/null)
+    STATUS=$(git status --ignore-submodules=dirty 2>/dev/null)
     if [[ -z $STATUS ]]; then
       return
     fi
@@ -29,7 +29,7 @@ function cdd {
 
 function _cdd {
   if [[ $(which git 2> /dev/null) ]]; then
-    STATUS=$(git status 2>/dev/null)
+    STATUS=$(git status --ignore-submodules=dirty 2>/dev/null)
     if [[ -z $STATUS ]]; then
       return
     fi
