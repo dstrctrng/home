@@ -1,2 +1,0 @@
-export PANCAKE_ROOT=$HOME/.macports
-PATH=$PANCAKE_ROOT/local/bin:$PANCAKE_ROOT/local/sbin:$PATH

@@ -1,0 +1,3 @@
+export MACPORTS_ROOT=$HOME/.macports
+PATH=$MACPORTS_ROOT/local/bin:$MACPORTS_ROOT/local/sbin:$PATH
+export MANPATH=$MACPORTS_ROOT/local/share/man:/usr/share/man
