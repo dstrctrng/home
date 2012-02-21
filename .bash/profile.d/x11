@@ -1,4 +1,4 @@
 function x11 {
-  ( setsid bash startx & ) &
+  ( bash startx & ) &
 }
 
