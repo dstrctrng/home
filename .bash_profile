@@ -4,4 +4,8 @@ source $HOME/.bash/bin/_rvm
 source $HOME/.bash/bin/_vim
 source $HOME/.bash/bin/_macports
 source $HOME/.bash/bin/_git
-rvm ree
+if [[ -f .rvm-use ]]; then
+  rvm $(cat .rvm-use)
+else
+  rvm ree
+fi

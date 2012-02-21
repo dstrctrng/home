@@ -34,3 +34,4 @@
 *.swp
 /server
 /.rnd
+/.rvm-use
