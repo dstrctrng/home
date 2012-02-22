@@ -1,0 +1,18 @@
+#!/bin/bash -e
+
+nm_repo=$1; shift
+
+mkdir $nm_repo # fail if directory already exists
+cd $nm_repo
+git init
+touch README.mkd
+git add README.mkd
+git commit -m 'new tvdinner'
+hub create
+git push -u origin master
+
+git remote add tvdinner https://github.com/HeSYINUvSBZfxqA/tvdinner
+git fetch tvdinner
+git merge tvdinner/master
+
+bash

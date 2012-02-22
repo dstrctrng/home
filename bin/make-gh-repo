@@ -1,0 +1,27 @@
+#!/bin/bash -e
+
+nm_repo=$1; shift
+
+mkdir $nm_repo # fail if directory already exists
+cd $nm_repo
+git init
+touch README.mkd
+git add README.mkd
+git commit -m 'new repo'
+hub create
+git push -u origin master
+
+if [[ -z $1 ]]; then
+  set gh
+fi
+
+for a in "$@"; do 
+  git remote add $a https://github.com/HeSYINUvSBZfxqA/$a-helper
+  git fetch $a
+done
+
+for a in "$@"; do 
+  git merge $a/master
+done
+
+bash

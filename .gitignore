@@ -26,7 +26,6 @@
 /VirtualBox VMs/
 /.cabal/
 /.ghc/
-/pub/
 /.bundle/
 /vendor/bundle/
 /*.gem
