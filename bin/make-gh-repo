@@ -11,12 +11,16 @@ git commit -m 'new repo'
 hub create
 git push -u origin master
 
-for a in gh; do 
+if [[ -z $1 ]]; then
+  set gh
+fi
+
+for a in "$@"; do 
   git remote add $a https://github.com/HeSYINUvSBZfxqA/$a-helper
   git fetch $a
 done
 
-for a in gh; do 
+for a in "$@"; do 
   git merge $a/master
 done
 
