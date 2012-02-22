@@ -79,3 +79,5 @@ nnoremap <F1> :call ToggleVimReference()<CR>
 
 let g:vim_reference_file = "~/Dropbox/reference.txt"
 let g:vim_reference_width = 45
+
+set path=.;.
