@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if test -t 1; then 
-  vimdiff "$2" "$5"
-else
-	echo diff "$2" "$5"
-  diff "$2" "$5" || true
-fi
