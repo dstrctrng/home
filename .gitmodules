@@ -10,3 +10,6 @@
 [submodule "macports"]
   path = .macports
   url = https://raw.github.com/HeSYINUvSBZfxqA/macports
+[submodule "virtualbox"]
+  path = .virtualbox
+  url = https://raw.github.com/HeSYINUvSBZfxqA/ubuntu
