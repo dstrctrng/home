@@ -1,4 +1,8 @@
 #!/bin/bash -e
 
+if [[ -n $1 && -z $1 ]] then
+  set "$@" ssh
+fi
+
 cd ~/.virtualbox
 exec bin/vagrant "$@"
