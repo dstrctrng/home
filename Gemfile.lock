@@ -16,7 +16,7 @@ GEM
     HeSYINUvSBZfxqA-foreman (0.20.0.4)
       term-ansicolor (~> 1.0.5)
       thor (>= 0.13.6)
-    alias (0.2.2)
+    alias (0.2.3)
     alpha_omega (0.0.76)
       HeSYINUvSBZfxqA-capistrano
       HeSYINUvSBZfxqA-capistrano_colors
@@ -162,7 +162,7 @@ GEM
       microwave
     tvd-rubygems (0.0.3)
       microwave
-    tvd-ssh (0.0.8)
+    tvd-ssh (0.0.9)
       bosonson
       microwave
     uuidtools (2.1.2)
