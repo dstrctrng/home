@@ -37,8 +37,6 @@ set t_vb=
 set scrolloff=3
 set nojoinspaces
 
-set cmdheight=3
-
 set nobackup
 set noswapfile
 
@@ -79,3 +77,27 @@ nnoremap <F1> :call ToggleVimReference()<CR>
 
 let g:vim_reference_file = "~/Dropbox/reference.txt"
 let g:vim_reference_width = 45
+
+""" FocusMode from http://paulrouget.com/e/vimdarkroom/
+function! ToggleFocusMode()
+  if (&foldcolumn != 12)
+    set laststatus=0
+    set numberwidth=10
+    set foldcolumn=12
+    set noruler
+    set cmdheight=1
+    hi FoldColumn ctermbg=none
+    hi LineNr ctermfg=0 ctermbg=none
+    hi NonText ctermfg=0
+  else
+    set laststatus=2
+    set numberwidth=4
+    set foldcolumn=0
+    set ruler
+    set cmdheight=3
+    execute 'colorscheme ' . g:colors_name
+  endif
+endfunc
+nnoremap <F1> :call ToggleFocusMode()<cr>
+
+
