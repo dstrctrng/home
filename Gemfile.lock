@@ -162,7 +162,7 @@ GEM
       microwave
     tvd-rubygems (0.0.3)
       microwave
-    tvd-ssh (0.0.9)
+    tvd-ssh (0.0.10)
       bosonson
       microwave
     uuidtools (2.1.2)
