@@ -2,4 +2,5 @@
 
 function reload {
   source "$HOME/.bash_profile"
+  rvm reload
 }
