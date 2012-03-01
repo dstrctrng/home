@@ -1,3 +1,4 @@
+pushd ~ > /dev/null
 source $HOME/.bashrc
 source $HOME/.bash/bin/_cue
 source $HOME/.bash/bin/_rvm
@@ -9,3 +10,4 @@ if [[ -f .rvm-use ]]; then
 else
   rvm ree
 fi
+popd > /dev/null
