@@ -13,3 +13,6 @@
 [submodule ".virtualbox"]
 	path = .virtualbox
 	url = https://github.com/HeSYINUvSBZfxqA/ubuntu
+[submodule ".hubflow"]
+	path = .hubflow
+	url = https://github.com/HeSYINUvSBZfxqA/hubflow.git
