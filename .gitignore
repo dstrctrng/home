@@ -37,3 +37,4 @@
 /.vagrant.d
 /vault
 /VirtualBox VMs
+/.ruby_inline
