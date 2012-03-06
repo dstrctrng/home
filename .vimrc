@@ -133,3 +133,8 @@ nmap <right> :3wincmd ><cr>
 nmap <up>    :3wincmd +<cr>
 nmap <down>  :3wincmd -<cr>
 
+""" make Y behave like other capitals from vimbits
+map Y y$
+
+""" use sudo to write files from vimbits
+cmap w!! %!sudo tee > /dev/null %
