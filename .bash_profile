@@ -1,12 +1,13 @@
 pushd ~ > /dev/null
 
 source $HOME/.bashrc
-source $HOME/.bash/bin/_cue
-source $HOME/.bash/bin/_macports
-source $HOME/.bash/bin/_vim
+source $HOME/.cue/.profile
+source $HOME/.macports/.profile
+source $HOME/.vim/.profile
 source $HOME/.bash/bin/_git
-source $HOME/.bash/bin/_hubflow
-source $HOME/.bash/bin/_rvm
+source $HOME/.hubflow/.profile
+source $HOME/.rvm/.profile
+#source $HOME/.rbenv/.profile
 
 if [[ $(uname -s) = "Darwin" ]]; then
   rvm system
