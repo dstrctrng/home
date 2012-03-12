@@ -4,4 +4,8 @@ cd
 bundle check || { bundle install --local --path vendor/bundle && bundle check; }
 
 cd ~/.microwave
+mkdir -p backups
+cd backups
+git init
+cd ..
 exec bundle exec chef-solo -c config/solo.rb -N localhost
