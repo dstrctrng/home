@@ -8,6 +8,7 @@ source $HOME/.bash/bin/_git
 source $HOME/.hubflow/.profile
 source $HOME/.rvm/.profile
 #source $HOME/.rbenv/.profile
+source $HOME/.bash/bin/_x11
 
 if [[ $(uname -s) = "Darwin" ]]; then
   rvm system

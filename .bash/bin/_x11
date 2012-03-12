@@ -1,0 +1,3 @@
+if [[ ${DISPLAY%%/*}x = "x" ]]; then
+  unset DISPLAY
+fi
