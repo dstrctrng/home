@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+bundle config build.dep_selector --with-opt-dir=$HOME/local
+
 tar xfz gecode-3.7.0.tar.gz
 cd gecode-3.7.0
 nice ./configure --prefix=$HOME/local

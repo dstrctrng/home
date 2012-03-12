@@ -27,15 +27,10 @@ set :bundler_options, "--path vendor/bundle"
 
 # os x
 if %x(uname -s).strip == "Darwin" && home == ENV['HOME']
-  task :bundler_gecode_options do
-    run "#{ruby_loader} bundle config build.dep_selector --with-opt-dir=#{home}/local"
-  end
-
   task :gecode_build do
     run "[[ -x #{home}/local/bin/sat ]] || { cd #{home}/build && ./build-gecode; }"
   end
 
-  before "deploy:bundle", "bundler_gecode_options"
   after "deploy:update_code", "gecode_build"
 end
 
