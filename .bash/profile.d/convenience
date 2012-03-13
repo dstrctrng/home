@@ -1,6 +1,8 @@
 #!/bin/bash
 
 function reload {
-  rvm reload
+  if [[ $(type rvm 2>&- | head -1) = "rvm is a function" ]]; then
+    rvm reload
+  fi
   source "$HOME/.bash_profile"
 }
