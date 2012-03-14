@@ -6,3 +6,12 @@ function reload {
   fi
   source "$HOME/.bash_profile"
 }
+
+function update {
+  git pull origin master
+  git submodule update --init --recursive
+  bundle --local
+  reload
+  reload
+}
+
