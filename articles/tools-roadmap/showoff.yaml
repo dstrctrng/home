@@ -1,6 +1,7 @@
 ---
 name: Tools Roadmap
 sections:
+- section: tools
 - section: deploy
 - section: secrets
 - section: configuration

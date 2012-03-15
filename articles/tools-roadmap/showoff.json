@@ -1,1 +1,1 @@
-{"name":"Tools Roadmap","sections":[{"section":"deploy"},{"section":"secrets"},{"section":"configuration"},{"section":"environments"},{"section":"ci"},{"section":"coordination"},{"section":"packaging"},{"section":"misc"}]}
+{"sections":[{"section":"tools"},{"section":"deploy"},{"section":"secrets"},{"section":"configuration"},{"section":"environments"},{"section":"ci"},{"section":"coordination"},{"section":"packaging"},{"section":"misc"}],"name":"Tools Roadmap"}
