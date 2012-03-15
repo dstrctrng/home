@@ -7,6 +7,7 @@
 * environments
 * ci
 
+!SLIDE bullets
 # More Tools #
 
 * coordination
