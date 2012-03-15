@@ -8,5 +8,6 @@ sections:
 - section: environments
 - section: ci
 - section: coordination
+- section: advocates 
 - section: packaging
 - section: misc
