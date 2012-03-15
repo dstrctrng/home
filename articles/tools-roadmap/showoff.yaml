@@ -7,7 +7,6 @@ sections:
 - section: environments
 - section: ci
 - section: coordination
-- section: status
 - section: libraries
 - section: packaging
 - section: misc
