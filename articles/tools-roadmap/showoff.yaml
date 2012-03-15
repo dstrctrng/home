@@ -10,3 +10,4 @@ sections:
 - section: status
 - section: libraries
 - section: packaging
+- section: misc
