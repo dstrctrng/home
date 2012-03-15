@@ -30,7 +30,8 @@ Deploy anything anywere with confidence.
 !SLIDE bullets incremental
 # Deploy Future #
 
-* cue and session support
+* cue - cli how-to
+* session - shared logs, screens
 * project specific commands
 * tie deploys to dashboard
 * automatic deploys by ci, bots

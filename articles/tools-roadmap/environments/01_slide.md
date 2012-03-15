@@ -7,7 +7,7 @@ Developing with the full production stack
 # Environments History #
 
 * OS X workstations, Ubuntu servers
-* zbrew
+* zbrew - homebrew fork 
 
 !SLIDE bullets incremental
 # Environments Progress #
@@ -20,10 +20,10 @@ Developing with the full production stack
 !SLIDE bullets incremental
 # Environments Future #
 
-* pancake
+* pancake - matching os x stack as production
 * multi-node
 * ec2
-* powerless
+* powerless - os x dns, firewall tricks
 * tunnels, openvpn
 
 !SLIDE bullets incremental

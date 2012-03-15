@@ -14,7 +14,7 @@ Custom anything has maintenance overhead
 !SLIDE bullets incremental
 # Packaging Progress #
 
-* private_event custom gems
+* private_event - hosting custom gems, packages
 * gh, rb helpers
 * rvm, rvm rubies
 

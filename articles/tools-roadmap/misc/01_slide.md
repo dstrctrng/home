@@ -4,10 +4,10 @@
 My utility belt
 
 !SLIDE bullets incremental
-# badonkadonk #
+# badonkadonk ~ #
 
-* junas
-* hubflow
+* junas - vim distribution
+* hubflow - merge of git flow and github hub
 * cue, session
 * macports, vagrant
 * powerless
@@ -24,8 +24,8 @@ My utility belt
 !SLIDE bullets incremental
 # experimental #
 
-* marathon
-* surface
-* RTFMd
+* marathon - common service management
+* surface - project discovery
+* RTFMd - project documentation
 * timeline
 
