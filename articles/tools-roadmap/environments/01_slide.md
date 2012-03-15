@@ -26,3 +26,8 @@ Developing with the full production stack
 * powerless
 * tunnels, openvpn
 
+!SLIDE bullets incremental
+# Environments Hardware #
+
+* Quad-core, 16GB memory, SSD
+
