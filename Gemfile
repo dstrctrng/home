@@ -26,6 +26,8 @@ gem "alpha_omega"
 
 # documentation
 gem "rtfmd"
+gem "showoff"
+gem "rocco"
 
 # servers
 gem "sinatra"
