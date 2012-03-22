@@ -3,6 +3,7 @@ pushd ~ > /dev/null
 source $HOME/.bashrc
 source $HOME/.cue/.profile
 source $HOME/.macports/.profile
+source $HOME/.virtualbox/.profile
 source $HOME/.vim/.profile
 source $HOME/.bash/bin/_git
 source $HOME/.hubflow/.profile
