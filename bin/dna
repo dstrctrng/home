@@ -2,6 +2,10 @@
 
 bundle check 2>&1 >/dev/null || { bundle install --local --path vendor/bundle || bundle check; }
 
+if [[ -z $1 ]]; then
+  set world
+fi
+
 if [[ -n $1 ]]; then
   default_pod=$(cat /etc/podname 2>&- || true)
   set $(for a in "$@"; do if [[ $default_pod = $a ]]; then echo "default"; else echo $a; fi; done)
