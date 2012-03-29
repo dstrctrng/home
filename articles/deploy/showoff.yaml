@@ -1,0 +1,9 @@
+---
+name: Deploy
+sections:
+- section: alpha_omega
+- section: spring_cleaning
+- section: gem
+- section: pods
+- section: git_mixins
+- section: current_status
