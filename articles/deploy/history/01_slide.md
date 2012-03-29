@@ -16,10 +16,7 @@
 * cli capistrano syntax
 * Hardcoded hosts
 
-!SLIDE bullets incremental
+!SLIDE
 # Solution #
 
-* ruby gem
-* git mixins
-* opsdb
-
+bin/deploy

@@ -1,16 +1,12 @@
 !SLIDE bullets incremental
-# Code Reuse
+# Code Reuse #
 
 * ruby gem
 * forks cap deploy
 * use stock cap
 * deploy methods
 
-# Generic Interface
-
-* minimal Capfile
-* git mixins
-
+!SLIDE bullets incremental
 # Alpha Omega Mixins
 
 * scripts in bin/
@@ -19,6 +15,7 @@
 * hosts, dna
 * proxy, invoke, shell
 
+!SLIDE bullets incremental
 # Capfile
 
 * basic info about project
