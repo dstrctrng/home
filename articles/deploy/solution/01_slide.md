@@ -4,7 +4,7 @@
 * ruby gem
 * forks cap deploy
 * use stock cap
-* deploy methods
+* custom shell scripts
 
 !SLIDE bullets incremental
 # Alpha Omega Mixins
