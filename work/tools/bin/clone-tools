@@ -12,8 +12,10 @@ git clone git@github.com:HeSYINUvSBZfxqA/tvdinner    tvdinner
 git clone git@github.com:HeSYINUvSBZfxqA/HeSYINUvSBZfxqA-veewee HeSYINUvSBZfxqA-veewee
 
 for a in *; do
-  pushd $a
-  git submodule update --init --recursive
-  popd
+  if [[ -d $a/.git ]]; then
+    pushd $a
+    git submodule update --init --recursive
+    popd
+  fi
 done
 
