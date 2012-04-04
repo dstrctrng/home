@@ -1,7 +1,6 @@
 pushd ~ > /dev/null
 
 source $HOME/.bashrc
-source $HOME/.cue/.profile
 source $HOME/.macports/.profile
 source $HOME/.virtualbox/.profile
 source $HOME/.vim/.profile
@@ -11,7 +10,8 @@ source $HOME/.rvm/.profile
 #source $HOME/.rbenv/.profile
 source $HOME/.bash/bin/_x11
 [[ -r $(which virtualenvwrapper.sh 2>&-) ]] && source virtualenvwrapper.sh
-[[ -d $HOME/.virtualenvs/shocco ]] && source $HOME/.virtualenvs/shocco/bin/activate
+[[ -d $HOME/.virtualenvs/- ]] && source $HOME/.virtualenvs/-/bin/activate
+source $HOME/.cue/.profile
 
 rvm ree
 
