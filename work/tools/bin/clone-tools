@@ -1,6 +1,9 @@
 #!/bin/bash
 
 git clone git@github.com:HeSYINUvSBZfxqA/RTFMd       rtfmd       
+git clone git@github.com:HeSYINUvSBZfxqA/shocco      shocco
+git clone git@github.com:HeSYINUvSBZfxqA/ronn        ronn
+
 git clone git@github.com:HeSYINUvSBZfxqA/alpha_omega alpha_omega 
 git clone git@github.com:HeSYINUvSBZfxqA/microwave   microwave   
 
@@ -8,7 +11,6 @@ git clone git@github.com:HeSYINUvSBZfxqA/ao-helper   ao-helper
 git clone git@github.com:HeSYINUvSBZfxqA/rb-helper   rb-helper
 git clone git@github.com:HeSYINUvSBZfxqA/gh-helper   gh-helper
 git clone git@github.com:HeSYINUvSBZfxqA/tvdinner    tvdinner
-git clone git@github.com:HeSYINUvSBZfxqA/shocco      shocco
 
 git clone git@github.com:HeSYINUvSBZfxqA/veewee      HeSYINUvSBZfxqA-veewee
 
