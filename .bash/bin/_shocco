@@ -1,0 +1,3 @@
+PATH=$PATH:$MACPORTS_ROOT/local/Library/Frameworks/Python.framework/Versions/2.7/bin
+[[ -r $(which virtualenvwrapper.sh 2>&-) ]] && source virtualenvwrapper.sh
+[[ -d $HOME/.virtualenvs/shocco ]] && source $HOME/.virtualenvs/shocco/bin/activate
