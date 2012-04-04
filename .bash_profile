@@ -10,6 +10,7 @@ source $HOME/.bash/bin/_git
 source $HOME/.rvm/.profile
 #source $HOME/.rbenv/.profile
 source $HOME/.bash/bin/_x11
+[[ -d $HOME/.virtualenvs/shocco ]] && source $HOME/.virtualenvs/shocco/bin/activate
 
 rvm ree
 
