@@ -9,7 +9,7 @@ git clone git@github.com:HeSYINUvSBZfxqA/rb-helper   rb-helper
 git clone git@github.com:HeSYINUvSBZfxqA/gh-helper   gh-helper
 git clone git@github.com:HeSYINUvSBZfxqA/tvdinner    tvdinner
 
-git clone git@github.com:HeSYINUvSBZfxqA/HeSYINUvSBZfxqA-veewee HeSYINUvSBZfxqA-veewee
+git clone git@github.com:HeSYINUvSBZfxqA/veewee      HeSYINUvSBZfxqA-veewee
 
 for a in *; do
   if [[ -d $a/.git ]]; then
