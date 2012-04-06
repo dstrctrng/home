@@ -44,7 +44,8 @@ fi
 
 git add VERSION
 
-git commit -m "bump: $ver_new"
-git tag "v$ver_new"
+ver_bumped=$(cat VERSION)
+git commit -m "bump: $ver_bumped"
+git tag "v$ver_bumped"
 
-cat VERSION
+echo $ver_bumped
