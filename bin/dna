@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-bundle check 2>&1 >/dev/null || { bundle install --local --path vendor/bundle || bundle check; }
+bundle check 2>&1 >/dev/null || { bundle install --local --path vendor/bundle --without development:test || bundle check; }
 
 if [[ -z $1 ]]; then
   set world
@@ -11,4 +11,4 @@ if [[ -n $1 ]]; then
   set $(for a in "$@"; do if [[ $default_pod = $a ]]; then echo "default"; else echo $a; fi; done)
 fi
 echo "---"
-bundle exec alpha_omega $(basename $0) "$@" | egrep -v '^--- *$'
+exec bundle exec alpha_omega $(basename $0) "$@"
