@@ -2,3 +2,5 @@
 
 latest_gem=$(ls -td *.gem 2>&- | head -1)
 gem push $latest_gem
+git push
+git push --tags
