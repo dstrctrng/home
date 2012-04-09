@@ -1,0 +1,15 @@
+#!/bin/bash -e
+
+nm_helper=$1; shift
+
+case $nm_helper in
+  ao)
+    git remote add ao https://github.com/HeSYINUvSBZfxqA/ao-helper
+    ;;
+  rb)
+    git remote add rb https://github.com/HeSYINUvSBZfxqA/rb-helper
+    ;;
+  tvd)
+    git remote add tvd https://github.com/HeSYINUvSBZfxqA/tvd-helper
+    ;;
+esac
