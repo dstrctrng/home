@@ -5,11 +5,14 @@ nm_helper=$1; shift
 case $nm_helper in
   ao)
     git remote add ao https://github.com/HeSYINUvSBZfxqA/ao-helper
+    git fetch ao
     ;;
   rb)
     git remote add rb https://github.com/HeSYINUvSBZfxqA/rb-helper
+    git fetch rb
     ;;
   tvd)
-    git remote add tvd https://github.com/HeSYINUvSBZfxqA/tvd-helper
+    git remote add tvd https://github.com/HeSYINUvSBZfxqA/tvdinner
+    git fetch tvd
     ;;
 esac
