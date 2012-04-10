@@ -1,5 +1,5 @@
 #!/bin/bash -e
 
-bundle check 2>&1 >/dev/null || { bundle install --local --path vendor/bundle || bundle check; }
+bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check 2>&1 > /dev/null; }
 
 exec bundle exec alpha_omega $(basename $0) "$@"
