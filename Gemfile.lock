@@ -14,7 +14,7 @@ GEM
     HeSYINUvSBZfxqA-capistrano_log (0.0.2)
       HeSYINUvSBZfxqA-capistrano (>= 2.5.14)
     alias (0.2.3)
-    alpha_omega (0.0.101)
+    alpha_omega (0.0.108)
       HeSYINUvSBZfxqA-capistrano (= 2.5.21)
       HeSYINUvSBZfxqA-capistrano_colors
       HeSYINUvSBZfxqA-capistrano_log
