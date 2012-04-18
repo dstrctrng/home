@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+unset BUNDLE_GEMFILE
+
 bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
 
 exec bundle exec alpha_omega $(basename $0) "$@"
