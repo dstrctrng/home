@@ -117,3 +117,4 @@ function ensure_clean_git_status {
 }
 
 bump_version "$@"
+git push
