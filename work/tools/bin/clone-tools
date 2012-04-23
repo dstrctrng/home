@@ -11,6 +11,8 @@ git clone git@github.com:HeSYINUvSBZfxqA/ao-helper   ao-helper
 git clone git@github.com:HeSYINUvSBZfxqA/rb-helper   rb-helper
 git clone git@github.com:HeSYINUvSBZfxqA/gh-helper   gh-helper
 
+git clone git@github.com:HeSYINUvSBZfxqA/meat        meat
+
 git clone git@github.com:HeSYINUvSBZfxqA/tvdinner    tvdinner
 for a in tvd-bundler tvd-git tvd-microwave tvd-rubygems tvd-ssh; do
   git clone git@github.com:HeSYINUvSBZfxqA/$a        $a
