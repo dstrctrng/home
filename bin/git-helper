@@ -19,7 +19,7 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
-  nm_helper="$1"; shift
+  local nm_helper="$1"; shift
 
   case "$nm_helper" in
     sh)
