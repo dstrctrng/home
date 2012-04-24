@@ -1,8 +1,30 @@
 #!/bin/bash
 
-if test -t 1; then 
-  vimdiff "$2" "$5"
-else
-	echo diff "$2" "$5"
-  diff "$2" "$5" || true
-fi
+#/ NAME
+#/     git_diff_with_vim -- external git diff
+#/
+#/ SYNOPSIS
+#/     called by git, arguments $2 and $5 of particular interest
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a meat library
+source "$shome/bin/_prime" "$@"
+
+# entry point
+function main {
+  if test -t 1; then 
+    vimdiff "$2" "$5" || true
+  else
+    echo diff "$2" "$5"
+    diff "$2" "$5" || true
+  fi
+}
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+# pass arguments to entry point
+main "$@"
