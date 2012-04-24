@@ -16,7 +16,9 @@ shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
 source "$shome/bin/_prime" "$@"
 
 function bump_version {
-  ensure_clean_git_status
+  if [[ "$FLAGS_dirty" = "$FLAGS_FALSE" ]]; then
+    ensure_clean_git_status
+  fi
 
   local_file=
   if [[ -f VERSION || -L VERSION ]]; then
@@ -34,7 +36,10 @@ function bump_version {
     git tag | perl -ne 'm{^v(\d+)\.(\d+)\.(\d+)$} && printf("%03d.%03d.%03d %d.%d.%d\n",$1,$2,$3,$1,$2,$3)' | sort -r | head -1 | awk '{print $2}' > $tmp_version
   fi
 
-  echo "x$(cat $tmp_version)x"
+  if [[ ! -s "$tmp_version" ]]; then
+    echo "ERROR: need at least one git tag (in the form v0.0.0) or a version in file VERSION (in the form 0.0.0)" 1>&2
+    exit 1
+  fi
 
   case "$1" in
     patch|minor|major)
@@ -139,7 +144,7 @@ function main {
 }
 
 # parse the command-line
-DEFINE_string 'name' "$(basename "$shome")" 'name of gem' 'n'
+DEFINE_boolean 'dirty' "$FLAGS_FALSE" 'force bumping in unclean work area' 'f'
 parse_command_line "$@" || exit $?
 eval set -- "${FLAGS_ARGV}"
 
