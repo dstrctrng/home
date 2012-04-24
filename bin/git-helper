@@ -3,6 +3,10 @@
 nm_helper=$1; shift
 
 case $nm_helper in
+  sh)
+    git remote add sh https://github.com/HeSYINUvSBZfxqA/meat
+    git fetch sh
+    ;;
   ao)
     git remote add ao https://github.com/HeSYINUvSBZfxqA/ao-helper
     git fetch ao
