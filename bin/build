@@ -1,3 +1,32 @@
-#!/bin/bash -e
+#!/bin/bash
 
-gem build $(basename $(pwd)).gemspec
+#/ NAME
+#/     build -- upload the latest (timestamp) rubygem to rubygems.org
+#/
+#/ SYNOPSIS
+#/     build -n gem_name
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a meat library
+source "$shome/bin/_prime" "$@"
+
+# entry point
+function main {
+  pth_gemspec="$shome/$FLAGS_name.gemspec"
+  if [[ ! -e "$pth_gemspec" ]]; then
+    echo "ERROR: could not find gemspec $pth_gemspec" 1>&2
+    exit 1
+  fi
+
+  gem build "$pth_gemspec"
+}
+
+# parse the command-line
+DEFINE_string 'name' "$(basename "$shome")" 'name of gem' 'n'
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+# pass arguments to entry point
+main "$@"
