@@ -39,7 +39,7 @@ function main {
       git fetch tvd
       ;;
     *)
-      echo "ERROR: unknown helper $nm_helper" 1>&2
+      logger_fatal "unknown helper $nm_helper"
       exit 1
       ;;
   esac
@@ -49,7 +49,7 @@ function main {
 parse_command_line "$@" || exit $?
 eval set -- "${FLAGS_ARGV}"
 if [[ "$#" = 0 ]]; then
-  echo "ERROR: must specify a helper_id" 1>&2
+  logger_fatal "must specify a helper_id"
   display_help
   exit 4
 fi
