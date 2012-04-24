@@ -1,4 +1,34 @@
-#!/bin/bash -e
+#!/bin/bash
 
-latest_gem=$(ls -td *.gem 2>&- | head -1)
-gem push $latest_gem
+#/ NAME
+#/     push -- upload the latest (timestamp) rubygem to rubygems.org
+#/
+#/ SYNOPSIS
+#/     push
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a meat library
+source "$shome/bin/_prime" "$@"
+
+# entry point
+function main {
+  set +f
+  local latest_gem="$(ls -td *.gem 2>&- | head -1)"
+  set -f
+  
+  if [[ -z "$latest_gem" ]]; then
+    echo "ERROR: no gems found" 1>&2
+    exit 1
+  fi
+
+  gem push "$latest_gem"
+}
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+# pass arguments to entry point
+main "$@"
