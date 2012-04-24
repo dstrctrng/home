@@ -24,7 +24,7 @@ function bump_version {
   if [[ -f VERSION || -L VERSION ]]; then
       local_file=1
     if [[ ! -e VERSION ]]; then
-      echo "ERROR: cannot write to VERSION file" 1>&2
+      logger_fatal "cannot write to VERSION file"
       exit 1
     fi
   fi
@@ -37,7 +37,7 @@ function bump_version {
   fi
 
   if [[ ! -s "$tmp_version" ]]; then
-    echo "ERROR: need at least one git tag (in the form v0.0.0) or a version in file VERSION (in the form 0.0.0)" 1>&2
+    logger_fatal "need at least one git tag (in the form v0.0.0) or a version in file VERSION (in the form 0.0.0)"
     exit 1
   fi
 
@@ -74,7 +74,7 @@ function bump_version {
   ver_new_same=$(cat $tmp_version)
 
   if [[ $ver_new != $ver_new_same ]]; then
-    echo "ERROR: invalid version: $ver_new" 1>&2
+    logger_fatal "invalid version: $ver_new"
     exit 1
   fi
 
@@ -103,13 +103,13 @@ function ensure_git_tag_available {
   git fetch --tags
   remote_sha=$(git ls-remote origin $version | awk '{print $1}')
   if [[ -n $remote_sha ]]; then
-    echo "ERROR: already a remote tag $version, bump again" 1>&2
+    logger_fatal "already a remote tag $version, bump again
     exit 1
   fi
 
   local_sha=$(git show-ref $version | awk '{print $1}')
   if [[ -n $local_sha ]]; then
-    echo "ERROR: already a local tag $version" 1>&2
+    logger_fatal "already a local tag $version"
     exit 1
   fi
 }
@@ -124,7 +124,7 @@ function git_tag {
   remote_sha=$(git ls-remote origin $version | awk '{print $1}')
   local_sha=$(git show-ref $version | awk '{print $1}')
   if [[ $remote_sha != $local_sha ]]; then
-    echo "ERROR: remote tag $version does not match local SHA" 1>&2
+    logger_fatal "remote tag $version does not match local SHA"
     exit 1
   fi
 }
@@ -132,7 +132,7 @@ function git_tag {
 function ensure_clean_git_status {
   local lines=$(git status -s -uno | wc -l | awk '{print $1}')
   if [[ $lines != "0" ]]; then
-    echo "ERROR: git status is not clean, cannot tag" 1>&2
+    logger_fatal "git status is not clean, cannot tag"
     git status -s -uno
     exit 1
   fi

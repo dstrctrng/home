@@ -16,7 +16,7 @@ source "$shome/bin/_prime" "$@"
 function main {
   pth_gemspec="$shome/$FLAGS_name.gemspec"
   if [[ ! -e "$pth_gemspec" ]]; then
-    echo "ERROR: could not find gemspec $pth_gemspec" 1>&2
+    logger_fatal "could not find gemspec $pth_gemspec"
     exit 1
   fi
 

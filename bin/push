@@ -19,7 +19,7 @@ function main {
   set -f
   
   if [[ -z "$latest_gem" ]]; then
-    echo "ERROR: no gems found" 1>&2
+    logger_fatal "no gems found"
     exit 1
   fi
 
