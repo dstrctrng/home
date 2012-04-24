@@ -10,13 +10,28 @@
 #/     activate
 #/     restart
 #/     rollback
+#/     release
 #/
-#/     bump
+#/     bump 
+#/         major|minor|patch
+#/         [1.2.3]
+#/         * without arguments, defaults to patch 
+#/     migrate 
+#/         list | [data|pre|during|post]
+#/         [YYYYMMDDHHMMSS]
+#/         [any_task]
+#/     compare
+#/
+#/     check
+#/     plan
 #/
 #/     hosts
+#/         [group] | [host]
+#/         all | world
 #/     dna
 #/     shell
 #/     invoke
+#/         [command_and_args]
 #/     debug
 #/
 #/     lock
