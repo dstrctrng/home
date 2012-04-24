@@ -34,6 +34,8 @@ function bump_version {
     git tag | perl -ne 'm{^v(\d+)\.(\d+)\.(\d+)$} && printf("%03d.%03d.%03d %d.%d.%d\n",$1,$2,$3,$1,$2,$3)' | sort -r | head -1 | awk '{print $2}' > $tmp_version
   fi
 
+  echo "x$(cat $tmp_version)x"
+
   case "$1" in
     patch|minor|major)
       bump=$1; shift
