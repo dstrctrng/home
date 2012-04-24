@@ -1,4 +1,19 @@
-#!/bin/bash -e
+#!/bin/bash
+
+#/ NAME
+#/     bump -- increments a semver in a file or in git tags
+#/
+#/ SYNOPSIS
+#/     bump [major|minor|patch]
+#/     bump 1.2.3
+#/     bump
+#/       without arguments is equivalent to 'bump patch'
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a meat library
+source "$shome/bin/_prime" "$@"
 
 function bump_version {
   ensure_clean_git_status
@@ -116,7 +131,19 @@ function ensure_clean_git_status {
   fi
 }
 
-if [[ -z $1 ]]; then
-  set patch
+# entry point
+function main {
+  bump_version "$@"
+}
+
+# parse the command-line
+DEFINE_string 'name' "$(basename "$shome")" 'name of gem' 'n'
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+if [[ "$#" = 0 ]]; then
+  set -- patch
 fi
-bump_version "$@"
+
+# pass arguments to entry point
+main "$@"
