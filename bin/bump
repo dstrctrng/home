@@ -103,7 +103,7 @@ function ensure_git_tag_available {
   git fetch --tags
   remote_sha=$(git ls-remote origin $version | awk '{print $1}')
   if [[ -n $remote_sha ]]; then
-    logger_fatal "already a remote tag $version, bump again
+    logger_fatal "already a remote tag $version, bump again"
     exit 1
   fi
 
