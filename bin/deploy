@@ -1,14 +1,60 @@
-#!/bin/bash -e
+#!/bin/bash
 
-bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check 2>&1 > /dev/null; }
+#/ NAME
+#/     deploy -- central script for alpha_omega commands
+#/
+#/ SYNOPSIS
+#/     
+#/     deploy
+#/     stage
+#/     activate
+#/     restart
+#/     rollback
+#/     release
+#/
+#/     bump 
+#/         major|minor|patch
+#/         [1.2.3]
+#/         * without arguments, defaults to patch 
+#/     migrate 
+#/         list | [data|pre|during|post]
+#/         [YYYYMMDDHHMMSS]
+#/         [any_task]
+#/     compare
+#/
+#/     check
+#/     plan
+#/
+#/     hosts
+#/         [group] | [host]
+#/         all | world
+#/     dna
+#/     shell
+#/     invoke
+#/         [command_and_args]
+#/     debug
+#/
+#/     lock
+#/     unlock
 
-if [[ -z $1 ]]; then
-  set world
-fi
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
 
-if [[ -n $1 ]]; then
-  default_pod=$(cat /etc/podname 2>&- || true)
-  set $(for a in "$@"; do if [[ $default_pod = $a ]]; then echo "default"; else echo $a; fi; done)
-fi
+# load a meat library
+source "$shome/bin/_prime" "$@"
 
-exec bundle exec alpha_omega $(basename $0) "$@"
+# entry point
+function main {
+  unset BUNDLE_GEMFILE
+
+  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
+
+  exec bundle exec alpha_omega $(basename $0) "$@"
+}
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+# pass arguments to entry point
+main "$@"

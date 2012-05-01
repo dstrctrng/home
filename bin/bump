@@ -1,30 +1,34 @@
 #!/bin/bash
 
 #/ NAME
-#/     proxy -- internal alpha_omega command to proxy deploy commands to a remote host
+#/     bump -- increments a semver in a file or in git tags
 #/
 #/ SYNOPSIS
-#/     
-#/     proxy deploy_command arguments...
+#/     bump [major|minor|patch]
+#/     bump 1.2.3
+#/     bump
+#/       without arguments is equivalent to 'bump patch'
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
 
 # load a meat library
 source "$shome/bin/_prime" "$@"
+require 'bump'
 
 # entry point
 function main {
-  unset BUNDLE_GEMFILE
-
-  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-
-  exec bundle exec alpha_omega $(basename $0) "$@"
+  bump_version "$FLAGS_dirty" "$@"
 }
 
 # parse the command-line
+DEFINE_boolean 'dirty' "$FLAGS_FALSE" 'force bumping in unclean work area' 'f'
 parse_command_line "$@" || exit $?
 eval set -- "${FLAGS_ARGV}"
+
+if [[ "$#" = 0 ]]; then
+  set -- patch
+fi
 
 # pass arguments to entry point
 main "$@"
