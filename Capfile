@@ -35,10 +35,12 @@ if %x(uname -s).strip == "Darwin" && home == ENV['HOME']
 end
 
 # branch
-set :branch, AlphaOmega.what_branch
+set :branch, AlphaOmega.what_branch([%r(^)])
 
 # pods
-AlphaOmega.setup_pods self, "/data/zendesk_chef"
+AlphaOmega.setup_pods self, "/data/zendesk_chef" do |adm, n|
+  { :app => {} }
+end
 
 # build
 task :git_remote do
