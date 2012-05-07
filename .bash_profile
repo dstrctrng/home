@@ -9,10 +9,7 @@ source $HOME/.bash/bin/_x11
 source $HOME/.bash/bin/_shocco
 source $HOME/.cue/.profile
 
-ree_ruby="$(rvm list strings | grep ^ree | sort | head -1)"
-set +e
-rvm "$ree_ruby"
-set -e
+rvm ree
 
 function rbenv_switch {
   if ! rbenv local 2>&- > /dev/null; then
