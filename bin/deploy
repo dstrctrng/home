@@ -22,6 +22,8 @@
 #/         [any_task]
 #/     compare
 #/
+#/     repl [host]
+#/
 #/     check
 #/     plan
 #/
