@@ -42,6 +42,7 @@ set nobackup
 set noswapfile
 
 set diffopt+=iwhite
+set diffexpr="-w -b -B"
 
 set guioptions=
 

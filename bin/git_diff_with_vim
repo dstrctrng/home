@@ -17,8 +17,8 @@ function main {
   if test -t 1; then 
     vimdiff "$2" "$5" || true
   else
-    echo diff "$2" "$5"
-    diff "$2" "$5" || true
+    echo diff -w -b -B "$2" "$5"
+    diff -w -b -B "$2" "$5" || true
   fi
 }
 
