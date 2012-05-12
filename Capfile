@@ -22,7 +22,7 @@ set :use_sudo, false
 set :dir_perms, "0750"
 
 # ruby
-set :ruby_loader, "rvmrun ree"
+set :ruby_loader, "bin/rvmrun ree"
 set :bundler_options, "--path vendor/bundle"
 
 # os x
