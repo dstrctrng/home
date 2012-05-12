@@ -1,21 +1,18 @@
-source $HOME/.bashrc
+PATH='/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin'
+PATH="$HOME/bin:$PATH"
+
 source $HOME/.macports/.profile
+source $HOME/.xmonad/.profile
 source $HOME/.virtualbox/.profile
+
 source $HOME/.vim/.profile
-source $HOME/.hubflow/.profile
-source $HOME/.bash/bin/_git
 source $HOME/.rvm/.profile
-source $HOME/.bash/bin/_x11
-source $HOME/.bash/bin/_shocco
-source $HOME/.cue/.profile
+source $HOME/.hubflow/.profile
+
+source $HOME/bin/_git
+source $HOME/bin/_shocco
 
 rvm ree
 
-function rbenv_switch {
-  if ! rbenv local 2>&- > /dev/null; then
-    local ree_ruby="$(rvm list strings | grep ^ree | sort | head -1)"
-    if [[ -n "$ree_ruby" ]]; then
-      rbenv local "$ree_ruby"
-    fi
-  fi
-}
+source $HOME/.cue/.profile
+source $HOME/.bashrc
