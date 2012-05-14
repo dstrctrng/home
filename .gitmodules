@@ -16,9 +16,6 @@
 [submodule "hubflow"]
 	path = .hubflow
 	url = https://github.com/HeSYINUvSBZfxqA/hubflow
-[submodule ".rbenv"]
-	path = .rbenv
-	url = https://github.com/HeSYINUvSBZfxqA/rbenv
-[submodule ".powerless"]
+[submodule "powerless"]
 	path = .powerless
 	url = https://github.com/HeSYINUvSBZfxqA/powerless
