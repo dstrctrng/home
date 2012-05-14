@@ -1,18 +1,20 @@
 PATH='/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin'
-PATH="$HOME/bin:$PATH"
 
-source $HOME/.macports/.profile
-source $HOME/.xmonad/.profile
-source $HOME/.virtualbox/.profile
+shome="$HOME"
+source "$shome/bin/_meat"
 
-source $HOME/.vim/.profile
-source $HOME/.rvm/.profile
-source $HOME/.hubflow/.profile
+require 'macports'
+require 'virtualbox'
 
-source $HOME/bin/_git
-source $HOME/bin/_shocco
+require 'vim'
+require 'rvm'
+require 'hubflow'
+
+require 'git'
+require 'shocco'
+require 'xmonad'
+
+require 'cue'
+source $HOME/.bashrc
 
 rvm ree
-
-source $HOME/.cue/.profile
-source $HOME/.bashrc
