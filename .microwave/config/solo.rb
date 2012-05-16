@@ -1,1 +1,3 @@
-verbose_logging false
+verbose_logging true
+
+Chef::Log.level = :debug
