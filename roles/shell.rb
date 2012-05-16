@@ -1,3 +1,7 @@
 name "shell"
 description "shell"
-run_list %w(microwave git bundler rubygems ssh::client tunnelblick virtualbox gitx)
+rl = %w(microwave git bundler rubygems ssh::client)
+if %x(uname -s).strip == "Darwin"
+  rl += %w(tunnelblick virtualbox gitx)
+end
+run_list rl
