@@ -160,6 +160,8 @@ GEM
     tilt (1.3.3)
     tvd-bundler (0.0.6)
       microwave
+    tvd-dmg (0.0.2)
+      microwave
     tvd-git (0.0.14)
       microwave
     tvd-microwave (0.0.10)
@@ -189,6 +191,7 @@ DEPENDENCIES
   sous
   thin
   tvd-bundler
+  tvd-dmg
   tvd-git
   tvd-microwave
   tvd-rubygems

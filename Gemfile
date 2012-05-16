@@ -20,6 +20,7 @@ gem "tvd-bundler"
 gem "tvd-git"
 gem "tvd-rubygems"
 gem "tvd-ssh"
+gem "tvd-dmg"
 
 # deploy
 gem "alpha_omega"
