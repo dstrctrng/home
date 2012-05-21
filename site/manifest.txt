@@ -1,20 +1,18 @@
 filename                          layout
 --------------------------------- ---------------
+index.md                          homepage        
+  project/support.md              default         
+  project/about.md                default         
+  project/downloads.md            default         
+  project/license.md              default         
+
 contribute/index.md               contribute      
-
   contribute/code/index.md        contribute      
-
   contribute/docs/index.md        contribute      
     contribute/docs/code.md       contribute      
     contribute/docs/run.md        contribute      
     contribute/docs/update.md     contribute      
     contribute/docs/contribute.md contribute      
-
-project/index.md                  homepage        
-  project/support.md              default         
-  project/about.md                default         
-  project/downloads.md            default         
-  project/license.md              default         
 
 docs/index.md                     documentation   
   docs/commands.md                documentation   
