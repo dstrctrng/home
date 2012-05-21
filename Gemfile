@@ -28,6 +28,7 @@ gem "alpha_omega"
 gem "rtfmd"
 gem "showoff"
 gem "rocco"
+gem "jekyll"
 
 # servers
 gem "sinatra"
