@@ -3,9 +3,8 @@
 cd
 bundle check || { bundle install --local --path vendor/bundle && bundle check; }
 
-cd ~/.microwave
-mkdir -p backups
-cd backups
+mkdir -p backup
+cd backup
 if [[ ! -d .git ]]; then
   git init
 fi
