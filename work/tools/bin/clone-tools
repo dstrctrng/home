@@ -1,32 +1,68 @@
 #!/bin/bash
 
-git clone git@github.com:HeSYINUvSBZfxqA/RTFMd       rtfmd       
-git clone git@github.com:HeSYINUvSBZfxqA/shocco      shocco
-git clone git@github.com:HeSYINUvSBZfxqA/ronn        ronn
+#/ NAME
+#/     free_sample -- template for a meaty script
+#/
+#/ SYNOPSIS
+#/     free_sample script_name
 
-git clone git@github.com:HeSYINUvSBZfxqA/alpha_omega alpha_omega 
-git clone git@github.com:HeSYINUvSBZfxqA/microwave   microwave   
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/../../.." && pwd -P)"
 
-git clone git@github.com:HeSYINUvSBZfxqA/ao-helper   ao-helper
-git clone git@github.com:HeSYINUvSBZfxqA/rb-helper   rb-helper
-git clone git@github.com:HeSYINUvSBZfxqA/gh-helper   gh-helper
+# load a meat library
+source "$shome/bin/_prime" "$@"
+cd "$shome/work/tools"
 
-git clone git@github.com:HeSYINUvSBZfxqA/meat        meat
+# entry point
+function main {
+  local projects=""
+  while [[ "$#" > 0 ]]; do
+    local nm_project="$1"; shift
 
-git clone git@github.com:HeSYINUvSBZfxqA/tvdinner    tvdinner
-for a in tvd-bundler tvd-git tvd-microwave tvd-rubygems tvd-ssh; do
-  git clone git@github.com:HeSYINUvSBZfxqA/$a        $a
-done
+    case "$nm_project" in
+      tvdinners)
+        projects="$projects tvdinner tvd-bundler tvd-git tvd-microwave tvd-rubygems tvd-ssh"
+        ;;
 
-git clone git@github.com:HeSYINUvSBZfxqA/veewee      HeSYINUvSBZfxqA-veewee
+      all)
+        projects="$projects rtfmd shocco ronn"
+        projects="$projects alpha_omega microwave"
+        projects="$projects ao-helper rb-helper gh-helper doc-helper meat tvdinner"
+        projects="$projects tvd-bundler tvd-git tvd-microwave tvd-rubygems tvd-ssh"
+        ;;
 
-for a in *; do
-  if [[ -d $a/.git ]]; then
-    pushd $a
+      *)
+        projects="$projects $nm_project"
+        ;;
+    esac
+  done
+
+  for nm_project in $projects; do
+    figlet "$nm_project"
+    git clone "git@github.com:HeSYINUvSBZfxqA/$nm_project" "$nm_project"
+    pushd "$shome/work/tools/$nm_project" > /dev/null
     git pull
     git submodule update --init --recursive
-    bundle --local
-    popd
-  fi
-done
+    if [[ -f Gemfile ]]; then
+      bundle --local
+    fi
+    popd > /dev/null
+  done
+}
+
+# define command line options:
+#   var name, default, description, short option
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+if [[ "$#" = 0 ]]; then
+  logger_fatal "missing project name(s)"
+  display_help
+  exit 1
+fi
+
+# pass arguments to entry point
+main "$@"
 
