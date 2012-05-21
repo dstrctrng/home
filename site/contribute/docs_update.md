@@ -57,5 +57,5 @@ website. Most of what is possible with Jekyll is done at some
 point on the Vagrant website, so reading the source of other
 pages of the Vagrant website will teach you tons!
 
-Of course, you can use the typical [Vagrant support channels](/support.html)
+Of course, you can use the typical [Vagrant support channels](../project/support.html)
 if you need to as well.
