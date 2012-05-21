@@ -7,7 +7,7 @@ current: About
 <div class="alert alert-block alert-info">
   <strong>Note:</strong> This page talks about the Vagrant project itself.
   If instead you're looking for documentation on what Vagrant is and how
-  to get started, please view the <a href="/docs/getting-started/index.html">
+  to get started, please view the <a href="../guide/index.html">
   getting started guide.</a>
 </div>
 
@@ -33,4 +33,4 @@ on every major consumer OS platform (Linux, Mac OS X, and Windows).
 
 Vagrant development is not backed by any single company, and developers
 work on Vagrant on their own free time. Much of the work and help towards
-developing Vagrant is thanks to generous [contributions](/contribute/index.html).
+developing Vagrant is thanks to generous [contributions](../contribute/index.html).
