@@ -34,6 +34,10 @@ function main {
       git remote add rb https://github.com/HeSYINUvSBZfxqA/rb-helper
       git fetch rb
       ;;
+    doc)
+      git remote add doc https://github.com/HeSYINUvSBZfxqA/doc-helper
+      git fetch doc
+      ;;
     tvd)
       git remote add tvd https://github.com/HeSYINUvSBZfxqA/tvdinner
       git fetch tvd
