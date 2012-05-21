@@ -1,0 +1,11 @@
+project website is:
+
+Homepage:
+  major:
+    Guide, Documentation, Contribute
+  minor:
+    Support, About
+  project:
+    Download, License, GitHub
+
+Homepage links to Guide, Support
