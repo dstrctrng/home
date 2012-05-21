@@ -25,15 +25,6 @@ set :dir_perms, "0750"
 set :ruby_loader, "bin/rvmrun ree"
 set :bundler_options, "--path vendor/bundle"
 
-# os x
-if %x(uname -s).strip == "Darwin" && home == ENV['HOME']
-  task :gecode_build do
-    run "[[ -x #{home}/local/bin/sat ]] || { cd #{home}/build && ./build-gecode; }"
-  end
-
-  after "deploy:update_code", "gecode_build"
-end
-
 # branch
 set :branch, AlphaOmega.what_branch([%r(^)])
 
