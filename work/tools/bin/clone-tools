@@ -39,13 +39,18 @@ function main {
 
   for nm_project in $projects; do
     figlet "$nm_project"
-    git clone "git@github.com:HeSYINUvSBZfxqA/$nm_project" "$nm_project"
-    pushd "$shome/work/tools/$nm_project" > /dev/null
-    git pull
-    git submodule update --init --recursive
-    if [[ -f Gemfile ]]; then
-      bundle --local
+
+    if [[ ! -d "$shome/work/tools/$nm_project/.git" ]]; then
+      git clone "git@github.com:HeSYINUvSBZfxqA/$nm_project" "$shome/work/tools/$nm_project"
     fi
+
+    pushd "$shome/work/tools/$nm_project" > /dev/null
+    git pull -q
+    git submodule --quiet update --init --recursive
+    if [[ -f Gemfile ]]; then
+      bundle check || { bundle --local && bundle check; }
+    fi
+    git status -s --ignore-submodules=dirty
     popd > /dev/null
   done
 }
