@@ -21,14 +21,14 @@ function main {
 
     case "$nm_project" in
       tvdinners)
-        projects="$projects tvdinner tvd-bundler tvd-git tvd-microwave tvd-rubygems tvd-ssh tvd-dmg"
+        projects="$projects tvdinner tvd-bundler tvd-git tvd-rubygems tvd-ssh tvd-dmg"
         ;;
 
       all)
         projects="$projects rtfmd shocco ronn"
         projects="$projects alpha_omega microwave"
         projects="$projects ao-helper rb-helper gh-helper doc-helper meat tvdinner"
-        projects="$projects tvd-bundler tvd-git tvd-microwave tvd-rubygems tvd-ssh tvd-dmg"
+        projects="$projects tvd-bundler tvd-git tvd-rubygems tvd-ssh tvd-dmg"
         ;;
 
       *)

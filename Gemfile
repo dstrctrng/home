@@ -15,7 +15,6 @@ gem "sous"
 
 # configuration
 gem "microwave"
-gem "tvd-microwave"
 gem "tvd-bundler"
 gem "tvd-git"
 gem "tvd-rubygems"

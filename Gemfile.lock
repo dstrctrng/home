@@ -162,8 +162,6 @@ GEM
       microwave
     tvd-git (0.0.16)
       microwave
-    tvd-microwave (0.0.11)
-      microwave
     tvd-rubygems (0.0.7)
       microwave
     tvd-ssh (0.0.14)
@@ -191,7 +189,6 @@ DEPENDENCIES
   tvd-bundler
   tvd-dmg
   tvd-git
-  tvd-microwave
   tvd-rubygems
   tvd-ssh
   wirble
