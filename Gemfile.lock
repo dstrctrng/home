@@ -74,6 +74,7 @@ GEM
       kramdown (~> 0.13)
       liquid (~> 2.3)
       maruku (~> 0.5)
+    jekyll_ext (0.1.4)
     json (1.5.4)
     kramdown (0.13.6)
     liquid (2.3.0)
@@ -148,6 +149,7 @@ GEM
       ffi (~> 1.0.7)
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
+    sass (3.1.18)
     sdoc (0.3.16)
       json (>= 1.1.3)
       rdoc (~> 3.10)
@@ -199,10 +201,12 @@ DEPENDENCIES
   haml
   interactive_editor
   jekyll
+  jekyll_ext
   microwave
   private_event
   rocco
   rtfmd
+  sass
   showoff
   sinatra
   sous
