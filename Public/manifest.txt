@@ -1,0 +1,28 @@
+filename                          layout
+--------------------------------- ---------------
+project/index.md                    default
+  project/support.md                default         
+  project/about.md                  default         
+  project/downloads.md              default         
+  project/license.md                default         
+
+contribute/index.md                 contribute      
+  contribute/code.md                contribute      
+  contribute/docs.md                contribute      
+    contribute/docs_code.md         contribute      
+    contribute/docs_run.md          contribute      
+    contribute/docs_update.md       contribute      
+    contribute/docs_contribute.md   contribute      
+
+docs/index.md                       docs   
+  docs/commands.md                  docs   
+  docs/configfile.md                docs   
+  docs/plugins.md                   docs   
+  docs/debugging.md                 docs   
+  docs/troubleshooting.md           docs   
+
+guide/index.md                      guide 
+  guide/why.md                      guide 
+  guide/introduction.md             guide 
+  guide/setup.md                    guide 
+--------------------------------- ---------------

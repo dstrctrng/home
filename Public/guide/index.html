@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<title>Vagrant - Getting Started</title>
+
+		<link rel="icon" type="image/png" href="../static/images/favicon.png" />
+		<meta name="description" content="Create and manage virtualized development environments." />
+
+		<link rel="stylesheet" href="../static/css/bootstrap.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../static/css/syntax.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../static/css/vagrant.base.css" type="text/css" media="screen" />
+</head>
+<body>
+	<div class="container">
+		<div class="row Header with-border">
+			<div class="span3 Module logo">
+				<h1><a href="../project/index.html">Vagrant</a></h1>
+			</div>
+			<div class="span9">
+				<div class="Module navigation">
+					<ul>
+						<li><a href="../project/index.html">home</a></li>
+						<li><a href="../guide/index.html">get started</a></li>
+						<li><a href="../docs/index.html">documentation</a></li>
+						<li><a href="../project/support.html">support</a></li>
+						<li><a href="../project/about.html">about</a></li>
+						<li><a href="../contribute/index.html">contribute</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+
+<div class="row">
+  <div class="span3 Module sidebar">
+    <div class="well" style="padding: 8px 0px;">
+    <ul class="nav nav-list">
+      <li class="active">
+        <a href="../guide/index.html">Overview</a>
+      </li>
+      <li>
+        <a href="../guide/why.html">Why Vagrant?</a>
+      </li>
+      <li>
+        <a href="../guide/introduction.html">Introduction</a>
+      </li>
+      <li>
+        <a href="../guide/setup.html">Project Setup</a>
+      </li>
+    </ul>
+    </div>
+  </div>
+
+  <div class="span9">
+    <h1 id='getting_started_with_vagrant'>Getting Started with Vagrant</h1>
+
+<p>Vagrant uses <a href='http://www.virtualbox.org'>Oracle&#8217;s VirtualBox</a> to build configurable, lightweight, and portable virtual machines dynamically. The first couple pages serve to introduce you to Vagrant and what it has to offer while the rest of the guide is a technical walkthrough for building a fully functional web development environment. The getting started guide concludes by explaining how to package the newly created vagrant environment so other developers can get up and running in just a couple commands.</p>
+
+<h2 id='get_virtualbox'>Get VirtualBox</h2>
+
+<p>Vagrant depends on <a href='http://www.virtualbox.org'>Oracle&#8217;s VirtualBox</a> to create all of its virtual environments. VirtualBox is a general-purpose full virtualizer for x86 hardware. Targeted at server, desktop and embedded use, it is a professional-quality virtualization solution that is also open source software. VirtualBox runs on <strong>Windows</strong>, <strong>Mac OS X</strong>, <strong>Linux</strong>, and <strong>Solaris</strong>.</p>
+
+<p>Here is a link directly to the <a href='http://www.virtualbox.org/wiki/Downloads'>download page</a>.</p>
+
+<p>Vagrant currently supports VirtualBox 4.0.x and 4.1.x.</p>
+
+<h2 id='install_vagrant'>Install Vagrant</h2>
+
+<p>To install Vagrant, download the appropriate package or installer from the <a href='http://downloads.vagrantup.com'>downloads page</a>, and install it using standard operating system procedures. On Windows and Mac OS X, the <code>vagrant</code> command should automatically be placed on your <code>PATH</code>. On other systems, you must add <code>/opt/vagrant/bin</code> to your <code>PATH</code>.</p>
+
+<p>If a Vagrant package is not available for your platform, you can also install using <a href='http://rubygems.org/gems/vagrant'>RubyGems</a> via a <code>gem install vagrant</code>. But note that the packages are the preferred and best supported method of installation.</p>
+
+<h2 id='your_first_vagrant_virtual_environment'>Your First Vagrant Virtual Environment</h2>
+<pre>
+$ vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
+$ vagrant init lucid32
+$ vagrant up
+</pre>
+<p>While the rest of the getting started guide will focus on explaining how to build a fully functional virtual machine to serve Rails applications, you should get used to the above snippet of code. After the initial setup of any Vagrant environment, the above is all any developer will need to create their development environment! Note that the above snippet does actually create a fully functional 512MB virtual machine running Ubuntu in the background, although the machine doesn&#8217;t do much in this state.</p>
+
+    <ul class="pager">
+    
+    
+        <li class="next">
+            <a href="../guide/why.html">Why Vagrant? &rarr;</a>
+        </li>
+    
+    </ul>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <div class="row Footer">
+      <div class="span12">
+        Based on the Vagrant documentation site:<br/>
+        Copyright <a href="../project/license.html">&copy;</a> 2009-2012. <a href="http://twitter.com/mitchellh">Mitchell Hashimoto</a> and <a href="http://nickelcode.com">John Bender</a>.<br/>
+        Design by <a href="http://twitter.com/heyadam">Adam Debreczeni</a>.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

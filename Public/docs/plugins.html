@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<title>Vagrant - Documentation - Plugins</title>
+
+		<link rel="icon" type="image/png" href="../static/images/favicon.png" />
+		<meta name="description" content="Create and manage virtualized development environments." />
+
+		<link rel="stylesheet" href="../static/css/bootstrap.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../static/css/syntax.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../static/css/vagrant.base.css" type="text/css" media="screen" />
+</head>
+<body>
+	<div class="container">
+		<div class="row Header with-border">
+			<div class="span3 Module logo">
+				<h1><a href="../project/index.html">Vagrant</a></h1>
+			</div>
+			<div class="span9">
+				<div class="Module navigation">
+					<ul>
+						<li><a href="../project/index.html">home</a></li>
+						<li><a href="../guide/index.html">get started</a></li>
+						<li><a href="../docs/index.html">documentation</a></li>
+						<li><a href="../project/support.html">support</a></li>
+						<li><a href="../project/about.html">about</a></li>
+						<li><a href="../contribute/index.html">contribute</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+
+<div class="row">
+	<div class="span3 Module sidebar">
+		<div class="well" style="padding: 8px 0px;">
+			<ul class="nav nav-list">
+				<li>
+				<a href="../docs/index.html">Overview</a>
+				</li>
+				<li>
+				<a href="../docs/commands.html">Commands</a>
+				</li>
+				<li>
+				<a href="../docs/configfile.html">Vagrantfile</a>
+				</li>
+				<li class="active">
+				<a href="../docs/plugins.html">Plugins</a>
+				</li>
+				<li>
+				<a href="../docs/debugging.html">Debugging</a>
+				</li>
+				<li>
+				<a href="../docs/troubleshooting.html">Troubleshooting</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="span9">
+		<h1 id='plugins'>Plugins</h1>
+
+<p>Vagrant comes with many great features to get distributable development environments up and running. But sometimes you need to change the way Vagrant works or add new functionality which may or may not make sense to merge back into Vagrant core. As of Vagrant 0.6, this problem is solved through the use of <em>plugins</em>.</p>
+
+<p>Plugins are powerful, first-class citizens which extend Vagrant using an exposed and supported API. What can plugins do?</p>
+
+<ul>
+<li>Add new commands to the <code>vagrant</code> binary, such as <code>vagrant my_plugin</code></li>
+
+<li>Modify the functionality of existing commands, such as adding new functionality when <code>vagrant up</code> is called.</li>
+
+<li>Add new configuration classes fr custom <code>config.my_plugin</code> style configuration in Vagrantfiles.</li>
+</ul>
+
+<h2 id='using_plugins'>Using Plugins</h2>
+
+<p>Installing plugins is a snap, and doesn&#8217;t take more than a few seconds.</p>
+
+<p>Please refer to the documentation of any plugin you wish to use for information on how to use it, but in general there are two methods of installation:</p>
+
+<ol>
+<li>Downloading a library or gem and manually <code>require</code>ing it in a project Vagrantfile.</li>
+
+<li>Installing a gem which automatically hooks into Vagrant. With this option you don&#8217;t have to do anything.</li>
+</ol>
+
+<p>Please refer to any plugin&#8217;s documentation for more information on what you have to do.</p>
+
+<h2 id='developing_plugins'>Developing Plugins</h2>
+
+<p>If you&#8217;re interested in developing plugins, we&#8217;ve setup a comprehensive set of documentation at <a href='../docs/extending/index.html'>extending Vagrant</a>. Also, if you run into any problems, please access any of our <a href='../project/support.html'>support lines</a>!</p>
+	</div>
+</div>
+      </div>
+    </div>
+
+    <div class="row Footer">
+      <div class="span12">
+        Based on the Vagrant documentation site:<br/>
+        Copyright <a href="../project/license.html">&copy;</a> 2009-2012. <a href="http://twitter.com/mitchellh">Mitchell Hashimoto</a> and <a href="http://nickelcode.com">John Bender</a>.<br/>
+        Design by <a href="http://twitter.com/heyadam">Adam Debreczeni</a>.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
