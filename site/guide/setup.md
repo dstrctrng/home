@@ -1,12 +1,10 @@
 ---
-layout: getting_started
+layout: guide
 title: Getting Started - Project Setup
 
 current: Project Setup
 previous: Introduction
 previous_url: ../guide/introduction.html
-next: Boxes
-next_url: ../guide/boxes.html
 ---
 # Project Setup
 

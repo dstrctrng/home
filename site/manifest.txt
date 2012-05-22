@@ -14,15 +14,15 @@ contribute/index.md               contribute
     contribute/docs/update.md     contribute      
     contribute/docs/contribute.md contribute      
 
-docs/index.md                     documentation   
-  docs/commands.md                documentation   
-  docs/configfile.md              documentation   
-  docs/plugins.md                 documentation   
-  docs/debugging.md               documentation   
-  docs/troubleshooting.md         documentation   
+docs/index.md                     docs   
+  docs/commands.md                docs   
+  docs/configfile.md              docs   
+  docs/plugins.md                 docs   
+  docs/debugging.md               docs   
+  docs/troubleshooting.md         docs   
 
-guide/index.md                    getting_started 
-  guide/why.md                    getting_started 
-  guide/introduction.md           getting_started 
-  guide/setup.md                  getting_started 
+guide/index.md                    guide 
+  guide/why.md                    guide 
+  guide/introduction.md           guide 
+  guide/setup.md                  guide 
 --------------------------------- ---------------

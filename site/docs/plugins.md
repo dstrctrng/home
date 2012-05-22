@@ -1,5 +1,5 @@
 ---
-layout: documentation
+layout: docs
 title: Documentation - Plugins
 
 current: Plugins
