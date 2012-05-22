@@ -23,6 +23,8 @@ GEM
       deep_merge
       grit
       surface
+    ampex (2.0.0)
+      blankslate
     awesome_print (1.0.2)
     blankslate (2.1.2.4)
     bluecloth (2.2.0)
@@ -193,6 +195,7 @@ PLATFORMS
 DEPENDENCIES
   80ae2fe5c929b7d0a00bdee2d710fa9e
   alpha_omega
+  ampex
   awesome_print
   bosonson
   interactive_editor

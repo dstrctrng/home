@@ -2,6 +2,9 @@ source :rubygems
 #source "http://localhost:3000/complete"
 #source "http://localhost:3000"
 
+# language
+gem "ampex"
+
 # irb
 gem "wirble"
 gem "interactive_editor"
