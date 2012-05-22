@@ -4,7 +4,8 @@ title: License
 ---
 # The MIT License
 
-Copyright (c) 2009-2012 Mitchell Hashimoto and John Bender
+Based on the Vagrant documentation site: Copyright (c) 2009-2012
+Mitchell Hashimoto and John Bender
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
