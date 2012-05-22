@@ -81,7 +81,7 @@ GEM
     marathon (0.0.3)
     maruku (0.6.0)
       syntax (>= 1.0.0)
-    microwave (0.1006.20)
+    microwave (0.1006.21)
       erubis
       fast_xs
       hike
