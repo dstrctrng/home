@@ -84,7 +84,7 @@ ul.nav.list > li {
 .alert-notice {
   color: #555;
   background-color: whiteSmoke;
-  background-image: url(../static/images/icons/error.png);
+  background-image: url(../images/icons/error.png);
   background-position: 10px 10px;
   background-repeat: no-repeat;
   padding-left: 52px;
@@ -165,7 +165,7 @@ ul.nav.list > li {
 
 .featured-module {
 
-  background: url('../static/images/feat-grad.png');
+  background: url('../images/feat-grad.png');
   height: 357px;
   width: 940px;
 
@@ -254,7 +254,7 @@ ul.nav.list > li {
 }
 
 .download {
-  background: url('../static/images/download.png') no-repeat;
+  background: url('../images/download.png') no-repeat;
   height: 41px;
   width: 32px;
   margin-top: 0;
@@ -281,7 +281,7 @@ ul.nav.list > li {
 
 
 #dirty-hippie {
-  background-image: url('../static/images/hippie.png');
+  background-image: url('../images/hippie.png');
   position: relative;
   float: right;
   margin-top: 0px;
@@ -327,7 +327,7 @@ ul.nav.list > li {
 }
 
 .company-logos {
-  background: url('../static/images/comp.png') no-repeat;
+  background: url('../images/comp.png') no-repeat;
   height:350px;
   width:300px;
   position: relative;
