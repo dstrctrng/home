@@ -1,1 +1,2 @@
-exclude: []
+haml_folder: **/*.haml
+sass_folder: **/*.sass
