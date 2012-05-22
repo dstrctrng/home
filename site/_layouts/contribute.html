@@ -1,17 +1,10 @@
 {% include header.html %}
 <div class="row">
 	<div class="span3 Module sidebar">
-		{% if page.section %}
-		<div class="well">
-			<a href="../contribute/index.html">&laquo; Contribute to Vagrant</a>
-		</div>
-		{% endif %}
-
 		<div class="well" style="padding: 8px 0px;">
 			<ul class="nav nav-list">
-				{% if page.section == "docs" %}
-				<li{% if page.current == 'Overview' %} class="active"{% endif %}>
-					<a href="../contribute/docs.html">Overview</a>
+				<li{% if page.current == 'Documentation' %} class="active"{% endif %}>
+					<a href="../contribute/docs.html">Documentation</a>
 				</li>
 				<li{% if page.current == 'Get the Code' %} class="active"{% endif %}>
 					<a href="../contribute/docs_code.html">Get the code</a>
@@ -25,15 +18,9 @@
 				<li{% if page.current == 'Contribute your Changes' %} class="active"{% endif %}>
 					<a href="../contribute/docs_contribute.html">Contribute your changes!</a>
 				</li>
-				{% elsif page.section == "code" %}
 				<li{% if page.current == 'Contribute Code' %} class="active"{% endif %}>
-					<a href="../contribute/code.html">Overview</a>
+					<a href="../contribute/code.html">Contribute Code</a>
 				</li>
-				{% else %}
-				<li class="active"><a href="../contribute/index.html">Overview</a></li>
-				<li><a href="../contribute/docs.html">Documentation</a></li>
-				<li><a href="../contribute/code.html">Code</a></li>
-				{% endif %}
 			</ul>
 		</div>
 
