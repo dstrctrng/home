@@ -29,6 +29,7 @@ gem "rtfmd"
 gem "showoff"
 gem "rocco"
 gem "jekyll"
+gem "haml"
 
 # servers
 gem "sinatra"

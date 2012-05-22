@@ -60,6 +60,7 @@ GEM
     grit (2.4.1)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
+    haml (3.1.6)
     highline (1.6.11)
     hike (1.2.1)
     hirb (0.6.2)
@@ -195,6 +196,7 @@ DEPENDENCIES
   alpha_omega
   awesome_print
   bosonson
+  haml
   interactive_editor
   jekyll
   microwave
