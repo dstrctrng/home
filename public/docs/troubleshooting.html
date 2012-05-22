@@ -68,12 +68,12 @@
 <h2 id='mount_error_on_vroot_vagrant'>Mount error on v-root: /vagrant</h2>
 
 <p>When you start up your guest, you may get the following message unexpectedly:</p>
-<div>
-  <pre><code class='text'>[default] -- v-root: /vagrant
+<div class='highlight'><pre><code class='text'>[default] -- v-root: /vagrant
 The following SSH command responded with a non-zero exit status.
 Vagrant assumes that this means the command failed!
 
-mount -t vboxsf -o uid=`id -u vagrant`,gid=`id -g vagrant` v-root /vagrant</code></pre>
+mount -t vboxsf -o uid=`id -u vagrant`,gid=`id -g vagrant` v-root /vagrant
+</code></pre>
 </div>
 <p>This is usually a result of the guest&#8217;s package manager upgrading the kernel without rebuilding the VirtualBox Guest Additions. To double-check that this is the issue, connect to the guest and issue the following command:</p>
 

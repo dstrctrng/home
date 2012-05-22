@@ -62,18 +62,18 @@
 <h2 id='vagrant_project_setup'>Vagrant Project Setup</h2>
 
 <p>The first step for any project which uses Vagrant is to mark the root directory and setup the basic required files. Vagrant provides a handy command-line utility for just that. In the terminal transcript below, we create the directory for our project and initialize it for Vagrant:</p>
-<div>
-  <pre><code class='bash'>$ mkdir vagrant_guide
-$ cd vagrant_guide
-$ vagrant init</code></pre>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>mkdir vagrant_guide
+<span class='nv'>$ </span><span class='nb'>cd </span>vagrant_guide
+<span class='nv'>$ </span>vagrant init
+</code></pre>
 </div>
 <p><code>vagrant init</code> creates an initial Vagrantfile. For now, we&#8217;ll leave this Vagrantfile as-is, but it will be used extensively in future steps to configure our virtual machine.</p>
 
 <h2 id='web_project_setup'>Web Project Setup</h2>
 
 <p>With Vagrant now ready for the given directory, let&#8217;s create a quick &#8220;web project&#8221; which we&#8217;ll use later to showcase your VM. Run the following command in your project directory (the directory with the Vagrantfile):</p>
-<div>
-  <pre><code class='bash'>$ echo &quot;&lt;h1&gt;Hello from a Vagrant VM&lt;/h1&gt;&quot; &gt; index.html</code></pre>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span><span class='nb'>echo</span> <span class='s2'>&quot;&lt;h1&gt;Hello from a Vagrant VM&lt;/h1&gt;&quot;</span> &gt; index.html
+</code></pre>
 </div>
 <p>The above steps could have been run in any order. Vagrant can easily be initialized in pre-existing project folders.</p>
 <div class='alert alert-block alert-notice'>
