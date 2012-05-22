@@ -1,5 +1,5 @@
 ---
-layout: documentation
+layout: docs
 title: Documentation - Troubleshooting Common Problems
 
 current: Troubleshooting

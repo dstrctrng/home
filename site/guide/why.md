@@ -1,5 +1,5 @@
 ---
-layout: getting_started
+layout: guide
 title: Getting Started - Why Vagrant?
 
 current: Why Vagrant?
