@@ -1,6 +1,6 @@
 filename                          layout
 --------------------------------- ---------------
-index.md                            homepage        
+project/index.md                    default
   project/support.md                default         
   project/about.md                  default         
   project/downloads.md              default         
