@@ -3,7 +3,6 @@ filename                          layout
 project/index.md                    default
   project/support.md                default         
   project/about.md                  default         
-  project/downloads.md              default         
   project/license.md                default         
 
 contribute/index.md                 contribute      
