@@ -19,6 +19,3 @@
 [submodule "powerless"]
 	path = .powerless
 	url = https://github.com/HeSYINUvSBZfxqA/powerless
-[submodule ".ghpages"]
-	path = .ghpages
-	url = https://github.com/HeSYINUvSBZfxqA/badonkadonk
