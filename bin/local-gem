@@ -4,7 +4,7 @@
 #/     local-gem -- set environment to hint to Gemfile to use a local gemspec
 #/
 #/ SYNOPSIS
-#/     local-gem [gem]
+#/     local-gem [gem...]
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
@@ -14,24 +14,25 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
-  local unsets=""
+  local nm_gem
 
-  while [[ "$#" > 0 ]]; do
-    nm_gem="$1"; shift
+  for nm_gem in "$@"; do
     if [[ ! -d "gems/${nm_gem}" ]]; then
       logger_fatal "cannot find local gemspec at gems/${nm_gem}"
       exit 1
     fi
     export "local_${nm_gem}"=1
-    unsets="$unsets local_${nm_gem}"
   done
 
-  bundle --local
-  bash
-  for un in $unsets; do
-    unset "$un"
+  bundle --local --quiet &&  bundle check
+  bash -l
+  for nm_gem in "$@"; do
+    unset "local_${nm_gem}"
   done
-  bundle --local
+  bundle --local --quiet &&  bundle check
+  git status -s
+  bundle update "$@"
+  git status -s
 }
 
 # define command line options:
