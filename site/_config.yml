@@ -1,2 +1,2 @@
-destination: ../public
+destination: ../.ghpages
 pygments: true
