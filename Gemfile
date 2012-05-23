@@ -1,4 +1,5 @@
-def gex (nm_gem, opt_gem = {})
+alias :gex :gem
+def gem (nm_gem, opt_gem = {})
   if ENV.member? "local_#{nm_gem}"
     local_opt = {}
     local_opt[:path] = File.join(File.expand_path('../gems', __FILE__), nm_gem)
@@ -6,48 +7,48 @@ def gex (nm_gem, opt_gem = {})
       puts "cannot find local gem #{local_opt[:path]}"
       exit 1
     end
-    gem nm_gem, local_opt
+    gex nm_gem, local_opt
   else
     local_opt = opt_gem.clone
-    gem nm_gem, local_opt
+    gex nm_gem, local_opt
   end
 end
 
 source :rubygems
 
 # language
-gex "ampex"
+gem "ampex"
 
 # irb
-gex "wirble"
-gex "interactive_editor"
-gex "bosonson"
-gex "awesome_print"
+gem "wirble"
+gem "interactive_editor"
+gem "bosonson"
+gem "awesome_print"
 
 # packaging
-gex "80ae2fe5c929b7d0a00bdee2d710fa9e"
-gex "private_event"
-gex "sous"
+gem "80ae2fe5c929b7d0a00bdee2d710fa9e"
+gem "private_event"
+gem "sous"
 
 # configuration
-gex "microwave"
-gex "tvd-bundler"
-gex "tvd-git"
-gex "tvd-rubygems"
-gex "tvd-ssh"
-gex "tvd-dmg"
+gem "microwave"
+gem "tvd-bundler"
+gem "tvd-git"
+gem "tvd-rubygems"
+gem "tvd-ssh"
+gem "tvd-dmg"
 
 # deploy
-gex "alpha_omega"
+gem "alpha_omega"
 
 # documentation
-gex "rtfmd"
-gex "showoff"
-gex "rocco"
-gex "jekyll"
+gem "rtfmd"
+gem "showoff"
+gem "rocco"
+gem "jekyll"
 
 # servers
-gex "sinatra"
-gex "thin"
+gem "sinatra"
+gem "thin"
 
 # vim: set ft=ruby:
