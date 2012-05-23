@@ -32,6 +32,8 @@ function main {
   bundle --local --quiet &&  bundle check
   git status -s
   bundle update "$@"
+  git add Gemfile.lock vendor/cache
+  git add -u vendor/cache
   git status -s
 }
 
