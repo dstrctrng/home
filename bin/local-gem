@@ -25,7 +25,7 @@ function main {
   done
 
   bundle --local --quiet &&  bundle check
-  bash -l
+  bash -l || true
   for nm_gem in "$@"; do
     unset "local_${nm_gem}"
   done
