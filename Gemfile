@@ -1,6 +1,18 @@
+def gex (nm_gem, opt_gem = {})
+  if ENV.member? "local_#{nm_gem}"
+    local_opt = {}
+    local_opt[:path] = File.join(File.expand_path('../gems', __FILE__), nm_gem)
+    gem nm_gem, local_opt
+  else
+    local_opt = opt_gem.clone
+    gem nm_gem, local_opt
+  end
+end
+
 source :rubygems
-#source "http://localhost:3000/complete"
-#source "http://localhost:3000"
+
+# language
+gem "ampex"
 
 # irb
 gem "wirble"
@@ -14,7 +26,7 @@ gem "private_event"
 gem "sous"
 
 # configuration
-gem "microwave"
+gex "microwave"
 gem "tvd-bundler"
 gem "tvd-git"
 gem "tvd-rubygems"

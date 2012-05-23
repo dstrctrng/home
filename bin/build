@@ -1,1 +1,49 @@
-deploy
+#!/bin/bash
+
+#/ NAME
+#/     build -- builds static site using jekyll
+#/
+#/ SYNOPSIS
+#/     build site
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a meat library
+source "$shome/bin/_prime" "$@"
+
+# entry point
+function main {
+  nm_component="$1"; shift
+
+  case "$nm_component" in 
+    site)
+      build_jekyll "$@"
+      ;;
+    *)
+      logger_fatal "don't know how to build ${nm_component}"
+      exit 1
+      ;;
+  esac
+}
+
+# build the site with jekyll
+function build_jekyll {
+  cd $shome/site
+  bundle exec jekyll
+}
+
+# define command line options:
+#   var name, default, description, short option
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+if [[ "$#" < 1 ]]; then
+  logger_fatal "missing component(s)"
+  exit 1
+fi
+
+# pass arguments to entry point
+main "$@"

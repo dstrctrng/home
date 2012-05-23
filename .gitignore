@@ -21,7 +21,6 @@
 /Movies/
 /Music/
 /Pictures/
-/Public/
 /Sites/
 /Software/
 /VirtualBox VMs/
@@ -45,3 +44,4 @@
 /.zlogin
 /.zshrc
 /.rbenv-version
+/site/_site

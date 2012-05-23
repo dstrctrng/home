@@ -1,2 +1,2 @@
-haml_folder: **/*.haml
-sass_folder: **/*.sass
+destination: ../public
+pygments: true
