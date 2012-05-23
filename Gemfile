@@ -40,11 +40,7 @@ gem "alpha_omega"
 gem "rtfmd"
 gem "showoff"
 gem "rocco"
-
 gem "jekyll"
-gem "jekyll_ext"
-gem "haml"
-gem "sass"
 
 # servers
 gem "sinatra"
