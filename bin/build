@@ -30,7 +30,7 @@ function main {
 # build the site with jekyll
 function build_jekyll {
   cd $shome/site
-  bundle exec jekyll
+  BUNDLE_GEMFILE="$shome/.doc/Gemfile" bundle exec jekyll
 }
 
 # define command line options:
