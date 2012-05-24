@@ -3,11 +3,13 @@
 ~/bin/build site
 
 cd ~/site/_site
+git checkout -f gh-pages
 rsync -ia -O --delete --exclude .git --exclude generated generated/. .
 rm -rf generated
 git add .
 git add -u .
 git commit -m "re-gen site"
+git push origin gh-pages
 
 cd
 git add site/_site
