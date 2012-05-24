@@ -1,9 +1,14 @@
 #!/bin/bash -e
 
 ~/bin/build site
+
 cd ~/site/_site
-rsync -ia -O -n --delete --exclude .git --exclude generated generated/. .
+rsync -ia -O --delete --exclude .git --exclude generated generated/. .
 rm -rf generated
 git add .
 git add -u .
+git commit -m "re-gen site"
+
+cd
+git add site/_site
 git commit -m "re-gen site"
