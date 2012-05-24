@@ -15,7 +15,7 @@ def gem (nm_gem, opt_gem = {})
 end
 
 source :rubygems
-source "http://localhost:9292"
+source "http://localhost:9292" if ENV['local_gemserver']
 
 # language
 gem "ampex"

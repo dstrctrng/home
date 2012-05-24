@@ -1,0 +1,37 @@
+#!/bin/bash
+
+#/ NAME
+#/     local-gempush -- push a gem to a local gemhost
+#/
+#/ SYNOPSIS
+#/     local-gempush [gem...]
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a meat library
+source "$shome/bin/_prime" "$@"
+
+# entry point
+function main {
+  for pth_gem in "$@"; do
+   gem inabox -g http://localhost:9292 "$pth_gem"
+  done
+}
+
+# define command line options:
+#   var name, default, description, short option
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+if [[ "$#" = 0 ]]; then
+  logger_fatal "missing gem path(s)"
+  display_help
+  exit 1
+fi
+
+# pass arguments to entry point
+main "$@"
+
