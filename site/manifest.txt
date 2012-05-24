@@ -1,28 +1,26 @@
 filename                          layout
 --------------------------------- ---------------
-index.md                          homepage        
-  project/support.md              default         
-  project/about.md                default         
-  project/downloads.md            default         
-  project/license.md              default         
+guide/index.md                      guide 
+  guide/why.md                      guide 
+  guide/introduction.md             guide 
+  guide/setup.md                    guide 
 
-contribute/index.md               contribute      
-  contribute/code/index.md        contribute      
-  contribute/docs/index.md        contribute      
-    contribute/docs/code.md       contribute      
-    contribute/docs/run.md        contribute      
-    contribute/docs/update.md     contribute      
-    contribute/docs/contribute.md contribute      
+project/support.md                  default         
+project/about.md                    default         
+project/license.md                  default         
 
-docs/index.md                     docs   
-  docs/commands.md                docs   
-  docs/configfile.md              docs   
-  docs/plugins.md                 docs   
-  docs/debugging.md               docs   
-  docs/troubleshooting.md         docs   
+contribute/index.md                 contribute      
+  contribute/code.md                contribute      
+  contribute/docs.md                contribute      
+    contribute/docs_code.md         contribute      
+    contribute/docs_run.md          contribute      
+    contribute/docs_update.md       contribute      
+    contribute/docs_contribute.md   contribute      
 
-guide/index.md                    guide 
-  guide/why.md                    guide 
-  guide/introduction.md           guide 
-  guide/setup.md                  guide 
+docs/index.md                       docs   
+  docs/commands.md                  docs   
+  docs/configfile.md                docs   
+  docs/plugins.md                   docs   
+  docs/debugging.md                 docs   
+  docs/troubleshooting.md           docs   
 --------------------------------- ---------------

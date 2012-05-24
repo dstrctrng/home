@@ -1,0 +1,27 @@
+          </div>
+        </div>
+      </section>
+    </div>
+
+<<<<<<< HEAD
+    <footer>
+      <p>Project maintained by <a href="http://github.com/orderedlist">Steve Smith</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+      <p>Copyright <a href="../license.html">&copy;</a> 2009-2012. <a href="http://twitter.com/mitchellh">Mitchell Hashimoto</a> and <a href="http://nickelcode.com">John Bender</a>. Design by <a href="http://twitter.com/heyadam">Adam Debreczeni</a>.</p>
+    </footer>
+
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+=======
+    <div class="row Footer">
+      <div class="span12">
+        Based on the Vagrant documentation site:<br/>
+        Copyright <a href="../project/license.html">&copy;</a> 2009-2012. <a href="http://twitter.com/mitchellh">Mitchell Hashimoto</a> and <a href="http://nickelcode.com">John Bender</a>.<br/>
+        Design by <a href="http://twitter.com/heyadam">Adam Debreczeni</a>.
+      </div>
+    </div>
+  </div>
+</body>
+>>>>>>> fe40e117c1d026fd41ffd84b4e1464c921daf720
+</html>
+
