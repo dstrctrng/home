@@ -214,6 +214,7 @@ DEPENDENCIES
   interactive_editor
   jekyll
   microwave
+  net-ssh (~> 2.4.0)
   private_event
   rocco
   rtfmd

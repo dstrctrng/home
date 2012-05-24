@@ -52,4 +52,7 @@ gem "jekyll"
 gem "sinatra"
 gem "thin"
 
+# overrides
+gem "net-ssh", "~> 2.4.0" 
+
 # vim: set ft=ruby:
