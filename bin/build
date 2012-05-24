@@ -29,13 +29,13 @@ function main {
 
 # build a gem
 function build_gem {
-  pth_gemspec="$shome/chef/$FLAGS_name.gemspec"
+  pth_gemspec="$shome/$FLAGS_name.gemspec"
   if [[ ! -e "$pth_gemspec" ]]; then
     logger_fatal "could not find gemspec $pth_gemspec"
     exit 1
   fi
 
-  cd "$shome/chef"
+  cd "$shome"
   gem build "$pth_gemspec"
   for gem in $(find . -name "$FLAGS_name-*.gem"); do
     mv "$gem" ../
