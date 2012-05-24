@@ -14,9 +14,7 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
-  for pth_gem in "$@"; do
-   gem inabox -g http://localhost:9292 "$pth_gem"
-  done
+  gem inabox -g http://localhost:9292 "$@"
 }
 
 # define command line options:
