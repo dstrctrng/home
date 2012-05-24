@@ -1,5 +1,6 @@
 GEM
   remote: http://rubygems.org/
+  remote: http://localhost:9292/
   specs:
     80ae2fe5c929b7d0a00bdee2d710fa9e (0.0.1)
       bosonson
@@ -92,7 +93,7 @@ GEM
     marathon (0.0.3)
     maruku (0.6.0)
       syntax (>= 1.0.0)
-    microwave (0.1006.23)
+    microwave (0.1006.24)
       erubis
       fast_xs
       hike
