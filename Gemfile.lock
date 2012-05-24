@@ -17,7 +17,7 @@ GEM
     albino (1.3.3)
       posix-spawn (>= 0.3.6)
     alias (0.2.3)
-    alpha_omega (0.0.190)
+    alpha_omega (0.0.191)
       HeSYINUvSBZfxqA-capistrano
       HeSYINUvSBZfxqA-capistrano_colors
       HeSYINUvSBZfxqA-capistrano_log
@@ -93,7 +93,7 @@ GEM
     marathon (0.0.3)
     maruku (0.6.0)
       syntax (>= 1.0.0)
-    microwave (0.1006.24)
+    microwave (0.1006.25)
       erubis
       fast_xs
       hike
