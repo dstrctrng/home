@@ -44,13 +44,6 @@ gem "alpha_omega"
 
 # documentation
 gem "rtfmd"
-gem "showoff"
-gem "rocco"
-gem "jekyll"
-
-# servers
-gem "sinatra"
-gem "thin"
 
 # overrides
 gem "net-ssh", "~> 2.4.0" 
