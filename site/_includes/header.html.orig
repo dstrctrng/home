@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<title>Vagrant - {{ page.title }}</title>
+
+    <link rel="stylesheet" href="../static/stylesheets/styles.css">
+    <link rel="stylesheet" href=../static/"stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+		<link rel="icon" type="image/png" href="../static/images/favicon.png" />
+		<meta name="description" content="Create and manage virtualized development environments." />
+
+		<link rel="stylesheet" href="../static/css/bootstrap.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../static/css/syntax.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../static/css/vagrant.base.css" type="text/css" media="screen" />
+</head>
+<body>
+<<<<<<< HEAD
+    <div class="wrapper"><div class="container">
+      <header>
+				<h1><a href="../project/index.html">Modernist</a></h1>
+        <p>A Theme for GitHub Pages</p>
+        <p class="view"><a href="http://github.com/orderedlist/modernist">View the Project on GitHub <small>orderedlist/modernist</small></a></p>
+        <ul>
+					<li><a href="../project/index.html">home</a></li>
+					<li><a href="../guide/index.html">get started</a></li>
+					<li><a href="../docs/index.html">documentation</a></li>
+					<li><a href="../project/support.html">support</a></li>
+					<li><a href="../project/about.html">about</a></li>
+					<li><a href="../contribute/index.html">contribute</a></li>
+        </ul>
+      </header>
+      <section>
+        <div class="row">
+          <div class="span12">
+=======
+	<div class="container">
+		<div class="row Header{% if page.layout != 'homepage' %} with-border{% endif %}">
+			<div class="span3 Module logo">
+				<h1><a href="../guide/index.html">Vagrant</a></h1>
+			</div>
+			<div class="span9">
+				<div class="Module navigation">
+					<ul>
+						<li><a href="../guide/index.html">get started</a></li>
+						<li><a href="../docs/index.html">documentation</a></li>
+						<li><a href="../project/support.html">support</a></li>
+						<li><a href="../project/about.html">about</a></li>
+						<li><a href="../contribute/index.html">contribute</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+>>>>>>> fe40e117c1d026fd41ffd84b4e1464c921daf720
