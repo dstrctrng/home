@@ -4,7 +4,7 @@
 #/     build -- upload the latest (timestamp) rubygem to rubygems.org
 #/
 #/ SYNOPSIS
-#/     build -n gem_name
+#/     build gem -n gem_name
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
@@ -14,19 +14,46 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
-  pth_gemspec="$shome/$FLAGS_name.gemspec"
+  nm_component="$1"; shift
+
+  case "$nm_component" in 
+    gem)
+      build_gem "$@"
+      ;;
+    *)
+      logger_fatal "don't know how to build ${nm_component}"
+      exit 1
+      ;;
+  esac
+}
+
+# build a gem
+function build_gem {
+  pth_gemspec="$shome/chef/$FLAGS_name.gemspec"
   if [[ ! -e "$pth_gemspec" ]]; then
     logger_fatal "could not find gemspec $pth_gemspec"
     exit 1
   fi
 
+  cd "$shome/chef"
   gem build "$pth_gemspec"
+  for gem in $(find . -name "$FLAGS_name-*.gem"); do
+    mv "$gem" ../
+  done
 }
 
-# parse the command-line
+# define command line options:
+#   var name, default, description, short option
 DEFINE_string 'name' "$(basename "$shome")" 'name of gem' 'n'
+
+# parse the command-line
 parse_command_line "$@" || exit $?
 eval set -- "${FLAGS_ARGV}"
+
+if [[ "$#" < 1 ]]; then
+  logger_fatal "missing component"
+  exit 1
+fi
 
 # pass arguments to entry point
 main "$@"
