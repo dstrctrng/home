@@ -1,5 +1,6 @@
 GEM
   remote: http://rubygems.org/
+  remote: http://localhost:9292/
   specs:
     80ae2fe5c929b7d0a00bdee2d710fa9e (0.0.1)
       bosonson
@@ -25,40 +26,54 @@ GEM
       surface
     ampex (2.0.0)
       blankslate
+    arr-pm (0.0.7)
+      cabin (> 0)
     awesome_print (1.0.2)
+    backports (2.3.0)
     blankslate (2.1.2.4)
     bluecloth (2.2.0)
     bosonson (0.304.3)
       alias (>= 0.2.2)
       hirb (>= 0.5.0)
     builder (3.0.0)
+    cabin (0.4.4)
+      json
+    clamp (0.4.0)
     classifier (1.3.3)
       fast-stemmer (>= 1.0.0)
-    daemons (1.1.5)
+    daemons (1.1.8)
     deep_merge (1.0.0)
     diff-lcs (1.1.3)
     directory_watcher (1.4.1)
     erubis (2.7.0)
     eventmachine (0.12.10)
-    excon (0.9.4)
+    excon (0.13.4)
     fast-stemmer (1.0.1)
     fast_xs (0.8.0)
     ffi (1.0.11)
-    fog (1.1.2)
+    fog (1.3.1)
       builder
-      excon (~> 0.9.0)
+      excon (~> 0.13.0)
       formatador (~> 0.2.0)
       mime-types
-      multi_json (~> 1.0.3)
+      multi_json (~> 1.0)
       net-scp (~> 1.0.4)
       net-ssh (>= 2.1.3)
       nokogiri (~> 1.5.0)
       ruby-hmac
-    formatador (0.2.1)
-    fpm (0.3.11)
+    formatador (0.2.3)
+    fpm (0.4.6)
+      arr-pm (~> 0.0.7)
+      backports (= 2.3.0)
+      cabin (~> 0.4.3)
+      clamp
       json
-    github-markup (0.7.1)
-    gli (1.5.1)
+    geminabox (0.6.1)
+      builder
+      httpclient
+      sinatra
+    github-markup (0.7.2)
+    gli (1.6.0)
     grit (2.4.1)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
@@ -66,6 +81,7 @@ GEM
     hike (1.2.1)
     hirb (0.6.2)
     hpricot (0.8.6)
+    httpclient (2.2.5)
     interactive_editor (0.0.10)
       spoon (>= 0.0.1)
     jekyll (0.11.2)
@@ -99,13 +115,13 @@ GEM
     mixlib-config (1.1.2)
     mixlib-log (1.3.0)
     moneta (0.6.0)
-    multi_json (1.0.4)
+    multi_json (1.3.5)
     mustache (0.99.4)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.4.0)
+    net-ssh (2.5.1)
       jruby-pageant (>= 1.0.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
@@ -118,7 +134,7 @@ GEM
       fpm
       sinatra
       surface
-    pygments.rb (0.2.7)
+    pygments.rb (0.2.12)
       rubypython (~> 0.5.3)
     rack (1.4.1)
     rack-protection (1.2.0)
@@ -126,7 +142,7 @@ GEM
     rdiscount (1.6.8)
     rdoc (3.12)
       json (~> 1.4)
-    redcarpet (2.1.0)
+    redcarpet (2.1.1)
     rocco (0.8.2)
       mustache
       redcarpet
@@ -200,6 +216,7 @@ DEPENDENCIES
   ampex
   awesome_print
   bosonson
+  geminabox
   interactive_editor
   jekyll
   microwave
