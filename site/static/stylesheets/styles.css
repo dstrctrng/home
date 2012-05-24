@@ -18,7 +18,7 @@ body {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg==') fixed;
 }
 
-.wrapper2 {
+.pagewrapper {
   width:1080px;
   margin:0 auto;
 }
@@ -58,7 +58,7 @@ strong {
   font-weight: 700;
 }
 
-header2 {
+sidebar {
   width:270px;
   float:left;
   position:fixed;
@@ -66,7 +66,7 @@ header2 {
   color: #ccc;
 }
 
-header2 a {
+sidebar a {
   color: #fff;
   font-weight: bold;
 }
@@ -333,7 +333,7 @@ footer p + p {
 }
 
 @media print, screen and (max-width: 740px) {
-  div.wrapper2 {
+  div.pagewrapper {
     width:auto;
     margin:0;
   }
