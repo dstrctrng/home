@@ -26,7 +26,6 @@ function main {
   done
 
   bundle --local --quiet &&  bundle check
-  export local_gemserver=1
   echo "entering sub-shell for local gem development"
   bash -l || true
   for nm_gem in "$@"; do
