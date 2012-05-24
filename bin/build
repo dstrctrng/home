@@ -37,9 +37,6 @@ function build_gem {
 
   cd "$shome"
   gem build "$pth_gemspec"
-  for gem in $(find . -name "$FLAGS_name-*.gem"); do
-    mv "$gem" ../
-  done
 }
 
 # define command line options:
