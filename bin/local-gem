@@ -22,10 +22,12 @@ function main {
       exit 1
     fi
     export "local_${nm_gem}"=1
+    echo "enabling local gem development on ${nm_gem}"
   done
 
   bundle --local --quiet &&  bundle check
   export local_gemserver=1
+  echo "entering sub-shell for local gem development"
   bash -l || true
   for nm_gem in "$@"; do
     unset "local_${nm_gem}"
@@ -44,12 +46,6 @@ function main {
 # parse the command-line
 parse_command_line "$@" || exit $?
 eval set -- "${FLAGS_ARGV}"
-
-if [[ "$#" = 0 ]]; then
-  logger_fatal "missing gem name"
-  display_help
-  exit 1
-fi
 
 # pass arguments to entry point
 main "$@"
