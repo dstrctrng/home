@@ -35,7 +35,7 @@ function main {
   done
   bundle --local --quiet && bundle check > /dev/null
   if [[ "$#" > 0 ]]; then
-    bundle update --quiet "$@"
+    bundle update "$@"
   fi
   git add Gemfile.lock vendor/cache
   git add -u vendor/cache
