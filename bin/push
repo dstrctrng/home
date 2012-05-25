@@ -28,7 +28,7 @@ function main {
       ;;
     *)
       if [[ "$FLAGS_private" = "$FLAGS_TRUE" ]]; then
-        push_gem_private "$@"
+        push_gem_private "$1" "$@"
       else
         fatal_logger "must specify --private to push to a private repository"
       fi
