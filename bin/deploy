@@ -22,6 +22,8 @@
 #/         [any_task]
 #/     compare
 #/
+#/     repl [host]
+#/
 #/     check
 #/     plan
 #/
@@ -35,7 +37,9 @@
 #/     debug
 #/
 #/     lock
+#/         compare|migrate
 #/     unlock
+#/         compare|migrate
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
@@ -45,10 +49,9 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
-  unset BUNDLE_GEMFILE
+  export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
 
   bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-
   exec bundle exec alpha_omega $(basename $0) "$@"
 }
 
