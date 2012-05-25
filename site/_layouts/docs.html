@@ -1,0 +1,20 @@
+{% include header.html %}
+
+<sidebar>
+<ul>
+  <li><a href="../doc/index.html">Overview</a></li>
+  <li><a href="../doc/commands.html">Commands</a></li>
+  <li><a href="../doc/configfile.html">Configfile</a></li>
+  <li><a href="../doc/plugins.html">Plugins</a></li>
+  <li><a href="../doc/debugging.html">Debugging</a></li>
+  <li><a href="../doc/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</sidebar>
+
+{% include topbar.html %}
+
+<section>
+  {{ content }}
+</section>
+
+{% include footer.html %}

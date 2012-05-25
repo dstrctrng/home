@@ -2,6 +2,10 @@
 layout: default
 title: License
 ---
+Structure derived from the Vagrant documentation website:
+
+    http://vagrantup.com
+
 # The MIT License
 
 Based on the Vagrant documentation site: Copyright (c) 2009-2012
