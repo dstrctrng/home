@@ -330,6 +330,7 @@ footer p {
 }
 footer p + p {
   float: right;
+  text-align: right;
 }
 
 @media print, screen and (max-width: 740px) {
