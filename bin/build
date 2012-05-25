@@ -35,10 +35,8 @@ function main {
 function build_jekyll {
   export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
 
-  cd $shome/.doc
-  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-
   cd $shome/site
+  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
   bundle exec jekyll
 }
 
