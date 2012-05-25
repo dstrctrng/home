@@ -1,4 +1,4 @@
 ---
-layout: guide
-title: Getting Started
+layout: demo
+title: Portfolio
 ---
