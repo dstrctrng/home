@@ -69,7 +69,6 @@ PLATFORMS
 DEPENDENCIES
   80ae2fe5c929b7d0a00bdee2d710fa9e
   awesome_print
-  bosonson
   interactive_editor
   microwave
   tvd-bundler

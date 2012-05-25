@@ -20,7 +20,6 @@ source "http://localhost:9292"
 # irb
 gem "wirble"
 gem "interactive_editor"
-gem "bosonson"
 gem "awesome_print"
 
 # configuration
