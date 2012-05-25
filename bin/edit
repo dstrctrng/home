@@ -39,6 +39,7 @@ function main {
   fi
   git add Gemfile.lock vendor/cache
   git add -u vendor/cache
+  git diff --no-ext-diff --cached
   git status -s
 }
 
