@@ -1,14 +1,4 @@
 ---
 layout: default
-title: About XXX
-current: About
+title: David Nghiem resume
 ---
-# About XXX
-
-What is XXX
-
-Give some history
-
-Where is it now
-
-Where is it going
