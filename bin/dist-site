@@ -9,7 +9,7 @@ rm -rf generated
 git add .
 git add -u .
 git commit -m "re-gen site"
-git push origin HEAD:gh-pages
+git push origin HEAD:master
 
 cd
 git add site/_site
