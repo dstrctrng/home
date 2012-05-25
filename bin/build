@@ -33,8 +33,13 @@ function main {
 
 # build the site with jekyll
 function build_jekyll {
+  export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
+
+  cd $shome/.doc
+  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
+
   cd $shome/site
-  BUNDLE_GEMFILE="$shome/.doc/Gemfile" bundle exec jekyll
+  bundle exec jekyll
 }
 
 # define command line options:
