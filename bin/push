@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#/ NAME
+#/     push -- push a gem to a local or remote rubygems or geminabox repository
+#/
+#/ SYNOPSIS
+#/     push
+#/     push [--local|--private|--public] [gem...]
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a meat library
+source "$shome/bin/_prime" "$@"
+
+# entry point
+function main {
+  if [[ "$FLAGS_private" = "$FLAGS_TRUE" ]]; then
+    push_gem_private "$@"
+  fi
+}
+
+# push a gem locally 
+function push_gem_private {
+  gem inabox -g http://localhost:9292 "$@"
+}
+
+# define command line options:
+#   var name, default, description, short option
+DEFINE_boolean "private" "$FLAGS_TRUE" "push to a local, private geminabox"
+DEFINE_boolean "shared" "$FLAGS_FALSE" "push to a shared, private geminabox"
+DEFINE_boolean "public" "$FLAGS_FALSE" "push to rubygems.org"
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+if [[ "$#" < 1 ]]; then
+  logger_fatal "missing gem(s)"
+  exit 1
+fi
+
+# pass arguments to entry point
+main "$@"
