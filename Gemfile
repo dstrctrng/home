@@ -17,19 +17,11 @@ end
 source :rubygems
 source "http://localhost:9292"
 
-# language
-gem "ampex"
-
 # irb
 gem "wirble"
 gem "interactive_editor"
 gem "bosonson"
 gem "awesome_print"
-
-# packaging
-gem "80ae2fe5c929b7d0a00bdee2d710fa9e"
-gem "private_event"
-gem "sous"
 
 # configuration
 gem "microwave"
@@ -39,13 +31,7 @@ gem "tvd-rubygems"
 gem "tvd-ssh"
 gem "tvd-dmg"
 
-# deploy
-gem "alpha_omega"
-
-# documentation
-gem "rtfmd"
-
-# overrides
-gem "net-ssh", "~> 2.4.0" 
+# secrets
+gem "80ae2fe5c929b7d0a00bdee2d710fa9e"
 
 # vim: set ft=ruby:
