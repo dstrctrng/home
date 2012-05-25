@@ -15,10 +15,9 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
-  unset BUNDLE_GEMFILE
+  export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
 
   bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-
   exec bundle exec alpha_omega $(basename $0) "$@"
 }
 

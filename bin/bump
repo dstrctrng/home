@@ -18,6 +18,7 @@ require 'bump'
 
 # entry point
 function main {
+  export GEMFILE="$some/.deploy/Gemfile"
   bump_version "$FLAGS_dirty" "$@"
 }
 

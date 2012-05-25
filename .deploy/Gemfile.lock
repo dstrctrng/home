@@ -1,0 +1,75 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    HeSYINUvSBZfxqA-capistrano (2.5.28)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
+    HeSYINUvSBZfxqA-capistrano_colors (0.5.5)
+    HeSYINUvSBZfxqA-capistrano_log (0.0.2)
+      HeSYINUvSBZfxqA-capistrano (>= 2.5.14)
+    alpha_omega (0.0.189)
+      HeSYINUvSBZfxqA-capistrano
+      HeSYINUvSBZfxqA-capistrano_colors
+      HeSYINUvSBZfxqA-capistrano_log
+      deep_merge
+      grit
+      surface
+    deep_merge (1.0.0)
+    diff-lcs (1.1.3)
+    erubis (2.7.0)
+    fast_xs (0.8.0)
+    grit (2.5.0)
+      diff-lcs (~> 1.1)
+      mime-types (~> 1.15)
+      posix-spawn (~> 0.3.6)
+    highline (1.6.12)
+    hike (1.2.1)
+    jruby-pageant (1.0.2)
+    json (1.5.4)
+    marathon (0.0.3)
+    microwave (0.1006.22)
+      erubis
+      fast_xs
+      hike
+      json (>= 1.4.4, <= 1.5.4)
+      mixlib-cli (>= 1.1.0)
+      mixlib-config (>= 1.1.2)
+      mixlib-log (>= 1.3.0)
+      moneta
+      sdoc
+      surface
+      uuidtools
+    mime-types (1.18)
+    mixlib-cli (1.2.2)
+    mixlib-config (1.1.2)
+    mixlib-log (1.3.0)
+    moneta (0.6.0)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.4.0)
+      jruby-pageant (>= 1.0.2)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
+    posix-spawn (0.3.6)
+    rdoc (3.12)
+      json (~> 1.4)
+    sdoc (0.3.16)
+      json (>= 1.1.3)
+      rdoc (~> 3.10)
+    surface (0.0.5)
+      marathon
+    uuidtools (2.1.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  alpha_omega
+  json
+  microwave
+  net-ssh (~> 2.4.0)

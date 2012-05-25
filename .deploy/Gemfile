@@ -1,0 +1,6 @@
+source :rubygems
+
+gem "net-ssh", "~> 2.4.0"
+gem "json"
+gem "microwave"
+gem "alpha_omega"
