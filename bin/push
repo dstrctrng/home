@@ -63,18 +63,17 @@ function push_gem {
 # push site to github
 function push_site {
   cd "$shome/site/_site"
-  rsync -ia -O --delete --exclude .git --exclude generated generated/. .
-  rm -rf generated
-
   git add .
   git add -u .
-  git commit -m "re-gen site"
-  git push origin HEAD:master
+  if git commit -m "re-gen site"; then
+    git push origin HEAD:master
+  fi
 
   cd
   git add site/_site
-  git commit -m "re-gen site"
-  git push
+  if git commit -m "re-gen site"; then
+    git push
+  fi
 }
 
 # define command line options:
