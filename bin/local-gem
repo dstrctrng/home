@@ -25,13 +25,15 @@ function main {
     echo "enabling local gem development on ${nm_gem}"
   done
 
-  bundle --local --quiet && bundle check
+  bundle --local --quiet && bundle check > /dev/null
+  git status -s
   echo "entering sub-shell for local gem development"
   bash -l || true
+
   for nm_gem in "$@"; do
     unset "local_${nm_gem}"
   done
-  bundle --local --quiet && bundle check
+  bundle --local --quiet && bundle check > /dev/null
   if [[ "$#" > 0 ]]; then
     bundle update --quiet "$@"
   fi
