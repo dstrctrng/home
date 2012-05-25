@@ -2,6 +2,17 @@
 layout: posts
 title: I am a mushroom
 ---
+## changing a git submodule
+### Fri May 25 11:38:41 PDT 2012
+
+To change a git submodule's backing repository, you have four places to
+look:
+
+  * .gitmodules
+  * .git/config
+  * the submodule destination
+  * the submodule's repository in .git/modules/
+
 ## doc-helper git mix-in
 ### Thu May 24 23:31:23 PDT 2012
 
