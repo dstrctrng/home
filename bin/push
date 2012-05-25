@@ -2,10 +2,12 @@
 
 #/ NAME
 #/     push -- push a gem to a local, remote rubygems,geminabox repository
+#/          -- push a site to github pages
 #/
 #/ SYNOPSIS
 #/     push --public gem
 #/     push [--local|--private|--public] [gem...]
+#/     push site
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
@@ -53,6 +55,23 @@ function push_gem {
   fi
 
   gem push "$latest_gem"
+}
+
+# push site to github
+function push_site {
+  cd "$shome/site/_site"
+  rsync -ia -O --delete --exclude .git --exclude generated generated/. .
+  rm -rf generated
+
+  git add .
+  git add -u .
+  git commit -m "re-gen site"
+  git push origin HEAD:master
+
+  cd
+  git add site/_site
+  git commit -m "re-gen site"
+  git push
 }
 
 # define command line options:
