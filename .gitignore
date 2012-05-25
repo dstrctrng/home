@@ -46,3 +46,4 @@
 /.zlogin
 /.zshrc
 /.rbenv-version
+/.deploy/defn
