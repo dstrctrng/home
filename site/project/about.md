@@ -1,4 +1,4 @@
 ---
 layout: default
-title: David Nghiem resume
+title: Resume
 ---

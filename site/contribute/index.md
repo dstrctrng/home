@@ -1,4 +1,4 @@
 ---
-layout: guide
-title: Getting Started
+layout: contribute
+title: Contribute to XXX
 ---
