@@ -39,13 +39,13 @@ function main {
 function build_site {
   export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
 
-  cd "$shome/site/_site"
-  rsync -ia -O --delete --exclude .git --exclude generated generated/. .
-  rm -rf generated
-
   cd "$shome/site"
   bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
   bundle exec jekyll
+
+  cd "$shome/site/_site"
+  rsync -ia -O --delete --exclude .git --exclude generated generated/. .
+  rm -rf generated
 }
 
 # build a gem
