@@ -29,7 +29,7 @@ function main {
 
 # run geminabox
 function server_gem {
-  rackup "$shome/config/config.ru"
+  exec rackup "$shome/config/config.ru"
 }
 
 # define command line options:
