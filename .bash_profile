@@ -7,7 +7,6 @@ require 'macports'
 require 'virtualbox'
 
 require 'vim'
-require 'rvm'
 require 'hubflow'
 
 require 'git'
@@ -17,4 +16,5 @@ require 'xmonad'
 require 'cue'
 source $HOME/.bashrc
 
+require 'rvm'
 rvm ree
