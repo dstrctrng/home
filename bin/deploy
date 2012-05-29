@@ -52,8 +52,16 @@ function main {
   export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
 
   bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
+
+  if [[ -n "$FLAGS_gateway" ]]; then
+    export GATEWAY="$FLAGS_gateway"
+  fi
   exec bundle exec alpha_omega $(basename $0) "$@"
 }
+
+# define command line options:
+#   var name, default, description, short option
+DEFINE_string "gateway" "" "deploy gateway host" "g"
 
 # parse the command-line
 parse_command_line "$@" || exit $?
