@@ -7,8 +7,8 @@
 [submodule "macports"]
   path = .macports
   url = https://raw.github.com/HeSYINUvSBZfxqA/macports
-[submodule "virtualbox"]
-	path = .virtualbox
+[submodule "ubuntu"]
+	path = .ubuntu
 	url = https://github.com/HeSYINUvSBZfxqA/ubuntu
 [submodule "hubflow"]
 	path = .hubflow
