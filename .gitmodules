@@ -4,9 +4,6 @@
 [submodule "junas"]
   path = .junas
   url = https://raw.github.com/HeSYINUvSBZfxqA/junas
-[submodule "macports"]
-  path = .macports
-  url = https://raw.github.com/HeSYINUvSBZfxqA/macports
 [submodule "hubflow"]
 	path = .hubflow
 	url = https://github.com/HeSYINUvSBZfxqA/hubflow
