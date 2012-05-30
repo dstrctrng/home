@@ -1,13 +1,19 @@
 set -x
+
 sudo bin/osx-useradd zendesk 502
 sudo bin/osx-useradd buddhy 503
+
 sudo rsync -ia vault/. ~zendesk/vault/
+
 sudo su - zendesk -c "git clone https://github.com/HeSYINUvSBZfxqA/macports .macports"
+sudo su - zendesk -c "ln -nfs ../vault ~zendesk/.macports/"
+
 sudo su - zendesk -c "git clone https://github.com/HeSYINUvSBZfxqA/ubuntu .ubuntu"
+sudo su - zendesk -c "ln -nfs ../vault ~zendesk/.ubuntu/"
+sudo su - zendesk -c "ln -nfs vault/macports/software_zendesk ~zendesk/.macports/software"
+
 sudo ln -nfs ~zendesk/.macports /opt
-sudo ln -nfs ../vault ~zendesk/.macports/
-sudo ln -nfs ../vault ~zendesk/.ubuntu/
-sudo ln -nfs vault/macports/software_zendesk  ~zendesk/.macports/software
+
 sudo su - zendesk -c "cd .macports && bin/setup macports"
 sudo su - zendesk -c "cd .macports && bin/build macports"
 sudo su - zendesk -c "cd .macports && bin/build ports"
