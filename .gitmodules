@@ -16,3 +16,6 @@
 [submodule "site/_site"]
 	path = site/_site
 	url = https://github.com/HeSYINUvSBZfxqA/hesyinuvsbzfxqa.github.com
+[submodule ".rbenv"]
+	path = .rbenv
+	url = https://github.com/git@github.com:HeSYINUvSBZfxqA/rbenv.git
