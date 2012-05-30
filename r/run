@@ -1,6 +1,0 @@
-#!/usr/bin/env ruby-local-exec
-
-require 'rubygems'
-require 'bundler/setup'
-require 'json'
-puts RUBY_VERSION
