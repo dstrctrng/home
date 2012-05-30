@@ -11,15 +11,6 @@ else
 fi
 
 unset gem
-elif [[ -f "$HOME/.rvm/scripts/rvm" ]]; then
-  source $HOME/.rvm/scripts/rvm
-else
-  function rvm {
-    true
-  }
-fi
-
-unset gem
 
 function irb {
   if pushd ./$(\git rev-parse --show-cdup) > /dev/null; then
