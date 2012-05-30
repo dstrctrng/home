@@ -19,3 +19,4 @@ source $HOME/.bashrc
 
 require 'rvm'
 rvm ree
+require 'rbenv'
