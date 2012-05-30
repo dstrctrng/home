@@ -47,3 +47,4 @@
 /.zshrc
 /.rbenv-version
 /.deploy/defn
+/.rvm
