@@ -4,6 +4,7 @@ shome="$HOME"
 source "$shome/bin/_meat"
 
 if [[ -f /opt/.profile ]]; then
+  unset MACPORTS_ROOT
   source /opt/.profile
 fi
 
@@ -11,7 +12,6 @@ require 'vim'
 require 'hubflow'
 
 require 'git'
-require 'shocco'
 require 'xmonad'
 
 require 'cue'
