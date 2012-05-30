@@ -5,7 +5,7 @@ source "$shome/bin/_meat"
 
 export MACPORTS_ROOT="$HOME/.macports"
 require 'macports'
-require 'virtualbox'
+require 'ubuntu'
 
 require 'vim'
 require 'hubflow'
