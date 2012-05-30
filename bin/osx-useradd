@@ -1,0 +1,13 @@
+#!/bin/bash
+
+nm_user=$1; shift
+id_user=$1; shift
+pth_user="/Users/$nm_user"
+
+dscl . -create $pth_user
+dscl . -create $pth_user UserShell /bin/bash
+dscl . -create $pth_user UniqueID $id_user
+dscl . -create $pth_user PrimaryGroupID 20 # staff
+mkdir -p /Users/$nm_user
+chown $nm_user:staff /Users/$nm_user
+id -a $nm_user
