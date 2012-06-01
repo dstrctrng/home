@@ -50,3 +50,4 @@
 /.rbenv-version
 /.deploy/defn
 /.rvm
+/.mysql_history
