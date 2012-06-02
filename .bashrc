@@ -9,8 +9,7 @@ function reload {
 
 function update {
   pushd ~ > /dev/null
-  git pull origin master
-  git submodule update --init --recursive
+  git update origin master
   bundle --local
   git push -u origin HEAD:master
   reload
