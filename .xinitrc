@@ -13,4 +13,6 @@ xset r rate 250 60
 #xv -root -quit -maxpect ~/Dropbox/images/repetition_by_ryohei_hase-d4s74gg.jpg
 
 echo $DISPLAY > ~/.display
+terminal &
+terminal &
 exec xmonad
