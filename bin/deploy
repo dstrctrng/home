@@ -49,14 +49,19 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
-  export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
+  local nm_component="$1"; shift
+  case "$nm_component" in 
+    *)
+      export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
 
-  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
+      bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
 
-  if [[ -n "$FLAGS_gateway" ]]; then
-    export GATEWAY="$FLAGS_gateway"
-  fi
-  exec bundle exec alpha_omega $(basename $0) "$@"
+      if [[ -n "$FLAGS_gateway" ]]; then
+        export GATEWAY="$FLAGS_gateway"
+      fi
+      exec bundle exec alpha_omega $(basename $0) "$nm_component" "$@"
+      ;;
+  esac
 }
 
 # define command line options:
@@ -69,3 +74,5 @@ eval set -- "${FLAGS_ARGV}"
 
 # pass arguments to entry point
 main "$@"
+
+
