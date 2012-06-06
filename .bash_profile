@@ -1,22 +1,20 @@
-PATH='/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin'
+# initialize PATH to something sane
+PATH='/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
 
+# load shell meat
 shome="$HOME"
 source "$shome/bin/_meat"
 
-if [[ -f /opt/.profile ]]; then
-  unset MACPORTS_ROOT
-  source /opt/.profile
-fi
+# let pancake initialize its components
+eval "$(~/.getting-started/bin/pancake init)"
 
+# personal libraries
 require 'vim'
-require 'hubflow'
-
 require 'git'
 require 'xmonad'
 
+# TODO HACK 
 require 'cue'
-source $HOME/.bashrc
 
-require 'rvm'
-rvm default
-require 'rbenv'
+# sub-shell initialization
+source $HOME/.bashrc

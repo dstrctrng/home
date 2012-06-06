@@ -13,3 +13,6 @@
 [submodule ".rbenv"]
 	path = .rbenv
 	url = https://github.com/HeSYINUvSBZfxqA/rbenv.git
+[submodule ".getting-started"]
+	path = .getting-started
+	url = https://github.com/HeSYINUvSBZfxqA/getting-started
