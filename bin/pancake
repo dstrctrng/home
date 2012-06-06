@@ -25,12 +25,20 @@ function main {
   local nm_component="$1"; shift
 
   case "$nm_component" in
+    init)
+      cat <<EOF
+      source /opt/.profile;
+      pushd ~ > /dev/null;
+      source .hubflow/.profile;
+      set +u;
+      if [[ -d .rvm ]]; then source .rvm/scripts/rvm; rvm default; fi;
+      set -u;
+      source .rbenv/.profile;
+      popd > /dev/null;
+EOF
+      ;;
     shell)
-      source /opt/.profile
-      pushd "$HOME" > /dev/null
-      source .rbenv/.profile
-      source .hubflow/.profile
-      popd > /dev/null
+      eval $($0 init)
       bash
       ;;
     user)
