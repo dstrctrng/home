@@ -18,5 +18,5 @@ require 'cue'
 source $HOME/.bashrc
 
 require 'rvm'
-rvm ree
+rvm default
 require 'rbenv'
