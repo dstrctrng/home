@@ -1,0 +1,59 @@
+#!/bin/bash
+
+#/ NAME
+#/     pancake -- central script for setting up os x with pancake
+#/
+#/ SYNOPSIS
+#/     
+#/     pancake user [name]
+#/     pancake build [component]
+#/     pancake shell
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a meat library
+source "$shome/bin/_prime" "$@"
+
+# entry point
+function main {
+  if [[ "$#" < 1 ]]; then
+    logger_fatal "missing pancake subcommand"
+    exit 1
+  fi
+
+  local nm_component="$1"; shift
+
+  case "$nm_component" in
+    shell)
+      source /opt/.profile
+      pushd "$HOME" > /dev/null
+      source .rbenv/.profile
+      source .hubflow/.profile
+      popd > /dev/null
+      bash
+      ;;
+    user)
+      cd "$HOME/.getting-started"
+      bin/setup "$@"
+      ;;
+    build)
+      cd "$HOME/.getting-started"
+      bin/build "$@"
+      ;;
+    *)
+      logger_fatal "not a pancake subcommand: $nm_component"
+      exit 1
+      ;;
+  esac
+}
+
+# define command line options:
+#   var name, default, description, short option
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+# pass arguments to entry point
+main "$@"
