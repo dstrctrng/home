@@ -1,24 +1,8 @@
 #!/bin/bash
 
-#/ NAME
-#/     pancake -- central script for setting up os x with pancake
-#/
-#/ SYNOPSIS
-#/     
-#/     pancake user [name]
-#/     pancake build [component]
-#/     pancake shell
-
-# figure out the project root under which bin, lib live
-shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
-
-# load a meat library
-source "$shome/bin/_prime" "$@"
-
-# entry point
 function main {
   if [[ "$#" < 1 ]]; then
-    logger_fatal "missing pancake subcommand"
+    echo "missing pancake subcommand"
     exit 1
   fi
 
@@ -27,19 +11,21 @@ function main {
   case "$nm_component" in
     init)
       cat <<EOF
-      source /opt/.profile;
+      [[ -f /opt/.profile ]] && source /opt/.profile;
       pushd ~ > /dev/null;
-      source .hubflow/.profile;
-      set +u;
-      if [[ -d .rvm ]]; then source .rvm/scripts/rvm; rvm default; fi;
-      set -u;
-      source .rbenv/.profile;
+      [[ -f .hubflow/.profile ]] && source .hubflow/.profile;
+      [[ -d .rvm ]] && { source .rvm/scripts/rvm; rvm default; };
+      [[ -f .rbenv/.profile ]] && source .rbenv/.profile;
       popd > /dev/null;
 EOF
       ;;
     shell)
       eval $($0 init)
-      bash
+      if [[ -f ~/.cue/.profile ]]; then
+        exec bash --init-file ~/.cue/.profile -i
+      else
+        exec bash -i
+      fi
       ;;
     user)
       cd "$HOME/.getting-started"
@@ -50,18 +36,11 @@ EOF
       bin/build "$@"
       ;;
     *)
-      logger_fatal "not a pancake subcommand: $nm_component"
+      echo "not a pancake subcommand: $nm_component"
       exit 1
       ;;
   esac
 }
-
-# define command line options:
-#   var name, default, description, short option
-
-# parse the command-line
-parse_command_line "$@" || exit $?
-eval set -- "${FLAGS_ARGV}"
 
 # pass arguments to entry point
 main "$@"
