@@ -5,16 +5,10 @@ PATH='/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
 shome="$HOME"
 source "$shome/bin/_meat"
 
-# let pancake initialize its components
-eval "$(~/.getting-started/bin/pancake init)"
+# sub-shell init with pancake
+source $HOME/.bashrc
 
 # personal libraries
 require 'vim'
 require 'git'
 require 'xmonad'
-
-# TODO HACK 
-require 'cue'
-
-# sub-shell initialization
-source $HOME/.bashrc

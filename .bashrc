@@ -16,3 +16,6 @@ function update {
   reload
   popd ~ > /dev/null
 }
+
+# let pancake initialize its components
+eval "$(~/.getting-started/bin/pancake init)"
