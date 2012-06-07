@@ -1,6 +1,4 @@
-set bell-style none
-set +H
-
+# support functions
 function reload {
   pushd ~ > /dev/null
   source "$HOME/.bash_profile"
@@ -19,3 +17,12 @@ function update {
 
 # let pancake initialize its components
 eval "$(~/.getting-started/bin/pancake init)"
+
+# personal libraries
+require 'vim'
+require 'git'
+require 'xmonad'
+
+# other settings
+set bell-style none
+set +H
