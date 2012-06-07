@@ -17,6 +17,7 @@ function update {
 
 # let pancake initialize its components
 eval "$(~/.getting-started/bin/pancake init)"
+alias p="pancake"
 
 # personal libraries
 require 'vim'
