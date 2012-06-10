@@ -1,7 +1,7 @@
 set nofs
 set guioptions=
 set stal=never
-set editor="xterm -e vim -f"
+set editor="/opt/local/bin/mvim -f"
 set defsearch="duckduckgo-ssl"
 
 map K :tn<CR>  # next tab
