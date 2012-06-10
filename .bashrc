@@ -18,4 +18,6 @@ function update {
 }
 
 # let pancake initialize its components
-eval "$(~/.getting-started/bin/pancake init)"
+if [[ -x ~/.getting-started/bin/pancake ]]; then
+  eval "$(~/.getting-started/bin/pancake init)"
+fi

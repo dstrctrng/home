@@ -23,7 +23,6 @@ gem "interactive_editor"
 gem "awesome_print"
 
 # configuration
-gem "microwave"
 gem "tvd-bundler"
 gem "tvd-git"
 gem "tvd-rubygems"
