@@ -1,18 +1,5 @@
-alias :gex :gem
-def gem (nm_gem, opt_gem = {})
-  if ENV.member? "local_#{nm_gem}"
-    local_opt = {}
-    local_opt[:path] = File.join(File.expand_path('../gems', __FILE__), nm_gem)
-    unless File.directory? local_opt[:path]
-      puts "cannot find local gem #{local_opt[:path]}"
-      exit 1
-    end
-    gex nm_gem, local_opt
-  else
-    local_opt = opt_gem.clone
-    gex nm_gem, local_opt
-  end
-end
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'lib')
+require 'development'
 
 source :rubygems
 source "http://localhost:9292"
