@@ -4,12 +4,10 @@ require 'yaml'
 require 'json'
 require 'alpha_omega/deploy'
 
-set :home, (ENV['REMOTE_HOME'] || ENV['HOME'])
-
 set :repository, "git@github.com:HeSYINUvSBZfxqA/badonkadonk.git"
 set :application, "badonkadonk"
 set :releases, [ ]
-set :deploy_to, home
+set :deploy_to,  (ENV['REMOTE_HOME'] || ENV['HOME'])
 
 set :user, "defn"
 set :group, "defn"
@@ -34,14 +32,18 @@ AlphaOmega.setup_pods self, "/data/zendesk_chef" do |adm, n|
 end
 
 # build
-task :git_remote do
-  # workaround git clone and non-empty directories
-  run "[[ -d .git ]] || { git init && git remote add origin #{repository}; }"
+namesapce :git do
+  task :bootstrap do
+    # workaround git clone and non-empty directories
+    run "[[ -d .git ]] || { git init && git remote add origin #{repository}; }"
+  end
 end
-after "deploy:bootstrap_code", "git_remote"
 
-task :vim_build do
-  run "vim -E -c ':source .vimrc' -c :quit meh"
+namespace :vim do
+  task :bundle do
+    run "vim -E -c ':source .vimrc' -c :quit meh"
+  end
 end
-after "deploy:update_code", "vim_build"
 
+after "deploy:bootstrap_code", "git:bootstrap"
+after "deploy:bundle", "vim:bundle"
