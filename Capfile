@@ -32,7 +32,7 @@ AlphaOmega.setup_pods self, "/data/zendesk_chef" do |adm, n|
 end
 
 # build
-namesapce :git do
+namespace :git do
   task :bootstrap do
     # workaround git clone and non-empty directories
     run "[[ -d .git ]] || { git init && git remote add origin #{repository}; }"
