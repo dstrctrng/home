@@ -100,7 +100,7 @@ function! ToggleFocusMode()
     execute 'colorscheme ' . g:colors_name
   endif
 endfunc
-nnoremap <F1> :call ToggleFocusMode()<cr>
+nnoremap <F2> :call ToggleFocusMode()<cr>
 
 
 """ simple vim window management from http://www.agillo.net/simple-vim-window-management/
@@ -140,3 +140,6 @@ map Y y$
 
 """ use sudo to write files from vimbits
 cmap w!! %!sudo tee > /dev/null %
+
+""" tabs, windows, buffers
+map t :tabnew 
