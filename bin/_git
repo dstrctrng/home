@@ -46,3 +46,33 @@ function _cdd {
 }
 
 complete -o nospace -F _cdd cdd
+
+function git_serve {
+  local magic='XXXXXXXX'
+
+  local last_port
+  local p
+  local a
+  for p in {9418..9999}; do 
+    echo "$magic $p"
+    git daemon --reuseaddr --verbose  --port=$p --base-path=. --export-all ./.git 2>&1
+  done | while read -r a status; do 
+    if [[ "$status" = 'Ready to rumble' ]]; then 
+      local git_pid="${a#[}"
+      git_pid="${git_pid%]}"
+      local command="$1"; shift
+      "$command" "$last_port" "$@"
+      local save_exit="$?"
+      kill "$git_pid"
+      return "$save_exit"
+    elif [[ "$a" = "$magic" ]]; then 
+      last_port="$status"
+    fi
+  done
+}
+
+function git_clone {
+  local git_port="$1"; shift
+
+  git clone "git://localhost:$git_port/" "$@"
+}
