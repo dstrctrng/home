@@ -70,8 +70,6 @@ function git_serve {
       return "$save_exit"
     elif [[ "$a" = "$magic" ]]; then 
       last_port="$status"
-    else
-      echo "YYYY: $a $status"
     fi
   done
 }
