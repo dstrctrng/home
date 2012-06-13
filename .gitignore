@@ -51,3 +51,4 @@
 /.deploy/defn
 /.rvm
 /.mysql_history
+/.cache
