@@ -80,11 +80,13 @@ function git_clone {
   local git_port="$1"; shift
   local nm_remote="$1"; shift
 
+  local pth_sentinel="$(ssh $nm_remote mktemp -t XXXXXXX)"
+
   rm -f $git_port.txt
-  ssh -o ExitOnForwardFailure=yes -R0:localhost:$git_port -f $nm_remote bin/sleep_until $git_port.txt > $git_port.txt 2>&1
+  ssh -o ExitOnForwardFailure=yes -R0:localhost:$git_port -f $nm_remote bin/sleep_until $pth_sentinel > $git_port.txt 2>&1
   remote_port="$(awk '$1 == "Allocated" { print $3 }' $git_port.txt)"
   rm -f $git_port.txt
 
   ssh $nm_remote git clone "git://localhost:$remote_port/" $git_port-$remote_port.git
-  ssh $nm_remote touch $git_port.txt
+  ssh $nm_remote rm -f $pth_sentinel
 }

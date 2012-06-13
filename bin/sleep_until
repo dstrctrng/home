@@ -2,8 +2,6 @@
 
 pth_sentinel="$1"; shift
 
-while [[ ! -f "$pth_sentinel" ]]; do
-  sleep 5
+while [[ -f "$pth_sentinel" ]]; do
+  sleep 2
 done
-
-rm -f "$pth_sentinel"
