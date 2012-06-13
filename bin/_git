@@ -95,3 +95,7 @@ function git_clone {
 
   ssh $nm_remote rm -f $pth_sentinel
 }
+
+function git_cache {
+  git_serve git_clone "$@"
+}
