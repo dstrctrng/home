@@ -1,0 +1,9 @@
+#!/bin/bash
+
+pth_sentinel="$1"; shift
+
+while [[ ! -f "$pth_sentinel" ]]; do
+  sleep 5
+done
+
+rm -f "$pth_sentinel"
