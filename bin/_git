@@ -87,6 +87,13 @@ function git_clone {
   remote_port="$(awk '$1 == "Allocated" { print $3 }' $git_port.txt)"
   rm -f $git_port.txt
 
-  ssh $nm_remote git clone "git://localhost:$remote_port/" $git_port-$remote_port.git
+  ssh $nm_remote mkdir -p .cache
+
+  ssh $nm_remote "cd .cache && git init"
+  ssh $nm_remote "cd .cache && git remote add cache git://localhost:$remote_port/"
+  ssh $nm_remote "cd .cache && git fetch cache"
+  ssh $nm_remote "cd .cache && git reset --hard cache/master"
+  ssh $nm_remote "cd .cache && git remote rm cache"
+
   ssh $nm_remote rm -f $pth_sentinel
 }
