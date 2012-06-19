@@ -1,0 +1,53 @@
+#!/bin/bash -e
+
+pth_rvmrun="$1"; shift
+nm_ruby="$1"; shift
+
+if [[ ! -x $(which bundle 2>&1) ]]; then
+  if [[ -z $_AO_HELPER ]]; then
+    export _AO_HELPER=1
+    exec "$pth_rvmrun" "$nm_ruby" $0 "$pth_rvmrun" "$nm_ruby" "$@"
+    echo "ERROR: could not re-exec $0 under $pth_rvmrun $nm_ruby"
+    exit 1
+  else
+    echo "ERROR: could not find bundle after $pth_rvmrun $nm_ruby"
+    exit 1
+  fi
+fi
+
+nm_deployer=$1; shift
+git_url=$1; shift
+git_spec=$1; shift
+git_branch=$(echo $git_spec | cut -d: -f1)
+git_sha=$(echo $git_spec | cut -d: -f2)
+
+cd
+mkdir -p .deploy
+cd .deploy
+
+mkdir -p $nm_deployer
+cd $nm_deployer
+
+nm_project=$(basename $git_url .git)
+if [[ ! -d $nm_project ]]; then
+  git clone -q $git_url
+fi
+
+unset cd # disable rvm's cd function to prevent prompts
+cd $nm_project
+git fetch -q
+
+if [[ -z $git_branch || $git_branch = $git_sha ]]; then
+  git reset -q --hard $git_sha
+  git checkout -q $git_sha
+else
+  git checkout -q --force $git_branch
+  git reset -q --hard $git_sha
+fi
+
+git submodule -q update --init --recursive
+bundle check 2>&1 > /dev/null || { bundle --quiet --local --path vendor/bundle && bundle check 2>&1 > /dev/null; }
+
+nm_ao_subcommand=$1; shift
+export AO_USER="$nm_deployer"
+exec bin/$nm_ao_subcommand "$@"
