@@ -10,7 +10,7 @@ GEM
     HeSYINUvSBZfxqA-capistrano_colors (0.5.5)
     HeSYINUvSBZfxqA-capistrano_log (0.0.2)
       HeSYINUvSBZfxqA-capistrano (>= 2.5.14)
-    alpha_omega (0.0.189)
+    alpha_omega (0.0.194)
       HeSYINUvSBZfxqA-capistrano
       HeSYINUvSBZfxqA-capistrano_colors
       HeSYINUvSBZfxqA-capistrano_log
@@ -25,9 +25,9 @@ GEM
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
       posix-spawn (~> 0.3.6)
-    highline (1.6.12)
+    highline (1.6.13)
     hike (1.2.1)
-    jruby-pageant (1.0.2)
+    jruby-pageant (1.1.1)
     json (1.5.4)
     marathon (0.0.3)
     microwave (0.1006.22)
