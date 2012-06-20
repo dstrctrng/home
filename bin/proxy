@@ -19,12 +19,14 @@ function main {
   local nm_component="$1"; shift
   case "$nm_component" in 
     *)
-      hst_proxy="$1"; shift
+      local hst_proxy="$nm_component"
 
       # remote arguments
-      git_url="$(git config --list | grep remote.origin.url | cut -d= -f2-)"
+      local git_url="$(git config --list | grep remote.origin.url | cut -d= -f2-)"
 
-      git_ref=$(cat .git/HEAD)
+      local git_branch
+      local git_head
+      local git_ref=$(cat .git/HEAD)
       if echo "$git_ref" | egrep -q "^ref:"; then
         git_branch=$(echo "$git_ref" | awk '{print $2}' | cut -d/ -f3-)
         git_head=$(git show-ref --hash "$(echo "$git_ref" | awk '{print $2}')")
@@ -38,9 +40,9 @@ function main {
         exit 1
       fi
 
-      tmp_proxy="$(ssh -q $hst_proxy mktemp -t XXXXXXXXX)"
-      rsync -ia $shome/remote-helper $hst_proxy:"$tmp_proxy"
-      ssh $hst_proxy bash "$tmp_proxy" "$USER" "$git_url" "$git_branch:$git_head" "$nm_component" "$@"
+      local tmp_proxy="$(ssh $hst_proxy mktemp -t XXXXXXXXX)"
+      rsync -a $shome/bin/remote-helper $hst_proxy:"$tmp_proxy"
+      ssh $hst_proxy bash "$tmp_proxy" "$USER" "$git_url" "$git_branch:$git_head" "$@"
       ssh $hst_proxy rm -f "$tmp_proxy"
       ;;
   esac
