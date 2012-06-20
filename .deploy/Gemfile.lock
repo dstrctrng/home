@@ -10,7 +10,7 @@ GEM
     HeSYINUvSBZfxqA-capistrano_colors (0.5.5)
     HeSYINUvSBZfxqA-capistrano_log (0.0.2)
       HeSYINUvSBZfxqA-capistrano (>= 2.5.14)
-    alpha_omega (0.0.196)
+    alpha_omega (0.0.197)
       HeSYINUvSBZfxqA-capistrano
       HeSYINUvSBZfxqA-capistrano_colors
       HeSYINUvSBZfxqA-capistrano_log
