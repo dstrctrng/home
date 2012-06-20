@@ -63,8 +63,10 @@ function main {
 
       if [[ -n "$FLAGS_gateway" ]]; then
         export GATEWAY="$FLAGS_gateway"
-      else
-        unset GATEWAY
+      fi
+
+      if [[ -n "$FLAGS_chef" ]]; then
+        export CHEF_PATH="$FLAGS_chef"
       fi
 
       if [[ "$FLAGS_proxy" = "$FLAGS_FALSE" ]]; then
@@ -82,6 +84,7 @@ function main {
 DEFINE_string "gateway" "deploy" "deploy gateway host" "g"
 DEFINE_boolean "autoconf" "$FLAGS_TRUE" "use config/ssh to configure remote access" "z"
 DEFINE_boolean "proxy" "$FLAGS_FALSE" "use a gateway to proxy deploys"
+DEFINE_string "chef" "" "location to chef repo with opsdb"
 
 # parse the command-line
 parse_command_line "$@" || exit $?
