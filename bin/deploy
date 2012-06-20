@@ -66,7 +66,7 @@ function main {
       fi
 
       if [[ -n "$FLAGS_chef" ]]; then
-        export CHEF_PATH="$FLAGS_chef"
+        export CHEF_PATH="$(cd -P -- "$FLAGS_chef" && pwd -P)"
       fi
 
       if [[ "$FLAGS_proxy" = "$FLAGS_FALSE" ]]; then
