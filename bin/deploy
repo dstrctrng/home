@@ -2,7 +2,6 @@
 
 #/ NAME
 #/     deploy -- central script for alpha_omega commands
-#/     proxy -- internal alpha_omega command to proxy deploy commands to a remote host
 #/
 #/ SYNOPSIS
 #/     
@@ -42,8 +41,6 @@
 #/     unlock
 #/         compare|migrate
 #/
-#/     proxy deploy_command arguments...
-#/
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
@@ -66,17 +63,25 @@ function main {
 
       if [[ -n "$FLAGS_gateway" ]]; then
         export GATEWAY="$FLAGS_gateway"
+      else
+        unset GATEWAY
       fi
 
-      exec bundle exec alpha_omega $(basename $0) "$nm_component" "$@"
+      if [[ "$FLAGS_proxy" = "$FLAGS_FALSE" ]]; then
+        exec bundle exec alpha_omega $(basename $0) "$nm_component" "$@"
+      else
+        exec $shome/bin/proxy "$FLAGS_gateway" $(basename $0) "$nm_component" "$@"
+      fi
+      exit 1
       ;;
   esac
 }
 
 # define command line options:
 #   var name, default, description, short option
-DEFINE_string "gateway" "" "deploy gateway host" "g"
+DEFINE_string "gateway" "deploy" "deploy gateway host" "g"
 DEFINE_boolean "autoconf" "$FLAGS_TRUE" "use config/ssh to configure remote access" "z"
+DEFINE_boolean "proxy" "$FLAGS_FALSE" "use a gateway to proxy deploys"
 
 # parse the command-line
 parse_command_line "$@" || exit $?
