@@ -1,1 +1,59 @@
-deploy
+#!/bin/bash
+
+#/ NAME
+#/     proxy -- proxies deploy using a gateway host
+#/
+#/ SYNOPSIS
+#/     
+#/     proxy gateway deploy_command args 
+#/
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a meat library
+source "$shome/bin/_prime" "$@"
+
+# entry point
+function main {
+  local nm_component="$1"; shift
+  case "$nm_component" in 
+    *)
+      local hst_proxy="$nm_component"
+
+      # remote arguments
+      local git_url="$(git config --list | grep remote.origin.url | cut -d= -f2-)"
+
+      local git_branch
+      local git_head
+      local git_ref=$(cat .git/HEAD)
+      if echo "$git_ref" | egrep -q "^ref:"; then
+        git_branch=$(echo "$git_ref" | awk '{print $2}' | cut -d/ -f3-)
+        git_head=$(git show-ref --hash "$(echo "$git_ref" | awk '{print $2}')")
+      else
+        git_branch=""
+        git_head=$git_ref
+      fi
+
+      if [[ -z $git_head ]]; then
+        echo "ERROR: could not find the SHA for HEAD" 1>&2
+        exit 1
+      fi
+
+      local tmp_proxy="$(ssh $hst_proxy mktemp -t XXXXXXXXX)"
+      rsync -a $shome/bin/remote-helper $hst_proxy:"$tmp_proxy"
+      ssh $hst_proxy bash "$tmp_proxy" "$USER" "$git_url" "$git_branch:$git_head" "$@"
+      ssh $hst_proxy rm -f "$tmp_proxy"
+      ;;
+  esac
+}
+
+# define command line options:
+#   var name, default, description, short option
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+# pass arguments to entry point
+main "$@"

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#/ NAME
+#/     local-helper -- resets environment for another bundle exec
+#/
+#/ SYNOPSIS
+#/     
+#/     local-helper command args ...
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a meat library
+source "$shome/bin/_prime" "$@"
+
+# entry point
+function main {
+  unset GEM_HOME BUNDLE_GEMFILE RUBYOPT
+
+  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
+  bundle exec "$@"
+}
+
+# define command line options:
+#   var name, default, description, short option
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+# pass arguments to entry point
+main "$@"
