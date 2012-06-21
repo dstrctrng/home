@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 pth_rvmrun=""
-nm_ruby=""
+nm_ruby="ree"
 
 if [[ -z $_AO_HELPER ]]; then
   export _AO_HELPER=1
@@ -17,11 +17,8 @@ git_branch=$(echo $git_spec | cut -d: -f1)
 git_sha=$(echo $git_spec | cut -d: -f2)
 
 cd
-mkdir -p .deploy
-cd .deploy
-
-mkdir -p $nm_deployer
-cd $nm_deployer
+mkdir -p .deploy/$nm_deployer
+cd .deploy/$nm_deployer
 
 nm_project=$(basename $git_url .git)
 if [[ ! -d $nm_project ]]; then
@@ -41,7 +38,6 @@ else
 fi
 
 git submodule -q update --init --recursive
-bundle check 2>&1 > /dev/null || { bundle --quiet --local --path vendor/bundle && bundle check 2>&1 > /dev/null; }
 
 nm_ao_subcommand=$1; shift
 export AO_USER="$nm_deployer"
