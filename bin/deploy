@@ -69,6 +69,12 @@ function main {
         export CHEF_PATH="$(cd -P -- "$FLAGS_chef" && pwd -P)"
       fi
 
+      if [[ -z "$FLAGS_proxy" ]]; then
+        if [[ -d "$HOME/.getting-started/.git" ]]; then
+          FLAGS_proxy="$FLAGS_TRUE"
+        fi
+      fi
+
       if [[ "$FLAGS_proxy" = "$FLAGS_FALSE" ]]; then
         exec bundle exec alpha_omega $(basename $0) "$nm_component" "$@"
       else
@@ -83,8 +89,8 @@ function main {
 #   var name, default, description, short option
 DEFINE_string "gateway" "deploy" "deploy gateway host" "g"
 DEFINE_boolean "autoconf" "$FLAGS_TRUE" "use config/ssh to configure remote access" "z"
-DEFINE_boolean "proxy" "$FLAGS_FALSE" "use a gateway to proxy deploys"
-DEFINE_string "chef" "" "location to chef repo with opsdb"
+DEFINE_boolean "proxy" "" "use a gateway to proxy deploys" "p"
+DEFINE_string "chef" "" "location to chef repo with opsdb" "c"
 
 # parse the command-line
 parse_command_line "$@" || exit $?
