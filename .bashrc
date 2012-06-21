@@ -21,3 +21,4 @@ function update {
 if [[ -x ~/.getting-started/bin/pancake ]]; then
   eval "$(~/.getting-started/bin/pancake init)"
 fi
+

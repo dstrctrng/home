@@ -2,7 +2,7 @@ $LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'lib')
 require 'development'
 
 source :rubygems
-source "http://localhost:9292"
+#source "http://localhost:9292"
 
 # irb
 gem "wirble"

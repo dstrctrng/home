@@ -45,5 +45,9 @@ namespace :vim do
   end
 end
 
+task :hello do
+  run "uname -a"
+end
+
 after "deploy:bootstrap_code", "git:bootstrap"
 after "deploy:bundle", "vim:bundle"
