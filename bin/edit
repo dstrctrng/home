@@ -22,7 +22,7 @@ function main {
     set -f
     bundle --local --quiet && bundle check > /dev/null
     git diff --no-ext-diff Gemfile.lock vendor/cache
-  elif [[ "$FLAGS_update" = "$FLAGS_TRUE" || "$FLAGS_reset" = "$FLAGS_TRUE" ]]; then
+  elif [[ "$FLAGS_reset" = "$FLAGS_TRUE" ]]; then
     local nm_gem
     for nm_gem in "$@"; do
       rm -f "$shome/.local/$nm_gem"
@@ -30,14 +30,23 @@ function main {
 
     bundle --local --quiet && bundle check > /dev/null
 
-    if [[ "$FLAGS_reset" = "$FLAGS_TRUE" ]]; then
-      git diff --no-ext-diff Gemfile.lock vendor/cache
-    else
-      bundle update "$@"
-      git add Gemfile.lock vendor/cache
-      git add -u vendor/cache
-      git diff --no-ext-diff --cached Gemfile.lock vendor/cache
-    fi
+    git diff --no-ext-diff Gemfile.lock vendor/cache
+  elif [[ "$FLAGS_update" = "$FLAGS_TRUE" ]]; then
+    local nm_gem
+    for nm_gem in "$@"; do
+      echo -n > "$shome/.local/$nm_gem"
+    done
+
+    bundle update "$@"
+
+    for nm_gem in "$@"; do
+      rm -f "$shome/.local/$nm_gem"
+    done
+    bundle --local --quiet && bundle check > /dev/null
+
+    git add Gemfile.lock vendor/cache
+    git add -u vendor/cache
+    git diff --no-ext-diff --cached Gemfile.lock vendor/cache
   else
     local nm_gem="$1"; shift
 

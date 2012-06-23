@@ -6,16 +6,20 @@ def gem (nm_gem, opt_gem = {})
   gem_info = File.join(shome, ".local", nm_gem)
   if File.exists? gem_info
     local_opt = { :path => File.read(gem_info).strip }
-    unless File.directory? local_opt[:path]
-      puts "cannot find local gem #{local_opt[:path]}"
-      exit 1
+    if local_opt[:path].empty?
+      gex nm_gem, opt_gem.clone
+    else
+      unless File.directory?(local_opt[:path])
+        puts "cannot find local gem #{local_opt[:path]}"
+        exit 1
+      end
+      gex nm_gem, local_opt
     end
-    gex nm_gem, local_opt
   else
     gex nm_gem, opt_gem.clone
   end
 end
-source "http://localhost:9292" # if Dir[File.join("#{shome}", ".local", "*")].length > 0 
+source "http://localhost:9292" if Dir[File.join("#{shome}", ".local", "*")].length > 0 
 # end local gems
 
 source :rubygems
