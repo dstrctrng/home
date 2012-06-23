@@ -25,6 +25,9 @@ gem "wirble"
 gem "interactive_editor"
 gem "awesome_print"
 
+# git
+gem "pre-commit"
+
 # configuration
 gem "tvd-bundler"
 gem "tvd-git"
