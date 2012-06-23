@@ -1,6 +1,5 @@
-#$LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'lib')
-#require 'development'
-
+# start local gems handling
+shome = File.expand_path('..', __FILE__)
 alias :gex :gem
 def gem (nm_gem, opt_gem = {})
   shome = File.expand_path('..', __FILE__)
@@ -16,9 +15,10 @@ def gem (nm_gem, opt_gem = {})
     gex nm_gem, opt_gem.clone
   end
 end
+source "http://localhost:9292" if Dir[File.join("#{shome}", ".local", "*")].length > 0 
+# end local gems
 
 source :rubygems
-#source "http://localhost:9292"
 
 # irb
 gem "wirble"
