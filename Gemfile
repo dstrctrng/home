@@ -25,10 +25,7 @@ gem "wirble"
 gem "interactive_editor"
 gem "awesome_print"
 
-# git
-gem "pre-commit"
-
-# gems
+# gem
 gem "geminabox"
 
 # configuration
