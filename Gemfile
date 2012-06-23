@@ -1,26 +1,4 @@
-# start local gems handling
-shome = File.expand_path('..', __FILE__)
-alias :gex :gem
-def gem (nm_gem, opt_gem = {})
-  shome = File.expand_path('..', __FILE__)
-  gem_info = File.join(shome, ".local", nm_gem)
-  if File.exists? gem_info
-    local_opt = { :path => File.read(gem_info).strip }
-    if local_opt[:path].empty?
-      gex nm_gem, opt_gem.clone
-    else
-      unless File.directory?(local_opt[:path])
-        puts "cannot find local gem #{local_opt[:path]}"
-        exit 1
-      end
-      gex nm_gem, local_opt
-    end
-  else
-    gex nm_gem, opt_gem.clone
-  end
-end
-source "http://localhost:9292" if Dir[File.join("#{shome}", ".local", "*")].length > 0 
-# end local gems
+load File.join(File.dirname(__FILE__), 'lib', 'development.rb')
 
 source :rubygems
 
