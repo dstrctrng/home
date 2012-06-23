@@ -18,7 +18,7 @@ source "$shome/bin/_prime" "$@"
 function main {
   if [[ "$FLAGS_resetall" = "$FLAGS_TRUE" ]]; then
     set +f
-    rm -vf $shome/.local/*
+    rm -f $shome/.local/*
     set -f
     bundle --local --quiet && bundle check > /dev/null
     git diff --no-ext-diff Gemfile.lock vendor/cache
