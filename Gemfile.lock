@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    80ae2fe5c929b7d0a00bdee2d710fa9e (0.0.6)
+    80ae2fe5c929b7d0a00bdee2d710fa9e (0.0.7)
     awesome_print (1.0.2)
     builder (3.0.0)
     erubis (2.7.0)
