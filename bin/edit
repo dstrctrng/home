@@ -5,6 +5,8 @@
 #/
 #/ SYNOPSIS
 #/     edit gem [location]
+#/     edit -r gem[s]
+#/     edit -R
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
@@ -15,7 +17,9 @@ source "$shome/bin/_prime" "$@"
 # entry point
 function main {
   if [[ "$FLAGS_resetall" = "$FLAGS_TRUE" ]]; then
-    rm -f $shome/.local/*
+    set +f
+    rm -vf $shome/.local/*
+    set -f
     bundle --local --quiet && bundle check > /dev/null
     git diff --no-ext-diff Gemfile.lock vendor/cache
   elif [[ "$FLAGS_update" = "$FLAGS_TRUE" || "$FLAGS_reset" = "$FLAGS_TRUE" ]]; then
@@ -64,7 +68,7 @@ function main {
 #   var name, default, description, short option
 DEFINE_boolean "update" "$FLAGS_FALSE" "finish editing a local gem and updates project" "u"
 DEFINE_boolean "reset" "$FLAGS_FALSE" "reset gem to remote" "r"
-DEFINE_boolean "resetall" "$FLAGS_FALSE" "reset allgems to remote" "R"
+DEFINE_boolean "resetall" "$FLAGS_FALSE" "reset all gems to remote" "R"
 
 # parse the command-line
 parse_command_line "$@" || exit $?
