@@ -36,6 +36,7 @@ function main {
     echo "$pth_gem" > "$shome/.local/$nm_gem"
 
     bundle --local --quiet && bundle check > /dev/null
+    git diff --no-ext-diff Gemfile.lock vendor/cache
   else
     local nm_gem
     for nm_gem in "$@"; do
@@ -47,10 +48,8 @@ function main {
     
     git add Gemfile.lock vendor/cache
     git add -u vendor/cache
-    git diff --no-ext-diff --cached
+    git diff --no-ext-diff --cached Gemfile.lock vendor/cache
   fi
-    
-  git status -s
 }
 
 # define command line options:
