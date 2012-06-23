@@ -26,6 +26,8 @@ function main {
     gem)
       if [[ "$FLAGS_public" = "$FLAGS_TRUE" ]]; then
         push_gem "$@"
+      elif [[ "$FLAGS_private" = "$FLAGS_TRUE" ]]; then
+        push_gem_private
       else
         logger_fatal "must specify --public to confirm a gem push to rubygems.org"
         exit 1
@@ -33,7 +35,7 @@ function main {
       ;;
     *)
       if [[ "$FLAGS_private" = "$FLAGS_TRUE" ]]; then
-        push_gem_private "$@"
+        push_gem_private "$1" "$@"
       else
         fatal_logger "must specify --private to push to a private repository"
       fi
@@ -43,7 +45,14 @@ function main {
 
 # push a gem locally 
 function push_gem_private {
-  gem inabox -g http://localhost:9292 "$@"
+  if [[ "$#" = 0 ]]; then
+    set +f
+    local latest_gem="$(ls -td *.gem 2>&- | head -1)"
+    push_gem_private "$latest_gem"
+    set -f
+  else
+    gem inabox -g http://localhost:9292 "$@"
+  fi
 }
 
 # push the latest gem to rubygems.org
