@@ -15,7 +15,7 @@ def gem (nm_gem, opt_gem = {})
     gex nm_gem, opt_gem.clone
   end
 end
-source "http://localhost:9292" if Dir[File.join("#{shome}", ".local", "*")].length > 0 
+source "http://localhost:9292" # if Dir[File.join("#{shome}", ".local", "*")].length > 0 
 # end local gems
 
 source :rubygems
