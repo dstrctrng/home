@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #/ NAME
-#/     local-gem -- set environment to hint to Gemfile to use a local gemspec
+#/     edit -- set environment to hint to Gemfile to use a local gemspec
 #/
 #/ SYNOPSIS
-#/     local-gem [gem...]
+#/     edit gem [location]
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
@@ -14,37 +14,48 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
-  local nm_gem
+  if [[ "$FLAGS_update" = "$FLAGS_FALSE" ]]; then
+    local nm_gem="$1"; shift
 
-  for nm_gem in "$@"; do
-    if [[ ! -d "gems/${nm_gem}" ]]; then
-      logger_fatal "cannot find local gemspec at gems/${nm_gem}"
+    local pth_gem
+    if [[ "$#" = 0 ]]; then
+      pth_gem="gems/$nm_gem"
+    else
+      pth_gem="$1"; shift
+    fi
+    
+    if [[ ! -d "$pth_gem" ]]; then
+      logger_fatal "cannot find local gem directoy at $pth_gem"
       exit 1
     fi
-    export "local_${nm_gem}"=1
-    echo "enabling local gem development on ${nm_gem}"
-  done
 
-  bundle --local --quiet && bundle check > /dev/null
-  git status -s
-  echo "entering sub-shell for local gem development"
-  bash -l || true
+    pth_gem="$(cd -P -- "$pth_gem" && pwd -P)"
 
-  for nm_gem in "$@"; do
-    unset "local_${nm_gem}"
-  done
-  bundle --local --quiet && bundle check > /dev/null
-  if [[ "$#" > 0 ]]; then
+    echo "enabling local gem development on ${nm_gem} at ${pth_gem}"
+    mkdir -p "$shome/.local"
+    echo "$pth_gem" > "$shome/.local/$nm_gem"
+
+    bundle --local --quiet && bundle check > /dev/null
+  else
+    local a
+    for a in "$@"; do
+      rm -f "$shome/.local/$nm_gem"
+    done
+
+    bundle --local --quiet && bundle check > /dev/null
     bundle update "$@"
+    
+    git add Gemfile.lock vendor/cache
+    git add -u vendor/cache
+    git diff --no-ext-diff --cached
   fi
-  git add Gemfile.lock vendor/cache
-  git add -u vendor/cache
-  git diff --no-ext-diff --cached
+    
   git status -s
 }
 
 # define command line options:
 #   var name, default, description, short option
+DEFINE_boolean "update" "$FLAGS_FALSE" "finish editing a local gem and updates project" "u"
 
 # parse the command-line
 parse_command_line "$@" || exit $?

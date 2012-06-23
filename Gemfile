@@ -1,5 +1,21 @@
-$LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'lib')
-require 'development'
+#$LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'lib')
+#require 'development'
+
+alias :gex :gem
+def gem (nm_gem, opt_gem = {})
+  shome = File.expand_path('..', __FILE__)
+  gem_info = File.join(shome, ".local", nm_gem)
+  if File.exists? gem_info
+    local_opt = { :path => File.read(gem_info).strip }
+    unless File.directory? local_opt[:path]
+      puts "cannot find local gem #{local_opt[:path]}"
+      exit 1
+    end
+    gex nm_gem, local_opt
+  else
+    gex nm_gem, opt_gem.clone
+  end
+end
 
 source :rubygems
 #source "http://localhost:9292"
