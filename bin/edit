@@ -14,7 +14,7 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
-  if [[ "$FLAGS_update" = "$FLAGS_FALSE" ]]; then
+  if [[ "$FLAGS_update" = "$FLAGS_FALSE" && "$FLAGS_reset" = "$FLAGS_FALSE" ]]; then
     local nm_gem="$1"; shift
 
     local pth_gem
@@ -44,17 +44,22 @@ function main {
     done
 
     bundle --local --quiet && bundle check > /dev/null
-    bundle update "$@"
-    
-    git add Gemfile.lock vendor/cache
-    git add -u vendor/cache
-    git diff --no-ext-diff --cached Gemfile.lock vendor/cache
+
+    if [[ "$FLAGS_reset" = "$FLAGS_FALSE" ]]; then
+      bundle update "$@"
+      git add Gemfile.lock vendor/cache
+      git add -u vendor/cache
+      git diff --no-ext-diff --cached Gemfile.lock vendor/cache
+    else
+      git diff --no-ext-diff Gemfile.lock vendor/cache
+    fi
   fi
 }
 
 # define command line options:
 #   var name, default, description, short option
 DEFINE_boolean "update" "$FLAGS_FALSE" "finish editing a local gem and updates project" "u"
+DEFINE_boolean "reset" "$FLAGS_FALSE" "reset gem to remote" "r"
 
 # parse the command-line
 parse_command_line "$@" || exit $?
