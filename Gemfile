@@ -28,6 +28,9 @@ gem "awesome_print"
 # git
 gem "pre-commit"
 
+# gems
+gem "geminabox"
+
 # configuration
 gem "tvd-bundler"
 gem "tvd-git"
