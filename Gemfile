@@ -1,13 +1,14 @@
-$LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'lib')
-require 'development'
+load File.join(File.dirname(__FILE__), 'lib', 'development.rb')
 
 source :rubygems
-#source "http://localhost:9292"
 
 # irb
 gem "wirble"
 gem "interactive_editor"
 gem "awesome_print"
+
+# gem
+gem "geminabox"
 
 # configuration
 gem "tvd-bundler"

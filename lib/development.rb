@@ -1,15 +1,25 @@
-alias :gex :gem
-def gem (nm_gem, opt_gem = {})
-  if ENV.member? "local_#{nm_gem}"
-    local_opt = {}
-    local_opt[:path] = File.join(File.expand_path('../gems', __FILE__), nm_gem)
-    unless File.directory? local_opt[:path]
-      puts "cannot find local gem #{local_opt[:path]}"
-      exit 1
+module Bundler
+  class Dsl
+    unless $gex
+      alias :gex :gem
+      $gex = true
     end
-    gex nm_gem, local_opt
-  else
-    local_opt = opt_gem.clone
-    gex nm_gem, local_opt
+
+    def gem(nm_gem, opt_gem = {})
+      shome = File.expand_path('../..', __FILE__)
+      gem_info = File.join(shome, ".local", nm_gem)
+      if File.exists? gem_info
+        source "http://localhost:9292"
+        local_opt = { :path => File.read(gem_info).strip }
+
+        unless local_opt[:path].empty?
+          gex nm_gem, local_opt
+        else
+          gex nm_gem, opt_gem.clone
+        end
+      else
+        gex nm_gem, opt_gem.clone
+      end
+    end
   end
 end
