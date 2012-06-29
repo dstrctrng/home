@@ -50,6 +50,11 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
+  if [[ "$#" == 0 ]]; then
+    logger_fatal "need at least one argument"
+    exit 1
+  fi
+
   local nm_component="$1"; shift
   case "$nm_component" in 
     *)
