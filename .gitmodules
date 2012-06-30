@@ -7,9 +7,6 @@
 [submodule "hubflow"]
 	path = .hubflow
 	url = https://github.com/HeSYINUvSBZfxqA/hubflow
-[submodule "site/_site"]
-	path = site/_site
-	url = https://github.com/HeSYINUvSBZfxqA/hesyinuvsbzfxqa.github.com
 [submodule ".rbenv"]
 	path = .rbenv
 	url = https://github.com/HeSYINUvSBZfxqA/rbenv.git
