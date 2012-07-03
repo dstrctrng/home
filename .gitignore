@@ -44,7 +44,6 @@
 /.ruby_inline
 /.display
 /.secrets
-/.pancake
 /.zlogin
 /.zshrc
 /.deploy/defn
