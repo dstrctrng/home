@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #/ NAME
-#/     pygmentize -- wrapper to call pygmentize under virtualenv
+#/     shocco -- wrapper to call shocco under virtualenv
 #/
 #/ SYNOPSIS
-#/     pygmentize ...
+#/     shocco ...
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
@@ -15,7 +15,7 @@ source "$shome/bin/_prime" "$@"
 # entry point
 function main {
   export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
-  exec bundle exec $shome/bin/venv pygmentize "$@"
+  exec bundle exec $shome/bin/venv pygmentize "$shome/bin/shocco.sh" "$@"
 }
 
 # define command line options:

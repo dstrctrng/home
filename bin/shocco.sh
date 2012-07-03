@@ -70,8 +70,8 @@ file="$1"
 
 # These are replaced with the full paths to real utilities by the
 # configure/make system.
-MARKDOWN='@@MARKDOWN@@'
-PYGMENTIZE='@@PYGMENTIZE@@'
+MARKDOWN='Markdown.pl'
+PYGMENTIZE='pygmentize'
 
 # We're going to need a `markdown` command to run comments through. This can
 # be [Gruber's `Markdown.pl`][md] (included in the shocco distribution) or
