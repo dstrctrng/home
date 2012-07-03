@@ -1,4 +1,4 @@
-#!/Users/defn/work/tools/doc-helper/.virtualenv/bin/python2.7
+#!/usr/bin/env python2.7
 # EASY-INSTALL-ENTRY-SCRIPT: 'Pygments==1.5','console_scripts','pygmentize'
 __requires__ = 'Pygments==1.5'
 import sys
