@@ -15,6 +15,7 @@ source "$shome/bin/_prime" "$@"
 # entry point
 function main {
   export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
+  export shome
   exec bundle exec $shome/bin/venv "$shome/bin/shocco.sh" "$@"
 }
 
