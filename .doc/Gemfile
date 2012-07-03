@@ -19,6 +19,7 @@ source :rubygems
 # documentation
 gem "showoff"
 gem "rocco"
+gem "ronn"
 gem "jekyll"
 
 # servers
