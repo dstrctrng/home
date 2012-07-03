@@ -34,7 +34,7 @@ GEM
     rack-protection (1.2.0)
       rack
     rdiscount (1.6.8)
-    redcarpet (2.1.1)
+    redcarpet (1.17.2)
     rocco (0.8.2)
       mustache
       redcarpet
@@ -65,6 +65,7 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll
+  redcarpet (~> 1.17.0)
   rocco
   ronn
   showoff
