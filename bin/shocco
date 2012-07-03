@@ -15,7 +15,7 @@ source "$shome/bin/_prime" "$@"
 # entry point
 function main {
   export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
-  exec bundle exec $shome/bin/venv pygmentize "$shome/bin/shocco.sh" "$@"
+  exec bundle exec $shome/bin/venv "$shome/bin/shocco.sh" "$@"
 }
 
 # define command line options:
