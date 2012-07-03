@@ -1,7 +1,7 @@
 set nofs
 set guioptions=
 set stal=never
-set editor="/opt/local/bin/mvim -f"
+set editor="/Users/defn/.macports/local/bin/mvim -f"
 set defsearch="duckduckgo-ssl"
 
 map K :tn<CR>  # next tab
