@@ -16,6 +16,8 @@ source "$shome/bin/_prime" "$@"
 function main {
   export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
   export shome
+
+  ( cd $shome/.doc && bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; } )
   exec bundle exec $shome/bin/venv pygmentize "$@"
 }
 
