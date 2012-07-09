@@ -39,6 +39,12 @@ namespace :git do
   end
 end
 
+namespace :rvm do
+  task :bootstrap do
+    run "[[ -d .rvm ]] || { if [[ -d /usr/local/rvm ]]; then ln -nfs /usr/local/rvm .rvm; else true; fi; }"
+  end
+end
+
 namespace :vim do
   task :bundle do
     run "vim -E -c ':source .vimrc' -c :quit meh"
@@ -50,4 +56,5 @@ task :hello do
 end
 
 after "deploy:bootstrap_code", "git:bootstrap"
+after "deploy:bootstrap_code", "rvm:bootstrap"
 after "deploy:bundle", "vim:bundle"
