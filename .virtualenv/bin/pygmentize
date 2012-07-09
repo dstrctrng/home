@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+# EASY-INSTALL-ENTRY-SCRIPT: 'Pygments==1.5','console_scripts','pygmentize'
+
+# activate virtualenv
+import os
+activate_this = '{0}/.virtualenv/bin/activate_this.py'.format(os.environ['shome'])
+execfile(activate_this, dict(__file__=activate_this))
+
+__requires__ = 'Pygments==1.5'
+import sys
+from pkg_resources import load_entry_point
+
+sys.exit(
+   load_entry_point('Pygments==1.5', 'console_scripts', 'pygmentize')()
+)

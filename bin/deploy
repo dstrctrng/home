@@ -2,9 +2,12 @@
 
 #/ NAME
 #/     deploy -- central script for alpha_omega commands
+#/     build -- builds static site using jekyll
 #/
 #/ SYNOPSIS
 #/     
+#/     build site
+#/
 #/     deploy
 #/     stage
 #/     activate
@@ -52,6 +55,9 @@ source "$shome/bin/_prime" "$@"
 function main {
   local nm_component="$1"; shift
   case "$nm_component" in 
+    site)
+      build_jekyll "$@"
+      ;;
     *)
       export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
 
@@ -81,6 +87,15 @@ function main {
       exit 1
       ;;
   esac
+}
+
+# build the site with jekyll
+function build_jekyll {
+  export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
+
+  cd $shome/site
+  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
+  bundle exec jekyll
 }
 
 # define command line options:
