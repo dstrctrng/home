@@ -26,6 +26,7 @@ function main {
   case "$nm_component" in 
     gem)
       build_gem "$@"
+      ;;
     site)
       build_site "$@"
       ;;
