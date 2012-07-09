@@ -2,9 +2,17 @@
 
 #/ NAME
 #/     deploy -- central script for alpha_omega commands
+#/     build -- builds static site, runs build phase of deploy
+#/           -- upload the latest (timestamp) rubygem to rubygems.org
 #/
 #/ SYNOPSIS
 #/     
+#/     build site
+#/
+#/     build site
+#/     build gem -n gem_name
+#/     build [alpha_omega arguments]
+#/
 #/     deploy
 #/     stage
 #/     activate
@@ -57,6 +65,12 @@ function main {
 
   local nm_component="$1"; shift
   case "$nm_component" in 
+    site)
+      build_site "$@"
+      ;;
+    gem)
+      build_gem "$@"
+      ;;
     *)
       export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
 
@@ -88,8 +102,18 @@ function main {
   esac
 }
 
+# build the site with jekyll
+function build_site {
+  export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
+
+  cd "$shome/site"
+  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
+  bundle exec jekyll
+}
+
 # define command line options:
 #   var name, default, description, short option
+DEFINE_string 'name' "$(basename "$shome")" 'name of gem' 'n'
 DEFINE_string "gateway" "deploy" "deploy gateway host" "g"
 DEFINE_boolean "autoconf" "$FLAGS_TRUE" "use config/ssh to configure remote access" "z"
 DEFINE_boolean "proxy" "$FLAGS_FALSE" "use a gateway to proxy deploys" "p"
