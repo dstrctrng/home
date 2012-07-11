@@ -17,7 +17,14 @@ namespace :application do
   end
 end
 
+namespace :microwave do
+  task :cook do
+    run "cd #{deploy_release} && bin/microwave"
+  end
+end
+
 after "deploy:update_code","application:update_code"
+after "deploy:cook", "microwave:cook"
 after "deploy:restart","application:restart"
 
 # interesting hosts
