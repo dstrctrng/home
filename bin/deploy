@@ -61,7 +61,7 @@ function main {
   local nm_component="$1"; shift
   case "$nm_component" in 
     site)
-      build_jekyll "$@"
+      build_site "$@"
       ;;
     *)
       export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
@@ -95,12 +95,15 @@ function main {
 }
 
 # build the site with jekyll
-function build_jekyll {
+function build_site {
   export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
 
   cd $shome/site
+  local old_path="$PATH"
+  PATH="$PATH:$shome/libexec"
   bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
   bundle exec jekyll
+  PATH="$old_path"
 }
 
 # define command line options:
