@@ -29,7 +29,7 @@ end
 
 namespace :vim do
   task :bundle do
-    run "bin/bundle-vim"
+    run "cd #{deploy_release} && bin/bundle-vim"
   end
 end
 
