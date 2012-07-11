@@ -1,0 +1,15 @@
+--- 
+repository:
+application:
+
+user:
+group:
+
+ruby_loader:
+deploy_ruby: ree
+app_ruby:
+
+branches: [ production staging master ]
+branch_regex: ^
+
+chef_path: 
