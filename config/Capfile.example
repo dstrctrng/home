@@ -21,7 +21,7 @@ after "deploy:update_code","application:update_code"
 after "deploy:restart","application:restart"
 
 # interesting hosts
-Deploy(self, File.join(File.expand_path('../gems', __FILE__), "config", "deploy.yml")) do |admin, node| 
+Deploy self, File.join(File.expand_path('..', __FILE__), "config", "deploy.yml") do |admin, node| 
   if node["run_list"].member?("role[application]")
     { :deploy => { }
     }
