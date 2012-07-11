@@ -1,15 +1,15 @@
 --- 
-repository:
-application:
+repository: git@github.com:HeSYINUvSBZfxqA/badonkadonk.git
+application: badonkadonk
 
-user:
-group:
+user: defn
+group: defn
 
-ruby_loader:
+ruby_loader: bin/rvmrun
 deploy_ruby: ree
-app_ruby:
+app_ruby: ree
 
-branches: [ production staging master ]
+branches: [ ]
 branch_regex: ^
 
-chef_path: 
+chef_path:  /data/zendesk_chef

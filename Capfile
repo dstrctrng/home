@@ -1,35 +1,17 @@
 #!/usr/bin/env ruby
 
-require 'yaml'
-require 'json'
 require 'alpha_omega/deploy'
 
-set :repository, "git@github.com:HeSYINUvSBZfxqA/badonkadonk.git"
-set :application, "badonkadonk"
 set :releases, [ ]
 set :deploy_to,  (ENV['REMOTE_HOME'] || ENV['HOME'])
-
-set :user, "defn"
-set :group, "defn"
 
 set :root_user, "defn"
 set :root_group, "defn"
 
-# misc
 set :use_sudo, false
 set :dir_perms, "0750"
 
-# ruby
-set :ruby_loader, "bin/rvmrun ree"
 set :bundler_options, "--path vendor/bundle"
-
-# branch
-set :branch, AlphaOmega.what_branch([%r(^)])
-
-# pods
-AlphaOmega.setup_pods self, "/data/zendesk_chef" do |adm, n|
-  { :app => {} }
-end
 
 # build
 namespace :git do
@@ -47,14 +29,15 @@ end
 
 namespace :vim do
   task :bundle do
-    run "vim -E -c ':source .vimrc' -c :quit meh"
+    run "bin/bundle-vim"
   end
-end
-
-task :hello do
-  run "uname -a"
 end
 
 after "deploy:bootstrap_code", "git:bootstrap"
 after "deploy:bootstrap_code", "rvm:bootstrap"
 after "deploy:bundle", "vim:bundle"
+
+# interesting hosts
+Deploy self, File.join(File.expand_path('..', __FILE__), "config", "deploy.yml") do |admin, node| 
+  { :deploy => { } }
+end
