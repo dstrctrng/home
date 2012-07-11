@@ -28,7 +28,7 @@ after "deploy:cook", "microwave:cook"
 after "deploy:restart","application:restart"
 
 # interesting hosts
-Deploy self, File.join(File.expand_path('..', __FILE__), "config", "deploy.yml") do |admin, node| 
+Deploy self, __FILE__ do |admin, node| 
   if node["run_list"].member?("role[application]")
     { :deploy => { }
     }
