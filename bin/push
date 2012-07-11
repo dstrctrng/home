@@ -15,7 +15,12 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
-  nm_component="$1"; shift
+  if [[ "$#" < 1 ]]; then
+    logger_fatal "missing component or gem(s)"
+    exit 1
+  fi
+
+  local nm_component="$1"; shift
 
   case "$nm_component" in 
     gem)
@@ -30,7 +35,7 @@ function main {
       ;;
     *)
       if [[ "$FLAGS_private" = "$FLAGS_TRUE" ]]; then
-        push_gem_private "$1" "$@"
+        push_gem_private "$nm_component" "$@"
       else
         fatal_logger "must specify --private to push to a private repository"
       fi
@@ -73,11 +78,6 @@ DEFINE_boolean "public" "$FLAGS_FALSE" "push to rubygems.org"
 # parse the command-line
 parse_command_line "$@" || exit $?
 eval set -- "${FLAGS_ARGV}"
-
-if [[ "$#" < 1 ]]; then
-  logger_fatal "missing component or gem(s)"
-  exit 1
-fi
 
 # pass arguments to entry point
 main "$@"
