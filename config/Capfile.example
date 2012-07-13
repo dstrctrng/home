@@ -4,6 +4,10 @@ require 'alpha_omega/deploy'
 
 namespace :application do
   task :update_code do
+    update_assets unless deploy_path_name == migrate_path_name 
+  end
+
+  task :update_assets do
   end
 
   task :restart do
