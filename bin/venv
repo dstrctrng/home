@@ -15,7 +15,7 @@ source "$shome/bin/_prime" "$@"
 # entry point
 function main {
   export VIRTUAL_ENV_DISABLE_PROMPT=1
-  source $shome/.virtualenv/bin/activate
+  source $shome/.doc/.virtualenv/bin/activate
   exec "$@"
 }
 
