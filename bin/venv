@@ -14,8 +14,12 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
+  if [[ ! -d $shome/.doc/.virtualenv ]]; then
+    (cd $shome/.doc && tar xfz virtualenv-pygmentize.tgz)
+  fi
+
   export VIRTUAL_ENV_DISABLE_PROMPT=1
-  source $shome/.virtualenv/bin/activate
+  source $shome/.doc/.virtualenv/bin/activate
   exec "$@"
 }
 
