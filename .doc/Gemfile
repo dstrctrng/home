@@ -25,6 +25,6 @@ gem "jekyll"
 
 # servers
 gem "sinatra"
-gem "thin"
+gem "unicorn", '~> 1.1.0'
 
 # vim: set ft=ruby:
