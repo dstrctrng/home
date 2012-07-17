@@ -35,7 +35,7 @@ end
 
 namespace :microwave do
   task :cook do
-    run "cd #{deploy_release} && bin/microwave -n #{dna["app_env"]}"
+    run "cd #{deploy_release} && bin/microwave -n localhost"
   end
 end
 
