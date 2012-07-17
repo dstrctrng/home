@@ -64,6 +64,16 @@ GEM
       rdoc (~> 3.10)
     surface (0.0.5)
       marathon
+    tvd-bundler (0.0.8)
+      microwave
+    tvd-dmg (0.0.3)
+      microwave
+    tvd-git (0.0.18)
+      microwave
+    tvd-rubygems (0.0.7)
+      microwave
+    tvd-ssh (0.0.14)
+      microwave
     uuidtools (2.1.2)
 
 PLATFORMS
@@ -74,3 +84,8 @@ DEPENDENCIES
   json
   microwave
   net-ssh (~> 2.4.0)
+  tvd-bundler
+  tvd-dmg
+  tvd-git
+  tvd-rubygems
+  tvd-ssh
