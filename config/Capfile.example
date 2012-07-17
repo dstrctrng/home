@@ -2,26 +2,30 @@
 
 require 'alpha_omega/deploy'
 
-# application deploy
 namespace :application do
   task :update_code do
-    update_config
+    update_assets unless deploy_path_name == migrate_path_name 
   end
 
-  task :update_config do
-    run "touch #{deploy_release}/config/example.yml"
+  task :update_assets do
   end
 
   task :restart do
-    run "sudo service example reload"
+  end
+end
+
+namespace :microwave do
+  task :cook do
+    run "cd #{deploy_release} && bin/microwave -n #{dna["app_env"]}"
   end
 end
 
 after "deploy:update_code","application:update_code"
+after "deploy:cook", "microwave:cook"
 after "deploy:restart","application:restart"
 
 # interesting hosts
-Deploy self, File.join(File.expand_path('..', __FILE__), "config", "deploy.yml") do |admin, node| 
+Deploy self, __FILE__ do |admin, node| 
   if node["run_list"].member?("role[application]")
     { :deploy => { }
     }

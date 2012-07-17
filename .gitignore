@@ -56,3 +56,5 @@
 /.macports
 /site/_site
 /tmp/site
+/cache
+/backup

@@ -10,7 +10,7 @@ GEM
     HeSYINUvSBZfxqA-capistrano_colors (0.5.5)
     HeSYINUvSBZfxqA-capistrano_log (0.0.2)
       HeSYINUvSBZfxqA-capistrano (>= 2.5.14)
-    alpha_omega (0.0.206)
+    alpha_omega (0.0.208)
       HeSYINUvSBZfxqA-capistrano
       HeSYINUvSBZfxqA-capistrano_colors
       HeSYINUvSBZfxqA-capistrano_log
@@ -31,7 +31,7 @@ GEM
     jruby-pageant (1.1.1)
     json (1.5.4)
     marathon (0.0.3)
-    microwave (0.1006.22)
+    microwave (0.1006.29)
       erubis
       fast_xs
       hike
@@ -46,7 +46,7 @@ GEM
     mime-types (1.19)
     mixlib-cli (1.2.2)
     mixlib-config (1.1.2)
-    mixlib-log (1.3.0)
+    mixlib-log (1.4.1)
     moneta (0.6.0)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
