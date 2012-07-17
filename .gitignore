@@ -58,3 +58,4 @@
 /tmp/site
 /cache
 /backup
+*.orig
