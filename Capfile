@@ -33,11 +33,19 @@ namespace :vim do
   end
 end
 
+namespace :microwave do
+  task :cook do
+    run "cd #{deploy_release} && bin/microwave -n #{dna["app_env"]}"
+  end
+end
+
+
+after "deploy:cook", "microwave:cook"
 after "deploy:bootstrap_code", "git:bootstrap"
 after "deploy:bootstrap_code", "rvm:bootstrap"
 after "deploy:bundle", "vim:bundle"
 
 # interesting hosts
-Deploy self, File.join(File.expand_path('..', __FILE__), "config", "deploy.yml") do |admin, node| 
+Deploy self, __FILE__ do |admin, node| 
   { :deploy => { } }
 end
