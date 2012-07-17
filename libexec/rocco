@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #/ NAME
-#/     venv -- runs under virtualenv
+#/     rocco -- wrapper to call rocco under virtualenv
 #/
 #/ SYNOPSIS
-#/     venv command args..
+#/     rocco ...
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
@@ -14,13 +14,11 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
-  if [[ ! -d $shome/.doc/.virtualenv ]]; then
-    (cd $shome/.doc && tar xfz virtualenv-pygmentize.tgz)
-  fi
+  export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
+  export shome
 
-  export VIRTUAL_ENV_DISABLE_PROMPT=1
-  source $shome/.doc/.virtualenv/bin/activate
-  exec "$@"
+  ( cd $shome/.doc && bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; } )
+  exec bundle exec $shome/bin/venv rocco "$@"
 }
 
 # define command line options:

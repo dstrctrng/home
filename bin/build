@@ -14,11 +14,15 @@ source "$shome/bin/_prime" "$@"
 
 # entry point
 function main {
-  nm_component="$1"; shift
+  if [[ "$#" < 1 ]]; then
+    logger_fatal "missing component(s)"
+    exit 1
+  fi
 
+  local nm_component="$1"; shift
   case "$nm_component" in 
     site)
-      build_jekyll "$@"
+      build_site "$@"
       ;;
     *)
       logger_fatal "don't know how to build ${nm_component}"
@@ -28,12 +32,15 @@ function main {
 }
 
 # build the site with jekyll
-function build_jekyll {
+function build_site {
   export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
 
-  cd $shome/site
+  cd "$shome/site"
+  local old_path="$PATH"
+  PATH="$PATH:$shome/libexec"
   bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
   bundle exec jekyll
+  PATH="$old_path"
 }
 
 # define command line options:
@@ -42,11 +49,6 @@ function build_jekyll {
 # parse the command-line
 parse_command_line "$@" || exit $?
 eval set -- "${FLAGS_ARGV}"
-
-if [[ "$#" < 1 ]]; then
-  logger_fatal "missing component(s)"
-  exit 1
-fi
 
 # pass arguments to entry point
 main "$@"
