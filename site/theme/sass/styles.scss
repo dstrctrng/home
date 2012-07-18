@@ -99,7 +99,7 @@ header {
     @include background(linear_gradient(#77B9FB, #3782CD));
     border-radius:5px;
     @include box-shadow(inset rgba(#fff, 0.45) 0 1px 0, inset rgba(#000, 0.2) 0 -1px 0);
-    width:240px;
+    width:(5*80)px;
     
     &:before {
       content:'';
@@ -127,6 +127,16 @@ header {
     }
     
     li + li + li {
+      width:78px;
+      border-left:1px solid #8BBEF3;
+    }
+    
+    li + li + li + li {
+      width:78px;
+      border-left:1px solid #8BBEF3;
+    }
+    
+    li + li + li + li + li {
       border-right:none;
       width:79px;
     }
