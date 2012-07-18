@@ -22,6 +22,7 @@ gem "redcarpet", "~> 1.17.0"
 gem "rocco"
 gem "ronn"
 gem "jekyll"
+gem "guard-jekyll"
 gem "compass"
 
 # servers
