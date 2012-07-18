@@ -1,2 +1,2 @@
-destination: ../tmp/site
+destination: _site
 pygments: true

@@ -48,8 +48,6 @@ function build_site {
   popd > /dev/null
 
   PATH="$old_path"
-
-  rsync -ia "$shome/site/theme" "$shome/tmp/site/"
 }
 
 # define command line options:
