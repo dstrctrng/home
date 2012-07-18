@@ -26,6 +26,6 @@ gem "compass"
 
 # servers
 gem "sinatra"
-gem "unicorn", '~> 1.1.0'
+gem "foreman"
 
 # vim: set ft=ruby:
