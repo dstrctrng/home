@@ -1,0 +1,2 @@
+jekyll: bundle exec jekyll --server $PORT
+compass: bundle exec compass watch theme
