@@ -36,16 +36,18 @@ function build_site {
   export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
   bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
 
+  local old_path="$PATH"
+  PATH="$PATH:$shome/libexec"
+
   pushd "$shome/site/theme" > /dev/null
   bundle exec compass compile
   popd > /dev/null
 
   pushd "$shome/site" > /dev/null
-  local old_path="$PATH"
-  PATH="$PATH:$shome/libexec"
   bundle exec jekyll
-  PATH="$old_path"
   popd > /dev/null
+
+  PATH="$old_path"
 
   rsync -ia "$shome/site/theme" "$shome/tmp/site/"
 }
