@@ -34,13 +34,18 @@ function main {
 # build the site with jekyll
 function build_site {
   export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
+  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
 
-  cd "$shome/site"
+  pushd "$shome/site/theme" > /dev/null
+  bundle exec compass compile
+  popd > /dev/null
+
+  pushd "$shome/site" > /dev/null
   local old_path="$PATH"
   PATH="$PATH:$shome/libexec"
-  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
   bundle exec jekyll
   PATH="$old_path"
+  popd > /dev/null
 }
 
 # define command line options:
