@@ -46,6 +46,8 @@ function build_site {
   bundle exec jekyll
   PATH="$old_path"
   popd > /dev/null
+
+  rsync -ia "$shome/site/theme" "$shome/tmp/site/"
 }
 
 # define command line options:
