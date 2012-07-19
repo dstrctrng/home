@@ -1,3 +1,2 @@
-jekyll: bundle exec jekyll --server $PORT
+jekyll: bundle exec jekyll --auto --redcarpet --server $PORT
 compass: bundle exec compass watch theme
-guard: bundle exec guard
