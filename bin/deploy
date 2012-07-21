@@ -64,10 +64,6 @@ function main {
       build_site "$@"
       ;;
     *)
-      export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
-
-      bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-
       if [[ "$FLAGS_autoconf" = "$FLAGS_TRUE" ]]; then
         PATH="$shome/.deploy/ssh/bin:$PATH"
       fi
@@ -85,6 +81,8 @@ function main {
       fi
 
       if [[ "$FLAGS_proxy" = "$FLAGS_FALSE" || "$FLAGS_direct" = "$FLAGS_TRUE" ]]; then
+        export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
+        bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
         exec bundle exec alpha_omega $(basename $0) "$nm_component" "$@"
       else
         exec $shome/bin/proxy "$FLAGS_gateway" $(basename $0) "$nm_component" "$@"
