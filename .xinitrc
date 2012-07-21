@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [[ -z "$BASH" ]]; then
+  exec bash "$HOME/.xinitrc"
+fi
+
 cd
 source $HOME/.bash_profile
 
