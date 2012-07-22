@@ -40,6 +40,8 @@ function main {
         exit 1
       fi
 
+      local pth_rvmrun="$(ruby -ryaml -e 'puts YAML.load(File.read(ARGV[0]))[ARGV[1]]' $shome/config/deploy.yml ruby_loader)"
+      local nm_ruby="$(ruby -ryaml -e 'puts YAML.load(File.read(ARGV[0]))[ARGV[1]]' $shome/config/deploy.yml deploy_ruby)"
       cat $shome/bin/remmote-helper | ssh $hst_proxy bash -s "$tmp_proxy" "$pth_rvmrun" "$nm_ruby" "$USER" "$git_url" "$git_branch:$git_head" "$@"
       ;;
   esac
