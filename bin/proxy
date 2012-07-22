@@ -40,10 +40,7 @@ function main {
         exit 1
       fi
 
-      local tmp_proxy="$(ssh $hst_proxy mktemp -t XXXXXXXXX)"
-      rsync -a $shome/bin/remote-helper $hst_proxy:"$tmp_proxy"
-      ssh $hst_proxy bash "$tmp_proxy" "$USER" "$git_url" "$git_branch:$git_head" "$@"
-      ssh $hst_proxy rm -f "$tmp_proxy"
+      cat $shome/bin/remmote-helper | ssh $hst_proxy bash -s "$tmp_proxy" "$pth_rvmrun" "$nm_ruby" "$USER" "$git_url" "$git_branch:$git_head" "$@"
       ;;
   esac
 }
