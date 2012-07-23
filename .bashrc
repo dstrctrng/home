@@ -22,11 +22,10 @@ if [[ -x ~/.getting-started/bin/pancake ]]; then
   eval "$(~/.getting-started/bin/pancake init)"
 else
   pushd ~ > /dev/null;
-  if [[ -f /opt/.profile ]];     then source /opt/.profile; fi;
-  if [[ -d .rvm ]];              then source .rvm/scripts/rvm; rvm default; fi;
-  if [[ -f .rbenv/.profile ]];   then source .rbenv/.profile; fi
-  if [[ -f .hubflow/.profile ]]; then source .hubflow/.profile; fi;
-  if [[ -f .cue/.profile ]];     then source .cue/.profile; fi
-  if [[ -f .ubuntu/.profile ]];  then source .ubuntu/.profile; fi
+  if [[ -f bin/_rvm ]];              then source  bin/_rvm; fi
+  if [[ -f .rbenv/bin/_profile ]];   then source .rbenv/bin/_profile; fi
+  if [[ -f .hubflow/bin/_profile ]]; then source .hubflow/bin/_profile; fi
+  if [[ -f .cue/bin/_profile ]];     then source .cue/bin/_profile; fi
+  if [[ -f .ubuntu/bin/_profile ]];  then source .ubuntu/bin/_profile; fi
   popd > /dev/null;
 fi
