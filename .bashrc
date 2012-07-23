@@ -3,7 +3,6 @@ set +H
 
 function reload {
   pushd ~ > /dev/null
-  unset __meat__
   source "$HOME/.bash_profile"
   popd > /dev/null
 }
