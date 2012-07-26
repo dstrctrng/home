@@ -33,8 +33,9 @@ function req {
   fi
 }
 
-req 'rvm'
+export MACPORTS_ROOT="$HOME/.macports"
 req 'macports'
+req 'rvm'
 req 'hubflow'
 req 'cue'
 req 'ubuntu'
