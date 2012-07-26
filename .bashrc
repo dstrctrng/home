@@ -17,10 +17,24 @@ function update {
   popd ~ > /dev/null
 }
 
-pushd ~ > /dev/null;
-if [[ -f bin/_rvm ]];              then source  bin/_rvm; fi
-if [[ -f .rbenv/bin/_profile ]];   then source .rbenv/bin/_profile; fi
-if [[ -f .hubflow/bin/_profile ]]; then source .hubflow/bin/_profile; fi
-if [[ -f .cue/bin/_profile ]];     then source .cue/bin/_profile; fi
-if [[ -f .ubuntu/bin/_profile ]];  then source .ubuntu/bin/_profile; fi
-popd > /dev/null;
+function req {
+  local library="$1";
+  shift;
+  if [[ -r "$HOME/bin/_$library" ]]; then
+    source "$HOME/bin/_$library";
+  else
+    if [[ -r "$HOME/.$library/bin/_profile" ]]; then
+      source "$HOME/.$library/bin/_profile";
+    else
+      if [[ -r "$HOME/.$library/.profile" ]]; then
+        source "$HOME/.$library/.profile";
+      fi;
+    fi;
+  fi
+}
+
+req 'rvm'
+req 'macports'
+req 'hubflow'
+req 'cue'
+req 'ubuntu'
