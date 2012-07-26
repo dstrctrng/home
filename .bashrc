@@ -17,15 +17,10 @@ function update {
   popd ~ > /dev/null
 }
 
-# let pancake initialize its components
-if [[ -x ~/.getting-started/bin/pancake ]]; then
-  eval "$(~/.getting-started/bin/pancake init)"
-else
-  pushd ~ > /dev/null;
-  if [[ -f bin/_rvm ]];              then source  bin/_rvm; fi
-  if [[ -f .rbenv/bin/_profile ]];   then source .rbenv/bin/_profile; fi
-  if [[ -f .hubflow/bin/_profile ]]; then source .hubflow/bin/_profile; fi
-  if [[ -f .cue/bin/_profile ]];     then source .cue/bin/_profile; fi
-  if [[ -f .ubuntu/bin/_profile ]];  then source .ubuntu/bin/_profile; fi
-  popd > /dev/null;
-fi
+pushd ~ > /dev/null;
+if [[ -f bin/_rvm ]];              then source  bin/_rvm; fi
+if [[ -f .rbenv/bin/_profile ]];   then source .rbenv/bin/_profile; fi
+if [[ -f .hubflow/bin/_profile ]]; then source .hubflow/bin/_profile; fi
+if [[ -f .cue/bin/_profile ]];     then source .cue/bin/_profile; fi
+if [[ -f .ubuntu/bin/_profile ]];  then source .ubuntu/bin/_profile; fi
+popd > /dev/null;
