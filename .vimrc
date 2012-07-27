@@ -8,14 +8,17 @@ silent call Bundle(["fugitive", "git.zip", "Gist",  "cucumber.zip", "rake"])
 silent call Bundle(["haml.zip", "Better_Javascript_Indentation", "Textile_for_VIM", "vim-coffee-script", "vim-ruby"])
 silent call Bundle(["vim-pasta"])
 silent call Bundle(["vimpager"])
+silent call Bundle(["xoria256", "vim-colors-solarized"])
 
 " map whatever key to leader
 let mapleader = ","
 
-" use the xoria256 color scheme (included)
+" use the Xoria256m color scheme
 colorscheme xoria256
 
-" and anything else you want to override or set
+" override xoria colors
+hi Folded  ctermfg=180 guifg=#dfaf87 ctermbg=234 guibg=#1c1c1c
+hi NonText ctermfg=252 guifg=#d0d0d0 ctermbg=234 guibg=#1c1c1c cterm=none gui=none
 
 " settings
 set pastetoggle=<F2>
