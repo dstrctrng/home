@@ -1,0 +1,20 @@
+settings = {
+  "fe-common/core" = {
+    # Solarized
+    theme = "solarized-universal";
+    hilight_color = "= %R";
+  };
+};
+
+hilights = (
+    { text = "defn"; color = "%M"; nick = "yes"; word = "yes"; }
+);
+
+statusbar = {
+  items = {
+    # Solarized
+    lag = "{sb Lag: %m$0-%n}";
+    act = "{sb Act: $0-}";
+    more = "%k%3-- more --%n";
+  };
+};
