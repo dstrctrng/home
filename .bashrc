@@ -1,5 +1,6 @@
-set bell-style none
-set +H
+shome="$HOME"
+source "$shome/bin/_meat"
+trap 'true' SIGINT
 
 function reload {
   pushd ~ > /dev/null
@@ -17,25 +18,12 @@ function update {
   popd ~ > /dev/null
 }
 
-function req {
-  local library="$1";
-  shift;
-  if [[ -r "$HOME/bin/_$library" ]]; then
-    source "$HOME/bin/_$library";
-  else
-    if [[ -r "$HOME/.$library/bin/_profile" ]]; then
-      source "$HOME/.$library/bin/_profile";
-    else
-      if [[ -r "$HOME/.$library/.profile" ]]; then
-        source "$HOME/.$library/.profile";
-      fi;
-    fi;
-  fi
-}
-
 export MACPORTS_ROOT="$HOME/.macports"
-req 'macports'
-req 'rvm'
-req 'hubflow'
-req 'cue'
-req 'ubuntu'
+require 'macports'
+require 'rvm'
+require 'hubflow'
+require 'cue'
+require 'ubuntu'
+
+set bell-style none
+set +H
