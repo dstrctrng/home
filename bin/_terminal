@@ -1,0 +1,3 @@
+trap 'true' SIGINT
+set bell-style none
+set +H

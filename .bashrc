@@ -1,6 +1,5 @@
 shome="$HOME"
 source "$shome/bin/_meat"
-trap 'true' SIGINT
 
 function reload {
   pushd ~ > /dev/null
@@ -25,5 +24,5 @@ require 'hubflow'
 require 'cue'
 require 'ubuntu'
 
-set bell-style none
-set +H
+require 'terminal'
+require 'aliases'
