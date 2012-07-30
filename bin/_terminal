@@ -1,3 +1,5 @@
 trap 'true' SIGINT
 set bell-style none
 set +H
+
+alias t="tmux -2"
