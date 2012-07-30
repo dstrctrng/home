@@ -3,3 +3,7 @@ set bell-style none
 set +H
 
 alias t="tmux -2"
+
+if [[ "$TERM" = "xterm" ]]; then
+  TERM="xterm-256color"
+fi

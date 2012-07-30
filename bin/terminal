@@ -7,4 +7,4 @@ set -e
 # dependent on xtermcontrol, so xterm
 [[ -x $cmd_xterm ]] || cmd_xterm=$(which xterm 2>&-)
 
-exec $cmd_xterm -ls +sb 
+exec $cmd_xterm -ls +sb -fb fixed
