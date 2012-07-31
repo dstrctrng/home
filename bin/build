@@ -39,6 +39,18 @@ function build_image {
 
   hdiutil create -attach -volname "${nm_image}" -library GPTSPUD -size 1gb -fs "Journaled HFS+" ${nm_image}.sparsebundle
   diskutil coreStorage convert ${nm_image} -passphrase "${nm_image}"
+  while true; do
+    local status="$(diskutil coreStorage info "${nm_image}" | grep "Conversion Status:" | awk '{print $3}')"
+    if [[ "$status" = "Complete" ]]; then
+      break
+    fi
+
+    diskutil coreStorage info "${nm_image}" | egrep "LV Bytes Converted|LV Size"
+    echo
+    sleep 5
+  done
+
+  diskutil eject "$nm_image"
 }
 
 # build the site with jekyll
