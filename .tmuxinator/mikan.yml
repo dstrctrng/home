@@ -1,0 +1,14 @@
+project_name: Mikan
+project_root: ~/
+tabs:
+  - editor:
+      layout: main-vertical
+      panes:
+        - vim
+        - #empty
+        - #empty
+  - monitor: 
+      layout: main-vertical
+      panes:
+        - htop
+        - iostat 5
