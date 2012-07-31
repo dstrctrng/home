@@ -3,6 +3,9 @@ set bell-style none
 set +H
 
 alias t="tmux -2"
+function tx {
+  (cd && bundle exec tmuxinator "$@")
+}
 
 if [[ "$TERM" = "xterm" ]]; then
   TERM="xterm-256color"
