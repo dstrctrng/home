@@ -24,11 +24,21 @@ function main {
     site)
       build_site "$@"
       ;;
+    image)
+      build_image "$@"
+      ;;
     *)
       logger_fatal "don't know how to build ${nm_component}"
       exit 1
       ;;
   esac
+}
+
+function build_image {
+  local nm_image="$1"; shift
+
+  hdiutil create -attach -volname "${nm_image}" -library GPTSPUD -size 1gb -fs "Journaled HFS+" ${nm_image}.sparsebundle
+  diskutil coreStorage convert ${nm_image} -passphrase "${nm_image}"
 }
 
 # build the site with jekyll
