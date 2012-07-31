@@ -37,7 +37,7 @@ function main {
 function build_image {
   local nm_image="$1"; shift
 
-  hdiutil create -attach -volname "${nm_image}" -library GPTSPUD -size 1gb -fs "Journaled HFS+" ${nm_image}.sparsebundle
+  hdiutil create -attach -volname "${nm_image}" -library GPTSPUD -size 1gb -fs "Journaled HFS+" ${nm_image}
   diskutil coreStorage convert ${nm_image} -passphrase "${nm_image}"
   while true; do
     local status="$(diskutil coreStorage info "${nm_image}" | grep "Conversion Status:" | awk '{print $3}')"
