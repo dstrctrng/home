@@ -10,5 +10,5 @@ tabs:
   - monitor: 
       layout: main-vertical
       panes:
-        - htop
+        - top
         - iostat 5
