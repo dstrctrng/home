@@ -17,7 +17,6 @@ function update {
   popd ~ > /dev/null
 }
 
-export MACPORTS_ROOT="$HOME/.macports"
 require 'macports'
 require 'rvm'
 require 'hubflow'
