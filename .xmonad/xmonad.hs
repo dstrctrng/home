@@ -72,7 +72,7 @@ main = do
       tmux :: X ()
       tmux = do
         dir <- currentTopicDir myTopicConfig
-        spawn $ "xterm -ls -e tmux new-session" 
+        spawn $ "xterm -ls -e tmux -2 new-session" 
 
       terminal :: String -> X ()
       terminal app = do
