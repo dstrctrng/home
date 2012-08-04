@@ -22,11 +22,10 @@ function mdns_ssh_wrapper {
   Host *
     AddressFamily inet6
     Protocol 2
-    ProxyCommand $pth_ssh_cmd %h.${id_mdns}.members.btmm.icloud.com | tee meh
+    ProxyCommand $pth_ssh_cmd -t %h.${id_mdns}.members.btmm.icloud.com
   Host *.members.btmm.icloud.com
     AddressFamily inet6
     Protocol 2
-    ProxyCommand echo %h %p
 EOF
 
   local tmp_dir="$(mktemp -d -t XXXXXXXXX)"
