@@ -47,4 +47,4 @@ function _cdd {
 
 complete -o nospace -F _cdd cdd
 
-PATH="/usr/local/git/bin:$PATH"
+PATH="$PATH:/usr/local/git/bin"
