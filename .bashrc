@@ -1,6 +1,12 @@
 shome="$HOME"
 source "$shome/bin/_meat"
 
+: ${MACPORTS:="$shome/local"}
+: ${VAGRANT:="$shome/vm"}
+: ${CUE:="$shome/.cue"}
+: ${PS1_LEFT:='${prn_git}${prn_pwd}'}
+: ${PS1_RIGHT:='${prn_ssh}${prn_hello}'}
+
 function reload {
   pushd ~ > /dev/null
   source "$HOME/.bash_profile"
