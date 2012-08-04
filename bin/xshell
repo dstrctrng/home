@@ -1,3 +1,3 @@
 #!/bin/bash -fue
 
-exec xterm -ls -e xshell_runner "$@"
+exec xterm -ls -e echo "$@"
