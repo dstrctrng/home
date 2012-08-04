@@ -10,7 +10,7 @@ function mdns_id {
 }
 
 function mdns_ssh_wrapper {
-  local id_mdns="$(mdns_id)"
+  #local id_mdns="$(mdns_id)"
 
   local pth_ssh_cmd="$(which ssh 2>&-)"
 
@@ -20,10 +20,6 @@ function mdns_ssh_wrapper {
   cat ~/.ssh/config > $tmp_config
   cat >> $tmp_config <<EOF
   Host *
-    AddressFamily inet6
-    Protocol 2
-    ProxyCommand $pth_ssh_cmd -t %h.${id_mdns}.members.btmm.icloud.com
-  Host *.members.btmm.icloud.com
     AddressFamily inet6
     Protocol 2
 EOF
