@@ -1,8 +1,9 @@
 # initialize PATH to something sane
 PATH='/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
 
-# sub-shell init with pancake
 export MACPORTS="$HOME/local"
+export CUE="$HOME/.cue"
+export VAGRANT="$HOME/vm"
 source $HOME/.bashrc
 
 # personal libraries
