@@ -8,8 +8,3 @@ export PS1_LEFT='${prn_git}${prn_pwd}'
 export PS1_RIGHT='${prn_ssh}${prn_hello}'
 
 source $HOME/.bashrc
-
-# personal libraries
-require 'vim'
-require 'git'
-require 'xmonad'

@@ -24,9 +24,13 @@ function prompt-hello {
 require 'macports'
 require 'rvm'
 require 'hubflow'
-require 'cue'
 require 'ubuntu'
 
 require 'aliases'
 require 'terminal'
 require 'osx'
+require 'cue'
+
+require 'vim'
+require 'git'
+require 'xmonad'
