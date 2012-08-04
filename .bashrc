@@ -18,7 +18,7 @@ function update {
 }
 
 function prompt-hello {
-  echo ""
+  echo #" ${syellow}hello!"
 }
 
 require 'macports'
