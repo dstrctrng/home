@@ -23,5 +23,6 @@ require 'hubflow'
 require 'cue'
 require 'ubuntu'
 
-require 'terminal'
 require 'aliases'
+require 'terminal'
+require 'osx'
