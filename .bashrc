@@ -17,6 +17,10 @@ function update {
   popd ~ > /dev/null
 }
 
+function prompt-hello {
+  echo ""
+}
+
 require 'macports'
 require 'rvm'
 require 'hubflow'
