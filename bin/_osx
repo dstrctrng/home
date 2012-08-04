@@ -1,0 +1,59 @@
+#!/bin/bash
+
+function mdns_id {
+  local found=0
+  local x
+  while read -r x; do 
+    [[ $found = 1 ]] && { echo "$x" | awk '{print $NF}'; break; }
+    echo "$x" | egrep -q 'members$' && found=1
+  done < <(dns-sd -E)
+}
+
+function mdns_ssh_wrapper {
+  local id_mdns="$(mdns_id)"
+
+  local tmp_config="$(mktemp -t XXXXXXXXX)"
+  cat ~/.ssh/config > $tmp_config
+  cat >> $tmp_config <<EOF
+  Host *.members.btmm.icloud.com
+    AddressFamily inet6
+    Protocol 2
+EOF
+
+  local tmp_dir="$(mktemp -d -t XXXXXXXXX)"
+
+  local tmp_dollar='$'
+  
+  local pth_ssh_cmd="$(which ssh 2>&-)"
+  cat > $tmp_dir/ssh << EOF
+  exec $pth_ssh_cmd -F $tmp_config "${tmp_dollar}@"
+EOF
+
+  local pth_scp_cmd="$(which scp 2>&-)"
+  cat > $tmp_dir/scp << EOF
+  exec $pth_scp_cmd -F $tmp_config "${tmp_dollar}@"
+EOF
+
+  rm -f $tmp_dollar
+
+  chmod 755 $tmp_dir/{ssh,scp}
+   
+  PATH="$tmp_dir:$PATH"
+
+  "$@"
+
+  rm -f $tmp_config
+  rm -rf $tmp_dir
+}
+
+function mssh {
+  mdns_ssh_wrapper ssh "$@"
+}
+
+function mscp {
+  mdns_ssh_wrapper scp "$@"
+}
+
+function mrsync {
+  mdns_ssh_wrapper rsync "$@"
+}
