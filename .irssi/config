@@ -4,10 +4,16 @@ settings = {
     theme = "solarized-universal";
     hilight_color = "= %R";
   };
+  core = {
+    real_name = "where's the fire?";
+    user_name = "defn";
+    nick = "defn";
+  };
+  "fe-text" = { actlist_sort = "refnum"; };
 };
 
-hilights = (
-    { text = "defn"; color = "%M"; nick = "yes"; word = "yes"; }
+hilights = ( 
+  { text = "defn"; color = "%M"; nick = "yes"; word = "yes"; }
 );
 
 statusbar = {
