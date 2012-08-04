@@ -12,24 +12,31 @@ function mdns_id {
 function mdns_ssh_wrapper {
   local id_mdns="$(mdns_id)"
 
+  local pth_ssh_cmd="$(which ssh 2>&-)"
+
   local tmp_config="$(mktemp -t XXXXXXXXX)"
+  local pth_scp_cmd="$(which scp 2>&-)"
+
   cat ~/.ssh/config > $tmp_config
   cat >> $tmp_config <<EOF
+  Host *
+    AddressFamily inet6
+    Protocol 2
+    ProxyCommand $pth_ssh_cmd %h.${id_mdns}.members.btmm.icloud.com | tee meh
   Host *.members.btmm.icloud.com
     AddressFamily inet6
     Protocol 2
+    ProxyCommand echo %h %p
 EOF
 
   local tmp_dir="$(mktemp -d -t XXXXXXXXX)"
 
   local tmp_dollar='$'
   
-  local pth_ssh_cmd="$(which ssh 2>&-)"
   cat > $tmp_dir/ssh << EOF
   exec $pth_ssh_cmd -F $tmp_config "${tmp_dollar}@"
 EOF
 
-  local pth_scp_cmd="$(which scp 2>&-)"
   cat > $tmp_dir/scp << EOF
   exec $pth_scp_cmd -F $tmp_config "${tmp_dollar}@"
 EOF
