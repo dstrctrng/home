@@ -2,23 +2,25 @@
 source ~/.vim/junas
 
 " install whatever bundles over the net
-silent call Bundle(["The_NERD_tree", "The_NERD_Commenter", "powerline"])
+silent call Bundle(["xoria256", "vim-colors-solarized"])
 silent call Bundle(["surround", "repeat", "Rainbow_Parenthesis", "matchit.zip", "eregex"])
+silent call Bundle(["The_NERD_tree", "The_NERD_Commenter", "powerline"])
+
+" use the xoria256 color scheme
+colorscheme xoria256
+
+" more bundles
 silent call Bundle(["fugitive", "git.zip", "Gist",  "cucumber.zip", "rake"])
 silent call Bundle(["haml.zip", "Better_Javascript_Indentation", "Textile_for_VIM", "vim-coffee-script", "vim-ruby"])
 silent call Bundle(["vim-pasta"])
 silent call Bundle(["vimpager"])
-silent call Bundle(["xoria256", "vim-colors-solarized"])
-
-" map whatever key to leader
-let mapleader = ","
-
-" use the Xoria256m color scheme
-colorscheme xoria256
 
 " override xoria colors
 hi Folded  ctermfg=180 guifg=#dfaf87 ctermbg=234 guibg=#1c1c1c
 hi NonText ctermfg=252 guifg=#d0d0d0 ctermbg=234 guibg=#1c1c1c cterm=none gui=none
+
+" map whatever key to leader
+let mapleader = ","
 
 " settings
 set pastetoggle=<F2>
