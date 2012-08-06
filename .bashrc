@@ -40,3 +40,5 @@ require 'cue'
 require 'vim'
 require 'git'
 require 'xmonad'
+
+rvm 1.9.3 || rvm ree || rvm system
