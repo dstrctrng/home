@@ -1,12 +1,12 @@
 [submodule "cue"]
   path = .cue
-  url = https://raw.github.com/HeSYINUvSBZfxqA/cue
+  url = https://raw.github.com/destructuring/cue
 [submodule "junas"]
   path = .junas
-  url = https://raw.github.com/HeSYINUvSBZfxqA/junas
+  url = https://raw.github.com/destructuring/junas
 [submodule "hubflow"]
 	path = .hubflow
-	url = https://github.com/HeSYINUvSBZfxqA/hubflow
+	url = https://github.com/destructuring/hubflow
 [submodule ".rbenv"]
 	path = .rbenv
-	url = https://github.com/HeSYINUvSBZfxqA/rbenv.git
+	url = https://github.com/destructuring/rbenv.git
