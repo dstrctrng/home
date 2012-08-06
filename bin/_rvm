@@ -23,3 +23,5 @@ function irb {
     popd > /dev/null
   fi
 }
+
+rvm 1.9.3 || rvm ree || rvm system

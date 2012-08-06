@@ -1,3 +1,0 @@
-#!/bin/bash -fue
-
-exec firefox-x11 -silent -new-window "$@"

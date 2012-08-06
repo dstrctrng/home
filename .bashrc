@@ -5,27 +5,7 @@ source "$shome/bin/_meat"
 : ${VAGRANT:="$shome/vm"}
 : ${CUE:="$shome/.cue"}
 : ${PS1_LEFT:='${prn_git}${prn_pwd}'}
-: ${PS1_RIGHT:='${prn_ssh}${prn_hello}'}
-
-function reload {
-  pushd ~ > /dev/null
-  source "$HOME/.bash_profile"
-  popd > /dev/null
-}
-
-function update {
-  pushd ~ > /dev/null
-  git update origin master
-  bundle --local
-  git push -u origin HEAD:master
-  reload
-  reload
-  popd ~ > /dev/null
-}
-
-function prompt-hello {
-  echo #" ${syellow}hello!"
-}
+: ${PS1_RIGHT:='${prn_ssh}'}
 
 require 'macports'
 require 'rvm'
@@ -40,5 +20,3 @@ require 'cue'
 require 'vim'
 require 'git'
 require 'xmonad'
-
-rvm 1.9.3 || rvm ree || rvm system
