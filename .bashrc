@@ -9,17 +9,19 @@ source "$shome/bin/_meat"
 
 require 'macports'
 require 'rvm'
+
 require 'hubflow'
 require 'ubuntu'
+require 'vim'
+require 'git'
 
-require 'aliases'
-require 'terminal'
-require 'osx'
 require 'cue/pwd'
 require 'cue/ssh'
 require 'cue/git'
 require 'cue'
 
-require 'vim'
-require 'git'
+require 'aliases'
+require 'terminal'
 require 'xmonad'
+
+require 'osx'
