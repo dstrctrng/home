@@ -1,3 +1,5 @@
+echo "$(date) x $- x b $BASH b" >> ~/meh.log
+
 shome="$HOME"
 source "$shome/bin/_meat"
 
