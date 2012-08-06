@@ -11,6 +11,7 @@ else
 fi
 
 unset gem
+unset cd
 
 function irb {
   if pushd ./$(\git rev-parse --show-cdup) > /dev/null; then
