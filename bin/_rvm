@@ -1,27 +1,29 @@
-if [[ -f /etc/profile.d/rvm.sh ]]; then
-  source /etc/profile.d/rvm.sh
-elif [[ -f /usr/local/lib/rvm ]]; then
-  source /usr/local/lib/rvm
-elif [[ -f "$HOME/.rvm/scripts/rvm" ]]; then
-  source $HOME/.rvm/scripts/rvm
-else
-  function rvm {
-    true
-  }
-fi
-
-unset gem
-unset cd
-
-function irb {
-  if pushd ./$(\git rev-parse --show-cdup) > /dev/null; then
-    if [[ $(pwd) = $HOME ]]; then
-      bundle exec irb --readline
-    else
-      bundle exec irb --readline -f
-    fi
-    popd > /dev/null
+if [[ -z "$SUDO_USER" ]]; then
+  if [[ -f /etc/profile.d/rvm.sh ]]; then
+    source /etc/profile.d/rvm.sh
+  elif [[ -f /usr/local/lib/rvm ]]; then
+    source /usr/local/lib/rvm
+  elif [[ -f "$HOME/.rvm/scripts/rvm" ]]; then
+    source $HOME/.rvm/scripts/rvm
+  else
+    function rvm {
+      true
+    }
   fi
-}
 
-rvm 1.9.3 || rvm ree || rvm system
+  unset gem
+  unset cd
+
+  function irb {
+    if pushd ./$(\git rev-parse --show-cdup) > /dev/null; then
+      if [[ $(pwd) = $HOME ]]; then
+        bundle exec irb --readline
+      else
+        bundle exec irb --readline -f
+      fi
+      popd > /dev/null
+    fi
+  }
+
+  rvm 1.9.3 || rvm ree || rvm system
+fi
