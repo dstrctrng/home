@@ -37,8 +37,8 @@ function main {
 function build_image {
   local nm_image="$1"; shift
 
-  hdiutil create -attach -volname "${nm_image}" -library GPTSPUD -size 1gb -fs "Journaled HFS+" ${nm_image}
-  diskutil coreStorage convert ${nm_image} -passphrase "${nm_image}"
+  hdiutil create -attach -volname "${nm_image}" -size "${FLAGS_size}gb" -fs "Journaled HFS+" "${nm_image}"
+  diskutil coreStorage convert "${nm_image}" -passphrase "${nm_image}"
   while true; do
     local status="$(diskutil coreStorage info "${nm_image}" | grep "Conversion Status:" | awk '{print $3}')"
     if [[ "$status" = "Complete" ]]; then
@@ -74,6 +74,7 @@ function build_site {
 
 # define command line options:
 #   var name, default, description, short option
+DEFINE_string size "1" "size in gigabytes of the image" "S"
 
 # parse the command-line
 parse_command_line "$@" || exit $?

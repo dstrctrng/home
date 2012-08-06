@@ -59,9 +59,8 @@ main = do
         , maxTopicHistory = 10
         , topicActions = M.fromList $
           [ ("chat",    xterm >> terminal "irssi")
-          , ("office",   browser "https://mail.google.com/a/zendesk.com https://www.pivotaltracker.com/projects/119873")
           , ("monitor", terminal "ssh -t rs mumtop" >>
-                         browser "http://zendesk.pagerduty.com https://zende.sk/resque 'https://nagios.zende.sk/cgi-bin/nagios3/status.cgi?hostgroup=all&style=summary' https://zende.sk/cgi-bin/smokeping.cgi?target=Pingdom")
+                        terminal "ssh -t rs mumtop")
           ]
         }
 
@@ -70,15 +69,15 @@ main = do
         dir <- currentTopicDir myTopicConfig
         spawn $ "xterm -ls" 
 
+      tmux :: X ()
+      tmux = do
+        dir <- currentTopicDir myTopicConfig
+        spawn $ "xterm -ls -e tmux -2 new-session" 
+
       terminal :: String -> X ()
       terminal app = do
         dir <- currentTopicDir myTopicConfig
         spawn $ "xshell " ++ app
-
-      browser :: String -> X ()
-      browser url = do
-        dir <- currentTopicDir myTopicConfig
-        spawn $ "browser " ++ url
 
       myKeys conf@(XConfig {XMonad.modMask = modm}) =
         [ ("M-u"  , sendMessage MirrorShrink)
@@ -87,10 +86,10 @@ main = do
         , ("M-j"  , focusDown)
         , ("M-k"  , focusUp)
         , ("M-g"  , withFocused toggleBorder)
+        , ("M-S-t", tmux)
         , ("M-S-g", markBoring)
         , ("M-S-b", clearBoring)
         , ("M-S-h", namedScratchpadAction scratchpads "notes")
-        , ("M-C-<Return>", browser "http://google.com")
         , ("M-a"  , currentTopicAction myTopicConfig)
         ]
         ++

@@ -1,4 +1,7 @@
 XTerm*charClass: 46:48,47:48,45:48 
+#XTerm*faceName: Pragmata
+#XTerm*faceSize: 10
+
 *VT100.allowWindowOps: true
 *VT100.allowTitleOps: true
 *VT100.allowFontOps: true

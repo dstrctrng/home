@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ -z "$BASH" ]]; then
-  exec bash "$HOME/.xinitrc"
+if [[ x"$BASH" != x"/bin/bash" ]]; then
+  exec /bin/bash "$HOME/.xinitrc"
 fi
 
 cd

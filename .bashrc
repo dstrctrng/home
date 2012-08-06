@@ -1,28 +1,27 @@
 shome="$HOME"
 source "$shome/bin/_meat"
 
-function reload {
-  pushd ~ > /dev/null
-  source "$HOME/.bash_profile"
-  popd > /dev/null
-}
+: ${MACPORTS:="$shome/local"}
+: ${VAGRANT:="$shome/vm"}
+: ${CUE:="$shome/.cue"}
+: ${PS1_LEFT:='${prn_git}${prn_pwd}'}
+: ${PS1_RIGHT:='${prn_ssh}'}
 
-function update {
-  pushd ~ > /dev/null
-  git update origin master
-  bundle --local
-  git push -u origin HEAD:master
-  reload
-  reload
-  popd ~ > /dev/null
-}
-
-export MACPORTS_ROOT="$HOME/.macports"
 require 'macports'
 require 'rvm'
-require 'hubflow'
-require 'cue'
-require 'ubuntu'
 
-require 'terminal'
+require 'hubflow'
+require 'ubuntu'
+require 'vim'
+require 'git'
+
+require 'cue/pwd'
+require 'cue/ssh'
+require 'cue/git'
+require 'cue'
+
 require 'aliases'
+require 'terminal'
+require 'xmonad'
+
+require 'osx'
