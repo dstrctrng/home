@@ -56,6 +56,15 @@ function main {
   fi
 
   local nm_component="$1"; shift
+  # HACK
+  if [[ "$nm_component" = "production" ]]; then
+    logger_fatal "must specify a pod name when deploying to production"
+  fi
+
+  if [[ "$nm_component" = "pod1" ]]; then
+    nm_component="sys"
+  fi
+
   case "$nm_component" in 
     *)
       if [[ "$FLAGS_autoconf" = "$FLAGS_TRUE" ]]; then
