@@ -5,7 +5,7 @@
 #/
 #/ SYNOPSIS
 #/     
-#/     proxy gateway deploy_command args 
+#/     proxy gateway version deploy_command args 
 #/
 
 # figure out the project root under which bin, lib live
@@ -20,19 +20,26 @@ function main {
   case "$nm_component" in 
     *)
       local hst_proxy="$nm_component"
+      local ver_repo="$1"; shift
 
       # remote arguments
       local git_url="$(git config --list | grep remote.origin.url | cut -d= -f2-)"
 
       local git_branch
       local git_head
-      local git_ref=$(cat .git/HEAD)
-      if echo "$git_ref" | egrep -q "^ref:"; then
-        git_branch=$(echo "$git_ref" | awk '{print $2}' | cut -d/ -f3-)
-        git_head=$(git show-ref --hash "$(echo "$git_ref" | awk '{print $2}')")
-      else
+
+      if [[ "$ver_repo" != "HEAD" ]]; then
         git_branch=""
-        git_head=$git_ref
+        git_head="$ver_repo"
+      else
+        local git_ref=$(cat .git/HEAD)
+        if echo "$git_ref" | egrep -q "^ref:"; then
+          git_branch=$(echo "$git_ref" | awk '{print $2}' | cut -d/ -f3-)
+          git_head=$(git show-ref --hash "$(echo "$git_ref" | awk '{print $2}')")
+        else
+          git_branch=""
+          git_head=$git_ref
+        fi
       fi
 
       if [[ -z $git_head ]]; then
