@@ -2,12 +2,9 @@
 
 #/ NAME
 #/     deploy -- central script for alpha_omega commands
-#/     build -- builds static site using jekyll
 #/
 #/ SYNOPSIS
 #/     
-#/     build site
-#/
 #/     deploy
 #/     stage
 #/     activate
@@ -60,9 +57,6 @@ function main {
 
   local nm_component="$1"; shift
   case "$nm_component" in 
-    site)
-      build_site "$@"
-      ;;
     *)
       if [[ "$FLAGS_autoconf" = "$FLAGS_TRUE" ]]; then
         PATH="$shome/.deploy/ssh/bin:$PATH"
