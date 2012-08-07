@@ -59,6 +59,7 @@ function main {
   # HACK
   if [[ "$nm_component" = "production" ]]; then
     logger_fatal "must specify a pod name when deploying to production"
+    exit 1
   fi
 
   if [[ "$nm_component" = "pod1" ]]; then
