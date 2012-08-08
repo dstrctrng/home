@@ -13,3 +13,55 @@
 
       echo "$path"
     }
+function end {
+  case "$resource" in
+    directory)
+      mkdir -p "$name"
+      [[ -n "$_owner" ]] && chown "$_owner" "$name" 
+      [[ -n "$_group" ]] && chgrp "$_group" "$name"
+      [[ -n "$_mode" ]] && chmod "$_mode" "$name"
+      ;;
+    link)
+      ln -nfs "$name" "$_to"
+      [[ -n "$_mode" ]] && chmod "$_mode" "$_to"
+      ;;
+  esac
+
+  unset _name _owner _group _mode _to
+}
+
+function directory {
+  resource="directory"
+  name="$1"; shift
+}
+
+function link {
+  resource="link"
+  name="$1"; shift
+}
+
+function owner {
+  _owner="$1"; shift
+}
+
+function group {
+  _group="$1"; shift
+}
+
+function mode {
+  _mode="$1"; shift
+}
+
+function to {
+  _to="$1"; shift
+}
+
+directory "$HOME/dir"
+  owner "$USER"
+  group "staff"
+  mode 0755
+end
+
+link "dir"
+  to "$HOME/slink"
+end
