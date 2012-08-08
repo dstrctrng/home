@@ -27,15 +27,14 @@ function main {
 }
 
 function microwave_cook {
-  export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
-
-  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-
   mkdir -p backup
   if [[ ! -d backup/.git ]]; then
     (cd backup && git init)
   fi
 
+  export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
+  unset GEM_HOME RUBYOPT 
+  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
   exec bundle exec chef-solo -c config/solo.rb -N "$FLAGS_node"
 }
 

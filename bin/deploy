@@ -70,11 +70,10 @@ function enforce_rvm {
     return
   fi
 
-  echo $pth_ruby_loader $ruby_deploy "$0" "$@"
   exec $pth_ruby_loader $ruby_deploy "$0" "$@"
 }
 
-enforce_rvm
+enforce_rvm "$@"
 
 # entry point
 function main {
@@ -116,6 +115,7 @@ function main {
       if [[ "$FLAGS_proxy" = "$FLAGS_FALSE" || "$FLAGS_direct" = "$FLAGS_TRUE" ]]; then
         export _AO_DEPLOY=1
         export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
+        unset GEM_HOME RUBYOPT 
         bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
         exec bundle exec alpha_omega $(basename $0) "$nm_component" "$@"
       else
