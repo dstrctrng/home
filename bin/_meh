@@ -1,0 +1,15 @@
+    function weed {
+      path="$PATH"
+
+      for nm_cmd in "$@"; do
+        old_ifs="$IFS"; IFS=":"; acc=""
+
+        for p in $path; do
+          [[ -x "$p/$nm_cmd" ]] || acc="$acc:$p" 
+        done
+
+        IFS="$old_ifs"; path="${acc#:}"
+      done
+
+      echo "$path"
+    }
