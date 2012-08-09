@@ -1,34 +1,43 @@
 #!/bin/bash -e
 
-pth_rvmrun="/data/zendesk/bin/rvmrun"
-nm_ruby="ree"
-
-if [[ -z $_AO_HELPER ]]; then
-  export _AO_HELPER=1
-  exec "$pth_rvmrun" "$nm_ruby" $0 "$@"
-  echo "ERROR: could not re-exec $0 under $pth_rvmrun $nm_ruby"
-  exit 1
-fi
+function crumb {
+  if [[ -n "$fl_debug" ]]; then
+    echo "$(date) $@" 1>&2
+  fi
+}
 
 nm_deployer=$1; shift
 git_url=$1; shift
 git_spec=$1; shift
+cmd_deploy=$1; shift
+
+if [[ "$cmd_deploy" = "debug" ]]; then
+  fl_debug=1
+else
+  fl_debug=
+fi
+
+crumb "start bin/remote-helper"  
+
+unset cd # disable rvm's cd function to prevent prompts
+
 git_branch=$(echo $git_spec | cut -d: -f1)
 git_sha=$(echo $git_spec | cut -d: -f2)
 
-cd
-mkdir -p .deploy/$nm_deployer
-cd .deploy/$nm_deployer
+mkdir -p "$HOME/.deploy/$nm_deployer"
+cd "$HOME/.deploy/$nm_deployer"
 
 nm_project=$(basename $git_url .git)
 if [[ ! -d $nm_project ]]; then
+  crumb "git clone $git_url"
   git clone -q $git_url
 fi
 
-unset cd # disable rvm's cd function to prevent prompts
 cd $nm_project
+crumb "git fetch"
 git fetch -q
 
+crumb "git reset, checkout"
 if [[ -z $git_branch || $git_branch = $git_sha ]]; then
   git reset -q --hard $git_sha
   git checkout -q $git_sha
@@ -37,8 +46,10 @@ else
   git reset -q --hard $git_sha
 fi
 
+crumb "git submodule"
 git submodule -q update --init --recursive
 
-nm_ao_subcommand=$1; shift
+crumb "executing bin/$cmd_deploy $@"
 export AO_USER="$nm_deployer"
-exec bin/$nm_ao_subcommand "$@"
+bin/$cmd_deploy "$@"
+crumb "end bin/remote-helper"

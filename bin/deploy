@@ -50,11 +50,38 @@
 #/         compare|migrate
 #/
 
+# first time, this will be empty, to trigger enforce_rvm
+: ${_AO_RVM:=}
+
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
 
 # load a meat library
 source "$shome/bin/_prime" "$@"
+
+# ensure script runs under rvm
+function enforce_rvm {
+  if [[ -n "$_AO_RVM" ]]; then
+    return 
+  fi
+
+  export _AO_RVM=1
+
+  local pth_ruby_loader="$(ryaml $shome/config/deploy.yml ruby_loader)"
+  local ruby_deploy="$(ryaml $shome/config/deploy.yml deploy_ruby)"
+
+  if [[ -z $pth_ruby_loader || -z $ruby_deploy ]]; then
+    return
+  fi
+
+  if [[ ! -x $pth_ruby_loader ]]; then
+    return
+  fi
+
+  exec $pth_ruby_loader $ruby_deploy "$0" "$@"
+}
+
+enforce_rvm "$@"
 
 # entry point
 function main {
@@ -72,10 +99,6 @@ function main {
       build_gem "$@"
       ;;
     *)
-      export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
-
-      bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-
       if [[ "$FLAGS_autoconf" = "$FLAGS_TRUE" ]]; then
         PATH="$shome/.deploy/ssh/bin:$PATH"
       fi
@@ -93,9 +116,22 @@ function main {
       fi
 
       if [[ "$FLAGS_proxy" = "$FLAGS_FALSE" || "$FLAGS_direct" = "$FLAGS_TRUE" ]]; then
+        export _AO_DEPLOY=1
+        export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
+        unset GEM_HOME RUBYOPT 
+        bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
         exec bundle exec alpha_omega $(basename $0) "$nm_component" "$@"
       else
-        exec $shome/bin/proxy "$FLAGS_gateway" $(basename $0) "$nm_component" "$@"
+        if [[ "$#" > 0 ]]; then
+          if [[ "$1" = "production" ]]; then
+            if [[ -z "$FLAGS_tag" || "$FLAGS_tag" = "HEAD" ]]; then
+              logger_fatal "must specify a version using --tag"
+              exit 1
+            fi
+          fi 
+        fi
+
+        exec $shome/bin/proxy "$FLAGS_gateway" "$FLAGS_tag" $(basename $0) "$nm_component" "$@"
       fi
       exit 1
       ;;
@@ -122,10 +158,13 @@ DEFINE_boolean "autoconf" "$FLAGS_TRUE" "use config/ssh to configure remote acce
 DEFINE_boolean "proxy" "$FLAGS_FALSE" "use a gateway to proxy deploys" "p"
 DEFINE_boolean "direct" "$FLAGS_FALSE" "override proxy" "d"
 DEFINE_string "chef" "" "location to chef repo with opsdb" "c"
+DEFINE_string "tag" "HEAD" "tag to deploy in production" "t"
 
 # parse the command-line
+export _AO_OPT="$@"
 parse_command_line "$@" || exit $?
 eval set -- "${FLAGS_ARGV}"
+export _AO_ARGS="$@"
 
 # pass arguments to entry point
 main "$@"
