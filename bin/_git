@@ -5,6 +5,10 @@ alias gl="\git lg"
 alias gd="\git difftool"
 alias gm="\git mergetool"
 
+function gdiff {
+  \git diff --no-ext-diff -w -b "$@" | vim -R -
+}
+
 # http://jeetworks.org/node/52
 function cdd {
   if [[ $(which git 2> /dev/null) ]]; then
