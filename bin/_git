@@ -6,7 +6,11 @@ alias gd="\git difftool"
 alias gm="\git mergetool"
 
 function gdiff {
-  \git diff --no-ext-diff -w -b "$@" | vim -R -
+  local len="$(git diff --no-ext-diff -w -b "$@" | wc -l | awk '{print $1}')"
+
+  if [[ "$len" != 0 ]]; then
+    \git diff --no-ext-diff -w -b "$@" | vim -R -
+  fi
 }
 
 # http://jeetworks.org/node/52
