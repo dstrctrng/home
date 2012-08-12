@@ -2,8 +2,6 @@ shome="$HOME"
 source "$shome/bin/_meat"
 
 : ${MACPORTS:="$shome/local"}
-: ${VAGRANT:="$shome/vm"}
-: ${CUE:="$shome/.cue"}
 : ${PS1_LEFT:='${prn_git}${prn_pwd}'}
 : ${PS1_RIGHT:='${prn_ssh}'}
 
@@ -25,3 +23,4 @@ require 'terminal'
 require 'xmonad'
 
 require 'osx'
+require 'vagrant'
