@@ -1,0 +1,15 @@
+function dev0 {
+  /Users/defn/.ubuntu/bin/vagrant -- dev0 "$@"
+}
+function dev1 {
+  /Users/defn/.ubuntu/bin/vagrant -- dev1 "$@"
+}
+function dev2 {
+  /Users/defn/.ubuntu/bin/vagrant -- dev2 "$@"
+}
+function dev3 {
+  /Users/defn/.ubuntu/bin/vagrant -- dev3 "$@"
+}
+function dev4 {
+  /Users/defn/.ubuntu/bin/vagrant -- dev4 "$@"
+}
