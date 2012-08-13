@@ -9,7 +9,7 @@
 #/     scp ...
 
 # figure out the project root under which bin, lib live
-shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
 # entry point
 function main {
