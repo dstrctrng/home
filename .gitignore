@@ -58,3 +58,5 @@
 /backup
 *.orig
 /local
+/tmp/site
+*.orig

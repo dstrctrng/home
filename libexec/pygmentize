@@ -7,10 +7,10 @@
 #/     pygmentize ...
 
 # figure out the project root under which bin, lib live
-shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
-# load a meat library
-source "$shome/bin/_prime" "$@"
+# load a jason bourne library
+source "$shome/bin/_treadstone"
 
 # entry point
 function main {
