@@ -1,5 +1,4 @@
 if [[ -z "${SUDO_USER:-}" ]]; then
-  set +fue
   if [[ -f /etc/profile.d/rvm.sh ]]; then
     source /etc/profile.d/rvm.sh
   elif [[ -f /usr/local/lib/rvm ]]; then
@@ -27,5 +26,4 @@ if [[ -z "${SUDO_USER:-}" ]]; then
   }
 
   rvm 1.9.3 || rvm ree || rvm system
-  set -fue
 fi

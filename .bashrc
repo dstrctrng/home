@@ -1,5 +1,5 @@
 : ${DISPLAY:=}
-source "$HOME/bin/_treadstone"
+source "$HOME/bin/_jason"
 
 require 'macports' $shome/local
 require 'rvm'
