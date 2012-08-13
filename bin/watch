@@ -1,12 +1,10 @@
 #!/bin/bash
 
 #/ NAME
-#/     build -- upload the latest (timestamp) rubygem to rubygems.org
-#/     build -- builds static site using jekyll
+#/     watch -- watch jekyll and compass
 #/
 #/ SYNOPSIS
-#/     build gem -n gem_name
-#/     build site
+#/     watch site
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
@@ -23,11 +21,8 @@ function main {
 
   local nm_component="$1"; shift
   case "$nm_component" in 
-    gem)
-      build_gem "$@"
-      ;;
     site)
-      build_site "$@"
+      watch_site "$@"
       ;;
     *)
       logger_fatal "don't know how to build ${nm_component}"
@@ -36,32 +31,15 @@ function main {
   esac
 }
 
-# build a gem
-function build_gem {
-  local pth_gemspec="$shome/$FLAGS_name.gemspec"
-  if [[ ! -e "$pth_gemspec" ]]; then
-    logger_fatal "could not find gemspec $pth_gemspec"
-    exit 1
-  fi
-
-  cd "$shome"
-  gem build "$pth_gemspec"
-}
-
-# build the site with jekyll
-function build_site {
+function watch_site {
   export BUNDLE_GEMFILE="$shome/.doc/Gemfile"
   bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
 
   local old_path="$PATH"
   PATH="$PATH:$shome/libexec"
 
-  pushd "$shome/site/theme" > /dev/null
-  bundle exec compass compile
-  popd > /dev/null
-
   pushd "$shome/site" > /dev/null
-  bundle exec jekyll
+  bundle exec foreman start
   popd > /dev/null
 
   PATH="$old_path"
@@ -69,7 +47,6 @@ function build_site {
 
 # define command line options:
 #   var name, default, description, short option
-DEFINE_string 'name' "$(basename "$shome")" 'name of gem' 'n'
 
 # parse the command-line
 parse_command_line "$@" || exit $?

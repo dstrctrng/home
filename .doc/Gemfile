@@ -22,9 +22,10 @@ gem "redcarpet", "~> 1.17.0"
 gem "rocco"
 gem "ronn"
 gem "jekyll"
+gem "compass"
 
 # servers
 gem "sinatra"
-gem "thin"
+gem "foreman"
 
 # vim: set ft=ruby:
