@@ -1,5 +1,5 @@
-shome="$HOME"
-source "$shome/bin/_meat"
+: ${DISPLAY:=}
+source "$HOME/bin/_treadstone"
 
 require 'macports' $shome/local
 require 'rvm'
