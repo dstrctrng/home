@@ -6,6 +6,7 @@
 #/ SYNOPSIS
 #/     
 #/     proxy gateway version deploy_command args 
+#/     proxy git_url git_spec gateway version deploy_command args 
 #/
 
 # figure out the project root under which bin, lib live
@@ -39,16 +40,16 @@ function git_branch_head {
   echo "$git_branch:$git_head"
 }
 
-
 function clone_proxy {
   local ver_repo=$2
   export _AO_PROXIED=1
   rm -rf $shome/.tmp/deploy
+  local git_url="$(git config --list | grep remote.origin.url | cut -d= -f2-)"
   git clone -q $shome $shome/.tmp/deploy
   cd $shome/.tmp/deploy
-  local git_head="$(git_branch_head "$ver_repo" | cut -d: -f2)"
-  git checkout -q $git_head
-  exec $shome/.tmp/deploy/bin/proxy "$@"
+  local git_spec="$(git_branch_head "$ver_repo")"
+  git checkout -q "${git_head##*:}"
+  exec $shome/.tmp/deploy/bin/proxy "$git_url" "$git_spec" "$@"
 }
 
 : ${_AO_PROXIED:=}
@@ -61,14 +62,12 @@ source "$shome/bin/_treadstone"
 
 # entry point
 function main {
+  local git_url="$1"; shift
+  local git_spec="$1"; shift
   local hst_gateway="$1"; shift
+  local ver_repo="$1"; shift
   case "$hst_gateway" in 
     *)
-      local ver_repo="$1"; shift
-
-      local git_spec="$(git_branch_head "$ver_repo")"
-      local git_url="$(git config --list | grep remote.origin.url | cut -d= -f2-)"
-
       local pth_rvmrun="$(ruby -ryaml -e 'puts YAML.load(File.read(ARGV[0]))[ARGV[1]]' $shome/config/deploy.yml ruby_loader)"
       local nm_ruby="$(ruby -ryaml -e 'puts YAML.load(File.read(ARGV[0]))[ARGV[1]]' $shome/config/deploy.yml deploy_ruby)"
 
