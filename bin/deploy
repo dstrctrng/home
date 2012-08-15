@@ -129,8 +129,15 @@ function main {
         if [[ "$#" > 0 ]]; then
           if [[ "$1" = "production" ]]; then
             if [[ -z "$FLAGS_tag" || "$FLAGS_tag" = "HEAD" ]]; then
-              logger_fatal "must specify a version using --tag"
-              exit 1
+              case "$(basename $0)" in
+                hosts|debug)
+                  true
+                  ;;
+                *)
+                  logger_fatal "must specify a version using --tag"
+                  exit 1
+                  ;;
+              esac
             fi
           fi 
         fi
