@@ -89,8 +89,8 @@ function main {
     exit 1
   fi
 
-  if [[ -z "$FLAGS_gateway" ]]; then
-    local hst_gateway="$(ryaml $shome/config/pods.yml pods $nm_component gateway)"
+  if [[ -z "$FLAGS_gateway" && -r "$HOME/.getting-started/config/pods.yml" ]]; then
+    local hst_gateway="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component gateway)"
     if [[ -n "$hst_gateway" ]]; then
       FLAGS_gateway="$hst_gateway"
     fi
