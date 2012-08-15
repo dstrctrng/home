@@ -84,21 +84,23 @@ function main {
 
   local nm_component="$1"; shift
   # HACK TODO
-  if [[ "$nm_component" = "production" ]]; then
-    logger_fatal "must specify a pod name when deploying to production"
+  if [[ "$#" = 0 ]]; then
+    logger_fatal "must specify a pod name when deploying"
     exit 1
+  fi
+
+  # HACK TODO
+  if [[ "$nm_component" = "pod1" ]]; then
+    nm_component="sys"
   fi
 
   if [[ -z "$FLAGS_gateway" && -r "$HOME/.getting-started/config/pods.yml" ]]; then
     local hst_gateway="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component gateway)"
     if [[ -n "$hst_gateway" ]]; then
       FLAGS_gateway="$hst_gateway"
+    else
+      logger_fatal "invalid pod, could not map to a deploy host: $nm_component"
     fi
-  fi
-
-  # HACK TODO
-  if [[ "$nm_component" = "pod1" ]]; then
-    nm_component="sys"
   fi
 
   case "$nm_component" in 
