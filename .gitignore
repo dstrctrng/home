@@ -54,6 +54,7 @@
 /.local
 /.ubuntu
 /.macports
+/.homebrew
 /cache
 /backup
 *.orig
