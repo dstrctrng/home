@@ -1,0 +1,39 @@
+#!/bin/bash
+
+#/ NAME
+#/     _ssh -- ssh library for controlmaster, jails
+#/
+#/ SYNOPSIS
+#/     require ssh
+
+function ssh_start {
+  local hst_remote="$1"; shift
+  local pth_control="$HOME/.ssh/master-%r@%h:%p"
+
+  local attempts=0
+  while true; do
+    attempts="$((attempts + 1))"
+    if [[ "$attempts" > 5 ]]; then
+      exit 1
+    fi
+    ssh -n -o ControlPath=$pth_control -o ControlMaster=auto  -N -f $hst_remote
+    if ssh -n -o ControlPath=$pth_control -O check $hst_remote; then
+      break
+    fi
+  done
+}
+
+function ssh_stop {
+  local hst_remote="$1"; shift
+  local pth_control="$HOME/.ssh/master-%r@%h:%p"
+
+  ssh -n -o ControlPath=$pth_control -O exit $hst_remote
+}
+
+function ssh_run {
+  local hst_remote="$1"; shift
+  local pth_control="$HOME/.ssh/master-%r@%h:%p"
+
+  ssh -n -o ControlPath=$pth_control $hst_remote "$@"
+}
+

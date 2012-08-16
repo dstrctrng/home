@@ -24,3 +24,4 @@ require 'xmonad'
 
 require 'osx'
 require 'vagrant'
+require 'ssh'
