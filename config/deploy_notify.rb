@@ -5,6 +5,17 @@ require 'capistrano/campfire'
 
 namespace :deploy do
   namespace :notify do
+    task :default do
+      airbrake
+      newrelic
+      email
+      campfire
+    end
+
+    task :email do
+      run_locally "echo '#{notify_message}' | mail -s '#{notify_message}' #{$deploy["notify"]["email"]["recipients"].join(" ")}"
+    end
+
     task :campfire do
       set :campfire_options, 
             :ssl => true,
@@ -45,3 +56,5 @@ namespace :deploy do
     end 
   end
 end
+
+after "deploy:restart", "deploy:notify"
