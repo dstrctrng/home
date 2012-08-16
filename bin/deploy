@@ -91,6 +91,26 @@ function main {
   fi
 
   local nm_component="$1"; shift
+  # HACK TODO
+  if [[ "$#" = 0 ]]; then
+    logger_fatal "must specify a pod name when deploying"
+    exit 1
+  fi
+
+  # HACK TODO
+  if [[ "$nm_component" = "pod1" ]]; then
+    nm_component="sys"
+  fi
+
+  if [[ -z "$FLAGS_gateway" && -r "$HOME/.getting-started/config/pods.yml" ]]; then
+    local hst_gateway="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component gateway)"
+    if [[ -n "$hst_gateway" ]]; then
+      FLAGS_gateway="$hst_gateway"
+    else
+      logger_fatal "invalid pod, could not map to a deploy host: $nm_component"
+    fi
+  fi
+
   case "$nm_component" in 
     site)
       build_site "$@"
@@ -125,8 +145,15 @@ function main {
         if [[ "$#" > 0 ]]; then
           if [[ "$1" = "production" ]]; then
             if [[ -z "$FLAGS_tag" || "$FLAGS_tag" = "HEAD" ]]; then
-              logger_fatal "must specify a version using --tag"
-              exit 1
+              case "$(basename $0)" in
+                hosts|debug)
+                  true
+                  ;;
+                *)
+                  logger_fatal "must specify a version using --tag"
+                  exit 1
+                  ;;
+              esac
             fi
           fi 
         fi
@@ -153,7 +180,7 @@ function build_site {
 # define command line options:
 #   var name, default, description, short option
 DEFINE_string 'name' "$(basename "$shome")" 'name of gem' 'n'
-DEFINE_string "gateway" "deploy" "deploy gateway host" "g"
+DEFINE_string "gateway" "" "deploy gateway host" "g"
 DEFINE_boolean "autoconf" "$FLAGS_TRUE" "use config/ssh to configure remote access" "z"
 DEFINE_boolean "proxy" "$FLAGS_FALSE" "use a gateway to proxy deploys" "p"
 DEFINE_boolean "direct" "$FLAGS_FALSE" "override proxy" "d"
