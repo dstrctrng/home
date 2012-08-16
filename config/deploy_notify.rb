@@ -6,10 +6,10 @@ require 'capistrano/campfire'
 namespace :deploy do
   namespace :notify do
     task :default do
-      airbrake
-      newrelic
-      email
-      campfire
+      airbrake if $deploy["notify"].member? "airbrake"
+      newrelic if $deploy["notify"].member? "newrelic"
+      email if $deploy["notify"].member? "email"
+      campfire if $deploy["notify"].member? "campfire"
     end
 
     task :email do
