@@ -13,3 +13,15 @@ branches: [ production staging master ]
 branch_regex: ^
 
 chef_path: 
+
+notify:
+  email:
+    recipients: 
+    - 
+  campfire:
+    account:
+    room:
+    email:
+    token:
+  airbrake:
+    api_key:
