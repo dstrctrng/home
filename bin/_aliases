@@ -7,7 +7,6 @@ function reload {
 function update {
   pushd ~ > /dev/null
   git update origin master
-  git fetch --tags
   bundle --local
   git push -u origin HEAD:master
   reload
