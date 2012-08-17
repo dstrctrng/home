@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'alpha_omega/deploy'
+load 'config/deploy_challenge'
+load 'config/deploy_notify'
 
 # application deploy
 namespace :application do
