@@ -25,3 +25,7 @@ require 'xmonad'
 require 'osx'
 require 'vagrant'
 require 'ssh'
+
+if [[ -n "${PATH_OVERRIDE:-}" ]]; then
+  PATH="$PATH_OVERRIDE:$PATH"
+fi

@@ -8,7 +8,8 @@
 
 function ssh_start {
   local hst_remote="$1"; shift
-  local pth_control="$HOME/.ssh/master-%r@%h:%p"
+  local id_session="$1"; shift
+  local pth_control="$HOME/.ssh/master-%r@%h:%p-$id_session"
 
   local attempts=0
   while true; do
@@ -25,15 +26,44 @@ function ssh_start {
 
 function ssh_stop {
   local hst_remote="$1"; shift
-  local pth_control="$HOME/.ssh/master-%r@%h:%p"
+  local id_session="$1"; shift
+  local pth_control="$HOME/.ssh/master-%r@%h:%p-$id_session"
 
   ssh -n -o ControlPath=$pth_control -O exit $hst_remote
 }
 
 function ssh_run {
   local hst_remote="$1"; shift
-  local pth_control="$HOME/.ssh/master-%r@%h:%p"
+  local id_session="$1"; shift
+  local pth_control="$HOME/.ssh/master-%r@%h:%p-$id_session"
 
   ssh -n -o ControlPath=$pth_control $hst_remote "$@"
+}
+
+function ssh_session {
+  local hst_remote="$1"; shift
+
+  local id_session="$(random_str)"
+  local pth_control="$HOME/.ssh/master-%r@%h:%p-$id_session"
+  ssh_start "$hst_remote" "$id_session"
+
+  local cmd_ssh="$(which ssh)"
+
+  local tmp_ssh="$(mktemp -d -t XXXXXXXXX)"
+  mkdir "$tmp_ssh/bin"
+
+  local dollar='$'
+  cat > "$tmp_ssh/bin/ssh" <<EOF
+#!/bin/bash
+exec $cmd_ssh -n -o ControlPath=$pth_control "${dollar}@"
+EOF
+  chmod 755 $tmp_ssh/bin/ssh
+
+  export PATH_OVERRIDE="$tmp_ssh/bin"
+
+  bash
+
+  rm -rf $tmp_ssh
+  ssh_stop "$hst_remote" "$id_session"
 }
 
