@@ -7,8 +7,9 @@ function reload {
 function update {
   pushd ~ > /dev/null
   git update origin master
+  git owner master
+  git push -u origin master
   bundle --local
-  git push -u origin HEAD:master
   reload
   reload
   popd ~ > /dev/null
