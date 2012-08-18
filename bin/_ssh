@@ -28,7 +28,7 @@ function ssh_run {
   local id_session="$1"; shift
   local pth_control="$HOME/.ssh/master-%r@%h:%p-$id_session"
 
-  ssh -n -o ControlPath=$pth_control $hst_remote "$@"
+  ssh -o ControlPath=$pth_control $hst_remote "$@"
 }
 
 function ssh_session {
