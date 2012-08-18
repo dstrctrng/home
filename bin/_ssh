@@ -55,6 +55,7 @@ EOF
 
   export PATH_OVERRIDE="$tmp_ssh/bin"
 
+  export SHLVL_NAME="ssh"
   bash
 
   rm -rf $tmp_ssh
