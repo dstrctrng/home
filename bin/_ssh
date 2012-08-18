@@ -11,17 +11,8 @@ function ssh_start {
   local id_session="$1"; shift
   local pth_control="$HOME/.ssh/master-%r@%h:%p-$id_session"
 
-  local attempts=0
-  while true; do
-    attempts="$((attempts + 1))"
-    if [[ "$attempts" > 5 ]]; then
-      exit 1
-    fi
-    ssh -n -o ControlPath=$pth_control -o ControlMaster=auto  -N -f $hst_remote
-    if ssh -n -o ControlPath=$pth_control -O check $hst_remote; then
-      break
-    fi
-  done
+  ssh -n -o ControlPath=$pth_control -o ControlMaster=auto  -N -f $hst_remote
+  ssh -n -o ControlPath=$pth_control -O check $hst_remote
 }
 
 function ssh_stop {
@@ -41,11 +32,14 @@ function ssh_run {
 }
 
 function ssh_session {
-  local hst_remote="$1"; shift
 
   local id_session="$(random_str)"
   local pth_control="$HOME/.ssh/master-%r@%h:%p-$id_session"
-  ssh_start "$hst_remote" "$id_session"
+  
+  local hst_remote
+  for hst_remote in "$@"; do
+    ssh_start "$hst_remote" "$id_session" &
+  done | cat &
 
   local cmd_ssh="$(which ssh)"
 
@@ -64,6 +58,8 @@ EOF
   bash
 
   rm -rf $tmp_ssh
-  ssh_stop "$hst_remote" "$id_session"
+  for hst_remote in "$@"; do
+    ssh_stop "$hst_remote" "$id_session" || true &
+  done | cat
 }
 
