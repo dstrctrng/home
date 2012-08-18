@@ -49,7 +49,7 @@ function ssh_session {
   local dollar='$'
   cat > "$tmp_ssh/bin/ssh" <<EOF
 #!/bin/bash
-exec $cmd_ssh -n -o ControlPath=$pth_control "${dollar}@"
+exec $cmd_ssh -o ControlPath=$pth_control "${dollar}@"
 EOF
   chmod 755 $tmp_ssh/bin/ssh
 
