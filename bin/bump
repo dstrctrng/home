@@ -19,6 +19,7 @@ require 'bump'
 # entry point
 function main {
   bump_version "$FLAGS_dirty" "$@"
+  git push
 }
 
 # parse the command-line
