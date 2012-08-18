@@ -11,7 +11,7 @@ function ssh_start {
   local id_session="$1"; shift
   local pth_control="$HOME/.ssh/master-%r@%h:%p-$id_session"
 
-  ssh -n -o ControlPath=$pth_control -o ControlMaster=auto  -N -f $hst_remote
+  ssh -n -o ControlPath=$pth_control -o ControlMaster=auto -N -f $hst_remote
   ssh -n -o ControlPath=$pth_control -O check $hst_remote
 }
 
@@ -62,5 +62,6 @@ EOF
   for hst_remote in "$@"; do
     ssh_stop "$hst_remote" "$id_session" || true &
   done | cat
+  wait
 }
 
