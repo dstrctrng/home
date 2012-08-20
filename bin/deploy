@@ -90,10 +90,10 @@ function main {
     exit 1
   fi
 
-  local nm_component="$1"; shift
+  local nm_component="$1" # will shift later since this could be an integration environment
   # HACK TODO
   if [[ "$#" = 0 ]]; then
-    logger_fatal "must specify a pod name when deploying"
+    logger_fatal "must specify a pod name or integration environment when deploying"
     exit 1
   fi
 
@@ -102,12 +102,22 @@ function main {
     nm_component="sys"
   fi
 
-  if [[ -z "$FLAGS_gateway" && -r "$HOME/.getting-started/config/pods.yml" ]]; then
-    local hst_gateway="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component gateway)"
-    if [[ -n "$hst_gateway" ]]; then
-      FLAGS_gateway="$hst_gateway"
+  if [[ -r "$HOME/.getting-started/config/pods.yml" ]]; then
+    local pod_shortcut="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component pod)"
+    if [[ -n "$pod_shortcut" ]]; then
+      nm_component="$pod_shortcut"
     else
-      logger_fatal "invalid pod, could not map to a deploy host: $nm_component"
+      shift # treat as a pod name
+    fi
+
+    local hst_gateway="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component gateway)"
+    if [[ -z "$hst_gateway" ]]; then
+      logger_fatal "$nm_component is not a pod name"
+      exit 1
+    fi
+
+    if [[ -z "$FLAGS_gateway" ]]; then
+      FLAGS_gateway="$hst_gateway"
     fi
   fi
 
@@ -141,9 +151,17 @@ function main {
         unset GEM_HOME RUBYOPT 
         bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
         exec bundle exec alpha_omega $(basename $0) "$nm_component" "$@"
-      else
-        if [[ "$#" > 0 ]]; then
-          if [[ "$1" = "production" ]]; then
+        logger_fatal "could not run the alpha_omega command, this is an esoteric error"
+        exit 1
+      fi
+     
+      if [[ "$#" > 0 ]]; then
+        case "$1" in
+          all|world)
+            logger_fatal "cannot use all or world, these are dangerous"
+            exit 1
+            ;;
+          production)
             if [[ -z "$FLAGS_tag" || "$FLAGS_tag" = "HEAD" ]]; then
               case "$(basename $0)" in
                 hosts|debug)
@@ -155,11 +173,12 @@ function main {
                   ;;
               esac
             fi
-          fi 
-        fi
-
-        exec $shome/bin/proxy "$FLAGS_gateway" "$FLAGS_tag" $(basename $0) "$nm_component" "$@"
+            ;;
+        esac
       fi
+
+      exec $shome/bin/proxy "$FLAGS_gateway" "$FLAGS_tag" $(basename $0) "$nm_component" "$@"
+      logger_fatal "could not run the proxy command, this is an esoteric error"
       exit 1
       ;;
   esac
