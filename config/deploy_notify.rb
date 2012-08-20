@@ -2,6 +2,7 @@ require 'new_relic/recipes'
 require 'airbrake'
 require 'airbrake_tasks'
 require 'capistrano/campfire'
+require 'flowdock'
 
 namespace :deploy do
   namespace :notify do
@@ -10,6 +11,7 @@ namespace :deploy do
       newrelic if $deploy["notify"].member? "newrelic"
       email if $deploy["notify"].member? "email"
       campfire if $deploy["notify"].member? "campfire"
+      flowdock if $deploy["notify"].member? "flowdock"
     end
 
     task :email do
@@ -47,6 +49,16 @@ namespace :deploy do
         $stderr.puts "An error occurred during the Airtoad deploy notification."
       end
     end
+
+    task :flowdock do
+      flow = Flowdock::Flow.new(:api_token => $deploy["notify"]["flowdock"]["api_token"],
+        :source => "alpha_omega deployment", :project => $deploy["notify"]["flowdock"]["project"],
+        :from => { :name => $deploy["notify"]["flowdock"]["from"]["name"], 
+                  :address => $deploy["notify"]["flowdock"]["from"]["address"] })
+                  
+      flow.send_message(:format => "html", :subject => "Application #{$deploy["application"]} deployed #deploy",
+        :content => "Application deployed successfully!", :tags => $deploy["notify"]["flowdock"]["tags"])
+    end 
 
     task :newrelic do
     end

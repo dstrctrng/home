@@ -25,3 +25,11 @@ notify:
     token:
   airbrake:
     api_key:
+  flowdock:
+    api_token:
+    project:
+    from:
+      name:
+      address:
+    tags:
+    - deploy
