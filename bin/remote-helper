@@ -1,4 +1,19 @@
-#!/bin/bash -e
+#!/bin/bash
+
+#/ NAME
+#/     remote-helper -- remotely builds a workarea
+#/
+#/ SYNOPSIS
+#/     
+#/     remote-heper deployer git_url git_spec deploy_comand deploy_args
+#/
+
+set -e
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+
+fl_debug=
 
 function crumb {
   if [[ -n "$fl_debug" ]]; then
@@ -6,50 +21,60 @@ function crumb {
   fi
 }
 
-nm_deployer=$1; shift
-git_url=$1; shift
-git_spec=$1; shift
-cmd_deploy=$1; shift
+# entry point
+function main {
+  nm_deployer=$1; shift
+  git_url=$1; shift
+  git_spec=$1; shift
+  cmd_deploy=$1; shift
 
-if [[ "$cmd_deploy" = "debug" ]]; then
-  fl_debug=1
-else
-  fl_debug=
-fi
+  if [[ "$cmd_deploy" = "debug" ]]; then
+    fl_debug=1
+  fi
 
-crumb "start bin/remote-helper"  
+  crumb "start $shome/bin/remote-helpe with args: $nm_deployer, $git_url, $git_head, $cmd_deploy"
+  crumb "additional args: $@"
 
+  git_branch="${git_spec%%:*}"
+  git_sha="${git_spec##*:}"
+
+  crumb "derive: git_branch = $git_branch"
+  crumb "derive: git_sha = $git_sha"
+
+  mkdir -p "$HOME/.deploy/$nm_deployer"
+  cd "$HOME/.deploy/$nm_deployer"
+
+  nm_project=$(basename $git_url .git)
+  if [[ ! -d $nm_project ]]; then
+    crumb "git clone $git_url"
+    git clone -q $git_url
+  fi
+  crumb "remote deploy on $(hostname) in $HOME/.deploy/$nm_deployer/$nm_project/"
+
+  cd $nm_project
+  git fetch -q
+
+  if [[ -z $git_branch || $git_branch = $git_sha ]]; then
+    crumb "git reset, checkout of $git_sha"
+    git reset -q --hard $git_sha
+    git checkout -q $git_sha
+  else
+    crumb "git checkout of $git_branch, reset of $git_sha"
+    git checkout -q --force $git_branch
+    git reset -q --hard $git_sha
+  fi
+
+  crumb "git submodule"
+  git submodule -q update --init --recursive
+
+  crumb "executing bin/$cmd_deploy $@"
+  export AO_USER="$nm_deployer"
+  bin/$cmd_deploy "$@"
+  crumb "end bin/remote-helper"
+}
+
+# setup
 unset cd # disable rvm's cd function to prevent prompts
 
-git_branch=$(echo $git_spec | cut -d: -f1)
-git_sha=$(echo $git_spec | cut -d: -f2)
-
-mkdir -p "$HOME/.deploy/$nm_deployer"
-cd "$HOME/.deploy/$nm_deployer"
-
-nm_project=$(basename $git_url .git)
-if [[ ! -d $nm_project ]]; then
-  crumb "git clone $git_url"
-  git clone -q $git_url
-fi
-
-cd $nm_project
-crumb "git fetch"
-git fetch -q
-
-crumb "git reset, checkout"
-if [[ -z $git_branch || $git_branch = $git_sha ]]; then
-  git reset -q --hard $git_sha
-  git checkout -q $git_sha
-else
-  git checkout -q --force $git_branch
-  git reset -q --hard $git_sha
-fi
-
-crumb "git submodule"
-git submodule -q update --init --recursive
-
-crumb "executing bin/$cmd_deploy $@"
-export AO_USER="$nm_deployer"
-bin/$cmd_deploy "$@"
-crumb "end bin/remote-helper"
+# pass arguments to entry point
+main "$@"
