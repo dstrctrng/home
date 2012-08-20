@@ -148,5 +148,3 @@ cmap w!! %!sudo tee > /dev/null %
 
 """ tabs, windows, buffers
 map t :tabnew 
-map K gt<CR>  # next tab
-map J gT<CR>  # previous tab
