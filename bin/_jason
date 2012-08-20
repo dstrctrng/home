@@ -1,10 +1,10 @@
 #!/bin/bash
 
-: ${__jason__:=x}
-if [[ "$__jason__" != 'x' ]]; then
+: ${__meat__:=x}
+if [[ "$__meat__" != 'x' ]]; then
   return 0
 fi
-__jason__='y'
+__meat__='y'
 
 if [[ -z "${shome:-}" ]]; then
   shome="$(cd -P -- "$(dirname -- "${BASH_SOURCE}")/.." && pwd -P)"
@@ -76,6 +76,9 @@ function require {
   local nm_library="$1"; shift
   local pth_lib="$(which_library "$nm_library")"
   if [[ -r "$pth_lib" ]]; then
+    if [[ "$#" == 0 ]]; then
+      set --
+    fi
     source "$pth_lib" "$@"
   fi
 }
@@ -112,6 +115,10 @@ function configure_logging {
 
 function ryaml {
   ruby -ryaml -e 'puts ARGV[1..-1].inject(YAML.load(File.read(ARGV[0]))) {|acc, key| acc[key] }' "$@"
+}
+
+function random_str {
+  echo "$(date +%s).$$.$RANDOM"
 }
 
 function _main {
