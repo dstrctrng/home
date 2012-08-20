@@ -57,6 +57,7 @@ EOF
 
   export SHLVL_NAME="ssh"
   bash
+  unset SHLVL_NAME
 
   rm -rf $tmp_ssh
   for hst_remote in "$@"; do
