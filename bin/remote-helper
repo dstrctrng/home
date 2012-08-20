@@ -32,7 +32,7 @@ function main {
     fl_debug=1
   fi
 
-  crumb "start $shome/bin/remote-helpe with args: $nm_deployer, $git_url, $git_head, $cmd_deploy"
+  crumb "start $shome/bin/remote-helper with args: $nm_deployer, $git_url, $git_spec, $cmd_deploy"
   crumb "additional args: $@"
 
   git_branch="${git_spec%%:*}"
@@ -49,7 +49,7 @@ function main {
     crumb "git clone $git_url"
     git clone -q $git_url
   fi
-  crumb "remote deploy on $(hostname) in $HOME/.deploy/$nm_deployer/$nm_project/"
+  crumb "remote deploy on ${LOGNAME}@$(hostname) in $HOME/.deploy/$nm_deployer/$nm_project/"
 
   cd $nm_project
   git fetch -q
