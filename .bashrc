@@ -1,3 +1,5 @@
+#!/bin/bash
+
 : ${DISPLAY:=}
 
 source "$HOME/bin/_jason"
