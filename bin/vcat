@@ -1,0 +1,40 @@
+#!/bin/bash
+
+#/ NAME
+#/     vcat -- vim cat with syntax hilighting
+#/
+#/ SYNOPSIS
+#/     
+#/     vcat files
+#/
+#/ SOURCE
+#/
+#/     taken from the _v script in project https://github.com/trapd00r/utils 
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+
+# load a jason bourne library
+source "$shome/bin/_treadstone"
+
+# entry point
+function main {
+  script="$shome/bin/$(basename "$0").vim"
+
+  tmp_vim="$(mktemp -d -t XXXXXXXXX)"
+  pushd $tmp_vim > /dev/null
+  vim -e -X -R <(cd "$shome"; cat "$@") -c "source $script" -c "visual" -c "bufdo call AnsiHighlight()" -c qa >/dev/null 2>/dev/null
+  cat v.out
+  popd > /dev/null
+  rm -rf "$tmp_vim"
+}
+
+# define command line options:
+#   var name, default, description, short option
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+# pass arguments to entry point
+main "$@"
