@@ -16,3 +16,7 @@ function update {
 }
 
 alias poop='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+
+function vcat {
+  $shome/bin/vcat "$@"
+}
