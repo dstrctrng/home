@@ -6,7 +6,7 @@ set -u
 require 'macports' $shome/local
 require 'rvm'
 
-require 'hubflow'
+require 'paul'
 require 'ubuntu'
 require 'vim'
 require 'git'
