@@ -22,8 +22,9 @@ function main {
   script="$shome/bin/$(basename "$0").vim"
 
   tmp_vim="$(mktemp -d -t XXXXXXXXX)"
+  local source_dir="$(pwd)"
   pushd $tmp_vim > /dev/null
-  vim -e -X -R <(cd "$shome"; cat "$@") -c "source $script" -c "visual" -c "bufdo call AnsiHighlight()" -c qa >/dev/null 2>/dev/null
+  vim -e -X -R <(cd "$source_dir"; cat "$@") -c "source $script" -c "visual" -c "bufdo call AnsiHighlight()" -c qa >/dev/null 2>/dev/null
   cat v.out
   popd > /dev/null
   rm -rf "$tmp_vim"
