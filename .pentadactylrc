@@ -1,5 +1,5 @@
 set nofs
 set guioptions=
 set stal=never
-set editor="/Users/defn/.macports/local/bin/mvim -f"
+set editor="/Users/defn/local/bin/mvim -f"
 set defsearch="duckduckgo-ssl"
