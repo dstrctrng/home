@@ -4,14 +4,14 @@ source ~/.vim/junas
 " install whatever bundles over the net
 silent call Bundle(["xoria256", "vim-colors-solarized"])
 silent call Bundle(["surround", "repeat", "Rainbow_Parenthesis", "matchit.zip", "eregex"])
-silent call Bundle(["The_NERD_tree", "The_NERD_Commenter", "powerline"])
+silent call Bundle(["powerline"])
 
 " use the xoria256 color scheme
 colorscheme xoria256
 
 " more bundles
 silent call Bundle(["fugitive", "git.zip", "Gist",  "cucumber.zip", "rake"])
-silent call Bundle(["haml.zip", "Better_Javascript_Indentation", "Textile_for_VIM", "vim-coffee-script", "vim-ruby"])
+silent call Bundle(["haml.zip", "vim-ruby", "vim-erl"])
 silent call Bundle(["vim-pasta"])
 silent call Bundle(["vimpager"])
 
