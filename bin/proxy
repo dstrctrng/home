@@ -15,26 +15,16 @@ shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 function git_branch_head {
   local ver_repo="$1"; shift
 
-  local git_branch
-  local git_head
+  local git_branch=""
+  local git_head="$ver_repo"
+  if [[ "$ver_repo" = "HEAD" ]]; then
+    git_branch="$(git symbolic-ref HEAD 2>&- || true | cut -d/ -f3)"
 
-  if [[ "$ver_repo" != "HEAD" ]]; then
-    git_branch=""
-    git_head="$ver_repo"
-  else
-    local git_ref=$(cat $shome/.git/HEAD)
-    if echo "$git_ref" | egrep -q "^ref:"; then
-      git_branch=$(echo "$git_ref" | awk '{print $2}' | cut -d/ -f3-)
-      git_head=$(git show-ref --hash "$(echo "$git_ref" | awk '{print $2}')")
-    else
-      git_branch=""
-      git_head=$git_ref
+    git_head="$(git rev-parse HEAD)"
+    if [[ -z $git_head ]]; then
+      echo "ERROR: could not find the SHA for HEAD" 1>&2
+      return 1
     fi
-  fi
-
-  if [[ -z $git_head ]]; then
-    echo "ERROR: could not find the SHA for HEAD" 1>&2
-    return 1
   fi
 
   echo "$git_branch:$git_head"
