@@ -22,7 +22,7 @@ function git_branch_head {
   local git_branch=""
   local git_head="$ver_repo"
   if [[ "$ver_repo" = "HEAD" ]]; then
-    git_branch="$(git symbolic-ref HEAD 2>&- || true | cut -d/ -f3)"
+    git_branch="$(git symbolic-ref HEAD 2>&- || true | cut -d/ -f3-)"
 
     git_head="$(git rev-parse HEAD)"
     if [[ -z $git_head ]]; then
