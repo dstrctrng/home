@@ -105,10 +105,10 @@ function main {
     local is_local="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component local)"
     local hst_gateway="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component gateway)"
     if [[ -z "$is_local" ]]; then
-    if [[ -z "$hst_gateway" ]]; then
-      logger_fatal "$nm_component is not a pod name"
-      exit 1
-    fi
+      if [[ -z "$hst_gateway" ]]; then
+        logger_fatal "$nm_component is not a pod name"
+        exit 1
+      fi
       FLAGS_proxy="$FLAGS_TRUE"
     else
       FLAGS_chef="$shome"
