@@ -30,3 +30,5 @@ require 'ssh'
 if [[ -n "${PATH_OVERRIDE:-}" ]]; then
   PATH="$PATH_OVERRIDE:$PATH"
 fi
+
+set +u
