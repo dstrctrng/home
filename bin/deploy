@@ -110,10 +110,16 @@ function main {
       shift # treat as a pod name
     fi
 
+    local is_local="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component local)"
     local hst_gateway="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component gateway)"
-    if [[ -z "$hst_gateway" ]]; then
-      logger_fatal "$nm_component is not a pod name"
-      exit 1
+    if [[ -z "$is_local" ]]; then
+      if [[ -z "$hst_gateway" ]]; then
+        logger_fatal "$nm_component is not a pod name"
+        exit 1
+      fi
+      FLAGS_proxy="$FLAGS_TRUE"
+    else
+      FLAGS_chef="$shome"
     fi
 
     if [[ -z "$FLAGS_gateway" ]]; then
@@ -140,15 +146,16 @@ function main {
       if [[ -n "$FLAGS_chef" ]]; then
         export CHEF_PATH="$(cd -P -- "$FLAGS_chef" && pwd -P)"
       fi
-
-      if [[ -d "$HOME/.getting-started/.git" ]]; then
-        FLAGS_proxy="$FLAGS_TRUE"
-      fi
-
-      if [[ "$FLAGS_proxy" = "$FLAGS_FALSE" || "$FLAGS_direct" = "$FLAGS_TRUE" ]]; then
+      if [[ "$FLAGS_proxy" = "$FLAGS_FALSE" || "$FLAGS_direct" = "$FLAGS_TRUE" || -z "$FLAGS_gateway" ]]; then
         export _AO_DEPLOY=1
         export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
         unset GEM_HOME RUBYOPT 
+
+        local _AO_THIS_HOST="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component this_host)"
+        if [[ -n "$_AO_THIS_HOST" ]]; then
+          export _AO_THIS_HOST
+        fi
+
         bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
         exec bundle exec alpha_omega $(basename $0) "$nm_component" "$@"
         logger_fatal "could not run the alpha_omega command, this is an esoteric error"
@@ -195,13 +202,27 @@ function build_site {
   bundle exec jekyll
   PATH="$old_path"
 }
+  
+FLAGS_proxy_default="$FLAGS_FALSE"
+if [[ ! -d "$(ryaml $shome/config/deploy.yml chef_path)" ]]; then
+  FLAGS_proxy_default="$FLAGS_TRUE"
+
+  if [[ ! -d "$HOME/.getting-started" ]]; then
+    git clone git@github.com:zendesk/getting-started "$HOME/.getting-started"
+    pushd $HOME/.getting-started > /dev/null
+    bin/setup bootstrap
+    popd > /dev/null
+  fi
+
+  get_started
+fi
 
 # define command line options:
 #   var name, default, description, short option
 DEFINE_string 'name' "$(basename "$shome")" 'name of gem' 'n'
 DEFINE_string "gateway" "" "deploy gateway host" "g"
 DEFINE_boolean "autoconf" "$FLAGS_TRUE" "use config/ssh to configure remote access" "z"
-DEFINE_boolean "proxy" "$FLAGS_FALSE" "use a gateway to proxy deploys" "p"
+DEFINE_boolean "proxy" "$FLAGS_proxy_default" "use a gateway to proxy deploys" "p"
 DEFINE_boolean "direct" "$FLAGS_FALSE" "override proxy" "d"
 DEFINE_string "chef" "" "location to chef repo with opsdb" "c"
 DEFINE_string "tag" "HEAD" "tag to deploy in production" "t"

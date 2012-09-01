@@ -1,9 +1,3 @@
-require 'new_relic/recipes'
-require 'airbrake'
-require 'airbrake_tasks'
-require 'capistrano/campfire'
-require 'flowdock'
-
 namespace :deploy do
   namespace :notify do
     task :default do
@@ -19,6 +13,8 @@ namespace :deploy do
     end
 
     task :campfire do
+      require 'capistrano/campfire'
+
       set :campfire_options, 
             :ssl => true,
             :account => $deploy["notify"]["campfire"]["account"],
@@ -34,6 +30,9 @@ namespace :deploy do
     end
 
     task :airbrake do
+      require 'airbrake'
+      require 'airbrake_tasks'
+
       Airbrake.configure do |config|
         config.api_key = $deploy["notify"]["airbrake"]["api_key"]
       end
@@ -51,6 +50,8 @@ namespace :deploy do
     end
 
     task :flowdock do
+      require 'flowdock'
+
       flow = Flowdock::Flow.new(:api_token => $deploy["notify"]["flowdock"]["api_token"],
         :source => "alpha_omega deployment", :project => $deploy["notify"]["flowdock"]["project"],
         :from => { :name => $deploy["notify"]["flowdock"]["from"]["name"], 
@@ -61,6 +62,7 @@ namespace :deploy do
     end 
 
     task :newrelic do
+      require 'new_relic/recipes'
     end
 
     def notify_message
