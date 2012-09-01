@@ -142,6 +142,11 @@ function main {
           export _AO_THIS_HOST
         fi
 
+        local _AO_THIS_POD="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component this_pod)"
+        if [[ -n "$_AO_THIS_POD" ]]; then
+          export _AO_THIS_POD
+        fi
+
         bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
         exec bundle exec alpha_omega $(basename $0) "$nm_component" "$@"
         logger_fatal "could not run the alpha_omega command, this is an esoteric error"
