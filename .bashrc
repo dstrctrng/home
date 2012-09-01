@@ -3,7 +3,6 @@
 : ${DISPLAY:=}
 
 source "$HOME/bin/_jason"
-set -u
 
 require 'macports' $shome/local
 require 'rvm'
