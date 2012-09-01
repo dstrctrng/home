@@ -111,7 +111,7 @@ function main {
       fi
       FLAGS_proxy="$FLAGS_TRUE"
     else
-      FLAGS_chef="$shome"
+      FLAGS_chef="$HOME/.getting-started"
     fi
 
     if [[ -z "$FLAGS_gateway" ]]; then
