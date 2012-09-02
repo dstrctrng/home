@@ -107,6 +107,7 @@ function main {
     else
       FLAGS_chef="$HOME/.getting-started"
       export _AO_ENV="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component env)"
+      export _AO_SSH="$HOME/.getting-started/ssh/config"
     fi
 
     if [[ -z "$FLAGS_gateway" ]]; then

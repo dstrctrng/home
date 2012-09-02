@@ -1,3 +1,3 @@
-load 'ssh' if ENV['_AO_ENV'] == 'development'
-load 'challenge'
-load 'notify'
+load 'config/deploy_ssh'
+load 'config/deploy_challenge'
+load 'config/deploy_notify'
