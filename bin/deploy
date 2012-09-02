@@ -83,15 +83,9 @@ function main {
   fi
 
   local nm_component="$1" # will shift later since this could be an integration environment
-  # HACK TODO
   if [[ "$#" = 0 ]]; then
     logger_fatal "must specify a pod name or integration environment when deploying"
     exit 1
-  fi
-
-  # HACK TODO
-  if [[ "$nm_component" = "pod1" ]]; then
-    nm_component="sys"
   fi
 
   if [[ -r "$HOME/.getting-started/config/pods.yml" ]]; then
