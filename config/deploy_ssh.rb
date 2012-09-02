@@ -3,7 +3,7 @@ if ENV['_AO_ENV'] == 'development'
     module SSH
       class Config
         def self.default_files
-          ENV['_AO_SSH'].split(/\W+/)
+          [ ENV['_AO_SSH'] ]
         end
       end
     end
