@@ -112,6 +112,7 @@ function main {
       FLAGS_proxy="$FLAGS_TRUE"
     else
       FLAGS_chef="$HOME/.getting-started"
+      export _AO_ENV="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component env)"
     fi
 
     if [[ -z "$FLAGS_gateway" ]]; then
@@ -132,6 +133,7 @@ function main {
       if [[ -n "$FLAGS_chef" ]]; then
         export CHEF_PATH="$(cd -P -- "$FLAGS_chef" && pwd -P)"
       fi
+
       if [[ "$FLAGS_proxy" = "$FLAGS_FALSE" || "$FLAGS_direct" = "$FLAGS_TRUE" || -z "$FLAGS_gateway" ]]; then
         export _AO_DEPLOY=1
         export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
