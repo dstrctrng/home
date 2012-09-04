@@ -52,13 +52,16 @@ namespace :deploy do
     task :flowdock do
       require 'flowdock'
 
-      flow = Flowdock::Flow.new(:api_token => $deploy["notify"]["flowdock"]["api_token"],
-        :source => "alpha_omega deployment", :project => $deploy["notify"]["flowdock"]["project"],
-        :from => { :name => $deploy["notify"]["flowdock"]["from"]["name"], 
-                  :address => $deploy["notify"]["flowdock"]["from"]["address"] })
+      flow = Flowdock::Flow.new(:api_token => $deploy["notify"]["flowdock"]["api_token"])
                   
-      flow.send_message(:format => "html", :subject => "Application #{$deploy["application"]} deployed #deploy",
-        :content => "Application deployed successfully!", :tags => $deploy["notify"]["flowdock"]["tags"])
+      flow.push_to_team_inbox(
+        :subject => "Application #{$deploy["application"]} deployed #deploy",
+        :content => "Application deployed successfully!", 
+        :tags => $deploy["notify"]["flowdock"]["tags"],
+        :source => "alpha_omega deployment",
+        :from_address => $deploy["notify"]["flowdock"]["from"]["address"],
+        :from_name => :name => $deploy["notify"]["flowdock"]["from"]["name"],
+        :project => $deploy["notify"]["flowdock"]["project"])
     end 
 
     task :newrelic do
