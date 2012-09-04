@@ -96,6 +96,11 @@ function main {
       shift # treat as a pod name
     fi
 
+    local pod_alias="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component alias)"
+    if [[ -n "$pod_alias" ]]; then
+      nm_component="$pod_alias"
+    fi
+
     local is_local="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component local)"
     local hst_gateway="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component gateway)"
     if [[ -z "$is_local" ]]; then
