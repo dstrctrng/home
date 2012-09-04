@@ -203,7 +203,13 @@ if [[ ! -d "$(ryaml $shome/config/deploy.yml chef_path)" ]]; then
   if [[ ! -d "$HOME/.getting-started" ]]; then
     git clone git@github.com:zendesk/getting-started "$HOME/.getting-started"
     pushd $HOME/.getting-started > /dev/null
-    bin/setup bootstrap
+    bin/pancake update
+    popd > /dev/null
+  else
+    pushd $HOME/.getting-started > /dev/null
+    if [[ "$(cat .counter 2>&-)" < "$(cat $shome/.counter 2>&-)" ]]; then
+      bin/pancake update
+    fi
     popd > /dev/null
   fi
 
