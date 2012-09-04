@@ -59,8 +59,10 @@ namespace :deploy do
         :content => "Application deployed successfully!", 
         :tags => $deploy["notify"]["flowdock"]["tags"],
         :source => "alpha_omega deployment",
-        :from_address => $deploy["notify"]["flowdock"]["from"]["address"],
-        :from_name => :name => $deploy["notify"]["flowdock"]["from"]["name"],
+        :from => {
+          :address => $deploy["notify"]["flowdock"]["from"]["address"],
+          :name => $deploy["notify"]["flowdock"]["from"]["name"]
+        },
         :project => $deploy["notify"]["flowdock"]["project"])
     end 
 
