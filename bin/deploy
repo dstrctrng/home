@@ -120,12 +120,12 @@ function main {
     fi
   fi
 
+  if [[ "$FLAGS_autoconf" = "$FLAGS_TRUE" ]]; then
+    PATH="$shome/.deploy/ssh/bin:$PATH"
+  fi
+
   case "$nm_component" in 
     *)
-      if [[ "$FLAGS_autoconf" = "$FLAGS_TRUE" ]]; then
-        PATH="$shome/.deploy/ssh/bin:$PATH"
-      fi
-
       if [[ -n "$FLAGS_gateway" ]]; then
         export GATEWAY="$FLAGS_gateway"
       fi
