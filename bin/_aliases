@@ -20,3 +20,5 @@ alias poop='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resour
 function vcat {
   $shome/bin/vcat "$@"
 }
+
+alias ci=vi
