@@ -16,9 +16,13 @@ source "$shome/bin/_treadstone"
 
 # entry point
 function main {
-  if [[ -f "packages.json" ]]; then
-    npm install
+  if [[ ! -f "package.json" ]]; then
+    exit 0
   fi
+
+  cd $shome
+  rm -rf "$shome/node_modules"
+  npm install --production
 }
 
 # define command line options:
