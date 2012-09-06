@@ -6,10 +6,6 @@ load 'config/deploy'
 # application deploy
 namespace :application do
   task :update_code do
-    update_assets unless deploy_path_name == migrate_path_name 
-  end
-
-  task :update_assets do
   end
 
   task :restart do
@@ -23,7 +19,6 @@ after "deploy:restart", "application:restart"
 # interesting hosts
 Deploy self, __FILE__ do |admin, node| 
   if node["run_list"].member?("role[application]")
-    { :deploy => { }
-    }
+    { :deploy => { } }
   end
 end

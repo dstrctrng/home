@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#/ NAME
+#/     bundle-assets -- bundle assets, meant to be overridden
+#/
+#/ SYNOPSIS
+#/     
+#/     bundle-assets
+
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+
+# load a jason bourne library
+source "$shome/bin/_treadstone"
+
+# entry point
+function main {
+  bundle_assets "$@"
+}
+
+function bundle_assets {
+  true
+}
+
+# define command line options:
+#   var name, default, description, short option
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+# pass arguments to entry point
+main "$@"
