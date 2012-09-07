@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'alpha_omega/deploy'
+load 'config/deploy'
 
 set :releases, [ ]
 set :deploy_to,  (ENV['REMOTE_HOME'] || ENV['HOME'])
@@ -13,7 +14,7 @@ set :dir_perms, "0750"
 
 set :bundler_options, "--path vendor/bundle"
 
-# build
+# application deploy
 namespace :git do
   task :bootstrap do
     # workaround git clone and non-empty directories
@@ -33,14 +34,7 @@ namespace :vim do
   end
 end
 
-namespace :microwave do
-  task :cook do
-    run "cd #{deploy_release} && bin/microwave -n localhost"
-  end
-end
-
-
-after "deploy:cook", "microwave:cook"
+# hooks into alpha_omega deploy
 after "deploy:bootstrap_code", "git:bootstrap"
 after "deploy:bootstrap_code", "rvm:bootstrap"
 after "deploy:bundle", "vim:bundle"
