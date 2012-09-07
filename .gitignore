@@ -62,3 +62,4 @@
 /tmp/site
 *.orig
 /vagrant
+/.tmp

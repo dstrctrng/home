@@ -8,7 +8,7 @@ home_dir ENV['HOME']
 app_env "development"
 
 app_dir "."
-ruby_loader "#{ENV['HOME']}/.getting-started/bin/rvmrun"
+
+ruby_loader "rvm-exec"
 
 user({ :name => "Tom Bombadil", :email => "amanibhavam@destructuring.org" })
-git({ :diff_external => "#{ENV['HOME']}/bin/git_diff_with_vim" })

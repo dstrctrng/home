@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #/ NAME
-#/     bundle-node -- bundle release with npm
+#/     bundle-assets -- bundle assets, meant to be overridden
 #/
 #/ SYNOPSIS
 #/     
-#/     bundle-node
+#/     bundle-assets
 
 
 # figure out the project root under which bin, lib live
@@ -16,13 +16,11 @@ source "$shome/bin/_treadstone"
 
 # entry point
 function main {
-  if [[ ! -f "package.json" ]]; then
-    exit 0
-  fi
+  bundle_assets "$@"
+}
 
-  cd $shome
-  rm -rf "$shome/node_modules"
-  npm install --production
+function bundle_assets {
+  true
 }
 
 # define command line options:
