@@ -126,11 +126,12 @@ function random_str {
 function runmany {
   local cpu="$1"; shift
   local args="$1"; shift
+  local cmd="$1"; shift
   if [[ "$#" = 0 ]]; then
     cat
   else
     echo "$@"
-  fi | xargs -P $cpu -n $args -- bash -c "$*" ""
+  fi | xargs -P $cpu -n $args -- bash -c "$cmd" ""
 }
 
 function _main {
