@@ -5,7 +5,7 @@ load 'config/deploy'
 
 set :releases, [ ]
 
-set(:deploy_to) { capture("cd ~ && pwd") }
+set(:deploy_to) { capture("cd ~ && pwd").chomp }
 
 set :root_user, "defn"
 set :root_group, "defn"
