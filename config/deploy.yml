@@ -13,3 +13,6 @@ branches: [ master ]
 branch_regex: /
 
 chef_path: /data/zendesk_chef
+
+notify:
+  nothing:
