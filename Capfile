@@ -4,7 +4,8 @@ require 'alpha_omega/deploy'
 load 'config/deploy'
 
 set :releases, [ ]
-set :deploy_to,  (ENV['REMOTE_HOME'] || ENV['HOME'])
+
+set(:deploy_to) { capture("cd ~ && pwd") }
 
 set :root_user, "defn"
 set :root_group, "defn"
@@ -43,3 +44,4 @@ after "deploy:bundle", "vim:bundle"
 Deploy self, __FILE__ do |admin, node| 
   { :deploy => { } }
 end
+
