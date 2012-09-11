@@ -65,7 +65,10 @@ function main {
       local pth_rvmrun="$(ruby -ryaml -e 'puts YAML.load(File.read(ARGV[0]))[ARGV[1]]' $shome/config/deploy.yml ruby_loader)"
       local nm_ruby="$(ruby -ryaml -e 'puts YAML.load(File.read(ARGV[0]))[ARGV[1]]' $shome/config/deploy.yml deploy_ruby)"
 
-      cat $shome/bin/remote-helper | ssh $hst_gateway "$pth_rvmrun" "$nm_ruby" bash -s "$USER" "$git_url" "$git_spec" "$@"
+      local tmp_remote="$(ssh $hst_gateway mktemp -t XXXXXXXXX)"
+      scp $shome/bin/remote-helper $hst_gateway:$tmp_remote
+      ssh -t $hst_gateway "$pth_rvmrun" "$nm_ruby" bash "$tmp_remote" "$USER" "$git_url" "$git_spec" "$@"
+      ssh $hst_gateway rm -f $tmp_remote
       ;;
   esac
 }
