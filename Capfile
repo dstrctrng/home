@@ -43,7 +43,6 @@ namespace :badonkadonk do
 end
 
 # hooks into alpha_omega deploy
-before "deploy:bootstrap_code", "badonkadonk:delay"
 after "deploy:bootstrap_code", "git:bootstrap"
 after "deploy:bootstrap_code", "rvm:bootstrap"
 after "deploy:bundle", "vim:bundle"
