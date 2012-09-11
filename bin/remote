@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#/ NAME
+#/     remote -- connects to a remote server
+#/
+#/ SYNOPSIS
+#/     remote hostname ... any ssh args
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a jason bourne library
+source "$shome/bin/_treadstone" "$@"
+get_started
+
+# entry point
+function main {
+  exec ssh "$@"
+  logger_fatal "could not execute ssh; this is abnormal"
+  exit 1
+}
+
+# pass arguments to entry point
+main "$@"
