@@ -38,7 +38,7 @@ end
 
 namespace :badonkadonk do
   task :delay do
-    run "#{ruby_loader} -e 'sleep(rand(10))'"
+    run "#{ruby_loader} ruby -e 'sleep(rand(10))'"
   end
 end
 
