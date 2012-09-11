@@ -36,7 +36,14 @@ namespace :vim do
   end
 end
 
+namespace :badonkadonk do
+  task :delay do
+    run "#{ruby_loader} -e 'sleep(rand(10))'"
+  end
+end
+
 # hooks into alpha_omega deploy
+before "deploy:bootstrap_code", "badonkadonk:delay"
 after "deploy:bootstrap_code", "git:bootstrap"
 after "deploy:bootstrap_code", "rvm:bootstrap"
 after "deploy:bundle", "vim:bundle"
