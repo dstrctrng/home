@@ -9,4 +9,4 @@ home_dir ENV['HOME']
 app_env "development"
 
 app_dir "."
-ruby_loader "#{ENV['HOME']}/.getting-started/bin/rvmrun"
+ruby_loader "rvm-exec"
