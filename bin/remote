@@ -1,39 +1,24 @@
 #!/bin/bash
 
 #/ NAME
-#/     remote -- remotely connect to a screen
+#/     remote -- connects to a remote server
 #/
 #/ SYNOPSIS
-#/     
-#/     remote [host]
+#/     remote hostname ... any ssh args
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
 
-# load a meat library
-source "$shome/bin/_prime" "$@"
+# load a jason bourne library
+source "$shome/bin/_treadstone" "$@"
+get_started
 
 # entry point
 function main {
-  if [[ "$#" = 0 ]]; then
-    logger_fatal "need to specific a host"
-    exit 1
-  elif [[ "$#" > 1 ]]; then
-    logger_fatal "only on arg needed, the host"
-    exit 1
-  fi
-
-  nm_host="$1"; shift
-
-  exec ssh -t "$nm_host" screen -DRR "$@"
+  exec ssh "$@"
+  logger_fatal "could not execute ssh; this is abnormal"
+  exit 1
 }
-
-# define command line options:
-#   var name, default, description, short option
-
-# parse the command-line
-parse_command_line "$@" || exit $?
-eval set -- "${FLAGS_ARGV}"
 
 # pass arguments to entry point
 main "$@"
