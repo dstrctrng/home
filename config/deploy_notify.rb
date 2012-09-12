@@ -1,11 +1,13 @@
 namespace :deploy do
   namespace :notify do
     task :default do
-      airbrake if $deploy["notify"].member? "airbrake"
-      newrelic if $deploy["notify"].member? "newrelic"
-      email if $deploy["notify"].member? "email"
-      campfire if $deploy["notify"].member? "campfire"
-      flowdock if $deploy["notify"].member? "flowdock"
+      unless dna["app_env"] == "development"
+        airbrake if $deploy["notify"].member? "airbrake"
+        newrelic if $deploy["notify"].member? "newrelic"
+        email if $deploy["notify"].member? "email"
+        campfire if $deploy["notify"].member? "campfire"
+        flowdock if $deploy["notify"].member? "flowdock"
+      end
     end
 
     task :email do
