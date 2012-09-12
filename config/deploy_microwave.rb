@@ -5,7 +5,7 @@ namespace :microwave do
 
   task :cook do
     hack
-    run "cd #{deploy_release} && #{ruby_loader} bin/microwave -n #{dna["app_env"]}"
+    run "cd #{deploy_release} && #{ruby_loader} bin/microwave -n #{dna["node_env"] || dna["app_env"]}"
   end
 end
 
