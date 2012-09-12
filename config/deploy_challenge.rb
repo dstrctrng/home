@@ -2,7 +2,7 @@ set :reviewed, nil
 
 namespace :deploy do
   task :challenge do
-    if dna["app_env"] == "production" || true
+    if dna["app_env"] == "production"
       who = Capistrano::CLI.ui.ask(" -- Who has reviewed this deploy to #{dna["app_env"]}? ")
       if who.empty?
         abort
