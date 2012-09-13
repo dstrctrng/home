@@ -1,4 +1,4 @@
-if ENV['_AO_ENV'] == 'development'
+unless ENV['_AO_THIS_POD'].nil? || ENV['_AO_THIS_POD'].empty?
   module ::Net
     module SSH
       class Config
