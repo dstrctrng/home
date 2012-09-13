@@ -44,7 +44,7 @@ namespace :deploy do
           :rails_env      => dna['app_env'],
           :scm_revision   => current_revision,
           :scm_repository => repository,
-          :local_username => ENV['AO_USER']
+          :local_username => ENV['_AO_USER']
         })
       rescue EOFError
         $stderr.puts "An error occurred during the Airtoad deploy notification."
@@ -73,7 +73,7 @@ namespace :deploy do
     end
 
     def notify_message
-      "#{ENV['AO_USER']} deployed #{application} (#{current_revision}@#{repository}) to #{dna['app_env']}"
+      "#{ENV['_AO_USER']} deployed #{application} (#{current_revision}@#{repository}) to #{dna['app_env']}"
     end 
   end
 end
