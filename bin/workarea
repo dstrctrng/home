@@ -35,7 +35,7 @@ function main {
     fi
   fi
 
-  git submodule update --q --init --recursive
+  git submodule update -q --init --recursive
 
   $shome/bin/bundle-ruby -- --path vendor/bundle
   $shome/bin/bundle-node
@@ -43,7 +43,7 @@ function main {
 
 # define command line options:
 #   var name, default, description, short option
-DEFINE_boolean "origin" "$FLAGS_FALSE" "reset to origin version" -o
+DEFINE_boolean "origin" "$FLAGS_FALSE" "reset to origin version"
 DEFINE_string "tag" "" "tag to deploy in production" "t"
 
 # parse the command-line
