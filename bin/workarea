@@ -1,0 +1,54 @@
+#!/bin/bash
+
+#/ NAME
+#/     workarea -- set up a clean workarea
+#/
+#/ SYNOPSIS
+#/     
+#/     workarea branch
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+
+# load a jason bourne library
+source "$shome/bin/_treadstone"
+
+# entry point
+function main {
+  if [[ "$#" == 0 ]]; then
+    logger_fatal "missing branch"
+    exit 1
+  fi
+
+  cd $shome
+
+  local nm_branch="$1"; shift
+
+  git checkout -q --force "$nm_branch"
+  if [[ -n "$FLAGS_tag" ]]; then
+    git reset -q --hard "$FLAGS_tag"
+  else
+    if [[ "$FLAGS_origin" = "$FLAGS_TRUE" ]]; then
+      git reset -q --hard "origin/$nm_branch"
+    else
+      git reset -q --hard "HEAD"
+    fi
+  fi
+
+  git submodule update -q --init --recursive
+
+  $shome/bin/bundle-ruby -- --path vendor/bundle
+  $shome/bin/bundle-node
+}
+
+# define command line options:
+#   var name, default, description, short option
+DEFINE_boolean "origin" "$FLAGS_FALSE" "reset to origin version"
+DEFINE_string "tag" "" "tag to deploy in production" "t"
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+# pass arguments to entry point
+main "$@"

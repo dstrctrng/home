@@ -68,7 +68,7 @@ function main {
   git submodule -q update --init --recursive
 
   crumb "executing bin/$cmd_deploy $@"
-  export AO_USER="$nm_deployer"
+  export _AO_USER="$nm_deployer"
   bin/$cmd_deploy "$@"
   crumb "end bin/remote-helper"
 }
