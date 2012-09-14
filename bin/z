@@ -1,7 +1,8 @@
 #!/bin/bash
 
 dq='"'
-subdomain="1"; shift
+subdomain="$1"; shift
+url="$1"; shift
 credentials="$HOME/.zendesk"
 tmp_curl="$(mktemp -t XXXXXXXX)"
 tmp_response="$(mktemp -t XXXXXXXX)"
@@ -9,7 +10,7 @@ tmp_response="$(mktemp -t XXXXXXXX)"
 cat > "$tmp_curl" <<EOF
 user = ${dq}$(cat ${credentials})${dq}
 EOF
-curl -K - -s --no-keepalive -- "https://${subdomain}.zendesk.com/api/v2/users.json" < $tmp_curl > $tmp_response
+curl -K - -s --no-keepalive -- "https://${subdomain}.zendesk.com/api/v2/${url}.json" < $tmp_curl > $tmp_response
 rm -f "$tmp_curl"
 
 cat "$tmp_response" | ruby -e '
