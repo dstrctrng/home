@@ -1,0 +1,22 @@
+#!/bin/bash
+
+dq='"'
+subdomain="1"; shift
+credentials="$HOME/.zendesk"
+tmp_curl="$(mktemp -t XXXXXXXX)"
+tmp_response="$(mktemp -t XXXXXXXX)"
+
+cat > "$tmp_curl" <<EOF
+user = ${dq}$(cat ${credentials})${dq}
+EOF
+curl -K - -s --no-keepalive -- "https://${subdomain}.zendesk.com/api/v2/users.json" < $tmp_curl > $tmp_response
+rm -f "$tmp_curl"
+
+cat "$tmp_response" | ruby -e '
+require "json"
+require "yaml"
+Encoding.default_external = Encoding::UTF_8
+puts JSON.load(STDIN.read).to_hash.to_yaml
+'
+
+rm -f "$tmp_response"

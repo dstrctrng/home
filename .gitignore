@@ -63,3 +63,4 @@
 *.orig
 /vagrant
 /.tmp
+/.zendesk
