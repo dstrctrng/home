@@ -106,16 +106,6 @@ GEM
       multi_json (~> 1.0)
       multipart-post (~> 1.1)
       twitter-stream (~> 0.1)
-    tvd-bundler (0.0.8)
-      microwave
-    tvd-git (0.0.18)
-      microwave
-    tvd-rubygems (0.0.7)
-      microwave
-    tvd-ssh (0.0.14)
-      microwave
-    tvd-unicorn (0.0.2)
-      microwave
     twitter-stream (0.1.16)
       eventmachine (>= 0.12.8)
       http_parser.rb (~> 0.5.1)
@@ -134,8 +124,3 @@ DEPENDENCIES
   microwave
   net-ssh (~> 2.4.0)
   newrelic_rpm (~> 3.3.4)
-  tvd-bundler
-  tvd-git
-  tvd-rubygems
-  tvd-ssh
-  tvd-unicorn

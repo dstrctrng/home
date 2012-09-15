@@ -1,4 +1,4 @@
-run_list [ 'role[shell]' ]
+run_list [ 'badonkadonk' ]
 platform "generic"
 platform_version "0.0.1"
 
