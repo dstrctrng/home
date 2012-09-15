@@ -106,6 +106,8 @@ GEM
       multi_json (~> 1.0)
       multipart-post (~> 1.1)
       twitter-stream (~> 0.1)
+    tvd-alpha_omega (0.0.1)
+      microwave
     twitter-stream (0.1.16)
       eventmachine (>= 0.12.8)
       http_parser.rb (~> 0.5.1)
@@ -124,3 +126,4 @@ DEPENDENCIES
   microwave
   net-ssh (~> 2.4.0)
   newrelic_rpm (~> 3.3.4)
+  tvd-alpha_omega
