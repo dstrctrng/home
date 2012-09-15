@@ -45,8 +45,8 @@ end
 # hooks into alpha_omega deploy
 after "deploy:bootstrap_code", "git:bootstrap"
 after "deploy:bootstrap_code", "rvm:bootstrap"
-after "deploy:bundle", "vim:bundle"
 after "deploy:cook", "microwave:cook"
+after "deploy:cook", "vim:bundle"
 
 # interesting hosts
 Deploy self, __FILE__ do |admin, node| 
