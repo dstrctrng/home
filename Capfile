@@ -46,7 +46,7 @@ end
 after "deploy:bootstrap_code", "git:bootstrap"
 after "deploy:bootstrap_code", "rvm:bootstrap"
 after "deploy:cook", "microwave:cook"
-after "deploy:cook", "vim:bundle"
+after "deploy:bundle", "vim:bundle"
 
 # interesting hosts
 Deploy self, __FILE__ do |admin, node| 
