@@ -1,3 +1,6 @@
 /cache
 /backup
 /.tmp
+/REVISION
+/.bundle
+/vendor/bundle

@@ -27,10 +27,7 @@ function main {
 }
 
 function microwave_cook {
-  mkdir -p backup
-  if [[ ! -d backup/.git ]]; then
-    (cd backup && git init)
-  fi
+  mkdir -p $shome/backup
 
   export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
   unset GEM_HOME RUBYOPT 
