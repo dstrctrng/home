@@ -11,3 +11,5 @@ gem "newrelic_rpm", "~> 3.3.4"
 gem "flowdock"
 
 gem "tvd-alpha_omega"
+gem "tvd-runit"
+gem "tvd-unicorn"
