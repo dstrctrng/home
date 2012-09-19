@@ -57,7 +57,7 @@ GEM
     jruby-pageant (1.1.1)
     json (1.5.4)
     marathon (0.0.3)
-    microwave (0.1006.31)
+    microwave (0.1006.32)
       erubis
       fast_xs
       hike
