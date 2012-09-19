@@ -17,7 +17,7 @@ GEM
     airbrake (3.1.2)
       activesupport
       builder
-    alpha_omega (0.0.226)
+    alpha_omega (1.0.1)
       HeSYINUvSBZfxqA-capistrano
       HeSYINUvSBZfxqA-capistrano_colors
       HeSYINUvSBZfxqA-capistrano_log
