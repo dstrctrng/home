@@ -18,7 +18,7 @@ function main {
   unset GEM_HOME BUNDLE_GEMFILE RUBYOPT
 
   bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-  bundle exec "$@"
+  exec bundle exec "$@"
 }
 
 # define command line options:
