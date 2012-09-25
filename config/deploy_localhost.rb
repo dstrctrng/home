@@ -1,3 +1,12 @@
+def run cmd
+  logger.debug "executing locally #{cmd}"
+  run_locally cmd
+  if $?.to_i != 0
+    logger.debug "failed with error code #{$?.to_i >> 8}"
+    exit 1
+  end
+end
+
 namespace :deploy do
   task :localdomain do
     if dna["env_pod"] == "localdomain"
