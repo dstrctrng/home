@@ -13,3 +13,6 @@
 [submodule ".paul"]
 	path = .paul
 	url = https://github.com/destructuring/paul
+[submodule ".aaron"]
+	path = .aaron
+	url = https://github.com/destructuring/aaron
