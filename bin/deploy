@@ -77,15 +77,22 @@ enforce_rvm "$@"
 
 # entry point
 function main {
-  if [[ "$#" == 0 ]]; then
-    logger_fatal "need at least one argument"
+  if [[ "$#" = 0 ]]; then
+    logger_fatal "must specify a pod name or integration environment when deploying"
     exit 1
   fi
 
   local nm_component="$1" # will shift later since this could be an integration environment
-  if [[ "$#" = 0 ]]; then
-    logger_fatal "must specify a pod name or integration environment when deploying"
-    exit 1
+  if [[ "$#" = 1 ]]; then
+    local deploy_base="$(ryaml $shome/config/deploy.yml deploy_base)"
+    if [[ -n "$deploy_base" ]]; then
+      local pod_shortcut="$(ryaml $HOME/.getting-started/config/pods.yml pods ${deploy_base}${nm_component} pod)"
+      if [[ -n "$pod_shortcut" ]]; then
+        nm_component="${deploy_base}${nm_component}"
+        set -- "$nm_component"
+      fi
+      unset pod_shortcut
+    fi
   fi
 
   if [[ -r "$HOME/.getting-started/config/pods.yml" ]]; then
