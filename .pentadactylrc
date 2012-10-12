@@ -2,4 +2,4 @@ set nofs
 set guioptions=
 set stal=never
 set editor="/Users/defn/local/bin/mvim -f"
-set defsearch="duckduckgo-ssl"
+#set defsearch="duckduckgo-ssl"

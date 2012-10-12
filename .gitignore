@@ -65,3 +65,4 @@
 /.tmp
 /.zendesk
 /service
+/.erlang.cookie
