@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#/ NAME
+#/     sv-agent-run -- run some sort of agent
+#/
+#/ SYNOPSIS
+#/     ./run
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")" && pwd -P)"
+
+# entry point
+function main {
+  exec bitlbee -n
+}
+
+# pass arguments to entry point
+main "$@"

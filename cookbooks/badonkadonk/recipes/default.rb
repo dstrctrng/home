@@ -5,3 +5,9 @@ runit_service "agent" do
   project_dir node[:project_dir]
   release_dir node[:release_dir]
 end
+
+runit_service "bitlbee" do
+  project_dir node[:project_dir]
+  release_dir node[:release_dir]
+end
+
