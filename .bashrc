@@ -11,6 +11,7 @@ require 'paul'
 require 'aaron'
 require 'vim'
 require 'git'
+require 'perl'
 
 : ${PS1_LEFT:='${prn_git}${prn_pwd}'}
 : ${PS1_RIGHT:='${prn_ssh}'}
