@@ -16,3 +16,6 @@
 [submodule ".aaron"]
 	path = .aaron
 	url = https://github.com/destructuring/aaron
+[submodule ".sigmeh"]
+	path = .sigmeh
+	url = https://github.com/destructuring/sigmeh
