@@ -17,12 +17,19 @@ source "$shome/bin/_treadstone"
 function main {
   unset GEM_HOME BUNDLE_GEMFILE RUBYOPT
 
-  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-  exec bundle exec "$@"
+  local app_ruby=""
+  if [[ "$FLAGS_app_ruby" = "$FLAGS_TRUE" ]]; then
+    PATH="$HOME/.rvm/bin:/usr/local/rvm/bin:$PATH"
+    app_ruby="rvm-exec $(ryaml $shome/config/deploy.yml app_ruby)"
+  fi
+
+  $app_ruby bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
+  exec $app_ruby bundle exec "$@"
 }
 
 # define command line options:
 #   var name, default, description, short option
+DEFINE_boolean app_ruby "$FLAGS_TRUE" "Run under the app ruby for this app?" "A"
 
 # parse the command-line
 parse_command_line "$@" || exit $?

@@ -118,7 +118,11 @@ function main {
       FLAGS_proxy="$FLAGS_TRUE"
     else
       FLAGS_chef="$HOME/.getting-started"
-      export _AO_ENV="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component env)"
+      export _AO_ENV="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component ao_env)"
+      export RAILS_ENV="$_AO_ENV"
+      if [[ -z "$_AO_ENV" ]]; then
+        _AO_ENV="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component env)"
+      fi
       export _AO_SSH="$HOME/.getting-started/ssh/config"
     fi
 

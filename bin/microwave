@@ -17,12 +17,14 @@ source "$shome/bin/_treadstone"
 
 # entry point
 function main {
-  mkdir -p $shome/backup
-
+  PATH="$HOME/.rvm/bin:/usr/local/rvm/bin:$PATH"
   export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
   unset GEM_HOME RUBYOPT 
-  bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-  exec bundle exec chef-solo -c config/solo.rb -N "$FLAGS_node"
+
+  "$@" bundle check 2>&1 >/dev/null || { "$@" bundle install --quiet --local --path vendor/bundle || "$@" bundle check > /dev/null; }
+
+  mkdir -p $shome/backup
+  exec "$@" bundle exec chef-solo -c $shome/config/solo.rb -N "$FLAGS_node"
 }
 
 # define command line options:
