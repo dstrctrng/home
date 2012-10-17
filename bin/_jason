@@ -28,8 +28,11 @@ function check_help {
 }
 
 function display_help {
+  flags_help
+  echo
+
   # taken from shocco
-  grep '^#/' <"$shome/bin/$(basename -- "$0")" | cut -c4-
+  grep '^#/' <"$shome/$(basename $(dirname -- "$0"))/$(basename -- "$0")" | cut -c4-
 }
 
 # Exits the script with the last error code.  Servers as a marker in $0 to
@@ -86,7 +89,12 @@ function require {
 }
 
 function parse_command_line {
+  if [[ "$FLAGS_SUB" = "$FLAGS_TRUE" && "$@" > 0 ]]; then
+    export POSIXLY_CORRECT=1
+  fi
+
   if ! FLAGS "$@"; then
+    unset POSIXLY_CORRECT
     if [[ "$flags_error" = "help requested" ]]; then
       echo ""
       display_help
@@ -95,6 +103,8 @@ function parse_command_line {
     
     return 4
   fi
+
+  unset POSIXLY_CORRECT
   return 0
 }
 
@@ -126,7 +136,11 @@ function random_str {
 function runmany {
   local cpu="$1"; shift
   local args="$1"; shift
-  xargs -P $cpu -n $args -- bash -c "$*"
+  if [[ "$#" = 0 ]]; then
+    cat
+  else
+    echo "$@"
+  fi | xargs -P $cpu -n $args -- bash -c "$*" ""
 }
 
 function _main {

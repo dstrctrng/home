@@ -1,0 +1,152 @@
+#!/bin/bash
+
+#/ NAME
+#/     config --
+#/
+#/ SYNOPSIS
+#/     
+#/     config
+#/
+
+# first time, this will be empty, to trigger enforce_rvm
+: ${_AO_RVM:=}
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+
+# load a jason bourne library
+source "$shome/bin/_treadstone"
+require 'ao'
+
+# define command line options:
+#   var name, default, description, short option
+DEFINE_string "gateway" "" "deploy gateway host" "g"
+DEFINE_boolean "autoconf" "$FLAGS_TRUE" "use config/ssh to configure remote access" "z"
+DEFINE_boolean "proxy" "$FLAGS_proxy_default" "use a gateway to proxy deploys" "p"
+DEFINE_boolean "direct" "$FLAGS_FALSE" "override proxy" "d"
+DEFINE_string "chef" "" "location to chef repo with opsdb" "c"
+DEFINE_string "tag" "HEAD" "tag to deploy in production" "t"
+
+# entry point
+function main {
+  export _AO_ARGS="$@"
+
+  if [[ "$#" = 0 ]]; then
+    logger_fatal "must specify a pod name or integration environment when deploying"
+    exit 1
+  fi
+
+  local nm_component="$1" # will shift later since this could be an integration environment
+  if [[ "$#" = 1 ]]; then
+    local deploy_base="$(ryaml $shome/config/deploy.yml deploy_base)"
+    if [[ -n "$deploy_base" ]]; then
+      local pod_shortcut="$(ryaml $HOME/.getting-started/config/pods.yml pods ${deploy_base}${nm_component} pod)"
+      if [[ -n "$pod_shortcut" ]]; then
+        nm_component="${deploy_base}${nm_component}"
+        set -- "$nm_component"
+      fi
+      unset pod_shortcut
+    fi
+  fi
+
+  if [[ -r "$HOME/.getting-started/config/pods.yml" ]]; then
+    local pod_shortcut="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component pod)"
+    if [[ -n "$pod_shortcut" ]]; then
+      nm_component="$pod_shortcut"
+    else
+      shift # treat as a pod name
+    fi
+
+    local pod_alias="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component alias)"
+    if [[ -n "$pod_alias" ]]; then
+      nm_component="$pod_alias"
+    fi
+
+    local is_local="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component local)"
+    local hst_gateway="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component gateway)"
+    if [[ -z "$is_local" ]]; then
+      if [[ -z "$hst_gateway" ]]; then
+        logger_fatal "$nm_component is not a pod name"
+        exit 1
+      fi
+      FLAGS_proxy="$FLAGS_TRUE"
+    else
+      FLAGS_chef="$HOME/.getting-started"
+      export _AO_ENV="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component ao_env)"
+      export RAILS_ENV="$_AO_ENV"
+      if [[ -z "$_AO_ENV" ]]; then
+        _AO_ENV="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component env)"
+      fi
+      export _AO_SSH="$HOME/.getting-started/ssh/config"
+    fi
+
+    if [[ -z "$FLAGS_gateway" ]]; then
+      FLAGS_gateway="$hst_gateway"
+    fi
+  fi
+
+  if [[ "$FLAGS_autoconf" = "$FLAGS_TRUE" ]]; then
+    PATH="$shome/.deploy/ssh/bin:$PATH"
+  fi
+
+  case "$nm_component" in 
+    *)
+      if [[ -n "$FLAGS_gateway" ]]; then
+        export GATEWAY="$FLAGS_gateway"
+      fi
+
+      if [[ -n "$FLAGS_chef" ]]; then
+        export CHEF_PATH="$(cd -P -- "$FLAGS_chef" && pwd -P)"
+      fi
+
+      if [[ "$FLAGS_proxy" = "$FLAGS_FALSE" || "$FLAGS_direct" = "$FLAGS_TRUE" || -z "$FLAGS_gateway" ]]; then
+        export _AO_DEPLOY=1
+        export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
+        unset GEM_HOME RUBYOPT 
+
+        local _AO_THIS_HOST="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component this_host)"
+        if [[ -n "$_AO_THIS_HOST" ]]; then
+          export _AO_THIS_HOST
+        fi
+
+        local _AO_THIS_POD="$(ryaml $HOME/.getting-started/config/pods.yml pods $nm_component this_pod)"
+        if [[ -n "$_AO_THIS_POD" ]]; then
+          export _AO_THIS_POD
+        fi
+
+        bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
+        exec bundle exec alpha_omega $(deploy_basename $0) "$nm_component" "$@"
+        logger_fatal "could not run the alpha_omega command, this is an esoteric error"
+        exit 1
+      fi
+     
+      if [[ "$#" > 0 ]]; then
+        case "$1" in
+          all|world)
+            logger_fatal "cannot use all or world, these are dangerous"
+            exit 1
+            ;;
+          production)
+            if [[ -z "$FLAGS_tag" || "$FLAGS_tag" = "HEAD" ]]; then
+              case "$(deploy_basename $0)" in
+                hosts|debug)
+                  true
+                  ;;
+                *)
+                  logger_fatal "must specify a version using --tag"
+                  exit 1
+                  ;;
+              esac
+            fi
+            ;;
+        esac
+      fi
+
+      exec $shome/bin/proxy "$FLAGS_gateway" "$FLAGS_tag" $(deploy_basename $0) "$nm_component" "$@"
+      logger_fatal "could not run the proxy command, this is an esoteric error"
+      exit 1
+      ;;
+  esac
+}
+
+require sub "$BASH_SOURCE" "$@"
