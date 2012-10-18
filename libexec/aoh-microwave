@@ -21,7 +21,6 @@ DEFINE_string "node" "localhost" "load a specific nodes/*.rb profile" "n"
 
 # entry point
 function main {
-  PATH="$HOME/.rvm/bin:/usr/local/rvm/bin:$PATH"
   export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
   unset GEM_HOME RUBYOPT 
 

@@ -13,13 +13,16 @@ shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 # load a jason bourne library
 source "$shome/bin/_treadstone"
 
+# define command line options:
+#   var name, default, description, short option
+DEFINE_boolean app_ruby "$FLAGS_TRUE" "Run under the app ruby for this app?" "A"
+
 # entry point
 function main {
   unset GEM_HOME BUNDLE_GEMFILE RUBYOPT
 
   local app_ruby=""
   if [[ "$FLAGS_app_ruby" = "$FLAGS_TRUE" ]]; then
-    PATH="$HOME/.rvm/bin:/usr/local/rvm/bin:$PATH"
     app_ruby="rvm-exec $(ryaml $shome/config/deploy.yml app_ruby)"
   fi
 
@@ -27,13 +30,4 @@ function main {
   exec $app_ruby bundle exec "$@"
 }
 
-# define command line options:
-#   var name, default, description, short option
-DEFINE_boolean app_ruby "$FLAGS_TRUE" "Run under the app ruby for this app?" "A"
-
-# parse the command-line
-parse_command_line "$@" || exit $?
-eval set -- "${FLAGS_ARGV}"
-
-# pass arguments to entry point
-main "$@"
+require sub "$BASH_SOURCE" "$@"
