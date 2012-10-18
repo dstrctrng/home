@@ -16,6 +16,7 @@ shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 # load a jason bourne library
 source "$shome/bin/_treadstone"
 require 'ao'
+enforce_rvm "$@"
 
 # define command line options:
 #   var name, default, description, short option

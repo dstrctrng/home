@@ -1,12 +1,11 @@
 #!/bin/bash
 
+export _AO_OPT="$@"
+
 function deploy_basename {
   local cmd="$(basename "$1")"; shift
   echo "${cmd#aoh-}"
 } 
-
-
-export _AO_OPT="$@"
 
 # ensure script runs under rvm
 function enforce_rvm {
@@ -29,8 +28,6 @@ function enforce_rvm {
 
   exec $pth_ruby_loader $ruby_deploy "$0" "$@"
 }
-
-enforce_rvm "$@"
 
 FLAGS_proxy_default="$FLAGS_FALSE"
 if [[ ! -d "$(ryaml $shome/config/deploy.yml chef_path)" ]]; then
