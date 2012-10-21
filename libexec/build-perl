@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#/ NAME
+#/     build-perl -- install local::lib, cpan
+#/
+#/ SYNOPSIS
+#/     
+#/     build perl
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+
+# load a jason bourne library
+source "$shome/bin/_treadstone"
+
+# entry point
+function main {
+  cd "$shome/perl5/src/local-lib-1.008004"
+  AUTOMATED_TESTING=1  PERL_MM_USE_DEFAULT=1 perl Makefile.PL --bootstrap
+  make test
+  make install
+
+  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=--deactivate-all)
+  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/vendor/perl5)
+  AUTOMATED_TESTING=1 PERL_MM_USE_DEFAULT=1 perl -MCPAN -e 'notest install "Module::Build"'
+  AUTOMATED_TESTING=1 PERL_MM_USE_DEFAULT=1 cpan YAML Bundle::CPAN
+}
+
+require sub "$BASH_SOURCE" "$@"
