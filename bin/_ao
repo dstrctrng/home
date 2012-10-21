@@ -1,0 +1,50 @@
+#!/bin/bash
+
+export _AO_OPT="$@"
+
+function deploy_basename {
+  local cmd="$(basename "$1")"; shift
+  echo "${cmd#aoh-}"
+} 
+
+# ensure script runs under rvm
+function enforce_rvm {
+  if [[ -n "$_AO_RVM" ]]; then
+    return 
+  fi
+
+  export _AO_RVM=1
+
+  local pth_ruby_loader="$(ryaml $shome/config/deploy.yml ruby_loader)"
+  local ruby_deploy="$(ryaml $shome/config/deploy.yml deploy_ruby)"
+
+  if [[ -z $pth_ruby_loader || -z $ruby_deploy ]]; then
+    return
+  fi
+
+  if [[ ! -x $pth_ruby_loader ]]; then
+    return
+  fi
+
+  exec $pth_ruby_loader $ruby_deploy "$0" "$@"
+}
+
+FLAGS_proxy_default="$FLAGS_FALSE"
+if [[ ! -d "$(ryaml $shome/config/deploy.yml chef_path)" ]]; then
+  FLAGS_proxy_default="$FLAGS_TRUE"
+
+  if [[ ! -d "$HOME/.getting-started" ]]; then
+    git clone git@github.com:zendesk/getting-started "$HOME/.getting-started"
+    pushd $HOME/.getting-started > /dev/null
+    bin/pancake update
+    popd > /dev/null
+  else
+    pushd $HOME/.getting-started > /dev/null
+    if [[ "$(cat .counter 2>&-)" < "$(cat $shome/.counter 2>&-)" ]]; then
+      bin/pancake update
+    fi
+    popd > /dev/null
+  fi
+
+  get_started
+fi

@@ -11,6 +11,15 @@ namespace :deploy do
       set :dir_perms, "0755"
       set :bundler_options, "--path vendor/bundle"
       set :skip_scm, true
+
+      def run cmd
+        logger.debug "executing locally #{cmd}"
+        run_locally cmd
+        if $?.to_i != 0
+          logger.debug "failed with error code #{$?.to_i >> 8}"
+          exit 1
+        end
+      end
     end
   end
 end

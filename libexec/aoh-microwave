@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#/ NAME
+#/     microwave -- runs chef solo in an alpha_omega release
+#/
+#/ SYNOPSIS
+#/     
+#/     microwave
+#/     microwave -n node
+#/
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+
+# load a jason bourne library
+source "$shome/bin/_treadstone"
+
+# define command line options:
+#   var name, default, description, short option
+DEFINE_string "node" "localhost" "load a specific nodes/*.rb profile" "n"
+
+# entry point
+function main {
+  export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
+  unset GEM_HOME RUBYOPT 
+
+  "$@" bundle check 2>&1 >/dev/null || { "$@" bundle install --quiet --local --path vendor/bundle || "$@" bundle check > /dev/null; }
+
+  mkdir -p $shome/backup
+  exec "$@" bundle exec chef-solo -c $shome/config/solo.rb -N "$FLAGS_node"
+}
+
+require sub "$BASH_SOURCE" "$@"

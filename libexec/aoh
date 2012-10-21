@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #/ NAME
-#/     stub -- symlink catchall to implement 37signals/sub interface
+#/     aoh -- ao-helper subbed script
 #/
 #/ SYNOPSIS
-#/     ln -nfs stub bin/stubbed-command
+#/     aoh <ao_command>
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
