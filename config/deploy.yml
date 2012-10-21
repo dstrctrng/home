@@ -1,0 +1,31 @@
+--- 
+repository: git@github.com:HeSYINUvSBZfxqA/badonkadonk.git
+application: badonkadonk
+
+user: defn
+group: defn
+
+ruby_loader: bin/rvmrun
+deploy_ruby: ree
+app_ruby: ree
+
+branches: [ ]
+branch_regex: ^
+
+<<<<<<< HEAD
+chef_path:  /data/zendesk_chef
+=======
+chef_path: 
+
+notify:
+  email:
+    recipients: 
+    - 
+  campfire:
+    account:
+    room:
+    email:
+    token:
+  airbrake:
+    api_key:
+>>>>>>> ao/master
