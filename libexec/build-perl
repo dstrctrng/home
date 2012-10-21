@@ -15,6 +15,9 @@ source "$shome/bin/_treadstone"
 
 # entry point
 function main {
+  export PERL_MM_USE_DEFAULT=1
+  export AUTOMATED_TESTING=1
+
   cd "$shome/perl5/src/local-lib-1.008004"
   AUTOMATED_TESTING=1  PERL_MM_USE_DEFAULT=1 perl Makefile.PL --bootstrap
   make test
@@ -22,8 +25,11 @@ function main {
 
   eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=--deactivate-all)
   eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/vendor/perl5)
-  AUTOMATED_TESTING=1 PERL_MM_USE_DEFAULT=1 perl -MCPAN -e 'notest install "Module::Build"'
-  AUTOMATED_TESTING=1 PERL_MM_USE_DEFAULT=1 cpan YAML Bundle::CPAN
+
+  perl -MCPAN -e 'notest install "Module::Build"'
+
+  cpan YAML Bundle::libnet
+  cpan YAML Bundle::CPAN
 }
 
 require sub "$BASH_SOURCE" "$@"
