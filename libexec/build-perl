@@ -19,7 +19,7 @@ function main {
   export AUTOMATED_TESTING=1
 
   cd "$shome/perl5/src/local-lib-1.008004"
-  AUTOMATED_TESTING=1  PERL_MM_USE_DEFAULT=1 perl Makefile.PL --bootstrap
+  perl Makefile.PL --bootstrap
   make test
   make install
 
