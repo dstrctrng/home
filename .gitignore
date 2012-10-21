@@ -69,3 +69,4 @@
 /.cpan
 /.erlang.cookie
 /perl5
+/log
