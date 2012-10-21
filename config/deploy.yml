@@ -5,27 +5,14 @@ application: badonkadonk
 user: defn
 group: defn
 
-ruby_loader: bin/rvmrun
+ruby_loader: rvm-exec
 deploy_ruby: ree
 app_ruby: ree
 
-branches: [ ]
-branch_regex: ^
+branches: [ master ]
+branch_regex: /
 
-<<<<<<< HEAD
-chef_path:  /data/zendesk_chef
-=======
-chef_path: 
+chef_path: /data/zendesk_chef
 
 notify:
-  email:
-    recipients: 
-    - 
-  campfire:
-    account:
-    room:
-    email:
-    token:
-  airbrake:
-    api_key:
->>>>>>> ao/master
+  nothing:
