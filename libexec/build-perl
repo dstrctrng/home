@@ -22,14 +22,10 @@ function main {
   perl Makefile.PL --bootstrap
   make test
   make install
-
-  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=--deactivate-all)
-  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/vendor/perl5)
-
+  
   perl -MCPAN -e 'notest install "Module::Build"'
 
-  cpan YAML Bundle::libnet
-  cpan YAML Bundle::CPAN
+  $shome/bin/build cpan $(cat $shome/Cpanfile)
 }
 
 require sub "$BASH_SOURCE" "$@"

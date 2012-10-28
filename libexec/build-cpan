@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#/ NAME
+#/     build-cpan -- build perl modules
+#/
+#/ SYNOPSIS
+#/     build cpan <module...>
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+
+# load a jason bourne library
+source "$shome/bin/_treadstone"
+
+# entry point
+function main {
+  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=--deactivate-all)
+  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$shome/vendor/perl5)
+  AUTOMATED_TESTING=1 PERL_MM_USE_DEFAULT=1 cpan "$@"
+}
+
+require 'sub' "$BASH_SOURCE" "$@"
+
