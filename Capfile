@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'alpha_omega/deploy'
-load 'config/deploy'
 
 set :releases, [ ]
 
@@ -20,13 +19,6 @@ namespace :git do
   task :bootstrap do
     # workaround git clone and non-empty directories
     run "[[ -d .git ]] || { git init && git remote add origin #{repository}; }"
-    #run "[[ -d .git ]] && { git remote rm origin || true; git remote add origin #{repository}; }"
-  end
-end
-
-namespace :rvm do
-  task :bootstrap do
-    run "[[ -d .rvm ]] || { if [[ -d /usr/local/rvm ]]; then ln -nfs /usr/local/rvm .rvm; else true; fi; }"
   end
 end
 
@@ -44,8 +36,6 @@ end
 
 # hooks into alpha_omega deploy
 after "deploy:bootstrap_code", "git:bootstrap"
-after "deploy:bootstrap_code", "rvm:bootstrap"
-after "deploy:cook", "microwave:cook"
 after "deploy:bundle", "vim:bundle"
 
 # interesting hosts
