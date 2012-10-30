@@ -20,10 +20,8 @@ namespace :git do
     # workaround git clone and non-empty directories
     run "[[ -d .git ]] || { git init && git remote add origin #{repository}; }"
     run "git remote rm origin && git remote add origin #{repository}"
-    run "git remote -v"
-    run "git fetch origin"
-    run "git checkout --force master"
-    run "git reset --hard #{revision}"
+    run "bin/git-renamex HeSYINUvSBZfxqA destructuring || true"
+    run "git fetch -q origin && git checkout -q --force master && git reset --hard #{revision}"
     run "bin/git-renamex HeSYINUvSBZfxqA destructuring"
   end
 end
