@@ -11,10 +11,11 @@ shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
 # load a jason bourne library
 source "$shome/libexec/_treadstone"
+require ao
 
 # entry point
 function main {
   bundle exec ao "${BASH_SOURCE#*-}" "$@"
 }
 
-require 'sub' "$BASH_SOURCE" "$@"
+main "$@"

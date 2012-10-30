@@ -7,12 +7,4 @@
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
-# load a jason bourne library
-source "$shome/libexec/_treadstone"
-
-# entry point
-function main {
-  "$shome/libexec/aoh" "$@"
-}
-
-require sub "$BASH_SOURCE" "$@"
+"$shome/libexec/aoh" "${BASH_SOURCE##*/}" "$@"
