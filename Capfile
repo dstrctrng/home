@@ -12,25 +12,20 @@ set :root_group, "defn"
 set :use_sudo, false
 set :dir_perms, "0750"
 
-set :bundler_options, "--path vendor/bundle"
+set :bundler_options, "--local --path vendor/bundle"
 
 # application deploy
 namespace :git do
   task :bootstrap do
     # workaround git clone and non-empty directories
     run "[[ -d .git ]] || { git init && git remote add origin #{repository}; }"
+    run "git rm origin && git add origin #{repository}"
   end
 end
 
 namespace :vim do
   task :bundle do
-    run "cd #{deploy_release} && bin/bundle-vim"
-  end
-end
-
-namespace :badonkadonk do
-  task :delay do
-    run "#{ruby_loader} ruby -e 'sleep(rand(10))'"
+    run "cd #{deploy_release} && bin/build vim"
   end
 end
 
