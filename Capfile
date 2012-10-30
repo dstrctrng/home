@@ -21,7 +21,7 @@ namespace :git do
     run "[[ -d .git ]] || { git init && git remote add origin #{repository}; }"
     run "git remote rm origin && git remote add origin #{repository}"
     run "git fetch -q --recurse-submodules=no origin && git checkout -q --force master && git reset --hard origin/master"
-    run "bin/git-renamex HeSYINUvSBZfxqA destructuring"
+    run "~/bin/git-renamex HeSYINUvSBZfxqA destructuring"
   end
 end
 
