@@ -1,0 +1,78 @@
+#!/bin/bash
+
+#/ NAME
+#/     git rename -- rename a github project
+#/
+#/ SYNOPSIS
+#/     git rename old new
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a meat library
+source "$shome/bin/_treadstone"
+
+# entry point
+function main {
+  if [[ "$#" < 1 ]]; then
+    logger_fatal "missing old, new repository names"
+    display_help
+    exit 1
+  fi
+
+  if [[ "$#" < 2 ]]; then
+    logger_fatal "missing new repository names"
+    display_help
+    exit 1
+  fi
+
+  local nm_old="$1"; shift
+  local nm_new="$1"; shift
+
+  local remote
+  local url
+  local action
+  git remote -v | while read -r remote url action; do
+    if [[ -n "${action}" ]]; then
+      local url_old="$url"
+      local url_new="${url_old/$nm_old/$nm_new}"
+      if [[ "$url_old" != "$url_new" ]]; then
+        git remote set-url "$remote" "$url_new"
+      fi
+      git fetch "$remote"
+    fi
+  done
+  
+  local f
+  for f in .gitmodules .git/config config; do
+    if [[ "$f" != ".gitmodules" || "$FLAGS_workarea" = "$FLAGS_TRUE" ]]; then
+      if [[ -r "$f" && ! -d "$f" ]]; then
+        perl -pe "m{^\s*url\s*=} && s{$nm_old}{$nm_new}" -i "$f"
+      fi
+    fi
+  done
+
+  local subm
+  for subm in $({ git submodule || true; } | awk '{print $2}'); do
+    pushd $subm
+    git rename "$nm_old" "$nm_new"
+    if [[ ! -d ".git" ]]; then
+      local pth_repo="$(cat .git | awk '$1 == "gitdir:" { print $2 }')"
+      pushd "$pth_repo"
+        git rename "$nm_old" "$nm_new"
+      popd
+    fi
+    popd
+  done
+}
+
+# define command line options:
+#   var name, default, description, short option
+DEFINE_boolean 'workarea' "$FLAGS_FALSE" 'modify workarea files?' 'w'
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+# pass arguments to entry point
+main "$@"
