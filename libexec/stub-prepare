@@ -19,7 +19,6 @@ function main {
     exit 1
   fi
 
-  local dollar='$'
   local nm_command="$1"; shift
 
   ln -nfsv stub "$shome/bin/$nm_command"
