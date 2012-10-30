@@ -19,12 +19,4 @@ function main {
   vim -E -c ':source .vimrc' -c :quit meh
 }
 
-# define command line options:
-#   var name, default, description, short option
-
-# parse the command-line
-parse_command_line "$@" || exit $?
-eval set -- "${FLAGS_ARGV}"
-
-# pass arguments to entry point
-main "$@"
+require sub "$BASH_SOURCE" "$@"
