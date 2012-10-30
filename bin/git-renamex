@@ -55,11 +55,11 @@ function main {
   local subm
   for subm in $({ git submodule || true; } | awk '{print $2}'); do
     pushd $subm
-    git rename "$nm_old" "$nm_new"
+    $0 "$nm_old" "$nm_new"
     if [[ ! -d ".git" ]]; then
       local pth_repo="$(cat .git | awk '$1 == "gitdir:" { print $2 }')"
       pushd "$pth_repo"
-        git rename "$nm_old" "$nm_new"
+        $0 "$nm_old" "$nm_new"
       popd
     fi
     popd
