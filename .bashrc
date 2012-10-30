@@ -2,7 +2,7 @@
 
 : ${DISPLAY:=}
 
-source "$HOME/bin/_jason"
+source "$HOME/libexec/_jason"
 
 require 'macports' $shome/local
 require 'rvm'

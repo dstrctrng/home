@@ -2,6 +2,6 @@
 
 ruby=$1; shift
 
-source $HOME/bin/_rvm
+source $HOME/libexec/_rvm
 rvm $ruby
 exec "$@"
