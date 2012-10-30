@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#/ NAME
+#/     migrate - bin/ wrapper to alpha_omega deploy commands
+#/
+#/ SYNOPSIS
+#/     bin/migrate
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+
+# load a jason bourne library
+source "$shome/libexec/_treadstone"
+
+# entry point
+function main {
+  bundle exec ao "${BASE_SOURCE#*-}" "$@"
+}
+
+require 'sub' "$BASH_SOURCE" "$@"
