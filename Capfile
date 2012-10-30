@@ -25,7 +25,7 @@ end
 
 namespace :vim do
   task :bundle do
-    run "cd #{deploy_release} && bin/build vim"
+    run "bin/build vim"
   end
 end
 
