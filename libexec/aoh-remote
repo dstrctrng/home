@@ -1,37 +1,20 @@
 #!/bin/bash
 
 #/ NAME
-#/     remote -- connects to a remote server
+#/     remote - bin/ wrapper to alpha_omega deploy commands
 #/
 #/ SYNOPSIS
-#/     remote hostname ... any ssh args
+#/     bin/remote
 
 # figure out the project root under which bin, lib live
-shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
 # load a jason bourne library
-source "$shome/bin/_treadstone" "$@"
-get_started
+source "$shome/libexec/_treadstone"
 
 # entry point
 function main {
-  if [[ "$#" = 0 ]]; then
-    logger_fatal "need a hostname or podname"
-    exit 1
-  fi
-
-  local nm_component="$1"; shift
-  local deploy_base="$(ryaml $shome/config/deploy.yml deploy_base)"
-  if [[ -n "$deploy_base" ]]; then
-    local pod_shortcut="$(ryaml $HOME/.getting-started/config/pods.yml pods ${deploy_base}${nm_component} pod)"
-    if [[ -n "$pod_shortcut" ]]; then
-      nm_component="${deploy_base}${nm_component}"
-    fi
-  fi
-
-  exec ssh "$nm_component" "$@"
-  logger_fatal "could not execute ssh; this is abnormal"
-  exit 1
+  bundle exec ao "${BASE_SOURCE#*-}" "$@"
 }
 
-require sub "$BASH_SOURCE" "$@"
+require 'sub' "$BASH_SOURCE" "$@"
