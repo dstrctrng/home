@@ -19,7 +19,7 @@ namespace :git do
   task :bootstrap do
     # workaround git clone and non-empty directories
     run "[[ -d .git ]] || { git init && git remote add origin #{repository}; }"
-    run "git rm origin && git add origin #{repository}"
+    run "git remote rm origin && git remote add origin #{repository}"
   end
 end
 
