@@ -3,7 +3,7 @@ repository: git@github.com:destructuring/badonkadonk.git
 application: badonkadonk
 
 ruby_loader: rvm-exec
-app_ruby: ree
+app_ruby: 1.9.3
 
 branches: [ master ]
 branch_regex: /
