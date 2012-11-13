@@ -1,7 +1,0 @@
-#!/bin/bash
-
-ruby=$1; shift
-
-source $HOME/libexec/_rvm
-rvm $ruby
-exec "$@"

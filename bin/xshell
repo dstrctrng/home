@@ -1,3 +1,1 @@
-#!/bin/bash -fue
-
-exec xterm -ls -e echo "$@"
+../libexec/xshell

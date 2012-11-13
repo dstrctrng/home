@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source $HOME/.bash_profile
+set -e
+
+# dependent on xtermcontrol, so xterm
+[[ -x ${cmd_xterm:-} ]] || cmd_xterm=$(which xterm 2>&-)
+
+exec $cmd_xterm -ls +sb -fb fixed

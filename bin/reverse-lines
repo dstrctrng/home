@@ -1,6 +1,1 @@
-#!/bin/bash -e 
-
-nm_file=$1; shift
-len_file="$(cat "$nm_file" | wc -l)"
-
-for a in eval "echo {$len_file..1}"; do tail -n "+$a" f | head -1; done
+../libexec/reverse-lines
