@@ -1,1 +1,1 @@
-PATH=$HOME/.cabal/bin:$PATH
+PATH=$HOME/.cabal/bin:$HOME/Library/Haskell/bin:$PATH
