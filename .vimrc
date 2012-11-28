@@ -11,7 +11,7 @@ colorscheme xoria256
 
 " more bundles
 silent call Bundle(["fugitive", "git.zip", "Gist",  "cucumber.zip", "rake"])
-silent call Bundle(["haml.zip", "vim-ruby", "vim-erl"])
+silent call Bundle(["haml.zip", "vim-erl"])
 silent call Bundle(["vim-pasta"])
 silent call Bundle(["vimpager"])
 
