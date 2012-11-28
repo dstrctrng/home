@@ -2,7 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     80ae2fe5c929b7d0a00bdee2d710fa9e (0.0.7)
-    alpha_omega (1.4.3)
+    alpha_omega (1.5.1)
       capistrano
       capistrano-log_with_awesome
       capistrano_colors
@@ -44,7 +44,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.6.1)
+    net-ssh (2.6.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     plist (3.1.0)
@@ -64,7 +64,7 @@ PLATFORMS
 
 DEPENDENCIES
   80ae2fe5c929b7d0a00bdee2d710fa9e
-  alpha_omega
+  alpha_omega (~> 1.5.1)
   awesome_print
   interactive_editor
   microwave
