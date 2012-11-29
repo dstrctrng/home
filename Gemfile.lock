@@ -2,7 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     80ae2fe5c929b7d0a00bdee2d710fa9e (0.0.7)
-    alpha_omega (1.5.2)
+    alpha_omega (1.5.3)
       capistrano
       capistrano-log_with_awesome
       capistrano_colors
