@@ -1,0 +1,5 @@
+---
+remotes:
+  primary: git@github.com:destructuring/badonkadonk
+  secondary: git@destructuring.org:destructuring/badonkadonk
+  sh: https://github.com/destructuring/jason
