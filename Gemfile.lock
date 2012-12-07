@@ -21,6 +21,7 @@ GEM
     deep_merge (1.0.0)
     erubis (2.7.0)
     fast_xs (0.8.0)
+    fusefs (0.7.0)
     highline (1.6.15)
     interactive_editor (0.0.10)
       spoon (>= 0.0.1)
@@ -64,8 +65,9 @@ PLATFORMS
 
 DEPENDENCIES
   80ae2fe5c929b7d0a00bdee2d710fa9e
-  alpha_omega (~> 1.5.1)
+  alpha_omega
   awesome_print
+  fusefs
   interactive_editor
   microwave
   plist
