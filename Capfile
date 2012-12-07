@@ -39,4 +39,3 @@ after "deploy:bundle", "vim:bundle"
 Deploy self, __FILE__ do |admin, node| 
   { :deploy => { } }
 end
-
