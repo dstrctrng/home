@@ -54,12 +54,12 @@
 /.getting-started
 /.local
 /.johnny
-/.macports
-/.homebrew
+/.pancake
 /cache
 /backup
 *.orig
 /local
+/bar
 /tmp/site
 *.orig
 /vagrant
