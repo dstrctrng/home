@@ -4,7 +4,7 @@
 
 source "$HOME/libexec/_jason"
 
-require 'pancake' $shome/local
+require 'pancake/macports_profile' $shome/local
 require 'rvm'
 
 require 'paul'
