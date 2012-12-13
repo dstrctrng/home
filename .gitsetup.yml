@@ -1,0 +1,5 @@
+---
+remotes:
+  primary: git@github.com:destructuring/rb-helper
+  secondary: git@destructuring.org:destructuring/rb-helper
+  sh: https://github.com/destructuring/jason
