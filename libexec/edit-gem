@@ -12,7 +12,7 @@
 shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
 # load a jason bourne library
-source "$shome/bin/_treadstone"
+source "$shome/libexec/_treadstone"
 
 # define command line options:
 DEFINE_boolean "update" "$FLAGS_FALSE" "finish editing a local gem and updates project" "u"
