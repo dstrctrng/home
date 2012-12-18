@@ -1,5 +1,5 @@
 ---
 remotes:
-  primary: git@github.com:destructuring/badonkadonk
-  secondary: git@destructuring.org:destructuring/badonkadonk
+  primary: git@github.com:destructuring/home
+  secondary: git@destructuring.org:destructuring/home
   sh: https://github.com/destructuring/jason
