@@ -1,0 +1,154 @@
+David Nghiem
+nghidav@gmail.com, 510-371-5477
+
+310 The Spiral
+Berkeley, CA 94708
+
+Currently, it is December, 2012
+
+========================================================================================
+
+GITHUB: https://github.com/destructuring (as Tom Bombadil)
+CODERWALL: https://coderwall.com/destructuring (also as Tom Bom)
+
+========================================================================================
+
+LEAD INFRASTRUCTURE ENGINEER, ZENDESK, 2011 - current
+
+Transitioned from operations to building tools fulltime.  Support
+developer and operations staff in making applications deployable,
+maintaining the OS X developer workstation build, contribute to chef
+cookbooks and chef hacks for compare/dry-run mode.  Recently, working on
+SSAE16 compliance of deploys.
+
+Built lots of fun things using these building blocks:
+
+- alpha_omega: inspired by https://github.com/blog/1091-spring-cleaning,
+  a fork of capistrano deploy recipes for persistent release workareas
+  (for rollback, current, staged apps, and dedicated compare and
+  migration).
+
+- microwave: fork of chef solo for non-root application configuration,
+  works with alpha_omega so code and configuration are deployed as a
+  unit.
+
+- tvdinners: cookbooks wrapped in a gem, for chef cookbook reuse.
+
+- johnny: vagrant and veewee definitions for building basic Ubuntu distro
+  images, as well as developer variants of the production environment.
+
+- jason: bash library, using shflags and log4sh scripts, implements
+  37signals' sub interface.
+
+- paul: fork of hub, with git flow mixed in, along with a collection of
+  git sub commands (to do cool stuff like encrypting the git repo with
+  openssl, setting up a workarea using .gitsetup.yml)
+
+- junas: a play on project janus, a vim framework in 100% vim
+
+- cue: bash prompt library, can write plugins to add shell indicators.
+
+- pancake: OS X software distribution with macports and homebrew package
+  backends.
+
+- macports: non-root, anchored binary MacPorts distribution
+
+- rb-helper: git mixin to assist in ruby gems developer (easy bin/bump,
+  bin/build, and bin/publish cli interface for all my gems)
+
+- sigmeh: irssi client as a bot, includes attempt to make a king of Perl
+  bundler using CPAN modules.
+
+* Using Ubuntu, bash, ruby, bundler, chef, vagrant, capistrano, rvm,
+  unicorn, runit, MacPorts, homebrew
+
+========================================================================================
+
+TEAM LEAD, OPERATIONS ENGINEER, ZENDESK, 2009 - 2011
+
+Started without knowing the technology stack (heavy Ruby shop), currently team
+lead of the operations team of four administrators (including myself).
+
+ - Multiple datacenters
+ - Pods, isolated instances of the application environment in the same DC
+ - Day-to-day leadership of the operations team
+ - Shards, isolated application data in separate MySQL clusters
+ - Engine Yard to Rackspace managed hosting move
+ - Chef cookbooks, with patch to dry-run and compare differences
+ - Capistrano deploys with persistent releases
+ - Homebrew distribution on developer OS X laptops
+
+ * Using Ubuntu Linux, Ruby, Node; capistrano, chef, nginx, unicorn, exim,
+   resque, redis, mongo, memcache, solr, boson.
+
+========================================================================================
+
+SENIOR UNIX ADMINISTRATOR, BARCLAYS GLOBAL INVESTORS, 2005 - 2008
+
+Started as a UNIX enthusiast on a one-month contract, ended as a senior member
+of the UNIX operations and projects team.  Mostly worked on automation and large
+project evaluations/rollouts.
+
+ - Datacenter moves
+ - Building power-downs, drills
+ - Cyberark password management
+ - PowerBroker privilege escalation
+ - HP OpenView check scripts
+ - Veritas suite of products: Cluster server, file-system, volume management
+ - Jumpstart JET
+ - Splunk
+ - Sun N1 Grid Engine
+
+ * Using Solaris 8, 10 Sparc, Redhat Enterprise Linux 4, 5, VMware ESX; Perl.
+   A lot of proprietary software typical at an investment bank.
+
+========================================================================================
+
+ADMINISTRATOR AND OWNER, BEIGE TOWER, 2002 - 2006
+
+Personally financed a free web hosting service to get diverse experience as a
+systems administrator in preparation for a new career.
+
+ - Host various services for free in exchange for ads placement
+ - Customize open source packages for multi-tenant hosting
+ - OpenBSD pf/carp firewall, networking
+
+ * Using OpenBSD, RedHat, and Solaris; Perl
+
+========================================================================================
+
+SOFTWARE DEVELOPER, BARCLAYS GLOBAL INVESTORS, 2005 - 2008
+
+Tools developer supporting application teams.
+
+ - Build and release management tools using cvs, make
+ - Perl application server for internal web applications
+ - Deploy applications
+
+ * Using Perl
+
+========================================================================================
+
+SOFTWARE DEVELOPER, GURU, 2000 - 2002
+
+Tools developer supporting application teams.
+
+ - Build and release management tools using cvs, make
+ - Replace DART email service with in-house qmail server farm
+ - Maintain content management system for web site content and email campaigns
+
+ * Using ATG Dynamoc application server, RedHat; Perl, Java
+
+========================================================================================
+
+SOFTWARE DEVELOPER, WHYNOT CREATIONS, 1998 - 1999
+
+First job with software, started with a hobbyist knowledge of Java and C, left
+with a taste for UNIX administration and scripting.
+
+ - Unexpected UNIX administrator for a datacenter of Solaris servers
+ - Application server implemented as Apache C module
+ - HTTP Proxy in Java to front Macromedia Flash content generation
+
+ * Using Solaris; Perl, Java, Apache
+
