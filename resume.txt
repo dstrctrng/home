@@ -9,7 +9,7 @@ Located at https://raw.github.com/destructuring/home/master/resume.txt
 ========================================================================================
 
 GITHUB: https://github.com/destructuring (as Tom Bombadil)
-CODERWALL: https://coderwall.com/destructuring (also as Tom Bom)
+CODERWALL: http://coderwall.com/destructuring (also as Tom Bom)
 
 ========================================================================================
 
