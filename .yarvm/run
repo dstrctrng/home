@@ -1,9 +1,6 @@
 #!/bin/bash
 
-set -e
-
-ruby="$1"; shift
-mkdir -p $ruby
-cd $ruby
-rbenv local $ruby
-ruby ../run.rb
+for rb in ree 1.9.3 jruby; do
+  ./run.sh $rb
+  (cd $rb; ./run)
+done
