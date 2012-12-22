@@ -1,6 +1,6 @@
 ---
 remotes:
   primary: git@github.com:destructuring/home
-  secondary: git@destructuring.org:destructuring/home
+  secondary: git@bitbucket.org:destructuring/home
   sh: https://github.com/destructuring/jason
   bump: https://github.com/destructuring/mixin-bump
