@@ -1,9 +1,0 @@
-#!/bin/bash
-
-source ~/.rbenv/libexec/_profile
-
-for rb in ree 1.9.3 jruby; do
-  echo "> testing $rb"
-  ./run.sh $rb
-  (cd $rb; ./run)
-done

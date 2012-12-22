@@ -7,9 +7,6 @@
 [submodule "hubflow"]
 	path = .hubflow
 	url = https://github.com/destructuring/hubflow
-[submodule ".rbenv"]
-	path = .rbenv
-	url = https://github.com/destructuring/rbenv
 [submodule ".paul"]
 	path = .paul
 	url = https://github.com/destructuring/paul
@@ -19,6 +16,6 @@
 [submodule ".sigmeh"]
 	path = .sigmeh
 	url = https://github.com/destructuring/sigmeh
-[submodule ".rvm"]
-	path = .rvm
-	url = https://github.com/destructuring/rvm
+[submodule ".yarvm"]
+	path = .yarvm
+	url = https://github.com/destructuring/yarvm
