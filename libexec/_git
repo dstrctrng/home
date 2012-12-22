@@ -1,15 +1,15 @@
 #!/bin/bash
 
-alias gs="pushd ./\$(\git rev-parse --show-cdup) > /dev/null; \git submodule summary; popd > /dev/null; \git status -s --ignore-submodules=dirty" # TODO add -b back with autodetect
-alias gl="\git lg"
-alias gd="\git difftool"
-alias gm="\git mergetool"
+alias gs="pushd ./\$($(type -P git) rev-parse --show-cdup) > /dev/null; $(type -P git) submodule summary; popd > /dev/null; $(type -P git) status -s --ignore-submodules=dirty" # TODO add -b back with autodetect
+alias gl="$(type -P git) lg"
+alias gd="$(type -P git) difftool"
+alias gm="$(type -P git) mergetool"
 
 function gdiff {
   local len="$(git diff --no-ext-diff -w -b "$@" | wc -l | awk '{print $1}')"
 
   if [[ "$len" != 0 ]]; then
-    \git diff --no-ext-diff -w -b "$@" | vim -R -
+    $(type -P git) diff --no-ext-diff -w -b "$@" | vim -R -
   fi
 }
 
