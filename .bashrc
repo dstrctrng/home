@@ -3,6 +3,7 @@
 : ${DISPLAY:=}
 
 source "$HOME/libexec/_jason"
+set +efu
 
 require 'pancake/macports_profile' $shome/local
 require 'rvm'
