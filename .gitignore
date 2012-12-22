@@ -48,7 +48,6 @@
 /.zlogin
 /.zshrc
 /.deploy/defn
-/.rvm
 /.mysql_history
 /.cache
 /.getting-started

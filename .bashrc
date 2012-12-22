@@ -6,6 +6,7 @@ source "$HOME/libexec/_jason"
 
 require 'pancake/macports_profile' $shome/local
 require 'rvm'
+require 'rbenv'
 
 require 'paul'
 require 'aaron'
