@@ -1,6 +1,6 @@
 ---
 remotes:
   primary: git@github.com:destructuring/rb-helper
-  secondary: gittbucket@.org:destructuring/rb-helper
+  secondary: git@bitbucket.org:destructuring/rb-helper
   sh: https://github.com/destructuring/jason
   bump: https://github.com/destructuring/mixin-bump
