@@ -10,7 +10,7 @@
 shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
 # load a jason bourne library
-source "$shome/libexec/_treadstone"
+source "$shome/libexec/_jason"
 
 # define command line options:
 DEFINE_boolean "private" "$FLAGS_TRUE" "push to a local, private geminabox"
