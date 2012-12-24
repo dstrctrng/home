@@ -2,17 +2,16 @@
 source ~/.vim/junas
 
 " install whatever bundles over the net
-silent call Bundle(["xoria256", "vim-colors-solarized"])
+silent call Bundle(["xoria256", "Solarized"])
 silent call Bundle(["surround", "repeat", "Rainbow_Parenthesis", "matchit.zip", "eregex"])
-silent call Bundle(["powerline"])
+silent call Bundle(["Powerline"])
 
 " use the xoria256 color scheme
 colorscheme xoria256
 
 " more bundles
 silent call Bundle(["fugitive", "git.zip", "Gist",  "cucumber.zip", "rake"])
-silent call Bundle(["haml.zip", "vim-erl"])
-silent call Bundle(["vim-pasta"])
+silent call Bundle(["haml.zip"])
 silent call Bundle(["vimpager"])
 
 " override xoria colors
