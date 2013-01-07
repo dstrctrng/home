@@ -78,7 +78,6 @@ function bump_version {
     fi
 
     git commit -m "bump: $ver_bumped"
-    git push
   fi
 
   git_tag "$ver_bumped"
@@ -107,13 +106,6 @@ function git_tag {
   ensure_git_tag_available "$version"
 
   git tag $version
-  git push origin tag $version
-  remote_sha=$(git ls-remote origin $version | awk '{print $1}')
-  local_sha=$(git show-ref $version | awk '{print $1}')
-  if [[ $remote_sha != $local_sha ]]; then
-    logger_fatal "remote tag $version does not match local SHA"
-    exit 1
-  fi
 }
 
 function ensure_clean_git_status {
