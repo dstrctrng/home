@@ -22,3 +22,4 @@ gem "plist"
 gem "fusefs"
 
 # vim: set ft=ruby:
+
