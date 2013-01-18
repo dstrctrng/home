@@ -4,7 +4,6 @@ source ~/.vim/junas
 " install whatever bundles over the net
 silent call Bundle(["xoria256", "Solarized"])
 silent call Bundle(["surround", "repeat", "Rainbow_Parenthesis", "matchit.zip", "eregex"])
-silent call Bundle(["Powerline"])
 
 " use the xoria256 color scheme
 colorscheme xoria256
