@@ -19,3 +19,12 @@
 [submodule ".yarvm"]
 	path = .yarvm
 	url = https://github.com/destructuring/yarvm
+[submodule "apps/12factor"]
+	path = apps/12factor
+	url = https://github.com/destructuring/12factor
+[submodule "apps/geminabox"]
+	path = apps/geminabox
+	url = https://github.com/destructuring/geminabox
+[submodule "apps/mmtop"]
+	path = apps/mmtop
+	url = https://github.com/destructuring/mmtop
