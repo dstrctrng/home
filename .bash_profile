@@ -1,5 +1,5 @@
 # initialize PATH to something sane
-PATH='/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
+PATH="$HOME/helpers:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 
 export SHLVL_INITIAL="$SHLVL"
 source $HOME/.bashrc
