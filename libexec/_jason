@@ -60,12 +60,8 @@ function display_synopsis {
 
 function which_library {
   local library="$1"; shift
-  if [[ -r "$shome/bin/_$library" ]]; then
-    echo "$shome/bin/_$library"
-  elif [[ -r "$shome/libexec/_$library" ]]; then
+  if [[ -r "$shome/libexec/_$library" ]]; then
     echo "$shome/libexec/_$library"
-  elif [[ -r "$shome/.$library/libexec/_profile" ]]; then
-    echo "$shome/.$library/libexec/_profile"
   elif [[ -r "$shome/.$library/libexec/_$library" ]]; then
     echo "$shome/.$library/libexec/_$library"
   else
