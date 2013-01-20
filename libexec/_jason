@@ -64,19 +64,15 @@ function which_library {
     echo "$shome/bin/_$library"
   elif [[ -r "$shome/libexec/_$library" ]]; then
     echo "$shome/libexec/_$library"
-  elif [[ -r "$shome/.$library/bin/_profile" ]]; then
-    echo "$shome/.$library/bin/_profile"
   elif [[ -r "$shome/.$library/libexec/_profile" ]]; then
     echo "$shome/.$library/libexec/_profile"
-  elif [[ -r "$shome/.$library/.profile" ]]; then
-    echo "$shome/.$library/.profile"
+  elif [[ -r "$shome/.$library/libexec/_$library" ]]; then
+    echo "$shome/.$library/libexec/_$library"
   else
     local nm_library="${library%%/*}"
     if [[ "$nm_library" != "$library" ]]; then
       local nm_right="${library##*/}"
-      if [[ -r "$shome/.$nm_library/bin/_$nm_right" ]]; then
-        echo "$shome/.$nm_library/bin/_$nm_right"
-      elif [[ -r "$shome/.$nm_library/libexec/_$nm_right" ]]; then
+      if [[ -r "$shome/.$nm_library/libexec/_$nm_right" ]]; then
         echo "$shome/.$nm_library/libexec/_$nm_right"
       fi
     fi
