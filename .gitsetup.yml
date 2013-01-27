@@ -2,4 +2,4 @@
 remotes:
   primary: git@github.com:destructuring/home
   secondary: git@bitbucket.org:destructuring/home
-  rb: https://github.com/destructuring/rb-helper
+  sh: https://github.com/destructuring/jason
