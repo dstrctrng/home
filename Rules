@@ -45,7 +45,7 @@ route '/css/*' do
 	item.identifier.chop + '.css'
 end
 
-route %r{^/(img|fonts|favicon|robots)/} do
+route %r{^/(img|images|fonts)/} do
 	item.identifier.chop + ".#{item[:extension]}"
 end
 
@@ -54,16 +54,16 @@ compile '*' do
 		item[:filters_pre].each do |f|
 			filter f.to_sym
 		end
+    layout 'default'
 	else
 		unless rep.binary? then
 			case item[:extension]
 			when 'md','markdown' then
 				filter :redcarpet
 			end
+      layout 'default'
 		end
 	end
-	
-  layout 'default'
 end
 
 route '*' do

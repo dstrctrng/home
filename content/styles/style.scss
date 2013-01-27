@@ -1,0 +1,155 @@
+/* Fonts */
+
+@import url(http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Cardo);
+
+@import "_bootstrap.scss";
+@import "_vendor.scss";
+@import "_code.scss";
+@import "_zocial.scss";
+
+/* Bootstrap Overrides */
+
+article, #legacy-comments, #disqus_thread {
+  font-size: 17px;
+  line-height: 1.5em;
+  color: #000;
+
+  p {
+    margin: 5px 0;
+  }
+
+  li, dt, dd {
+    line-height: 1.5em
+  }
+  dt {
+    margin-top: 1.5em;
+  }
+}
+
+table {
+  @extend .table;
+  @extend .table-striped;
+  @extend .table-bordered;
+}
+
+/* Other Elements */
+
+.pubdate, .read {
+  font-style: italic;
+}
+
+.read {
+  margin-bottom: 20px;
+}
+
+.featured {
+  font-variant: small-caps;
+  font-size: 130%;
+}
+
+footer {
+  margin: auto;
+  text-align: center;
+}
+
+#header-row {
+  margin-top: 15px;
+}
+
+.article-info {
+  font-style: italic;
+}
+
+.hyphenate {
+  text-align: justify;
+}
+
+article p[style*="right"] {
+  margin: 0.5em 0 0.5em 1em;
+}
+
+article p[style*="left"] {
+  margin: 0.5em 1em 0.5em 0;
+}
+
+#body-text .navigation {
+  margin: auto;
+  text-align: center;
+}
+
+/* Headings */
+
+#main-content > article h1 {
+  line-height: 1em;
+  font-size: 1.6em;
+}
+#main-content > article h2 {
+  line-height: 1em;
+  font-size: 1.3em;
+  font-style: italic;
+}
+
+article.page > header h1 {
+	font-size: 2em;
+  margin-top: -10px;
+  margin-bottom: 0;
+}
+
+#secondary-content > article h1{
+  line-height: 1em;
+  font-size: 1.3em;
+}
+
+#secondary-content > article h2{
+  line-height: 1em;
+  font-size: 1em;
+  font-style: italic;
+}
+
+#body-text section header h1,
+#body-text h2 {
+	font-size: 1.8em;
+}
+h1 > code {
+	font-size: 0.9em;
+  border:none;
+  color: #000;
+  background:none;
+}
+
+article.page > header h2,
+#body-text section section header h1,
+#body-text h3 {
+  margin-top: 1.2em;
+	font-size: 1.5em;
+  font-style: italic;
+}
+
+article.page > header h2 {
+  margin: 0 0 1em 0;
+  line-height: 1em;
+}
+
+#body-text section section section header h1,
+#body-text h4 {
+  margin-top: 1.2em;
+	font-size: 1.3em;
+}
+
+#body-text section section section section header h1,
+#body-text h5 {
+  margin-top: 1em;
+	font-size: 1em;
+  font-style: italic;
+}
+
+#body-text section section section section section header h1,
+#body-text h6 {
+  margin-top: 1em;
+	font-size: 1em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  line-height: 1.2em;
+}
