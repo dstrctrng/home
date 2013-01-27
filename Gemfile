@@ -1,5 +1,3 @@
-load File.join(File.dirname(__FILE__), 'lib', 'development.rb')
-
 source :rubygems
 
 # irb
@@ -26,4 +24,3 @@ gem "plist"
 gem "fusefs"
 
 # vim: set ft=ruby:
-
