@@ -59,11 +59,8 @@
 *.orig
 /local
 /bar
-/tmp/site
-*.orig
 /vagrant
 /.tmp
-/.zendesk
 /service
 /.cpan
 /.erlang.cookie
@@ -75,3 +72,4 @@
 /crash.log
 /tmp
 /output
+*.orig
