@@ -1,5 +1,7 @@
 /.bundle/
 /vendor/bundle/
 /*.gem
-/tmp/site
 *.orig
+/tmp
+/output
+/crash.log
