@@ -25,7 +25,7 @@ GEM
     erubis (2.7.0)
     fast_xs (0.8.0)
     fusefs (0.7.0)
-    ghp (0.0.4)
+    ghp (0.0.5)
       nanoc
       redcarpet
       sass

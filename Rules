@@ -1,0 +1,71 @@
+#!/usr/bin/env ruby
+
+layout '*', :erb
+
+compile '/home'  do
+	filter :erb
+	layout 'default'
+end
+
+route '/home/' do
+	"/index.html"
+end
+
+compile '/styles/_*/' do 
+	# do nothing
+end 
+
+route '/styles/_*/' do 
+   nil 
+end 
+
+compile '/styles/*' do
+	if item[:extension] == "sass" && item.identifier.match(%r{style/$}) then
+		filter :sass, {
+    	:load_paths => [Dir.pwd+"/content/styles"],
+			:syntax => :sass,
+			:style => :compact
+ 	 	}
+	end
+end
+
+route '/styles/*' do
+	item.identifier.chop + '.css' 
+end
+
+compile '/js/*' do
+	# do nothing
+end
+
+route '/js/*' do
+	item.identifier.chop + '.js'
+end
+
+route '/css/*' do
+	item.identifier.chop + '.css'
+end
+
+route %r{^/(img|fonts|favicon|robots)/} do
+	item.identifier.chop + ".#{item[:extension]}"
+end
+
+compile '*' do
+	if item[:filters_pre] && !item[:filters_pre].empty? then
+		item[:filters_pre].each do |f|
+			filter f.to_sym
+		end
+	else
+		unless rep.binary? then
+			case item[:extension]
+			when 'md','markdown' then
+				filter :redcarpet
+			end
+		end
+	end
+	
+  layout 'default'
+end
+
+route '*' do
+	item.identifier.chop + '.html' 
+end
