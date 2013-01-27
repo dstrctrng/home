@@ -1,0 +1,21 @@
+-----
+filter: erb
+-----
+<%
+	author = @item[:author] || "Fabio Cevasco"
+%><header class="row">
+	<hgroup class="span9">
+		<h1><%= @item[:title] %></h1>
+		<% if !@item[:subtitle].blank? then %>
+			<h2><%= @item[:subtitle] %></h2>
+		<% end %>
+	</hgroup>
+	<% if @item[:type] == 'article' then %>
+	<ul class="unstyled article-info span3">
+    <li>
+    <i class="icon-calendar"></i> <time datetime="<%= @item[:date].to_iso8601_time %>"><%= @item[:date].strftime("%A, %B %d %Y") %></time>
+    <li><i class="icon-tags"></i> <%= tags_for(@item) %></li>
+    </li>
+	</p>
+	<% end %>
+</header>

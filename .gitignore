@@ -73,3 +73,4 @@
 /tmp
 /output
 *.orig
+/.sass-cache

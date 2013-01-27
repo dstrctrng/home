@@ -26,6 +26,12 @@ compile '/styles/*' do
 			:syntax => :sass,
 			:style => :compact
  	 	}
+	elsif item[:extension] == "scss" && item.identifier.match(%r{style/$}) then
+		filter :sass, {
+    	:load_paths => [Dir.pwd+"/content/styles"],
+			:syntax => :scss,
+			:style => :compact
+ 	 	}
 	end
 end
 
