@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function reload {
   pushd ~ > /dev/null
   source "$HOME/.bash_profile"
@@ -19,6 +21,42 @@ alias poop='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resour
 
 function vcat {
   $shome/bin/vcat "$@"
+}
+
+function try_sub {
+  local nm_sub="$1"; shift
+
+  local git_dir="$(git rev-parse --show-cdup || true 2>&-)"
+
+  local bin_dir=
+  if [[ -n "$git_dir" ]]; then
+    bin_dir="$git_dir/bin"
+  else
+    bin_dir="bin"
+  fi
+
+  if [[ ! -x "$bin_dir/$nm_sub" ]]; then
+    logger_fatal "can't find $nm_sub in $bin_dir"
+    return 1
+  fi
+
+  "$bin_dir/$nm_sub" "$@"
+}
+
+function build {
+  try_sub build "$@"
+}
+
+function publish {
+  try_sub publish "$@"
+}
+
+function edit {
+  try_sub edit "$@"
+}
+
+function bump {
+  try_sub bump "$@"
 }
 
 alias ci=vi
