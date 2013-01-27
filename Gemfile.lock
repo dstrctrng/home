@@ -18,10 +18,18 @@ GEM
     capistrano-log_with_awesome (0.0.2)
       capistrano (>= 2.5.14)
     capistrano_colors (0.5.5)
+    colored (1.2)
+    cri (2.3.0)
+      colored (>= 1.2)
     deep_merge (1.0.0)
     erubis (2.7.0)
     fast_xs (0.8.0)
     fusefs (0.7.0)
+    ghp (0.0.4)
+      nanoc
+      redcarpet
+      sass
+    ghp-layouts (0.0.2)
     highline (1.6.15)
     interactive_editor (0.0.10)
       spoon (>= 0.0.1)
@@ -41,6 +49,8 @@ GEM
     mixlib-config (1.1.2)
     mixlib-log (1.4.1)
     moneta (0.6.0)
+    nanoc (3.4.3)
+      cri (~> 2.2)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -51,6 +61,8 @@ GEM
     plist (3.1.0)
     rdoc (3.12)
       json (~> 1.4)
+    redcarpet (2.2.2)
+    sass (3.2.5)
     sdoc (0.3.19)
       json (>= 1.1.3)
       rdoc (~> 3.10)
@@ -68,6 +80,8 @@ DEPENDENCIES
   alpha_omega
   awesome_print
   fusefs
+  ghp
+  ghp-layouts
   interactive_editor
   microwave
   plist

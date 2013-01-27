@@ -17,6 +17,10 @@ gem "tmuxinator"
 gem "alpha_omega"
 gem "microwave"
 
+# documentation
+gem "ghp"
+gem "ghp-layouts"
+
 # osx
 gem "plist"
 gem "fusefs"
