@@ -73,3 +73,6 @@
 /tmp
 /output
 *.orig
+/tmp
+/output
+/crash.log
