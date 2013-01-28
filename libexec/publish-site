@@ -19,6 +19,8 @@ DEFINE_string "message" "published $(date)" "commit message for published conten
 
 # entry point
 function main {
+  set -x
+
   if [[ "$#" = 0 ]]; then
     local src_dir="output"
   else
@@ -43,7 +45,7 @@ function main {
     local dst_dir="$1"; shift
   fi
 
-  local tmp_dir="$(mktemp --tmpdir="$shome/tmp" -d -t XXXXXXXXX)"
+  local tmp_dir="$(TMPDIR="$shome/tmp" mktemp -d -t XXXXXXXXX)"
 
   git clone "$dst_repo" "$tmp_dir"
 
