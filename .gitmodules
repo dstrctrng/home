@@ -28,3 +28,9 @@
 [submodule "apps/mmtop"]
 	path = apps/mmtop
 	url = https://github.com/destructuring/mmtop
+[submodule "apps/dashing"]
+	path = apps/dashing
+	url = https://github.com/destructuring/dashing
+[submodule "apps/gollum"]
+	path = apps/gollum
+	url = https://github.com/destructuring/gollum
