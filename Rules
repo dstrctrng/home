@@ -11,6 +11,15 @@ route '/home/' do
 	"/index.html"
 end
 
+compile '/article'  do
+	filter :erb
+	layout 'default'
+end
+
+route '/article/' do
+	"/article.html"
+end
+
 compile '/styles/_*/' do 
 	# do nothing
 end 

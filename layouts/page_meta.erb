@@ -2,7 +2,7 @@
 filter: erb
 -----
 <%
-	author = @item[:author] || "Fabio Cevasco"
+	author = @item[:author] || @site.config[:author_name]
 %><header class="row">
 	<hgroup class="span9">
 		<h1><%= @item[:title] %></h1>
@@ -14,7 +14,6 @@ filter: erb
 	<ul class="unstyled article-info span3">
     <li>
     <i class="icon-calendar"></i> <time datetime="<%= @item[:date].to_iso8601_time %>"><%= @item[:date].strftime("%A, %B %d %Y") %></time>
-    <li><i class="icon-tags"></i> <%= tags_for(@item) %></li>
     </li>
 	</p>
 	<% end %>

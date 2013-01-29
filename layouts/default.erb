@@ -4,29 +4,11 @@ filter: erb
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title><%= @item[:title] %> - H3RALD</title>
+		<title><%= @item[:title] %></title>
 		<link href='http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 		<meta charset="utf-8" />
-		<meta name="author" content="Fabio Cevasco" />
-		<meta name="robots" content="all, follow" />
-		<meta name="Revisit-After" content="2 Days" />
-		<meta name="description" content="H3RALD - Fabio Cevasco's Web Site" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<% 	
-		min_keywords = "h3rald, fabio cevasco, "
-		default = "ruby, rails technical writing, reviews, software, browsers, articles, traveling, books, genova"
-		case @item[:type] 
-		when 'article' then
-		keywords = min_keywords+@item[:tags].join(', ')
-		when 'project' then
-		keywords = @item[:permalink] == 'h3rald' ? "fabio cevasco, "+@item[:permalink] : min_keywords+@item[:permalink]
-		else
-		keywords = min_keywords+default
-		end
-		%>
-		<meta name="keywords" content="<%= keywords %>" />
 		<link rel="shortcut icon" href="favicon.png" type="image/png" /> 
-		<meta content="44.388041;9.073248" name="ICBM" />
 
 		<link rel="stylesheet" type="text/css" href="styles/style.css" />
     <!--[if lt IE 9]>
