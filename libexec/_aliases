@@ -59,4 +59,12 @@ function bump {
   try_sub bump "$@"
 }
 
+function list {
+  try_sub list "$@"
+}
+
+function new {
+  try_sub new "$@"
+}
+
 alias ci=vi
