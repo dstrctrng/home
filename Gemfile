@@ -19,7 +19,6 @@ gem "microwave"
 
 # documentation
 gem "ghp"
-gem "ghp-bootstrap"
 
 # osx
 gem "plist"
