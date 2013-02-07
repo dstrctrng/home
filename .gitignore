@@ -71,7 +71,6 @@
 /var
 /crash.log
 /tmp
-/output
 *.orig
 /.sass-cache
 /.name
