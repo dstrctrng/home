@@ -37,6 +37,3 @@
 [submodule "output"]
 	path = output
 	url = https://github.com/destructuring/destructuring.github.com
-[submodule "notes"]
-	path = notes
-	url = git@gist.github.com:4990812
