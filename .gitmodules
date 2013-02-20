@@ -37,6 +37,6 @@
 [submodule "output"]
 	path = output
 	url = https://github.com/destructuring/destructuring.github.com
-[submodule "whatever"]
-	path = whatever
+[submodule ".whatever"]
+	path = .whatever
 	url = https://github.com/destructuring/whatever

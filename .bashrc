@@ -5,6 +5,8 @@
 source "$HOME/libexec/_jason"
 set +efu
 
+require 'whatever'
+
 require 'pancake/macports_profile' $shome/local
 require 'rbenv' # 'rvm'
 
