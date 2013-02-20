@@ -43,3 +43,6 @@
 [submodule "alien"]
 	path = alien
 	url = https://github.com/destructuring/alien
+[submodule ".puddle"]
+	path = .puddle
+	url = https://github.com/destructuring/puddle

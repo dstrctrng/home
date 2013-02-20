@@ -9,6 +9,7 @@ require 'whatever'
 
 require 'pancake/macports_profile' $shome/local
 require 'rbenv' # 'rvm'
+require 'puddle'
 
 require 'paul'
 require 'aaron'
