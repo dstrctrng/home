@@ -40,3 +40,6 @@
 [submodule ".whatever"]
 	path = .whatever
 	url = https://github.com/destructuring/whatever
+[submodule "destructuring"]
+	path = destructuring
+	url = https://github.com/destructuring/destructuring
