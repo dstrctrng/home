@@ -40,7 +40,7 @@ GEM
     ipaddress (0.8.0)
     json (1.7.7)
     json (1.7.7-java)
-    microwave (11.400.3)
+    microwave (11.400.5)
       erubis
       highline (>= 1.6.9)
       json (>= 1.4.4, <= 1.7.7)
