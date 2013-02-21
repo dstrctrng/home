@@ -1,1 +1,1 @@
-{"run_list":["alpha_omega", "runit", "badonkadonk::development"]}
+{"run_list":["badonkadonk::development"]}
