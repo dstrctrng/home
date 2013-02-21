@@ -1,0 +1,8 @@
+/chef/cache
+/chef/backup
+/log
+/run
+/cache
+/service
+/wiki
+/config.ru

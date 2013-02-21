@@ -1,1 +1,6 @@
-{"run_list":["badonkadonk::development"]}
+{"run_list":[
+    "badonkadonk::development", 
+    "role[gollum_development]"
+  ]
+}
+

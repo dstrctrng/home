@@ -9,10 +9,9 @@ gem "awesome_print"
 
 # deploy
 gem "alpha_omega"
-gem "microwave"
-gem "tvd-alpha_omega"
-gem "tvd-unicorn"
-gem "tvd-runit" 
+
+# configuration
+gem "tvd-gollum"
 
 # documentation
 gem "ghp"
