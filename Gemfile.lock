@@ -86,9 +86,9 @@ GEM
       mime-types (>= 1.16)
     spoon (0.0.1)
     systemu (2.5.2)
-    tvd-alpha_omega (0.0.10)
+    tvd-alpha_omega (0.0.11)
       microwave
-    tvd-runit (0.0.16)
+    tvd-runit (0.0.19)
       microwave
     tvd-unicorn (0.0.12)
       microwave
