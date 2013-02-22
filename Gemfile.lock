@@ -1,10 +1,5 @@
-PATH
-  remote: .
-  specs:
-    home (0.215.45)
-
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     alpha_omega (1.5.3)
       capistrano
@@ -58,7 +53,7 @@ GEM
     json (1.7.7)
     json (1.7.7-java)
     kgio (2.8.0)
-    microwave (11.400.6)
+    microwave (11.400.7)
       erubis
       highline (>= 1.6.9)
       json (>= 1.4.4, <= 1.7.7)
@@ -153,7 +148,6 @@ DEPENDENCIES
   awesome_print
   fusefs
   ghp
-  home!
   interactive_editor
   plist
   tvd-gollum
