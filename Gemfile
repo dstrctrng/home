@@ -1,6 +1,4 @@
-source :rubygems
-
-gemspec
+source "https://rubygems.org"
 
 # irb
 gem "wirble"
