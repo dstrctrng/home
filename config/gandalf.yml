@@ -1,0 +1,7 @@
+---
+keys_path: config
+bundle:
+  defn:
+    secrets_path: .secrets
+    keys:
+      - nghidav@gmail.com

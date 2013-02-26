@@ -43,3 +43,6 @@
 [submodule ".puddle"]
 	path = .puddle
 	url = https://github.com/destructuring/puddle
+[submodule ".gandalf"]
+	path = .gandalf
+	url = https://github.com/destructuring/gandalf
