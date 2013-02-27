@@ -16,7 +16,7 @@ require 'aaron'
 require 'vim'
 require 'git'
 require 'perl'
-require 'gandalf' "$shome"
+require 'gandalf' "${GANDALF:-$shome}"
 
 require 'cue'
 
