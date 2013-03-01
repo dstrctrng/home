@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ "${BASH_SOURCE##*/}" != "_sub" ]]; then
-  shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  shome="$(unset CDPATH; cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   source "$shome/libexec/_jason"
   set -- "$BASH_SOURCE" "$@"
 fi
