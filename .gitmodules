@@ -1,9 +1,9 @@
 [submodule "cue"]
   path = .cue
-  url = https://raw.github.com/destructuring/cue
+  url = https://github.com/destructuring/cue
 [submodule "junas"]
   path = .junas
-  url = https://raw.github.com/destructuring/junas
+  url = https://github.com/destructuring/junas
 [submodule "hubflow"]
 	path = .hubflow
 	url = https://github.com/destructuring/hubflow
