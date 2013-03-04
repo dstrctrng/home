@@ -99,12 +99,12 @@ GEM
     stringex (1.5.1)
     systemu (2.5.2)
     tilt (1.3.4)
-    tvd-gollum (0.0.3)
+    tvd-gollum (0.0.4)
       gollum
       tvd-unicorn
     tvd-runit (0.0.21)
       tvd-tvdinner
-    tvd-tvdinner (0.0.12)
+    tvd-tvdinner (0.0.13)
       chef
     tvd-unicorn (0.0.16)
       tvd-runit
@@ -128,4 +128,5 @@ DEPENDENCIES
   interactive_editor
   plist
   tvd-gollum
+  tvd-runit
   wirble

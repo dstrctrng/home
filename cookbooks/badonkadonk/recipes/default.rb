@@ -1,3 +1,3 @@
-include_recipe "alpha_omega"
+include_recipe "tvdinner::workarea"
 
 runit_service "bitlbee"

@@ -6,6 +6,7 @@ gem "interactive_editor"
 gem "awesome_print"
 
 # configuration
+gem "tvd-runit"
 gem "tvd-gollum"
 
 # documentation
