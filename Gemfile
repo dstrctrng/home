@@ -5,9 +5,6 @@ gem "wirble"
 gem "interactive_editor"
 gem "awesome_print"
 
-# deploy
-gem "alpha_omega"
-
 # configuration
 gem "tvd-gollum"
 

@@ -1,26 +1,24 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    alpha_omega (1.5.3)
-      capistrano
-      capistrano-log_with_awesome
-      capistrano_colors
-      deep_merge
-      json
     awesome_print (1.0.2)
-    capistrano (2.13.5)
-      highline
-      net-scp (>= 1.0.0)
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.1.0)
-    capistrano-log_with_awesome (0.0.2)
-      capistrano (>= 2.5.14)
-    capistrano_colors (0.5.5)
+    chef (11.4.0)
+      erubis
+      highline (>= 1.6.9)
+      json (>= 1.4.4, <= 1.7.7)
+      mixlib-authentication (>= 1.3.0)
+      mixlib-cli (~> 1.3.0)
+      mixlib-config (>= 1.1.2)
+      mixlib-log (>= 1.3.0)
+      mixlib-shellout
+      net-ssh (~> 2.6)
+      net-ssh-multi (~> 1.1.0)
+      ohai (>= 0.6.0)
+      rest-client (>= 1.0.4, < 1.7.0)
+      yajl-ruby (~> 1.1)
     colored (1.2)
     cri (2.3.0)
       colored (>= 1.2)
-    deep_merge (1.0.0)
     diff-lcs (1.2.1)
     erubis (2.7.0)
     fusefs (0.7.0)
@@ -53,20 +51,6 @@ GEM
     json (1.7.7)
     json (1.7.7-java)
     kgio (2.8.0)
-    microwave (11.400.7)
-      erubis
-      highline (>= 1.6.9)
-      json (>= 1.4.4, <= 1.7.7)
-      mixlib-authentication (>= 1.3.0)
-      mixlib-cli (~> 1.3.0)
-      mixlib-config (>= 1.1.2)
-      mixlib-log (>= 1.3.0)
-      mixlib-shellout
-      net-ssh (~> 2.6)
-      net-ssh-multi (~> 1.1.0)
-      ohai (>= 0.6.0)
-      rest-client (>= 1.0.4, < 1.7.0)
-      yajl-ruby (~> 1.1)
     mime-types (1.21)
     mixlib-authentication (1.3.0)
       mixlib-log
@@ -77,11 +61,7 @@ GEM
     mustache (0.99.4)
     nanoc (3.4.3)
       cri (~> 2.2)
-    net-scp (1.0.4)
-      net-ssh (>= 1.99.1)
-    net-sftp (2.0.5)
-      net-ssh (>= 2.0.9)
-    net-ssh (2.6.5)
+    net-ssh (2.6.6)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     net-ssh-multi (1.1)
@@ -103,7 +83,7 @@ GEM
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
     rack (1.5.2)
-    rack-protection (1.3.2)
+    rack-protection (1.4.0)
       rack
     raindrops (0.10.0)
     redcarpet (2.2.2)
@@ -111,27 +91,25 @@ GEM
       mime-types (>= 1.16)
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
-      nokogiri (>= 1.4.4, < 1.6)
-    sinatra (1.3.4)
+    sinatra (1.3.5)
       rack (~> 1.4)
       rack-protection (~> 1.3)
       tilt (~> 1.3, >= 1.3.3)
     spoon (0.0.1)
     stringex (1.5.1)
     systemu (2.5.2)
-    tilt (1.3.3)
-    tvd-alpha_omega (0.0.11)
-      microwave
-    tvd-gollum (0.0.1)
+    tilt (1.3.4)
+    tvd-gollum (0.0.3)
       gollum
-      tvd-runit
       tvd-unicorn
+    tvd-runit (0.0.21)
+      tvd-tvdinner
+    tvd-tvdinner (0.0.12)
+      chef
+    tvd-unicorn (0.0.16)
+      tvd-runit
       unicorn
-    tvd-runit (0.0.20)
-      tvd-alpha_omega
-    tvd-unicorn (0.0.14)
-      tvd-alpha_omega
-    unicorn (4.6.1)
+    unicorn (4.6.2)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
@@ -144,7 +122,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  alpha_omega
   awesome_print
   fusefs
   ghp
