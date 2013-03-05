@@ -17,3 +17,7 @@ validation_key platform_specific_path("/etc/chef/validation.pem")
 signing_ca_cert platform_specific_path("#{shome}/var/chef/ca/cert.pem")
 signing_ca_key platform_specific_path("#{shome}/var/chef/ca/key.pem")
 cache_options({ :path => platform_specific_path("#{shome}/var/chef/cache/checksums") })
+
+require 'chef/handler/json_file'
+report_handlers << Chef::Handler::JsonFile.new(:path => "#{shome}/var/chef/reports")
+exception_handlers << Chef::Handler::JsonFile.new(:path => "#{shome}/var/chef/reports")

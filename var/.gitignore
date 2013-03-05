@@ -1,5 +1,6 @@
 /chef/cache
 /chef/backup
+/chef/reports
 /log
 /run
 /cache
