@@ -7,13 +7,13 @@ gem "awesome_print"
 
 # configuration
 gem "tvd-runit"
-gem "tvd-gollum"
 
 # documentation
 gem "ghp"
 
-# osx
-gem "plist"
-gem "fusefs"
+group :osx do
+  gem "plist"
+  gem "fusefs"
+end
 
 # vim: set ft=ruby:
