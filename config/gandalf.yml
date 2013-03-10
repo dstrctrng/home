@@ -1,6 +1,7 @@
 ---
 keys_path: config
 bundle:
+  default: defn
   defn:
     secrets_path: .secrets
     keys:
