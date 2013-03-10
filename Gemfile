@@ -11,6 +11,9 @@ gem "tvd-runit"
 # documentation
 gem "ghp"
 
+# twitter
+gem "t"
+
 group :osx do
   gem "plist"
   gem "fusefs"
