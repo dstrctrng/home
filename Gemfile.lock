@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    awesome_print (1.0.2)
+    awesome_print (1.1.0)
     chef (11.4.0)
       erubis
       highline (>= 1.6.9)
@@ -61,9 +61,9 @@ GEM
       mime-types (>= 1.16)
     spoon (0.0.1)
     systemu (2.5.2)
-    tvd-runit (0.0.21)
+    tvd-runit (0.0.23)
       tvd-tvdinner
-    tvd-tvdinner (0.0.13)
+    tvd-tvdinner (0.0.23)
       chef
     wirble (0.1.3)
     yajl-ruby (1.1.0)
