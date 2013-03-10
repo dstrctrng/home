@@ -13,6 +13,7 @@ gem "ghp"
 
 # twitter
 gem "t"
+gem "system_timer"
 
 group :osx do
   gem "plist"
