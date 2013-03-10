@@ -6,3 +6,4 @@ bundle:
     secrets_path: .secrets
     keys:
       - nghidav@gmail.com
+      - defn@mikan
