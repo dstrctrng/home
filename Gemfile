@@ -18,6 +18,7 @@ gem "system_timer"
 group :osx do
   gem "plist"
   gem "fusefs"
+  gem "terminal-notifier"
 end
 
 # vim: set ft=ruby:
