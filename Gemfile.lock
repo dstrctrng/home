@@ -109,6 +109,7 @@ GEM
       thor (>= 0.16, < 2)
       tweetstream (~> 2.3)
       twitter (~> 4.4)
+    terminal-notifier (1.4.2)
     thor (0.17.0)
     tvd-runit (0.0.23)
       tvd-tvdinner
@@ -139,5 +140,6 @@ DEPENDENCIES
   plist
   system_timer
   t
+  terminal-notifier
   tvd-runit
   wirble
