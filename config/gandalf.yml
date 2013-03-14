@@ -1,10 +1,1 @@
----
-keys_path: config
-bundle:
-  default: defn
-  defn:
-    secrets_path: .secrets
-    keys:
-      - nghidav@gmail.com
-      - defn@mikan
-      - defn@sangha
+../.secrets/gandalf.yml
