@@ -141,8 +141,6 @@ function _main {
   require 'shflags'
 
   configure_logging
-  
-  PATH="$shome/bin:$PATH"
 }
 
 _main "$@"
