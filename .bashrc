@@ -8,7 +8,7 @@ set +efu
 require 'whatever'
 
 require 'pancake/macports_profile' $shome/local
-require 'rbenv' # 'rvm'
+require 'rvm' 1.9.3 # 'rbenv'
 require 'puddle'
 
 require 'paul'
