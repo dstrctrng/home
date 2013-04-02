@@ -19,6 +19,7 @@ require 'perl'
 require 'gandalf' "${GANDALF:-$shome}"
 
 require 'cue'
+require 'junas'
 
 require 'aliases'
 require 'terminal'
