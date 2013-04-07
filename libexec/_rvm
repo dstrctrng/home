@@ -1,0 +1,1 @@
+source $shome/.yarvm/.rvm/libexec/_profile "$@"
