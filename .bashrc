@@ -8,7 +8,9 @@ set +efu
 require 'whatever'
 
 require 'pancake/macports_profile' $shome/local
-require 'rvm' 1.9.3 # 'rbenv'
+if [[ ! -f /etc/profile.d/rvm.sh ]]; then
+  require 'rvm' 1.9.3 # 'rbenv'
+fi
 require 'puddle'
 
 require 'paul'
