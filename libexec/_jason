@@ -51,7 +51,9 @@ function display_synopsis {
 
 function which_library {
   local library="$1"; shift
-  if [[ -r "$shome/libexec/_$library" ]]; then
+  if [[ -r "$shome/vendor/projects/$library/libexec/_$library" ]]; then
+    echo "$shome/vendor/projects/$library/libexec/_$library"
+  elif [[ -r "$shome/libexec/_$library" ]]; then
     echo "$shome/libexec/_$library"
   elif [[ -r "$shome/.$library/libexec/_$library" ]]; then
     echo "$shome/.$library/libexec/_$library"
@@ -59,7 +61,9 @@ function which_library {
     local nm_library="${library%%/*}"
     if [[ "$nm_library" != "$library" ]]; then
       local nm_right="${library##*/}"
-      if [[ -r "$shome/.$nm_library/libexec/_$nm_right" ]]; then
+      if [[ -r "$shome/vendor/projects/$nm_library/libexec/_$nm_right" ]]; then
+        echo "$shome/vendor/projects/$nm_library/libexec/_$nm_right"
+      elif [[ -r "$shome/.$nm_library/libexec/_$nm_right" ]]; then
         echo "$shome/.$nm_library/libexec/_$nm_right"
       fi
     fi
