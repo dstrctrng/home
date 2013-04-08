@@ -35,4 +35,6 @@ if [[ -n "${PATH_OVERRIDE:-}" ]]; then
   PATH="$PATH_OVERRIDE:$PATH"
 fi
 
-source ~/.siterc
+if [[ -f ~/.siterc ]]; then
+  source ~/.siterc
+fi
