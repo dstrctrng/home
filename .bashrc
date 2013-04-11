@@ -9,9 +9,9 @@ require 'whatever'
 
 require 'pancake/macports_profile' $shome/local
 if [[ ! -f /etc/profile.d/rvm.sh ]]; then
-  require 'rvm' # 'rbenv'
+  require 'rvm' default # 'rbenv'
 fi
-if [[ -x "$HOME/vendor/gems/bin/gem" ]]; then
+if [[ -x "$HOME/vendor/gems/bin/gem" && "$(type -P ruby)" = "/usr/bin/ruby" ]]; then
   export GEM_HOME="$HOME/vendor/gems"
   PATH="$GEM_HOME/bin:$PATH"
 fi
