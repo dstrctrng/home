@@ -16,8 +16,11 @@ gem "t"
 
 group :osx do
   gem "plist"
-  gem "fusefs"
   gem "terminal-notifier"
+end
+
+group :extra do
+  gem "fusefs"
 end
 
 # vim: set ft=ruby:
