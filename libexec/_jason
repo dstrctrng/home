@@ -4,6 +4,7 @@
 if [[ "$__meat__" != 'x' ]]; then
   return 0
 fi
+
 __meat__='y'
 
 if [[ -z "${shome:-}" ]]; then
@@ -135,6 +136,52 @@ function runmany {
   else
     echo "$@"
   fi | xargs -P $cpu -n $args -- bash -c "$cmd" ""
+}
+
+function mark_log {
+  local nm_mark="$1"; shift
+  touch "$tmp_switch/wait-$nm_mark"
+  echo $tmp_switch $nm_mark
+  while [[ -f "$tmp_switch/wait-$nm_mark" ]]; do
+    sleep 1
+  done
+}
+
+function marked_logger {
+  local nm_switch=""
+  while read -r a b; do
+    if [[ "$a" = "$tmp_switch" ]]; then
+      nm_switch="$b"
+      rm "$tmp_switch/wait-$nm_switch"
+    else
+      if [[ -z "$nm_switch" ]]; then
+        echo "$a $b"
+      else
+        echo "$nm_switch: $a $b"
+      fi
+    fi
+  done
+}
+
+function mark_stdout {
+  if [[ -z "${tmp_switch:-}" ]]; then
+    tmp_switch="$(mktemp -d -t XXXXXXXXX)"
+  fi
+  exec 1> >(marked_logger)
+}
+
+function mark_stderr {
+  if [[ -z "${tmp_switch:-}" ]]; then
+    tmp_switch="$(mktemp -d -t XXXXXXXXX)"
+  fi
+  exec 2> >(marked_logger)
+}
+
+function mark_output {
+  if [[ -z "${tmp_switch:-}" ]]; then
+    tmp_switch="$(mktemp -d -t XXXXXXXXX)"
+  fi
+  exec 1> >(marked_logger) 2>&1
 }
 
 function _main {
