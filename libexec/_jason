@@ -1,12 +1,5 @@
 #!/bin/bash
 
-: ${__meat__:=x}
-if [[ "$__meat__" != 'x' ]]; then
-  return 0
-fi
-
-__meat__='y'
-
 if [[ -z "${shome:-}" ]]; then
   shome="$(unset CDPATH; cd -P -- "$(dirname -- "${BASH_SOURCE}")/.." && pwd -P)"
 fi
@@ -79,6 +72,8 @@ function require {
       set --
     fi
     source "$pth_lib" "$@"
+  else
+    logger_warn "library $nm_library not found"
   fi
 }
 
@@ -188,6 +183,13 @@ function _main {
   if [[ -z "$shome" ]]; then
     shome="$(unset CDPATH; cd -P -- "$(dirname -- "${BASH_SOURCE}")/.." && pwd -P)"
   fi
+
+  : ${__meat__:=x}
+  if [[ "$__meat__" != 'x' ]]; then
+    return 0
+  fi
+
+  __meat__='y'
 
   require 'shflags'
 
