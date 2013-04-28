@@ -1,3 +1,0 @@
-#!/bin/bash -e
-
-bundle exec ruby -ryaml -e 'require "json"; puts YAML.load(File.read("showoff.yaml")).to_hash.to_json' > showoff.json
