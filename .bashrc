@@ -18,8 +18,6 @@ fi
 require 'puddle'
 
 require 'paul'
-require 'aaron'
-require 'vim'
 require 'git'
 require 'perl'
 require 'gandalf' "${GANDALF:-$shome}"
