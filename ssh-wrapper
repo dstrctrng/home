@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "$@" >> /tmp/meh
+host="$1"; shift
+set -x
+exec ssh ${GIT_HOST:-$host} "$@"
