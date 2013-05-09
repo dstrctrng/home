@@ -1,30 +1,30 @@
 [submodule "cue"]
   path = .cue
-  url = https://github.com/destructuring/cue
+  url = git@github.com:destructuring/cue
 [submodule "junas"]
   path = .junas
-  url = https://github.com/destructuring/junas
+  url = git@github.com:destructuring/junas
 [submodule "hubflow"]
 	path = .hubflow
-	url = https://github.com/destructuring/hubflow
+	url = git@github.com:destructuring/hubflow
 [submodule ".paul"]
 	path = .paul
-	url = https://github.com/destructuring/paul
+	url = git@github.com:destructuring/paul
 [submodule ".aaron"]
 	path = .aaron
-	url = https://github.com/destructuring/aaron
+	url = git@github.com:destructuring/aaron
 [submodule ".yarvm"]
 	path = .yarvm
-	url = https://github.com/destructuring/yarvm
+	url = git@github.com:destructuring/yarvm
 [submodule "output"]
 	path = output
-	url = https://github.com/destructuring/destructuring.github.com
+	url = git@github.com:destructuring/destructuring.github.com
 [submodule ".whatever"]
 	path = .whatever
-	url = https://github.com/destructuring/whatever
+	url = git@github.com:destructuring/whatever
 [submodule ".puddle"]
 	path = .puddle
-	url = https://github.com/destructuring/puddle
+	url = git@github.com:destructuring/puddle
 [submodule ".gandalf"]
 	path = .gandalf
-	url = https://github.com/destructuring/gandalf
+	url = git@github.com:destructuring/gandalf
