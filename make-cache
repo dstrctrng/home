@@ -1,8 +1,0 @@
-#!/bin/bash
-
-short="$1"; shift
-url_repo="git@github.com:$short"; shift
-nm_repo="$(basename $url_repo .git)"
-mkdir -p $short.git
-git clone --mirror $url_repo $short.git
-ln -nfs ${nm_repo}.git $short
