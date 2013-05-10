@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#/ NAME
+#/     edit-gem -- set environment to hint to Gemfile to use a local gemspec
+#/
+#/ SYNOPSIS
+#/     edit gem <name> [location]
+#/     edit gem -r <names>
+#/     edit gem -R
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+
+# load a jason bourne library
+source "$shome/libexec/_jason"
+
+# entry point
+function main {
+  cd
+  (set +f; ls -d */*.git/HEAD) | cut -d/ -f1-2 | runmany 8 1 'cd $1 && git fetch --all'
+}
+
+require sub "$BASH_SOURCE" "$@"
