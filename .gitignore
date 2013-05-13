@@ -87,3 +87,4 @@
 /.context-git-cache
 /.vbox_version
 /br-admin/
+/*/*.git
