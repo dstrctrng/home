@@ -84,3 +84,6 @@
 /.trc
 /.luarocks
 /.ssh-wrapper
+/.context-git-cache
+/.vbox_version
+/br-admin/
