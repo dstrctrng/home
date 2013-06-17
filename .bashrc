@@ -7,7 +7,7 @@ set +efu
 
 require 'whatever'
 
-if [[ -d "$shome/local" \\; then
+if [[ -d "$shome/local" ]]; then
   require 'pancake/macports_profile' $shome/local
 fi
 
