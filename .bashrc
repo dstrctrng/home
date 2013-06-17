@@ -7,10 +7,14 @@ set +efu
 
 require 'whatever'
 
-require 'pancake/macports_profile' $shome/local
+if [[ -d "$shome/local" \\; then
+  require 'pancake/macports_profile' $shome/local
+fi
+
 if [[ ! -f /etc/profile.d/rvm.sh ]]; then
   require 'rvm' default # 'rbenv'
 fi
+
 if [[ -x "$HOME/vendor/gems/bin/gem" && "$(type -P ruby)" = "/usr/bin/ruby" ]]; then
   export GEM_HOME="$HOME/vendor/gems"
   PATH="$GEM_HOME/bin:$PATH"
