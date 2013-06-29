@@ -89,3 +89,4 @@
 /br-admin/
 /.git-env
 /.pry_history
+/vendor/ruby
