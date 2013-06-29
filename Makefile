@@ -1,6 +1,7 @@
 RUBY := /usr/bin/ruby
-
 BUNDLE := 
+SCRIPT := static
+BOXNAME := home
 
 all: ready
 
@@ -14,3 +15,14 @@ vendor/ruby/bin/ruby:
 
 rubygems: vendor/ruby/bin/ruby
 	@$(MAKE) BUNDLE=bin/
+
+$(BOXNAME).box: metadata.json
+	tar cvfz $(BOXNAME).box metadata.json
+
+vagrant: $(BOXNAME).box
+	vagrant box remove $(BOXNAME) $(SCRIPT) || true
+	vagrant box add $(BOXNAME) $(BOXNAME).box
+
+shell:
+	vagrant up || true
+	vagrant ssh -- -A

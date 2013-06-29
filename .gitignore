@@ -90,3 +90,4 @@
 /.git-env
 /.pry_history
 /vendor/ruby
+/.vagrant
