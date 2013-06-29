@@ -1,7 +1,6 @@
 require 'socket'
 
 ENV['SHELL_SCRIPT'] = 'static'
-ENV['SHELL_IMAGE'] = "localhost"
 
 require "vagrant-shell"
 require "vagrant-shell/ssh-agent"
@@ -11,9 +10,10 @@ Vagrant.configure("2") do |config|
   config.vm.box = "home"
   config.ssh.username = ENV['LOGNAME']
 
-  script = ENV['SHELL_SCRIPT']
-  config.vm.provider script.to_sym do |shell, override|
-    shell.image = ENV['SHELL_IMAGE']
-    shell.script = shell.find_script(script)
+  config.vm.provision :shell, :path => File.expand_path("../libexec/self-init", __FILE__)
+
+  config.vm.provider :static do |shell, override|
+    shell.image = 'localhost'
+    shell.script = shell.find_script("static")
   end
 end
