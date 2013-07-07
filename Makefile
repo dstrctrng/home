@@ -1,20 +1,17 @@
 RUBY := /usr/bin/ruby
-BUNDLE := 
 SCRIPT := static
 BOXNAME := home
+RUBY := /usr/bin/ruby
+BUNDLER := $(shell which bundle 2>&1 || echo vendor/ruby/bin/bundle)
 
 all: ready
+	$(BUNDLER) --local --standalone
 
-ready:
+ready: $(BUNDLER)
 	@git submodule update --init --recursive
-	@$(BUNDLE)bundle check 2>&1 >/dev/null || { $(BUNDLE)bundle --local --path vendor/bundle && $(BUNDLE)bundle check; }
-
-vendor/ruby/bin/ruby:
-	@cd rubygems-1.8.25 && env GEM_PATH= GEM_HOME=$(PWD)/vendor/ruby $(RUBY) setup.rb --prefix=../vendor/ruby
-	@bin/gem install bundler -v 1.3.5
-
-rubygems: vendor/ruby/bin/ruby
-	@$(MAKE) BUNDLE=bin/
+	@$(BUNDLER) check 2>&1 >/dev/null || { $(BUNDLER) --local --standalone --path vendor/bundle && $(BUNDLER) check; }
+	@mkdir -p bin
+	@ln -nfs "$(shell bundle show alox)/bin/alox"  bin/
 
 $(BOXNAME).box: metadata.json
 	tar cvfz $(BOXNAME).box metadata.json
@@ -26,3 +23,12 @@ vagrant: $(BOXNAME).box
 shell:
 	vagrant up || true
 	vagrant ssh -- -A
+
+vendor/ruby/bin/bundle: vendor/ruby/bin/gem
+	@bin/gem install bundler -v 1.3.5
+
+vendor/ruby/bin/gem:
+	@cd rubygems-1.8.25 && env GEM_PATH= GEM_HOME=$(PWD)/vendor/ruby $(RUBY) setup.rb --prefix=../vendor/ruby
+
+clean:
+	@rm -rf vendor/ruby

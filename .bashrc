@@ -2,6 +2,9 @@
 
 : ${DISPLAY:=}
 
+: ${GANDALF:=$shome}
+export GANDALF
+
 source "$HOME/libexec/_jason"
 set +efu
 
@@ -24,7 +27,6 @@ require 'puddle'
 require 'paul'
 require 'git'
 require 'perl'
-require 'gandalf' "${GANDALF:-$shome}"
 
 require 'cue'
 require 'junas'

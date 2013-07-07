@@ -91,3 +91,4 @@
 /.pry_history
 /vendor/ruby
 /.vagrant
+/bin/alox

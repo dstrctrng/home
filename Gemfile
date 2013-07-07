@@ -28,6 +28,12 @@ end
 gem "tnargav", "~> 1.2.2"
 gem "vagrant-shell"
 
+# alox
+
+gem "alox"
+gem "alox-jason"
+gem "alox-gandalf"
+
 # vim: set ft=ruby:
 #
 #

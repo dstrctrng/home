@@ -25,6 +25,3 @@
 [submodule ".puddle"]
 	path = .puddle
 	url = git@github.com:destructuring/puddle
-[submodule ".gandalf"]
-	path = .gandalf
-	url = git@github.com:destructuring/gandalf
