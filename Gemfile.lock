@@ -2,8 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.3)
-    alox (0.0.5)
-    alox-gandalf (0.0.8)
+    alox (0.0.6)
+    alox-gandalf (0.0.9)
     alox-jason (0.0.25)
     awesome_print (1.1.0)
     chef (11.4.4)
