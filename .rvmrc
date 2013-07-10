@@ -1,3 +1,4 @@
 rvm_project_rvmrc=0
 rvm_auto_reload_flag=2
 rvm_without_gems="rvm rubygems-bundler"
+rvm_autolibs_flag=0
