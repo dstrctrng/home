@@ -1,14 +1,14 @@
 SCRIPT := static
 BOXNAME := home
 RUBY := ruby
-BUNDLE := bundle
+BUNDLER := $(shell which bundle 2>&1 || echo vendor/ruby/bin/bundle)
 
 all: ready
-	$(BUNDLE) --local --standalone
+	$(BUNDLER) --local --standalone
 
-ready:
+ready: $(BUNDLER)
 	@git submodule update --init --recursive
-	@$(BUNDLE) check 2>&1 >/dev/null || { $(BUNDLE) --local --standalone --path vendor/bundle && $(BUNDLE) check; }
+	@$(BUNDLER) check 2>&1 >/dev/null || { $(BUNDLER) --local --standalone --path vendor/bundle && $(BUNDLER) check; }
 	@mkdir -vp bin
 	@ln -vnfs "$(shell bundle show alox)/bin/alox"  bin/
 
