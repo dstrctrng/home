@@ -1,7 +1,7 @@
 SCRIPT := static
 BOXNAME := home
 RUBY := ruby
-BUNDLER := $(shell which bundle 2>&1 || echo vendor/ruby/bin/bundle)
+BUNDLER := bundle
 
 all: ready
 	$(BUNDLER) --local --standalone
