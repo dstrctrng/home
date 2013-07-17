@@ -1,7 +1,6 @@
-RUBY := /usr/bin/ruby
 SCRIPT := static
 BOXNAME := home
-RUBY := /usr/bin/ruby
+RUBY := ruby
 BUNDLER := $(shell which bundle 2>&1 || echo vendor/ruby/bin/bundle)
 
 all: ready
