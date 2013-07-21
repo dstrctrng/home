@@ -13,9 +13,6 @@
 [submodule ".aaron"]
 	path = .aaron
 	url = git@github.com:destructuring/aaron
-[submodule ".yarvm"]
-	path = .yarvm
-	url = git@github.com:destructuring/yarvm
 [submodule "output"]
 	path = output
 	url = git@github.com:destructuring/destructuring.github.com
