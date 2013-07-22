@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for a in "$@"; do printf '%q ' "$a"; done \
+  | uuencode -m meh | egrep -v '^(begin-base64|====)' | xargs | sed 's# ##g' \
+  | xargs ssh localhost bash -c $(printf '%q' '{ echo begin-base64 644 meh; echo "$1"; echo ====; } | uudecode -p | bash -') --
