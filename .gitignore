@@ -92,3 +92,4 @@
 /vendor/ruby
 /.vagrant
 /bin/alox
+/.yarvm
