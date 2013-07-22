@@ -93,3 +93,4 @@
 /.vagrant
 /bin/alox
 /.yarvm
+/.s3cfg
