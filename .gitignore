@@ -39,8 +39,7 @@
 /.rnd
 /.rvm-use
 /.vagrant.d
-/vault
-/vault_installer
+/vault*
 /VirtualBox VMs
 /.ruby_inline
 /.display
