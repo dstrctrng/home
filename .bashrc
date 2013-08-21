@@ -22,7 +22,6 @@ require 'puddle'
 
 require 'paul'
 require 'git'
-require 'perl'
 
 require 'cue'
 require 'junas'
