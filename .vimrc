@@ -1,5 +1,5 @@
 " source junas
-source ~/.vim/junas
+source ~/.vim/junas.vimrc
 
 " install whatever bundles over the net
 silent call Bundle(["xoria256", "Solarized"])
