@@ -33,6 +33,7 @@ gem "vagrant-shell"
 gem "alox"
 gem "alox-jason"
 gem "alox-gandalf"
+#gem "home", :path => ENV['HOME']
 
 # vim: set ft=ruby:
 #

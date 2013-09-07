@@ -10,14 +10,6 @@ set +efu
 
 require 'whatever'
 
-if [[ -d "$shome/local" ]]; then
-  require 'pancake/macports_profile' $shome/local
-fi
-
-if [[ ! -f /etc/profile.d/rvm.sh ]]; then
-  require 'rvm' default # 'rbenv'
-fi
-
 require 'puddle'
 
 require 'paul'
@@ -41,3 +33,5 @@ fi
 if [[ -f ~/.siterc ]]; then
   source ~/.siterc
 fi
+
+ulimit -n 4000
