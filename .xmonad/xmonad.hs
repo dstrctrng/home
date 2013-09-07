@@ -34,7 +34,7 @@ main = do
           , workspaces         = myTopics
           , modMask            = mod1Mask
           , borderWidth        = 3
-          , terminal           = "terminal"
+          , terminal           = "xterm -ls +sb -fb fixed"
           , normalBorderColor  = "#262626"
           , focusedBorderColor = "#ff8700" 
           } `additionalKeysP` (myKeys defaultConfig)
