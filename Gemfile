@@ -20,10 +20,6 @@ group :osx do
   gem "terminal-notifier"
 end
 
-group :extra do
-  gem "fusefs"
-end
-
 # vagrant
 gem "tnargav", "~> 1.2.2"
 gem "vagrant-shell"
