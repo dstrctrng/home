@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd
+
 xsetroot -solid '#000000'
 xrdb -merge .Xresources
 xmodmap .Xmodmap
