@@ -1,0 +1,29 @@
+curl wget
+lua pcre
+./configure --prefix=$BRADMIN/openresty --with-cc-opt="-I$BRADMIN/pkg/include" --with-ld-opt="-L$BRADMIN/pkg/lib"
+env LD_LIBRARY_PATH=$BRADMIN/pkg/lib openresty/nginx/sbin/nginx
+
+./configure \
+  --enable-shared \
+  --program-suffix=193 --with-soname=ruby193 --with-sitedir=/opt/br/br-admin/pkg/lib/ruby/site_ruby --with-vendordir=/opt/br/br-admin/pkg/lib/ruby/vendor_ruby --with-ruby-version=1.9.3 --with-ruby-pc=ruby-1.9.3.pc \
+  --enable-pthread \
+  --with-libiconv-prefix=/opt/br/br-admin/pkg \
+  --prefix=/opt/br/br-admin/pkg \
+  --build=x86_64-debian-linux --host=x86_64-debian-linux \
+  --mandir=/opt/br/br-admin/pkg/man
+
+BMAKE clean, configure
+cd work.ruby* && make
+BMAKE install package
+
+databases/postgresql-91 
+
+docker 
+-h $hostname
+-v /mnt:/mnt
+
+sudo iptables -P FORWARD ACCEPT
+
+sudo iptables --table nat -A POSTROUTING -o eth0 -j MASQUERADE
+
+sudo sysctl -w net.ipv4.ip_forward=1

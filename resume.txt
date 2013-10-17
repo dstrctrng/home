@@ -1,19 +1,64 @@
 David Nghiem
-nghidav@gmail.com, 510-371-5477
-
+nghidav@gmail.com
+(510) 371-5477
 310 The Spiral
 Berkeley, CA 94708
-
-Located at https://raw.github.com/destructuring/home/master/resume.txt
 
 ========================================================================================
 
 GITHUB: https://github.com/destructuring (as Tom Bombadil)
-CODERWALL: http://coderwall.com/destructuring (also as Tom Bom)
 
 ========================================================================================
 
-LEAD INFRASTRUCTURE ENGINEER, ZENDESK, 2011 - current
+LEAD OPERATIONS ENGINEER, BLEACHER REPORT, 2013 - current
+
+Transitioned from EngineYard admin support + Linux contractor to
+in-house operations team of two:
+
+- Migrate services from EngineYard Cloud into Bleacher Report AWS
+  (redis, memcache, mysql, node and ruby applications)
+
+- Build out new Cloud Formation stacks in AWS
+
+- Put one-off EC2 instances under chef; only CF stacks were under
+  configuration management
+
+- Edgecast to Akamai CDN (images and video streams)
+
+- Daily golden image builds to reduce app build times and apply security
+  updates
+
+- cleanup script to monitor deviant AWS behavior and resources, keeping
+  AWS charges to budget
+
+OpsDev tooling:
+
+- Automated administrator onboarding with OS X + Ubuntu compatible tools
+  stack: vagrant, aws cli, make, chef
+
+- Boxcar build scripts targetting Vagrants on VirtualBox, AWS EC2, Docker
+
+- Build packages (pkgsrc, debs, rvm ruby binaries, docker images) in
+  Vagrants
+
+- Vagrant shell provider to implement Docker support
+
+- git-cache to remove github as point of failure, performance bottleneck
+  for machine builds and deploys
+
+- squid-cache to remove http resources points of failure
+
+- gandalf wrapper around pgp for managing secrets (SSL keys, ssh keys,
+  passwords)
+
+- pkgsrc binary packages for OS X and Ubuntu
+
+- alox, packaging bash scripts in the ruby gems ecosystem to be managed
+  by bundler
+
+========================================================================================
+
+LEAD INFRASTRUCTURE ENGINEER, ZENDESK, 2011 - 2012
 
 Transitioned from operations to building tools fulltime.  Support
 developer and operations staff in making applications deployable,
