@@ -95,3 +95,5 @@
 /.s3cfg
 /.br
 /.kerl
+/pkgsrc
+/pkg
