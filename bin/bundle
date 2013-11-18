@@ -11,7 +11,7 @@
 shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
 function main {
-  exec env GEM_PATH= GEM_HOME="$shome/vendor/ruby" PATH="$shome/vendor/ruby/bin:$PATH" "$shome/vendor/ruby/bin/bundle" "$@"
+  exec env GEM_PATH= GEM_HOME="$shome/vendor/ruby" RUBYLIB="$shome/vendor/ruby/lib" PATH="$shome/vendor/ruby/bin:$PATH" "$shome/vendor/ruby/bin/bundle" "$@"
 }
 
 main "$@"

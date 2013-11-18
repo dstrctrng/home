@@ -23,10 +23,10 @@ shell:
 	vagrant up || true
 	vagrant ssh -- -A
 
-vendor/ruby/bin/gem:
+vendor/ruby/bin/gem1.8:
 	@cd rubygems-1.8.25 && env GEM_PATH= GEM_HOME=$(PWD)/vendor/ruby $(RUBY) setup.rb --prefix=../vendor/ruby
 
-vendor/ruby/bin/bundle: vendor/ruby/bin/gem
+vendor/ruby/bin/bundle: vendor/ruby/bin/gem1.8
 	@bin/gem install bundler -v 1.3.5
 
 clean:
