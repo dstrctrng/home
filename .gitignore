@@ -98,3 +98,4 @@
 /pkgsrc
 /pkg
 /*.box
+/packer_cache
