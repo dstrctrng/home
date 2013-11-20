@@ -10,7 +10,7 @@ BUNDLER := $(SHOME)/bin/bundle
 all: ready
 	$(BUNDLER) --local --standalone
 
-ready: $(BUNDLER)
+ready: vendor/ruby/bin/bundle
 	@git submodule update --init --recursive
 	@$(RUNNER) $(BUNDLER) check --path vendor/bundle 2>&1 >/dev/null || { $(RUNNER) $(BUNDLER) --local --standalone --path vendor/bundle && $(RUNNER) $(BUNDLER) chec --path vendor/bundle; }
 	@mkdir -vp bin
