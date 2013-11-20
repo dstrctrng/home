@@ -26,12 +26,15 @@ require 'osx'
 require 'vagrant'
 require 'ssh'
 
+export VAGRANT_HOME="$shome/.vagrant"
+export VBOX_USER_HOME="$shome/.vagrant"
+
+ulimit -n 4000
+
+PATH="$shome/bin:$shome/pkg/bin:$shome/pkg/sbin:$PATH"
 if [[ -n "${PATH_OVERRIDE:-}" ]]; then
   PATH="$PATH_OVERRIDE:$PATH"
 fi
-
-ulimit -n 4000
-PATH="$HOME/bin:$HOME/pkg/bin:$HOME/pkg/sbin:$PATH"
 
 if [[ -f ~/.siterc ]]; then
   source ~/.siterc
