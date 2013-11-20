@@ -99,3 +99,5 @@
 /pkg
 /*.box
 /packer_cache
+/output-*
+/bin/packer*
