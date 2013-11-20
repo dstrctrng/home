@@ -31,7 +31,7 @@ if [[ -n "${PATH_OVERRIDE:-}" ]]; then
 fi
 
 ulimit -n 4000
-PATH="$HOME/pkg/bin:$HOME/pkg/sbin:$PATH"
+PATH="$HOME/bin:$HOME/pkg/bin:$HOME/pkg/sbin:$PATH"
 
 if [[ -f ~/.siterc ]]; then
   source ~/.siterc
