@@ -1,13 +1,12 @@
-require 'socket'
-
-ENV['SHELL_SCRIPT'] = 'static'
-
 require "vagrant-shell"
 require "vagrant-shell/ssh-agent"
-require "vagrant-shell/env-config"
+
+VagrantPlugins::Shell::Plugin.make_provider(:static)
+
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'static'
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "home"
+  config.vm.box = "static"
   config.ssh.username = ENV['LOGNAME']
 
   config.vm.provision :shell, :path => File.expand_path("../libexec/self-init", __FILE__)
