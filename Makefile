@@ -1,14 +1,18 @@
 SCRIPT := static
 BOXNAME := home
-RUBY := ruby
-BUNDLER := $(shell which bundle 2>&1 || echo vendor/ruby/bin/bundle)
+RUBY := $(shell which ruby)
+RUBY_BIN := $(shell readlink -f $(RUBY) 2>&- || echo $(RUBY))
+RUBY_SUFFIX := $(shell basename $(RUBY_BIN) | sed 's/ruby//')
+SHOME := $(PWD)
+RUNNER := env PATH=$(SHOME)/bin:$(PATH)
+BUNDLER := $(SHOME)/bin/bundle
 
 all: ready
 	$(BUNDLER) --local --standalone
 
 ready: $(BUNDLER)
-	@git submodule update --init --recursive
-	@$(BUNDLER) check 2>&1 >/dev/null || { $(BUNDLER) --local --standalone --path vendor/bundle && $(BUNDLER) check; }
+	git submodule update --init --recursive
+	$(RUNNER) $(BUNDLER) check --path vendor/bundle 2>&1 >/dev/null || { $(RUNNER) $(BUNDLER) --local --standalone --path vendor/bundle && $(RUNNER) $(BUNDLER) chec --path vendor/bundle; }
 	@mkdir -vp bin
 	@ln -vnfs "$(shell bundle show alox)/bin/alox"  bin/
 
@@ -23,10 +27,10 @@ shell:
 	vagrant up || true
 	vagrant ssh -- -A
 
-vendor/ruby/bin/gem1.8:
-	@cd rubygems-1.8.25 && env GEM_PATH= GEM_HOME=$(PWD)/vendor/ruby $(RUBY) setup.rb --prefix=../vendor/ruby
+vendor/ruby/bin/gem$(RUBY_SUFFIX):
+	@cd rubygems-1.8.25 && env GEM_PATH= GEM_HOME=$(SHOME)/vendor/ruby RUBYLIB=$(SHOME)/vendor/ruby/lib $(RUBY) setup.rb --prefix=../vendor/ruby
 
-vendor/ruby/bin/bundle: vendor/ruby/bin/gem1.8
+vendor/ruby/bin/bundle: vendor/ruby/bin/gem$(RUBY_SUFFIX)
 	@bin/gem install bundler -v 1.3.5
 
 clean:

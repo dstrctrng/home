@@ -11,7 +11,9 @@
 shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
 function main {
-  exec env GEM_PATH= GEM_HOME="$shome/vendor/ruby" RUBYLIB="$shome/vendor/ruby/lib" "$shome/vendor/ruby/bin/gem1.8" "$@"
+  local pth_readlink="$(which greadlink 2>&- || which readlink)"
+  local ruby_suffix="$(basename $($pth_readlink -f $(which ruby)) | sed 's/ruby//')"
+  exec env GEM_PATH= GEM_HOME="$shome/vendor/ruby" RUBYLIB="$shome/vendor/ruby/lib" "$shome/vendor/ruby/bin/gem${ruby_suffix}" "$@"
 }
 
 main "$@"
