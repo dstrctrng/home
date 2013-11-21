@@ -20,12 +20,7 @@ group :osx do
   gem "terminal-notifier"
 end
 
-# vagrant
-gem "tnargav", "~> 1.2.2"
-gem "vagrant-shell"
-
 # alox
-
 gem "alox"
 gem "alox-jason"
 gem "alox-gandalf"

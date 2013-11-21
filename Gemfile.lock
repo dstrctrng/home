@@ -20,8 +20,6 @@ GEM
       ohai (>= 0.6.0)
       rest-client (>= 1.0.4, < 1.7.0)
       yajl-ruby (~> 1.1)
-    childprocess (0.3.9)
-      ffi (~> 1.0, >= 1.0.11)
     colored (1.2)
     cookiejar (0.3.0)
     cri (2.3.0)
@@ -45,7 +43,6 @@ GEM
     faraday (0.8.6)
       multipart-post (~> 1.1)
     fastercsv (1.5.5)
-    ffi (1.9.3)
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
@@ -59,14 +56,12 @@ GEM
     highline (1.6.18)
     htmlentities (4.3.1)
     http_parser.rb (0.5.3)
-    i18n (0.6.5)
     interactive_editor (0.0.10)
       spoon (>= 0.0.1)
     ipaddress (0.8.0)
     json (1.7.7)
     launchy (2.2.0)
       addressable (~> 2.3)
-    log4r (1.1.10)
     mime-types (1.23)
     mixlib-authentication (1.3.0)
       mixlib-log
@@ -78,8 +73,6 @@ GEM
     multipart-post (1.2.0)
     nanoc (3.4.3)
       cri (~> 2.2)
-    net-scp (1.1.2)
-      net-ssh (>= 2.6.5)
     net-ssh (2.6.8)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
@@ -117,13 +110,6 @@ GEM
       twitter (~> 4.4)
     terminal-notifier (1.4.2)
     thor (0.17.0)
-    tnargav (1.2.3)
-      childprocess (~> 0.3.7)
-      erubis (~> 2.7.0)
-      i18n (~> 0.6.0)
-      log4r (~> 1.1.9)
-      net-scp (~> 1.1.0)
-      net-ssh (~> 2.6.6)
     tvd-runit (0.0.23)
       tvd-tvdinner
     tvd-tvdinner (0.0.27)
@@ -138,7 +124,6 @@ GEM
       faraday (~> 0.8, < 0.10)
       multi_json (~> 1.0)
       simple_oauth (~> 0.2)
-    vagrant-shell (0.2.13)
     wirble (0.1.3)
     yajl-ruby (1.1.0)
 
@@ -156,7 +141,5 @@ DEPENDENCIES
   plist
   t
   terminal-notifier
-  tnargav (~> 1.2.2)
   tvd-runit
-  vagrant-shell
   wirble

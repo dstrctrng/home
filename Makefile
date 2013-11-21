@@ -1,5 +1,4 @@
 SCRIPT := static
-BOXNAME := home
 RUBY := $(shell which ruby)
 RUBY_BIN := $(shell readlink -f $(RUBY) 2>&- || echo $(RUBY))
 RUBY_SUFFIX := $(shell basename $(RUBY_BIN) | sed 's/ruby//')
@@ -15,17 +14,6 @@ ready: vendor/ruby/bin/bundle
 	@$(RUNNER) $(BUNDLER) check --path vendor/bundle 2>&1 >/dev/null || { $(RUNNER) $(BUNDLER) --local --standalone --path vendor/bundle && $(RUNNER) $(BUNDLER) chec --path vendor/bundle; }
 	@mkdir -vp bin
 	@ln -vnfs "$(shell bundle show alox)/bin/alox"  bin/
-
-$(BOXNAME).box: metadata.json
-	tar cvfz $(BOXNAME).box metadata.json
-
-vagrant: $(BOXNAME).box
-	vagrant box remove $(BOXNAME) $(SCRIPT) || true
-	vagrant box add $(BOXNAME) $(BOXNAME).box
-
-shell:
-	vagrant up || true
-	vagrant ssh -- -A
 
 vendor/ruby/bin/gem$(RUBY_SUFFIX):
 	@cd rubygems && env GEM_PATH= GEM_HOME=$(SHOME)/vendor/ruby RUBYLIB=$(SHOME)/vendor/ruby/lib $(RUBY) setup.rb --prefix=../vendor/ruby
