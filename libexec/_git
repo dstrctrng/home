@@ -1,6 +1,27 @@
 #!/bin/bash
 
-alias gs="pushd ./\$($(type -P git) rev-parse --show-cdup) > /dev/null; $(type -P git) submodule summary; popd > /dev/null; $(type -P git) status -s --ignore-submodules=dirty" # TODO add -b back with autodetect
+function gs {
+  local tmp_submodule="$(mktemp -t XXXXXX)"
+  local tmp_status="$(mktemp -t XXXXXX)"
+
+  (
+    (
+      cd ./$($(type -P git) rev-parse --show-cdup) > /dev/null
+      $(type -P git) submodule summary > "$tmp_submodule"
+    ) &
+
+    # TODO add -b back with autodetect of git version
+    $(type -P git) status -s --ignore-submodules=dirty > "$tmp_status" &
+
+    wait
+  )
+
+  cat "$tmp_submodule"
+  cat "$tmp_status"
+
+  rm -f "$tmp_submodule" "$tmp_status"
+}
+
 alias gl="$(type -P git) lg"
 alias gd="$(type -P git) difftool"
 alias gm="$(type -P git) mergetool"
