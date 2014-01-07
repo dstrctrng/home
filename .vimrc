@@ -12,6 +12,7 @@ colorscheme xoria256
 silent call Bundle(["fugitive", "git.zip", "Gist",  "cucumber.zip", "rake"])
 silent call Bundle(["haml.zip"])
 silent call Bundle(["vimpager"])
+silent call Bundle(["Puppet_Syntax_Highlighting"])
 
 " override xoria colors
 hi Folded  ctermfg=180 guifg=#dfaf87 ctermbg=234 guibg=#1c1c1c
