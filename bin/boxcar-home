@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+#/ NAME
+#/     boxcar-home - ubuntu home is based on destructuring/home.git
+
+function remote_install {
+  set -exfu; cd
+
+  local apt_install="sudo -E env DEBIAN_FRONTEND=noninteractive aptitude -y install"
+
+  sudo -E aptitude update
+  $apt_install htop libfuse-dev unzip
+
+  git clone git@github.com:destructuring/home 
+  mv home/.git .
+  rm -rf home
+  git reset --hard
+
+  if [[ -x /usr/local/rvm/bin/rvm-exec ]]; then
+    /usr/local/rvm/bin/rvm-exec 1.9.3 make
+  else
+    make
+  fi
+}
+
+if [[ "$#" = 0 ]]; then
+  remote_install
+  exit $?
+fi
+
+# figure out the project root under which bin, lib live
+shome="$(unset CDPATH; cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+
+# load a jason bourne library
+source _jason
+require _boxcar
+require _boxcar_opt
+
+bootstrap="$BASH_SOURCE"
+
+# entry point
+function main {
+  local pth_ssh_config="$1"
+
+  standard_hook "$bootstrap" "$@"
+  ssh -F "$pth_ssh_config" -t default ./.git-sbin/with-git-cache ./.git-sbin/with-http-cache bash -c "cd .junas; make"
+}
+
+require sub "$BASH_SOURCE" "$@"

@@ -95,3 +95,4 @@
 /pkgsrc
 /pkg
 /bin/packer*
+/.aws

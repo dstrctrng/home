@@ -26,9 +26,6 @@ require 'osx'
 require 'vagrant'
 require 'ssh'
 
-export VAGRANT_HOME="$shome/.vagrant"
-export VBOX_USER_HOME="$shome/.vagrant"
-
 ulimit -n 4000
 
 PATH="$shome/bin:$shome/pkg/bin:$shome/pkg/sbin:$PATH"
