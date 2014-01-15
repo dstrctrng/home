@@ -17,8 +17,10 @@ function remote_install {
   git reset --hard
 
   if [[ -x /usr/local/rvm/bin/rvm-exec ]]; then
+    /usr/local/rvm/bin/rvm-exec 1.9.3 make || true
     /usr/local/rvm/bin/rvm-exec 1.9.3 make
   else
+    make || true
     make
   fi
 }
@@ -43,7 +45,6 @@ function main {
   local pth_ssh_config="$1"
 
   standard_hook "$bootstrap" "$@"
-  ssh -F "$pth_ssh_config" -t default ./.git-sbin/with-git-cache ./.git-sbin/with-http-cache bash -c "cd .junas; make"
 }
 
 require sub "$BASH_SOURCE" "$@"
