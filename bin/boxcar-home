@@ -9,7 +9,7 @@ function remote_install {
   local apt_install="sudo -E env DEBIAN_FRONTEND=noninteractive aptitude -y install"
 
   sudo -E aptitude update
-  $apt_install htop libfuse-dev unzip expect
+  $apt_install htop libfuse-dev unzip
 
   git clone git@github.com:destructuring/home 
   mv home/.git .
