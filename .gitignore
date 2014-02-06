@@ -96,3 +96,5 @@
 /pkg
 /bin/packer*
 /.aws
+/.irssi
+/.travis
