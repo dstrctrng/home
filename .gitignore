@@ -95,3 +95,8 @@
 /pkgsrc
 /pkg
 /bin/packer*
+/.aws
+/.irssi
+/.travis
+/.boxcar
+/boxcar-*
