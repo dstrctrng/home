@@ -12,5 +12,7 @@ xset r rate 250 60
 xterm -ls +sb -fb fixed &
 xterm -ls +sb -fb fixed &
 
-xmobar &
+xmobar -o &
+xmobar -b &
+
 exec ~/Library/Haskell/bin/xmonad

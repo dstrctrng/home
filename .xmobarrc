@@ -7,9 +7,6 @@ Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
        , lowerOnStart = True
        , persistent = False
        , hideOnStart = False
-       , commands = [ Run Com "uname" ["-s","-r"] "" 36000
-                    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-                    ]
        , sepChar = "%"
        , alignSep = "}{"
        , template = "<fc=#ee9a00>%date%</fc>| %uname%"
