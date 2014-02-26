@@ -9,6 +9,10 @@ Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
        , hideOnStart = False
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "<fc=#ee9a00>%date%</fc>| %uname%"
+       , commands = [
+           Run Com "date" [ "+%s" ] "dato" 50
+         , Run Com "cat" [ "meh" ] "meh" 50
+         ]
+       , template = "<fc=#ee9a00>%dato%</fc> | %meh%"
        }
 
