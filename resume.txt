@@ -1,17 +1,25 @@
-David Nghiem
-nghidav@gmail.com
-(510) 371-5477
-310 The Spiral
-Berkeley, CA 94708
+========================================================================================
+
+GITHUB: https://github.com/dstrctrng (as Tom Bombadil, David Romulan)
 
 ========================================================================================
 
-GITHUB: https://github.com/destructuring (as Tom Bombadil, David Romulan)
-TWITTR: https://twitter.com/destructuring (as myself)
+OPERATIONS ENGINEER, PATH, 2014 - current
 
-========================================================================================
+Joined a Puppet shop after using Chef for the last couple jobs.  Worked
+with Python apps connected to Redis, Memcache, Mongo, ElasticSearch on
+Ubuntu in AWS.
 
-LEAD OPERATIONS ENGINEER, BLEACHER REPORT, 2013 - current
+- Autoscale existing/new applications on AWS EC2, greately assisted by:
+
+  * golden images
+  * building artifacts in vagrants (packages, binary rubies)
+  * pkgsrc for cross-platform compatibility between OSX and Ubuntu
+  * CI for puppet changes
+  * scripts to manage AWS inventory
+  * automated deploys
+
+LEAD OPERATIONS ENGINEER, BLEACHER REPORT, 2013 - 2014
 
 Transitioned from EngineYard admin support + Linux contractor to
 in-house operations team of two:
