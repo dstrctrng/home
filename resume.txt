@@ -4,7 +4,7 @@ GITHUB: https://github.com/dstrctrng (as Tom Bombadil, David Romulan)
 
 ========================================================================================
 
-OPERATIONS ENGINEER, PATH, 2014 - current
+OPERATIONS ENGINEER, PATH, 2013 - current
 
 Joined a Puppet shop after using Chef for the last couple jobs.  Worked
 with Python apps connected to Redis, Memcache, Mongo, ElasticSearch on
@@ -19,7 +19,7 @@ Ubuntu in AWS.
   * scripts to manage AWS inventory
   * automated deploys
 
-LEAD OPERATIONS ENGINEER, BLEACHER REPORT, 2013 - 2014
+LEAD OPERATIONS ENGINEER, BLEACHER REPORT, 2013 - 2013
 
 Transitioned from EngineYard admin support + Linux contractor to
 in-house operations team of two:
