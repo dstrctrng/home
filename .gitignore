@@ -101,3 +101,5 @@
 /.boxcar
 /boxcar-*
 /path
+/.dropbox-master
+/.openvpn-connect.json
