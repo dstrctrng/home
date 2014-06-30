@@ -95,6 +95,7 @@
 /pkgsrc
 /pkg
 /bin/packer*
+/bin/consul
 /.aws
 /.irssi
 /.travis
@@ -105,3 +106,5 @@
 /.openvpn-connect.json
 /*.log
 /Applications
+/.rbenv-version
+/.ruby-version
