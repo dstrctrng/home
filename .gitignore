@@ -110,3 +110,6 @@
 /.ruby-version
 /.python-eggs
 /.ipython
+/.ansible_module_generated
+/.ansible_test_module_arguments
+/.vagrant.d/
